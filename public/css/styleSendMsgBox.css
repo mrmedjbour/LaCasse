@@ -1,0 +1,125 @@
+.SendModel.modal.fade div div {
+  background-color: #e9eef4;
+}
+
+.SendModel.modal.fade .modal-header h1 {
+  background-color: #e9eef4;
+}
+
+.SendModel div div .modal-header {
+  padding: 0.5rem 1rem;
+}
+
+.SendModel div div .modal-header span {
+  color: #474747;
+}
+
+.SendModel div div .modal-header span i {
+  color: #eb650c;
+  margin-right: 10px;
+}
+
+div div form .modal-body {
+  padding: 0;
+}
+
+.SendModel div div form .modal-body div.d-flex {
+  width: 100%;
+  padding: 10px 10%;
+  border-bottom: 1px solid #d5d5d5;
+}
+
+.SendModel div div form .modal-body div.d-flex img {
+  width: 80px;
+  height: 80px;
+}
+
+.SendModel div div form .modal-body div.d-flex div {
+  width: 100%;
+  margin-left: 3%;
+}
+
+div div form .modal-body div.d-flex div span {
+  color: #0078c3;
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: block;
+}
+
+div div form .modal-body div.d-flex div ul {
+  margin: 5px 0px;
+}
+
+div div form .modal-body div.d-flex div ul li a {
+  color: #656565;
+  font-size: small;
+}
+
+div div form .modal-body div.d-flex div ul li a i {
+  font-size: 1rem;
+  color: #58ba25;
+  margin-right: 4px;
+}
+
+div form .modal-body .msg {
+  width: 100%;
+  padding: 10px 10%;
+}
+
+div form .modal-body .msg textarea {
+  width: 100%;
+  border-radius: 3px;
+  border: 1px solid #808080;
+}
+
+div form .modal-footer {
+  width: 100%;
+  padding: 10px 1rem;
+}
+
+div form .modal-footer button {
+  color: #fff;
+  border-radius: 3px;
+  padding: 4px 20px;
+}
+
+div form .modal-footer button[type=reset] {
+  background-color: #656565;
+}
+
+div form .modal-footer button[type=submit] {
+  background-color: #e46a14;
+}
+
+div form .modal-footer button i {
+  margin-right: 10px;
+}
+
+.SendModel #success .modal-body img {
+  margin: auto;
+  margin-bottom: 1rem;
+}
+
+.SendModel #success .modal-body p {
+  color: #474747;
+  margin-bottom: 0;
+}
+
+.SendModel #success .modal-footer {
+  width: 100%;
+  padding: 10px 1rem;
+  border-top: none;
+}
+
+.SendModel #success .modal-footer button {
+  color: #fff;
+  border-radius: 3px;
+  padding: 4px 40px;
+  background-color: #3e3e3e;
+  margin: 0 auto;
+}
+
+.SendModel #success .modal-footer button i {
+  margin-right: 10px;
+}
+

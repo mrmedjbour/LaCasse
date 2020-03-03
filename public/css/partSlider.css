@@ -1,0 +1,144 @@
+#part-carousel-1 {
+  margin: 0px 10%;
+  margin-bottom: 1em;
+}
+
+#part-carousel-1 .carousel-indicators.carousel-img {
+  position: static;
+}
+
+@media (max-width: 575px) {
+  #part-carousel-1 .carousel-indicators.carousel-img {
+    position: absolute;
+  }
+}
+
+#part-carousel-1 .carousel-indicators.carousel-img li {
+  width: 50px;
+  height: 50px;
+  opacity: 1;
+  color: #444;
+  font-size: 1rem;
+  background-image: url(../../assets/img/profile-img.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  border: 0px;
+}
+
+#part-carousel-1 .carousel-indicators.carousel-img li.active {
+  border: 2px solid #58ba25;
+}
+
+#part-carousel-1 .carousel-indicators.point li {
+  width: .625rem;
+  height: .625rem;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+#part-carousel-1 .carousel-indicators.carousel-img {
+  margin: 0px;
+}
+
+#PartDesc {
+  padding: 10px 3%;
+  margin-top: 1em;
+  border-radius: 2px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+}
+
+#PartDesc div table {
+  width: auto;
+  color: #656565;
+  font-size: small;
+  border-collapse: separate;
+}
+
+#PartDesc div table tbody tr .val {
+  border-radius: 8px;
+  border: 1px solid #dcdcdc;
+  background-color: #ececec;
+}
+
+#PartDesc h4 {
+  font-weight: 600;
+  font-size: 1em;
+  color: #656565;
+}
+
+#PartDesc p {
+  font-size: 1em;
+  color: #656565;
+  padding: 2px 4px;
+}
+
+#partSideCont {
+  border-radius: 2px;
+  background-color: #f9f9f9;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+#partSideCont #postedBy {
+  padding: 10px 2%;
+}
+
+#partSideCont #postedBy div {
+  margin: 4px 0px;
+}
+
+#partSideCont #postedBy div span {
+  color: #777777;
+  font-size: 0.8rem;
+  margin-right: 4px;
+}
+
+#partSideCont #postedBy div a {
+  color: #777777;
+  font-size: 0.8rem;
+  border: 1px solid #dcdcdc;
+  border-radius: 5px;
+  background-color: #ececec;
+  padding: 4px 4px;
+}
+
+#partSideCont #postedBy div a i {
+  color: #58ba25;
+  margin-right: 2px;
+}
+
+#partSideCont #CWays {
+  margin: 10px 5% 5px 10%;
+}
+
+#partSideCont #CWays p {
+  color: #555555;
+}
+
+#partSideCont #CWays #fContactMsg {
+  border-radius: 10px;
+  background-color: #eb650c;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1em;
+  margin-bottom: 1em;
+}
+
+#partSideCont #CWays #fContactMsg i {
+  margin-right: 4px;
+}
+
+.partPhones {
+  color: #656565;
+  font-weight: 600;
+  font-size: 1em;
+}
+
+.partPhones i {
+  color: #55a90d;
+  margin-right: 4px;
+}
+
