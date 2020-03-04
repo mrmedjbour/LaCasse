@@ -1,0 +1,228 @@
+/*carousel begin */
+.carousel {
+    margin-bottom: 0;
+    padding: 0 40px 30px 40px;
+}
+
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .carousel-inner .active.col-md-4.carousel-item + .carousel-item + .carousel-item + .carousel-item {
+        position: absolute;
+        top: 0;
+        right: -33.3333%;
+        z-index: -1;
+        display: block;
+        visibility: visible;
+    }
+}
+
+/* Show 3rd slide on sm if col-sm-6 */
+
+@media (min-width: 576px) and (max-width: 768px) {
+    .carousel-inner .active.col-sm-6.carousel-item + .carousel-item + .carousel-item {
+        position: absolute;
+        top: 0;
+        right: -50%;
+        z-index: -1;
+        display: block;
+        visibility: visible;
+    }
+}
+
+@media (min-width: 576px) {
+    .carousel-item {
+        margin-right: 0;
+    }
+}
+
+/* show 2 items */
+
+@media (min-width: 576px) {
+    .carousel-inner .active + .carousel-item {
+        display: block;
+    }
+}
+
+@media (min-width: 576px) {
+    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left), .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item {
+        transition: none;
+    }
+}
+
+@media (min-width: 576px) {
+    .carousel-inner .carousel-item-next {
+        position: relative;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+/* left or forward direction */
+
+@media (min-width: 576px) {
+    .active.carousel-item-left + .carousel-item-next.carousel-item-left, .carousel-item-next.carousel-item-left + .carousel-item, .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item {
+        position: relative;
+        transform: translate3d(-100%, 0, 0);
+        visibility: visible;
+    }
+}
+
+/* farthest right hidden item must be also positioned for animations */
+
+@media (min-width: 576px) {
+    .carousel-inner .carousel-item-prev.carousel-item-right {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        display: block;
+        visibility: visible;
+    }
+}
+
+/* right or prev direction */
+
+@media (min-width: 576px) {
+    .active.carousel-item-right + .carousel-item-prev.carousel-item-right, .carousel-item-prev.carousel-item-right + .carousel-item, .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item {
+        position: relative;
+        transform: translate3d(100%, 0, 0);
+        visibility: visible;
+        display: block;
+    }
+}
+
+/* MD */
+
+/* show 3rd of 3 item slide */
+
+@media (min-width: 768px) {
+    .carousel-inner .active + .carousel-item + .carousel-item {
+        display: block;
+    }
+}
+
+@media (min-width: 768px) {
+    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item {
+        transition: none;
+    }
+}
+
+@media (min-width: 768px) {
+    .carousel-inner .carousel-item-next {
+        position: relative;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+/* left or forward direction */
+
+@media (min-width: 768px) {
+    .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item {
+        position: relative;
+        transform: translate3d(-100%, 0, 0);
+        visibility: visible;
+    }
+}
+
+/* right or prev direction */
+
+@media (min-width: 768px) {
+    .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item {
+        position: relative;
+        transform: translate3d(100%, 0, 0);
+        visibility: visible;
+        display: block;
+    }
+}
+
+/* LG */
+
+/* show 4th item */
+
+@media (min-width: 991px) {
+    .carousel-inner .active + .carousel-item + .carousel-item + .carousel-item {
+        display: block;
+    }
+}
+
+@media (min-width: 991px) {
+    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item + .carousel-item {
+        transition: none;
+    }
+}
+
+/* Show 5th slide on lg if col-lg-3 */
+
+@media (min-width: 991px) {
+    .carousel-inner .active.col-lg-3.carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
+        position: absolute;
+        top: 0;
+        right: -25%;
+        z-index: -1;
+        display: block;
+        visibility: visible;
+    }
+}
+
+/* left or forward direction */
+
+@media (min-width: 991px) {
+    .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
+        position: relative;
+        transform: translate3d(-100%, 0, 0);
+        visibility: visible;
+    }
+}
+
+/* right or prev direction //t - previous slide direction last item animation fix */
+
+@media (min-width: 991px) {
+    .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
+        position: relative;
+        transform: translate3d(100%, 0, 0);
+        visibility: visible;
+        display: block;
+    }
+}
+
+.carousel-control-next {
+    background: -moz-linear-gradient(left,  rgba(255,255,255,0) 0%, rgba(255,255,255,1) 80%, rgba(255,255,255,1) 100%);
+    background: -webkit-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 80%,rgba(255,255,255,1) 100%);
+    background: linear-gradient(to right,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 80%,rgba(255,255,255,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=1 );
+}
+
+.carousel-control-prev {
+    background: -moz-linear-gradient(left,  rgba(255,255,255,1) 0%, rgba(255,255,255,1) 80%, rgba(255,255,255,0) 100%);
+    background: -webkit-linear-gradient(left,  rgba(255,255,255,1) 0%,rgba(255,255,255,1) 80%,rgba(255,255,255,0) 100%);
+    background: linear-gradient(to right,  rgba(255,255,255,1) 0%,rgba(255,255,255,1) 80%,rgba(255,255,255,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=1 );
+}
+
+.carousel-item img {
+    width: 80px;
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    height: 100px;
+    width: 100px;
+    background-size: 100%, 100%;
+    border: none;
+    background-image: none;
+}
+
+.carousel-control-next-icon:after {
+    content: '>';
+    font-size: 100px;
+    color: #777777;
+    position: relative;
+    top: -40px;
+}
+
+.carousel-control-prev-icon:after {
+    content: '<';
+    font-size: 100px;
+    color: #777777;
+    position: relative;
+    top: -40px;
+}
+/*carousel end*/
