@@ -17,78 +17,29 @@
     <link rel="stylesheet" href="{{ asset('css/breadcrumb.css') }}">
     <link rel="stylesheet" href="{{ asset('css/Navigation-e-commerce.css') }}">
     <link rel="stylesheet" href="{{ asset('css/pagination.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/partSlider.css') }}">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <link rel="stylesheet" href="{{ asset('css/styleSendMsgBox.css') }}">
     <link rel="stylesheet" href="{{ asset('css/x-dropdown.css') }}">
 </head>
 <body>
-
-@include('layouts.headerAuth')
-
-{{--    <div id="app">--}}
-{{--        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">--}}
-{{--            <div class="container">--}}
-{{--                <a class="navbar-brand" href="{{ url('/') }}">--}}
-{{--                    {{ config('app.name', 'Laravel') }}--}}
-{{--                </a>--}}
-{{--                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">--}}
-{{--                    <span class="navbar-toggler-icon"></span>--}}
-{{--                </button>--}}
-
-{{--                <div class="collapse navbar-collapse" id="navbarSupportedContent">--}}
-{{--                    <!-- Left Side Of Navbar -->--}}
-{{--                    <ul class="navbar-nav mr-auto">--}}
-
-{{--                    </ul>--}}
-
-{{--                    <!-- Right Side Of Navbar -->--}}
-{{--                    <ul class="navbar-nav ml-auto">--}}
-{{--                        <!-- Authentication Links -->--}}
-{{--                        @guest--}}
-{{--                            <li class="nav-item">--}}
-{{--                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>--}}
-{{--                            </li>--}}
-{{--                            @if (Route::has('register'))--}}
-{{--                                <li class="nav-item">--}}
-{{--                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>--}}
-{{--                                </li>--}}
-{{--                            @endif--}}
-{{--                        @else--}}
-{{--                            <li class="nav-item dropdown">--}}
-{{--                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>--}}
-{{--                                    {{ Auth::user()->name }} <span class="caret"></span>--}}
-{{--                                </a>--}}
-
-{{--                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">--}}
-{{--                                    <a class="dropdown-item" href="{{ route('logout') }}"--}}
-{{--                                       onclick="event.preventDefault();--}}
-{{--                                                     document.getElementById('logout-form').submit();">--}}
-{{--                                        {{ __('Logout') }}--}}
-{{--                                    </a>--}}
-
-{{--                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">--}}
-{{--                                        @csrf--}}
-{{--                                    </form>--}}
-{{--                                </div>--}}
-{{--                            </li>--}}
-{{--                        @endguest--}}
-{{--                    </ul>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </nav>--}}
-
-{{--        <main class="py-4">--}}
-{{--            @yield('content')--}}
-{{--        </main>--}}
-{{--    </div>--}}
+@guest
+    @include('layouts.header')
+@else
+    @include('layouts.headerAuth')
+@endguest
 
 @if( Route::currentRouteName() != 'index' )
-    <div class="container">
-        <div class="row pg-head">
-            <div class="col">
-                <p class="d-flex"><span><a href="#"><i class="fa fa-home d-lg-flex align-self-start justify-content-lg-start rootpath"></i></a></span>&nbsp;<span class="path"><i class="fa fa-angle-right"></i><a class="text-capitalize text-dark" href="#"> Dashboard</a></span><br></p>
-                <h1>@yield('title')</h1>
+    <div id="breadCrumb" style="margin-top: 2em;padding-bottom: 20px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-auto">
+                    <div>
+                        <ul class="list-inline text-capitalize d-flex align-items-center" id="breadCrumbList" style="margin-bottom: 0;font-size: 0px;">
+                            <li class="list-inline-item" id="beadCrumbHome"><a href="{{route('index')}}"><i class="fa fa-home fa-lg" style="color: #58ba25;"></i></a></li>
+                            <li class="list-inline-item" id="beadCrumbPage"><a href="#">» Search Results<br></a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

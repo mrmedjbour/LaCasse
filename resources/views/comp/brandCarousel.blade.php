@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="{{asset('css/brandCarousel.css')}}">
 <div>
     <div class="container">
         <div class="container-fluid">

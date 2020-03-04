@@ -1,0 +1,434 @@
+#msgframe #sidepanel #contacts ul li.contact .wrap .contact_icon {
+    position: relative;
+}
+
+#msgframe #sidepanel #contacts ul li.contact .wrap .meta {
+    width: 100%;
+}
+
+.msg_preview {
+    text-decoration: none !important;
+}
+
+.msg_preview span {
+    background-color: #ddd;
+    color: #444;
+    font-weight: bold;
+    border-radius: 8px;
+    padding: 5px;
+    margin-bottom: 10px;
+    display: block;
+    cursor: pointer;
+}
+
+#colMsgframe {
+    font-family: "proxima-nova", "Source Sans Pro", sans-serif;
+    font-size: 1em;
+    letter-spacing: 0.1px;
+    color: #32465a;
+    text-rendering: optimizeLegibility;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+    -webkit-font-smoothing: antialiased;
+}
+
+#msgframe {
+    width: 95%;
+    min-width: 360px;
+    max-width: 1000px;
+    height: 92vh;
+    min-height: 300px;
+    max-height: 720px;
+    background: #E6EAEA;
+    border: 1px solid #444;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 991px) {
+    #msgframe {
+        margin-top: 20px;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    #msgframe {
+        width: 100%;
+        height: 90vh;
+    }
+}
+
+#msgframe #sidepanel {
+    width: 100%;
+    height: 100%;
+    background: #005A93;
+    color: #f5f5f5;
+    overflow: hidden;
+    position: relative;
+}
+
+#msgframe #sidepanel #search {
+    border-top: 1px solid #0078c3;
+    border-bottom: 1px solid #005a93;
+    font-weight: 300;
+}
+
+#msgframe #sidepanel #search label {
+    position: absolute;
+    margin: 10px 0 0 20px;
+}
+
+#msgframe #sidepanel #search input {
+    font-family: "proxima-nova",  "Source Sans Pro", sans-serif;
+    padding: 10px 0 10px 46px;
+    width: 100%;
+    border: none;
+    background: #0078c3;
+    color: #f5f5f5;
+}
+
+#msgframe #sidepanel #search input:focus {
+    outline: none;
+    background: #0078c3;
+}
+
+#msgframe #sidepanel #search input::-webkit-input-placeholder {
+    color: #f5f5f5;
+}
+
+#msgframe #sidepanel #search input::-moz-placeholder {
+    color: #f5f5f5;
+}
+
+#msgframe #sidepanel #search input:-ms-input-placeholder {
+    color: #f5f5f5;
+}
+
+#msgframe #sidepanel #search input:-moz-placeholder {
+    color: #f5f5f5;
+}
+
+#msgframe #sidepanel #contacts {
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scrollbar-color: #0078c3 #005a93;
+}
+
+@media screen and (max-width: 735px) {
+    #msgframe #sidepanel #contacts {
+        height: 100%;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+}
+
+@media screen and (max-width: 735px) {
+    #msgframe #sidepanel #contacts::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+#msgframe #sidepanel #contacts.expanded {
+    height: calc(100% - 334px);
+}
+
+#msgframe #sidepanel #contacts::-webkit-scrollbar {
+    width: 8px;
+    background: #2c3e50;
+}
+
+#msgframe #sidepanel #contacts::-webkit-scrollbar-thumb {
+    background-color: #243140;
+}
+
+#msgframe #sidepanel #contacts ul {
+    list-style: none;
+    padding-left: 0px;
+}
+
+#msgframe #sidepanel #contacts ul li.contact {
+    padding: 10px 0 15px 0;
+    font-size: 0.9em;
+    cursor: pointer;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -moz-transition: 1s all ease;
+    -o-transition: 1s all ease;
+    -webkit-transition: 1s all ease;
+    transition: 1s all ease;
+}
+
+@media screen and (max-width: 735px) {
+    #msgframe #sidepanel #contacts ul li.contact {
+        padding: 6px 0 8px 8px;
+    }
+}
+
+#msgframe #sidepanel #contacts ul li.contact:hover {
+    background: #0078c3;
+}
+
+#msgframe #sidepanel #contacts ul li.contact.active {
+    background: #0078c3;
+    border-right: 5px solid #0078c3;
+    padding-right: 1px;
+}
+
+#msgframe #sidepanel #contacts ul li.contact.active span.contact-status {
+    border: 2px solid #32465a !important;
+}
+
+#msgframe #sidepanel #contacts ul li.contact .wrap {
+    width: 88%;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 735px) {
+    #msgframe #sidepanel #contacts ul li.contact .wrap {
+        width: 100%;
+    }
+}
+
+#msgframe #sidepanel #contacts ul li.contact .wrap .contact_icon span {
+    position: absolute;
+    left: 0;
+    margin: -2px 0 0 -2px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid #005a93;
+    background: #95a5a6;
+}
+
+#msgframe #sidepanel #contacts ul li.contact .wrap .contact_icon span.online {
+    background: #2ecc71;
+}
+
+#msgframe #sidepanel #contacts ul li.contact .wrap .contact_icon img {
+    width: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+@media screen and (max-width: 735px) {
+    #msgframe #sidepanel #contacts ul li.contact .wrap .contact_icon img {
+        margin-right: 0px;
+    }
+}
+
+#msgframe #sidepanel #contacts ul li.contact .wrap .meta {
+    padding: 5px 0 0 0px;
+}
+
+#msgframe #sidepanel #contacts ul li.contact .wrap .meta .name {
+    font-weight: 600;
+    margin: 0px;
+    padding-left: 2px;
+}
+
+#msgframe #sidepanel #contacts ul li.contact .wrap .meta .preview {
+    margin: 5px 0 0 0;
+    padding: 0 0 1px;
+    font-weight: 400;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -moz-transition: 1s all ease;
+    -o-transition: 1s all ease;
+    -webkit-transition: 1s all ease;
+    transition: 1s all ease;
+    width: 90%;
+    padding-left: 2px;
+}
+
+#msgframe #sidepanel #contacts ul li.contact .wrap .meta .preview span {
+    position: initial;
+    border-radius: initial;
+    background: none;
+    border: none;
+    padding: 0 2px 0 0;
+    margin: 0 0 0 1px;
+    opacity: .5;
+}
+
+#msgframe .content {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+#msgframe .content .contact-profile {
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    background: #f5f5f5;
+}
+
+#msgframe .content .contact-profile img {
+    width: 40px;
+    border-radius: 50%;
+    float: left;
+}
+
+#msgframe .content .contact-profile img.active {
+    margin: 9px 12px 0 9px;
+    border: 2px solid #2ecc71;
+}
+
+#msgframe .content .contact-profile a {
+    float: left;
+    padding: 0px 10px;
+}
+#msgframe .content .contact-profile a:hover {
+    color:#005a93;
+}
+
+#msgframe .content .contact-profile p {
+    float: left;
+    font-weight: bold;
+}
+
+#msgframe .content .messages {
+    height: auto;
+    min-height: calc(100% - 93px);
+    max-height: calc(100% - 93px);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+@media screen and (max-width: 735px) {
+    #msgframe .content .messages {
+        max-height: calc(100% - 105px);
+    }
+}
+
+#msgframe .content .messages::-webkit-scrollbar {
+    width: 8px;
+    background: transparent;
+}
+
+#msgframe .content .messages::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+#msgframe .content .messages ul li {
+    display: inline-block;
+    clear: both;
+    float: left;
+    margin: 15px 15px 5px 15px;
+    width: calc(100% - 25px);
+    font-size: 0.9em;
+}
+
+#msgframe .content .messages ul li:nth-last-child(1) {
+    margin-bottom: 30px;
+}
+
+#msgframe .content .messages ul li p:after {
+    content: attr(data-date);
+    display: block;
+    color: #aaaaaa;
+    font-size: smaller;
+}
+
+#msgframe .content .messages ul li.replies img {
+    margin: 6px 8px 0 0;
+}
+
+#msgframe .content .messages ul li.replies p {
+    background: #435f7a;
+    color: #f5f5f5;
+}
+
+#msgframe .content .messages ul li.replies p {
+    background: #0078c3;
+    color: #fff;
+}
+
+#msgframe .content .messages ul li.sent img {
+    float: right;
+    margin: 6px 0 0 8px;
+}
+
+#msgframe .content .messages ul li.sent p {
+    background: #f5f5f5;
+    float: right;
+}
+
+#msgframe .content .messages ul li img {
+    width: 22px;
+    border-radius: 50%;
+    float: left;
+}
+
+#msgframe .content .messages ul li p {
+    display: inline-block;
+    padding: 10px 15px;
+    border-radius: 20px;
+    max-width: 205px;
+    line-height: 130%;
+}
+
+@media screen and (min-width: 735px) {
+    #msgframe .content .messages ul li p {
+        max-width: 300px;
+    }
+}
+
+#msgframe .content .message-input {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    z-index: 99;
+}
+
+#msgframe .content .message-input .wrap {
+    position: relative;
+}
+
+#msgframe .content .message-input .wrap input {
+    font-family: "proxima-nova",  "Source Sans Pro", sans-serif;
+    float: left;
+    border: none;
+    width: calc(100% - 50px);
+    padding: 11px 32px 10px 8px;
+    font-size: 0.8em;
+    color: #32465a;
+}
+
+@media screen and (max-width: 735px) {
+    #msgframe .content .message-input .wrap input {
+        padding: 15px 32px 16px 8px;
+    }
+}
+
+#msgframe .content .message-input .wrap input:focus {
+    outline: none;
+}
+
+#msgframe .content .message-input .wrap button {
+    float: right;
+    border: none;
+    width: 50px;
+    padding: 12px 0;
+    cursor: pointer;
+    background: #0078c3;
+    color: #f5f5f5;
+}
+
+@media screen and (max-width: 735px) {
+    #msgframe .content .message-input .wrap button {
+        padding: 16px 0;
+    }
+}
+
+#msgframe .content .message-input .wrap button:hover {
+    background: #005a93;
+}
+
+#msgframe .content .message-input .wrap button:focus {
+    outline: none;
+}
+

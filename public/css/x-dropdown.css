@@ -1,17 +1,13 @@
 a {
-  color: #ffffff;
+  /*color: #ffffff;*/
 }
 
 a:hover, a:focus {
-  color: #ffffff;
+  /*color: #ffffff;*/
   text-decoration: none;
 }
 
-@media (max-width:767px) {
-  a {
-    font-size: 25px;
-  }
-}
+
 
 .x-drop-btn {
   width: 100%;

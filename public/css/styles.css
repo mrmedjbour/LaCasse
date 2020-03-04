@@ -2,6 +2,16 @@ body{
     font-family: Montserrat, sans-serif;
     font-size: 14px;
 }
+
+a:hover, a:focus {
+  text-decoration: none;
+}
+header a{
+    color: #ffffff;
+}
+header a:hover,header a:active{
+    color: #ffffff;
+}
 /*features boxes*/
 .features-boxed {
     color: #313437;
@@ -86,234 +96,6 @@ body{
 }
 /*end call to action "find your part now!!" */
 
-/*carousel begin */
-.carousel {
-    margin-bottom: 0;
-    padding: 0 40px 30px 40px;
-}
-
-
-@media (min-width: 768px) and (max-width: 991px) {
-    .carousel-inner .active.col-md-4.carousel-item + .carousel-item + .carousel-item + .carousel-item {
-        position: absolute;
-        top: 0;
-        right: -33.3333%;
-        z-index: -1;
-        display: block;
-        visibility: visible;
-    }
-}
-
-/* Show 3rd slide on sm if col-sm-6 */
-
-@media (min-width: 576px) and (max-width: 768px) {
-    .carousel-inner .active.col-sm-6.carousel-item + .carousel-item + .carousel-item {
-        position: absolute;
-        top: 0;
-        right: -50%;
-        z-index: -1;
-        display: block;
-        visibility: visible;
-    }
-}
-
-@media (min-width: 576px) {
-    .carousel-item {
-        margin-right: 0;
-    }
-}
-
-/* show 2 items */
-
-@media (min-width: 576px) {
-    .carousel-inner .active + .carousel-item {
-        display: block;
-    }
-}
-
-@media (min-width: 576px) {
-    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left), .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item {
-        transition: none;
-    }
-}
-
-@media (min-width: 576px) {
-    .carousel-inner .carousel-item-next {
-        position: relative;
-        transform: translate3d(0, 0, 0);
-    }
-}
-
-/* left or forward direction */
-
-@media (min-width: 576px) {
-    .active.carousel-item-left + .carousel-item-next.carousel-item-left, .carousel-item-next.carousel-item-left + .carousel-item, .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item {
-        position: relative;
-        transform: translate3d(-100%, 0, 0);
-        visibility: visible;
-    }
-}
-
-/* farthest right hidden item must be also positioned for animations */
-
-@media (min-width: 576px) {
-    .carousel-inner .carousel-item-prev.carousel-item-right {
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
-        display: block;
-        visibility: visible;
-    }
-}
-
-/* right or prev direction */
-
-@media (min-width: 576px) {
-    .active.carousel-item-right + .carousel-item-prev.carousel-item-right, .carousel-item-prev.carousel-item-right + .carousel-item, .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item {
-        position: relative;
-        transform: translate3d(100%, 0, 0);
-        visibility: visible;
-        display: block;
-    }
-}
-
-/* MD */
-
-/* show 3rd of 3 item slide */
-
-@media (min-width: 768px) {
-    .carousel-inner .active + .carousel-item + .carousel-item {
-        display: block;
-    }
-}
-
-@media (min-width: 768px) {
-    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item {
-        transition: none;
-    }
-}
-
-@media (min-width: 768px) {
-    .carousel-inner .carousel-item-next {
-        position: relative;
-        transform: translate3d(0, 0, 0);
-    }
-}
-
-/* left or forward direction */
-
-@media (min-width: 768px) {
-    .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item {
-        position: relative;
-        transform: translate3d(-100%, 0, 0);
-        visibility: visible;
-    }
-}
-
-/* right or prev direction */
-
-@media (min-width: 768px) {
-    .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item {
-        position: relative;
-        transform: translate3d(100%, 0, 0);
-        visibility: visible;
-        display: block;
-    }
-}
-
-/* LG */
-
-/* show 4th item */
-
-@media (min-width: 991px) {
-    .carousel-inner .active + .carousel-item + .carousel-item + .carousel-item {
-        display: block;
-    }
-}
-
-@media (min-width: 991px) {
-    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item + .carousel-item {
-        transition: none;
-    }
-}
-
-/* Show 5th slide on lg if col-lg-3 */
-
-@media (min-width: 991px) {
-    .carousel-inner .active.col-lg-3.carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
-        position: absolute;
-        top: 0;
-        right: -25%;
-        z-index: -1;
-        display: block;
-        visibility: visible;
-    }
-}
-
-/* left or forward direction */
-
-@media (min-width: 991px) {
-    .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
-        position: relative;
-        transform: translate3d(-100%, 0, 0);
-        visibility: visible;
-    }
-}
-
-/* right or prev direction //t - previous slide direction last item animation fix */
-
-@media (min-width: 991px) {
-    .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
-        position: relative;
-        transform: translate3d(100%, 0, 0);
-        visibility: visible;
-        display: block;
-    }
-}
-
-.carousel-control-next {
-    background: -moz-linear-gradient(left,  rgba(255,255,255,0) 0%, rgba(255,255,255,1) 80%, rgba(255,255,255,1) 100%);
-    background: -webkit-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 80%,rgba(255,255,255,1) 100%);
-    background: linear-gradient(to right,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 80%,rgba(255,255,255,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=1 );
-}
-
-.carousel-control-prev {
-    background: -moz-linear-gradient(left,  rgba(255,255,255,1) 0%, rgba(255,255,255,1) 80%, rgba(255,255,255,0) 100%);
-    background: -webkit-linear-gradient(left,  rgba(255,255,255,1) 0%,rgba(255,255,255,1) 80%,rgba(255,255,255,0) 100%);
-    background: linear-gradient(to right,  rgba(255,255,255,1) 0%,rgba(255,255,255,1) 80%,rgba(255,255,255,0) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=1 );
-}
-
-.carousel-item img {
-    width: 80px;
-}
-
-.carousel-control-prev-icon, .carousel-control-next-icon {
-    height: 100px;
-    width: 100px;
-    background-size: 100%, 100%;
-    border: none;
-    background-image: none;
-}
-
-.carousel-control-next-icon:after {
-    content: '>';
-    font-size: 100px;
-    color: #777777;
-    position: relative;
-    top: -40px;
-}
-
-.carousel-control-prev-icon:after {
-    content: '<';
-    font-size: 100px;
-    color: #777777;
-    position: relative;
-    top: -40px;
-}
-/*carousel end*/
 /*footer begin*/
 footer{
     font-family: 'Montserrat Alternates', sans-serif;
@@ -344,9 +126,6 @@ footer{
 }
 .app-links{
     color: #a1a1a0;padding-top: 15px;width: 100%;font-size: 15px;font-weight: normal;columns: 2;
-}
-.app-links li{
-    height: 25px;
 }
 .footer-contacts li a {
     color: #a1a1a0;
@@ -583,8 +362,6 @@ div.social-links {
     cursor: pointer;
 }
 
-
-
 @media screen and (max-width:990px) {
     .content-section {
         padding-top: 20px;
@@ -595,10 +372,16 @@ div.social-links {
     .mini-submenu {
         display: block;
     }
-}
-@media screen and (max-width:990px) {
     .list-group {
         display: none;
+    }
+}
+@media screen and (min-width:990px) {
+    .mini-submenu {
+        display: none;
+    }
+    .list-group {
+        display: block;
     }
 }
 
@@ -661,6 +444,7 @@ div.social-links {
     margin-bottom: 100px;
     background-color: #f6f6f6;
     padding-top: 10px;
+    border:1px solid #ddd;
 }
 #casses{
     font-size: 14px;
@@ -671,7 +455,7 @@ div.social-links {
     height: 510px;
 }
 .casse {
-    height: 100px;
+    height: 106px;
     width: 100%;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
     font-size: 100%;
@@ -679,6 +463,10 @@ div.social-links {
     display: block;
     padding: 15px;
     margin-bottom: 10px;
+    border: 1px solid #ddd;
+}
+.casse h6 a:hover{
+    color: #005A93;
 }
 .casse img{
     width: 70px;
@@ -729,7 +517,7 @@ div.social-links {
     border: 1px solid #ddd;
 }
 .form-div .form-group{
-    width: 90%;
+    width: 100%;
 }
 .form-div label{font-size: 14px;margin: 10px 0px;}
 .form-div button{width: 300px;background-color: #5cba0a;margin: 10px 0px;}
@@ -739,6 +527,25 @@ div.social-links {
 .select-adresse{
     padding-right: 0px;
     padding-left: 0px;
+}
+.RegAdr {
+    width: 100% ;
+}
+@media (max-width: 767px) {
+    .RegAdr select {
+        margin-top: 15px;
+    }
+    .RegAdr select:first-Child {
+        margin-top: 0px;
+    }
+}
+@media (min-width: 768px) {
+    .RegAdr select {
+        margin-right: 1em;
+    }
+    .RegAdr select:last-child {
+        margin-right: 0;
+    }
 }
 /*registration page end*/
 
@@ -950,11 +757,11 @@ div.social-links {
 }
 
 #sectionSearchBox {
-    background: url("../../assets/img/used-car-parts-banner-1-1366x625.jpg");
+    background: url("../img/index-cover.jpg");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    min-height: 80vh;
+    min-height: calc(100vh - 96px);
     padding-top: 20px;
     position: relative;
     box-shadow: inset 0 0 0 1000px rgba(0,0,0,0.25);
@@ -1280,3 +1087,102 @@ div.social-links {
     margin-bottom: 1em;
 }
 
+#PartDesc {
+    padding: 10px 3%;
+    margin-top: 1em;
+    border-radius: 2px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+}
+
+#PartDesc div table {
+    width: auto;
+    color: #656565;
+    font-size: small;
+    border-collapse: separate;
+}
+
+#PartDesc div table tbody tr .val {
+    border-radius: 8px;
+    border: 1px solid #dcdcdc;
+    background-color: #ececec;
+}
+
+#PartDesc h4 {
+    font-weight: 600;
+    font-size: 1em;
+    color: #656565;
+}
+
+#PartDesc p {
+    font-size: 1em;
+    color: #656565;
+    padding: 2px 4px;
+}
+
+#partSideCont {
+    border-radius: 2px;
+    background-color: #f9f9f9;
+    width: 100%;
+    border: 1px solid #ddd;
+}
+
+#partSideCont #postedBy {
+    padding: 10px 2%;
+}
+
+#partSideCont #postedBy div {
+    margin: 4px 0px;
+}
+
+#partSideCont #postedBy div span {
+    color: #777777;
+    font-size: 0.8rem;
+    margin-right: 4px;
+}
+
+#partSideCont #postedBy div a {
+    color: #777777;
+    font-size: 0.8rem;
+    border: 1px solid #dcdcdc;
+    border-radius: 5px;
+    background-color: #ececec;
+    padding: 4px 4px;
+}
+
+#partSideCont #postedBy div a i {
+    color: #58ba25;
+    margin-right: 2px;
+}
+
+#partSideCont #CWays {
+    margin: 10px 5% 5px 10%;
+}
+
+#partSideCont #CWays p {
+    color: #555555;
+}
+
+#partSideCont #CWays #fContactMsg {
+    border-radius: 10px;
+    background-color: #eb650c;
+    color: #fff;
+    font-weight: 500;
+    font-size: 1em;
+    margin-bottom: 1em;
+}
+
+#partSideCont #CWays #fContactMsg i {
+    margin-right: 4px;
+}
+
+.partPhones {
+    color: #656565;
+    font-weight: 600;
+    font-size: 1em;
+}
+
+.partPhones i {
+    color: #55a90d;
+    margin-right: 4px;
+}

@@ -1,4 +1,4 @@
-<div class="container-fluid" style="background-color: #474747;">
+<div class="container-fluid" style="background-color: #474747;margin-top: 10vh;">
     <div class="container">
         <div class="row">
             <div class="col">
@@ -20,7 +20,7 @@
                             <div class="row" style="height: auto;width: 100%;margin: 0px;">
                                 <div class="col">
                                     <ul class="list-unstyled app-links">
-                                        <li><a href="#"> Casse Directory</a></li>
+                                        <li><a href="{{ route('directory') }}"> Casse Directory</a></li>
                                         <li><a href="#">How To Use</a></li>
                                         <li><a href="#">Contact us</a></li>
                                         <li><a href="#">Privacy Policy</a></li>
@@ -60,5 +60,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
 <script src="{{ asset('js/Card-Carousel.js') }}"></script>
 <script src="{{ asset('js/custom.js') }}"></script>
+@if( Route::currentRouteName() == 'messages' )
+<script src="{{ asset('js/msgframe.js') }}"></script>
+@endif
+
 </body>
 </html>
