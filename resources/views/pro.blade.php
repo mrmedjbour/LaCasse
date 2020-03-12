@@ -7,65 +7,56 @@
                 <div class="col-lg-4" style="padding: 0px;font-family: Montserrat, sans-serif;font-size: 14px;">
                     @include('comp.sidebar')
                 </div>
-                <div class="col content-section">
-                    <div class="row">
-                        <div class="col add-ads">
-                            <form>
-                                <div class="form-row">
-                                    <div class="col-lg-10">
-                                        <div class="form-group">
-                                            <label><strong>Casse name: *</strong>
-                                            </label>
-                                            <input type="text" class="form-control" />
-                                        </div>
-                                        <div class="form-group">
-                                            <label><strong>Casse street: *</strong>
-                                            </label>
-                                            <input type="text" class="form-control" />
-                                        </div>
-                                        <div class="form-group">
-                                            <label><strong>addresse: *</strong>
-                                            </label>
-                                            <select class="form-control">
-                                                <optgroup label="wilaya">
-                                                    <option value="16">alger</option>
-                                                    <option value="35" selected>boumerdes</option>
-                                                    <option value="14">ak fahem</option>
-                                                </optgroup>
-                                            </select>
-                                            <select class="form-control">
-                                                <optgroup label="daira">
-                                                    <option value="1" selected>boumerdes</option>
-                                                    <option value="13">isser</option>
-                                                    <option value="14">ak fahem</option>
-                                                </optgroup>
-                                            </select>
-                                            <select class="form-control">
-                                                <optgroup label="commune">
-                                                    <option value="12" selected>corso</option>
-                                                    <option value="13">ak fahem</option>
-                                                </optgroup>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label><strong>trade register number: *</strong>
-                                            </label>
-                                            <input type="text" class="form-control" />
-                                        </div>
-                                        <div class="form-group">
-                                            <label><strong>Upload trade register picture: </strong>
-                                            </label>
-                                            <input type="file" id="files" multiple name="files[]" />
-                                        </div>
-                                    </div>
+                <div class="col-lg-8 dash-info">
+                    <div id="PaddAnn">
+                        <form id="GoPro" class="p-4">
+                            <div class="w-100">
+                                <h5 class="mb-2">Switch to professional account</h5>
+                                <div class="form-group">
+                                    <label class="weight500">Casse name: *</label>
+                                    <input class="form-control" type="text" name="casse_name" required="" minlength="2">
                                 </div>
-                                <div class="form-row last-form-row">
-                                    <div class="col text-right">
-                                        <button class="btn" type="submit">submit</button>
-                                    </div>
+                                <div class="form-group">
+                                    <label class="weight500">Casse addresse: *</label>
+                                    <input class="form-control" type="text" name="casse_address" required="" minlength="5">
                                 </div>
-                            </form>
-                        </div>
+                                <div class="form-group">
+                                    <select class="form-control" required="">
+                                        <option value="" selected="" hidden="">Willya</option>
+                                        <option value="35">Boumerdes</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control" required="">
+                                        <option value="city" selected="" hidden="">City</option>
+                                        <option value="35000">isser</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control" required="">
+                                        <option value="commune" selected="" hidden="">Commune</option>
+                                        <option value="0">isser</option>
+                                    </select>
+                                </div>
+                                <hr>
+                                <div class="form-group" id="CassePhoneNumberinput">
+                                    <label class="weight500">Phone Numbers: *</label>
+                                    <input class="form-control" type="tel" name="phone[]" minlength="9" maxlength="14" required="">
+                                </div><a class="btn shadow-none" role="button" id="CassePhoneNumber" href="#" style="padding: 0;display: block;color: #007bff;">Add another phone number</a>
+                                <hr>
+                                <div class="form-group">
+                                    <label class="weight500">trade register number: *</label>
+                                    <input class="form-control" type="tel" name="phone" minlength="9" maxlength="14" required="">
+                                </div>
+                                <div class="form-group">
+                                    <label class="weight500 d-block">Upload trade register document (pdf,img...): *</label>
+                                    <input type="file" required="">
+                                </div>
+                            </div>
+                            <div class="text-center text-sm-right">
+                                <button class="btn btn-success shadow-none m-2 px-5 font-weight-bold" type="submit">Submit</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

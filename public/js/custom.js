@@ -1,5 +1,78 @@
 $(document).ready(function() {
 
+// account info preview avatar
+    function filePreview(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#Profile #AvatarProfile').attr('src', e.target.result);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#Profile input").change(function () {
+        filePreview(this);
+    });
+
+// delete annonce image on edit page (ajax req to delet img);
+    $("img#deleteAdsImg").click(function(){
+       // alert($(this).attr('src'))
+        $(this).remove();
+    });
+
+// ------- parts select all and unselect
+    $("input#selectAll").click(function() {
+        $cat = "input[type=checkbox][cat=" + $(this).attr('cat') + "]";
+        $($cat).prop("checked", $(this).prop("checked"));
+    });
+
+
+    $("input[type=checkbox]").click(function() {
+        if (!$(this).prop("checked")) {
+            $cat = "input[id=selectAll][type=checkbox][cat=" + $(this).attr('cat') + "]";
+            $($cat).prop("checked", false);
+        }
+    });
+// *---- image preview on upload
+    function previewImages() {
+        if (!$(this).is('[edit]')){$preview = $('#addAdsImgPreview div#upImg').empty()}
+
+        var $preview = $('#addAdsImgPreview div#upImg');
+
+        if (parseInt($('#addAdsImgPreview input#upInput').get(0).files.length) > 10){
+            this.reset();
+            alert("maximum 10 images");
+            return
+        }
+        if (this.files) $.each(this.files, readAndPreview);
+        function readAndPreview(i, file) {
+            if (!/\.(jpe?g|png|gif)$/i.test(file.name)){
+                return alert(file.name +" is not an image");
+            } // else...
+            var reader = new FileReader();
+            $(reader).on("load", function() {
+                $imgPreview = "<img class='m-1' src='" + this.result + "' loading='auto' style='width: 60px;height: 60px;cursor: pointer;'/>";
+                $preview.append($imgPreview);
+            });
+            reader.readAsDataURL(file);
+        }
+    }
+    $('#addAdsImgPreview input#upInput').on("change", previewImages);
+
+// add another phone number casse page
+    $( "#CassePhoneNumber" ).click(function(){
+        $('#CassePhoneNumberinput').append('<input type="tel" class="form-control mt-2" name="phone[]" minlength="9" maxlength="14" required />')
+    });
+// add user profile
+    $( "#addPhoneNumber" ).click(function(){
+        $('#addPhoneNumber').before('<input type="tel" class="form-control-sm" inputmode="tel" placeholder="Phone Number" style="color: #444;border: 1px solid #9a9a9a;display: block;margin: 0 auto;margin-bottom: 1rem;" value="" name="phone[]" />')
+    });
+
+
+
+
+
+
 $('#carousel-brand').on('slide.bs.carousel', function(e) {
     var $e = $(e.relatedTarget);
     var idx = $e.index();
