@@ -16,6 +16,8 @@ class DatabaseSeeder extends Seeder
             WilayaTableSeeder::class,
             DairaTableSeeder::class,
             CommuneTableSeeder::class,
+            PieceCategorieTableSeeder::class,
+            PieceTableSeeder::class,
         ]);
     }
 }
