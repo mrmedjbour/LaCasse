@@ -14,12 +14,7 @@ use Illuminate\Http\Request;
 */
 
 
-Route::get('/adr', function () {
-    return response()->json([
-        'name' => 'hamid',
-        'id' => '1'
-    ]);
-});
+Route::get('/region','regionController@index');
 
 
 
