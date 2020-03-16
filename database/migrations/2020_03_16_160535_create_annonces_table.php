@@ -15,8 +15,8 @@ class CreateAnnoncesTable extends Migration
     {
         Schema::create('annonce', function (Blueprint $table) {
             $table->increments('annonce_id');
-            $table->timestamp('annonce_date');
-            $table->string('annonce_type',5)->default('vent');
+            $table->timestamp('annonce_date')->useCurrent();
+            $table->string('annonce_type', 5)->default('vent');
             $table->boolean('annonce_etat')->default(1);
             $table->string('annonce_desc',500);
             $table->smallInteger('modele_id')->unsigned();

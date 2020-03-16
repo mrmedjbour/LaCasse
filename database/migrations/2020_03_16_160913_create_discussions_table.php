@@ -15,8 +15,8 @@ class CreateDiscussionsTable extends Migration
     {
         Schema::create('discussion', function (Blueprint $table) {
             $table->increments('disc_id');
-            $table->string('disc_titre',20);
-            $table->timestamp('disc_stamp');
+            $table->string('disc_titre', 20);
+            $table->timestamp('disc_stamp')->useCurrent();
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('user_id')->on('users');
             $table->integer('annonce_id')->unsigned();

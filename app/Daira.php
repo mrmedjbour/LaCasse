@@ -8,6 +8,7 @@ class Daira extends Model
 {
     protected $table='daira';
     protected $primaryKey='daira_id';
+
     public function wilaya(){
         return $this->belongsTo('App\Wilaya');
     }

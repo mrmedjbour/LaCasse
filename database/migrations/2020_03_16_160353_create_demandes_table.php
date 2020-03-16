@@ -15,8 +15,8 @@ class CreateDemandesTable extends Migration
     {
         Schema::create('demande', function (Blueprint $table) {
             $table->smallIncrements('dem_id');
-            $table->string('dem_doc',15);
-            $table->timestamp('dem_date');
+            $table->string('dem_doc', 15);
+            $table->timestamp('dem_date')->useCurrent();
             $table->boolean('dem_etat')->nullable();
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');

@@ -6,16 +6,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class Commune extends Model
 {
-    protected $table='commune';
-    protected $primaryKey='commune_id';
+    protected $table = 'commune';
+    protected $primaryKey = 'commune_id';
 
-    public function daira(){
+    public function daira()
+    {
         return $this->belongsTo('App\Daira');
     }
-    public function users(){
-        return $this->hasMany('App\User','user_id');
+
+    public function users()
+    {
+        return $this->hasMany('App\User', 'user_id');
     }
-//    public function casses(){
-//        return $this->hasMany('App\Casse','casse_id');
-//    }
+
+    public function casses()
+    {
+        return $this->hasMany('App\Casse', 'casse_id');
+    }
 }
