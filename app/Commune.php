@@ -12,9 +12,9 @@ class Commune extends Model
     public function daira(){
         return $this->belongsTo('App\Daira');
     }
-//    public function users(){
-//        return $this->hasMany('App\User','user_id');
-//    }
+    public function users(){
+        return $this->hasMany('App\User','user_id');
+    }
 //    public function casses(){
 //        return $this->hasMany('App\Casse','casse_id');
 //    }

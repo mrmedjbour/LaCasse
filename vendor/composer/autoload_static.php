@@ -410,7 +410,13 @@ class ComposerStaticInitdd2677ab7a69e877e3b8d6087c89ad93
     );
 
     public static $classMap = array (
+        'App\\Annonce' => __DIR__ . '/../..' . '/app/Annonce.php',
+        'App\\Casse' => __DIR__ . '/../..' . '/app/Casse.php',
+        'App\\Commune' => __DIR__ . '/../..' . '/app/Commune.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
+        'App\\Daira' => __DIR__ . '/../..' . '/app/Daira.php',
+        'App\\Demande' => __DIR__ . '/../..' . '/app/Demande.php',
+        'App\\Discussion' => __DIR__ . '/../..' . '/app/Discussion.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -429,12 +435,19 @@ class ComposerStaticInitdd2677ab7a69e877e3b8d6087c89ad93
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Image' => __DIR__ . '/../..' . '/app/Image.php',
+        'App\\Inclure' => __DIR__ . '/../..' . '/app/Inclure.php',
+        'App\\Marque' => __DIR__ . '/../..' . '/app/Marque.php',
+        'App\\Message' => __DIR__ . '/../..' . '/app/Message.php',
+        'App\\Modele' => __DIR__ . '/../..' . '/app/Modele.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
+        'App\\Role' => __DIR__ . '/../..' . '/app/Role.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
+        'App\\Wilaya' => __DIR__ . '/../..' . '/app/Wilaya.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
         'Carbon\\CarbonImmutable' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonImmutable.php',
         'Carbon\\CarbonInterface' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonInterface.php',
@@ -4468,8 +4481,6 @@ class ComposerStaticInitdd2677ab7a69e877e3b8d6087c89ad93
         'phpDocumentor\\Reflection\\Types\\String_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/String_.php',
         'phpDocumentor\\Reflection\\Types\\This' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/This.php',
         'phpDocumentor\\Reflection\\Types\\Void_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Void_.php',
-        'piece' => __DIR__ . '/../..' . '/database/seeds/piece.php',
-        'pieceCategorie' => __DIR__ . '/../..' . '/database/seeds/pieceCategorie.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
