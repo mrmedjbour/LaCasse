@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             CommuneTableSeeder::class,
             PieceCategorieTableSeeder::class,
             PieceTableSeeder::class,
+            UsersTableSeeder::class,
         ]);
     }
 }

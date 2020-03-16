@@ -41,7 +41,6 @@ class User extends Authenticatable
 
     /**
      * methods of class users
-     *
      */
     public function role()
     {
