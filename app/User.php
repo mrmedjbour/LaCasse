@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'user_prenom','user_nom', 'email', 'user_tel', 'password','commune_id',
+        'user_prenom', 'user_nom', 'email', 'user_tel', 'password', 'commune_id',
     ];
 
     /**
@@ -43,16 +43,23 @@ class User extends Authenticatable
      * methods of class users
      *
      */
-    public function role(){
-        return $this->belongsTo('App\Role','user_id');
+    public function role()
+    {
+        return $this->belongsTo('App\Role', 'user_id');
     }
-    public function messages(){
-        return $this->hasMany('App\Message','user_id');
+
+    public function messages()
+    {
+        return $this->hasMany('App\Message', 'user_id');
     }
-    public function annonces(){
-        return $this->hasMany('App\Annonce','user_id');
+
+    public function annonces()
+    {
+        return $this->hasMany('App\Annonce', 'user_id');
     }
-    public function commune(){
-        return $this->belongsTo('App\Commune','user_id');
+
+    public function commune()
+    {
+        return $this->belongsTo('App\Commune', 'user_id');
     }
 }
