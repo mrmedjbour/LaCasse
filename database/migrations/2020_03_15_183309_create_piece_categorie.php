@@ -15,8 +15,8 @@ class CreatePieceCategorie extends Migration
     {
         Schema::create('piece_categorie', function (Blueprint $table) {
             $table->addColumn('tinyInteger', 'cat_id', ['length'=>2,'unsigned'=>true])->autoIncrement();
-            $table->string('cat_nom',35);
-            $table->string('cat_symbole',30);
+            $table->string('cat_nom', 35);
+            $table->string('cat_symbole', 35)->nullable();
         });
     }
 
