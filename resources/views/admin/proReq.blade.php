@@ -18,44 +18,31 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="weight500">Last name:</label>
-                                    <input class="form-control" type="text" name="casse_name" required="" minlength="2" readonly="">
+                                    <input class="form-control" type="text" name="casse_name" required="" minlength="2"
+                                           readonly="">
                                 </div>
                                 <hr>
                                 <div class="form-group">
                                     <label class="weight500">Casse name:</label>
-                                    <input class="form-control" type="text" name="casse_name" required="" minlength="2" readonly="">
+                                    <input class="form-control" type="text" name="casse_name" required="" minlength="2"
+                                           readonly="">
                                 </div>
                                 <div class="form-group">
                                     <label class="weight500">Casse addresse:</label>
-                                    <input class="form-control" type="text" name="casse_address" required="" minlength="5" readonly="">
-                                </div>
-                                <div class="form-group">
-                                    <select class="form-control" required="" readonly="" disabled="">
-                                        <option value="" selected="" hidden="">Willya</option>
-                                        <option value="35">Boumerdes</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <select class="form-control" required="" readonly="" disabled="">
-                                        <option value="city" selected="" hidden="">City</option>
-                                        <option value="35000">isser</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <select class="form-control" required="" readonly="" disabled="">
-                                        <option value="commune" selected="" hidden="">Commune</option>
-                                        <option value="0">isser</option>
-                                    </select>
+                                    <p class="font-weight-normal pl-2 text-dark">Cheloute N25 35009</p>
+                                    <p class="font-weight-normal pl-2 text-dark">Cheloute, isser, boumerdes</p>
                                 </div>
                                 <hr>
                                 <div class="form-group" id="CassePhoneNumberinput">
                                     <label class="weight500">Phone Numbers:</label>
-                                    <input class="form-control" type="tel" name="phone[]" minlength="9" maxlength="14" required="" readonly="">
+                                    <input class="form-control" type="tel" name="phone[]" minlength="9" maxlength="14"
+                                           required="" readonly="">
                                 </div>
                                 <hr>
                                 <div class="form-group" id="CassePhoneNumberinput-1">
                                     <label class="weight500">GPS coordinates, latitude and longitude:</label>
-                                    <input class="form-control" type="text" name="casse_loc" value="0,0" required="" minlength="0,0">
+                                    <input class="form-control" type="text" name="casse_loc" value="0,0" required=""
+                                           minlength="0,0">
                                 </div>
                                 <hr>
                                 <div class="form-group">

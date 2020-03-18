@@ -1,5 +1,55 @@
 $(document).ready(function() {
 
+
+// delete User model
+    $("button#DeleteUserRole").click(function () {
+        var u_id = $(this).attr('u_id');
+        $("#DeleteUserModel #u_id").val(u_id);
+        $("#DeleteUserModel").modal('show');
+    });
+
+// User state block/unblock
+    $("button#StatusUserblock").click(function () {
+        var u_id = $(this).attr('u_id');
+        if ($(this).children('i').hasClass('fa-ban')) {
+            $(this).children('i').removeClass('fa-ban text-warning').addClass('fa-check text-success');
+        } else {
+            $(this).children('i').removeClass('fa-check text-success').addClass('fa-ban text-warning')
+        }
+        alert(u_id);
+    });
+
+// delete role user model
+    $("button#DeleteUserRole").click(function () {
+        var u_id = $(this).attr('u_id');
+        $("#DeleteRoleUserModel #u_id").val(u_id);
+        $("#DeleteRoleUserModel").modal('show');
+    });
+
+// ad state block
+    $("button#StatusAdblock").click(function () {
+        var a_id = $(this).attr('a_id');
+        if ($(this).children('i').hasClass('fa-ban')) {
+            $(this).children('i').removeClass('fa-ban text-warning').addClass('fa-check text-success');
+        } else {
+            $(this).children('i').removeClass('fa-check text-success').addClass('fa-ban text-warning')
+        }
+        alert(a_id);
+    });
+
+// delete ad model
+    $("button#DeleteAdBtn").click(function () {
+        var a_id = $(this).attr('a_id');
+        $("#DeleteAdModel #a_id").val(a_id);
+        $("#DeleteAdModel").modal('show');
+    });
+// delete make model
+    $("button#DeleteMakeModelBtn").click(function () {
+        var m_id = $(this).attr('m_id');
+        $("#DeleteMakeModel #m_id").val(m_id);
+        $("#DeleteMakeModel").modal('show');
+    });
+
 // account info preview avatar
     function filePreview(input) {
         if (input.files && input.files[0]) {
@@ -65,7 +115,7 @@ $(document).ready(function() {
     });
 // add user profile
     $( "#addPhoneNumber" ).click(function(){
-        $('#addPhoneNumber').before('<input type="tel" class="form-control-sm" inputmode="tel" placeholder="Phone Number" style="color: #444;border: 1px solid #9a9a9a;display: block;margin: 0 auto;margin-bottom: 1rem;" value="" name="phone[]" />')
+        $('#addPhoneNumber').before('<input type="tel" class="form-control form-control-sm" inputmode="tel" placeholder="Phone Number" style="color: #444;border: 1px solid #9a9a9a;display: block;margin: 0 auto;margin-bottom: 1rem;max-width: 300px;" value="" name="phone[]" />')
     });
 
 

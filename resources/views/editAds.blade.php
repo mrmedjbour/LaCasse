@@ -7,18 +7,14 @@
                 <div class="col-lg-4" style="padding: 0px;font-family: Montserrat, sans-serif;font-size: 14px;">
                     @include('comp.sidebar')
                 </div>
+
+
                 <div class="col-lg-8 dash-info">
                     <div id="PaddAnn">
                         <form id="addAnn" class="p-4">
                             <div class="d-md-flex" id="top">
                                 <div class="w-100">
-                                    <div class="form-group">
-                                        <label class="weight500">Select Ad type:</label>
-                                        <select class="form-control" required="">
-                                            <option value="1">Sell</option>
-                                            <option value="0">Buy</option>
-                                        </select>
-                                    </div>
+                                    <label class="weight500">Ad type: Sell</label>
                                     <div class="form-group">
                                         <label class="weight500">Select Make:</label>
                                         <select class="form-control" required="">
@@ -164,11 +160,15 @@
                             </div>
                             <hr>
                             <div class="text-center text-sm-right">
-                                <button class="btn btn-success shadow-none m-2" type="submit"><i class="fa fa-file mr-1"></i>edit</button>
+                                <button class="btn btn-success shadow-none m-2" type="submit"><i
+                                            class="fa fa-file mr-1"></i>edit
+                                </button>
                             </div>
                         </form>
                     </div>
                 </div>
+
+
             </div>
         </div>
     </section>
