@@ -10,7 +10,7 @@ class Daira extends Model
     protected $primaryKey='daira_id';
 
     public function wilaya(){
-        return $this->belongsTo('App\Wilaya');
+        return $this->belongsTo('App\Wilaya', 'wilaya_id');
     }
     public function communes(){
         return $this->hasMany('App\Commune' , 'daira_id');

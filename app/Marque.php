@@ -11,6 +11,6 @@ class Marque extends Model
 
     public function modeles()
     {
-        return $this->hasMany('App\Modele', 'modele_id');
+        return $this->hasMany('App\Modele', 'marque_id');
     }
 }

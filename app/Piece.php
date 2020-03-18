@@ -9,12 +9,12 @@ class Piece extends Model
     protected $table = 'piece';
     protected $primaryKey = 'piece_id';
 
-    public function categorie()
+    public function cat()
     {
-        return $this->belongsTo('App\Piece_categorie', 'cat_id');
+        return $this->belongsTo('App\PieceCat', 'cat_id');
     }
 
-    public function anonces()
+    public function annonces()
     {
         return $this->belongsToMany('App\Annonce', 'inclure', 'piece _id', 'annonce_id');
     }

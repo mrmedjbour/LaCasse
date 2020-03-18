@@ -11,7 +11,7 @@ class Commune extends Model
 
     public function daira()
     {
-        return $this->belongsTo('App\Daira');
+        return $this->belongsTo('App\Daira', 'daira_id');
     }
 
     public function users()

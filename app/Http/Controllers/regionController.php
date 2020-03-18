@@ -16,7 +16,11 @@ class regionController extends Controller
         if ($request->filled(['wilaya', 'daira','commune']))
         {
             $region = \App\Commune::findOrFail($request->commune);
-            return $region;
+            $daira = $region->daira()->get();
+            $wilaya_nom = \App\Wilaya::findOrFail($daira[0]->wilaya_id)->wilaya_nom;
+            $region['daira_nom'] = $daira[0]->daira_nom;
+            $region['wilaya_nom'] = $wilaya_nom;
+            return response()->json($region);
         }elseif ($request->filled(['wilaya', 'daira']))
         {
             $commune = \App\Daira::findOrFail($request->daira)->communes()->get(['commune_id','commune_nom']);

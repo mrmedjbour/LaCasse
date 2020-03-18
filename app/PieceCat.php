@@ -11,6 +11,6 @@ class PieceCat extends Model
 
     public function pieces()
     {
-        return $this->hasMany('App\Piece', 'piece_id');
+        return $this->hasMany('App\Piece', 'cat_id');
     }
 }

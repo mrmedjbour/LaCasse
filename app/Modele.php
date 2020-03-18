@@ -15,9 +15,8 @@ class Modele extends Model
 
     public function marque()
     {
-        return $this->hasOne('App\Marque', 'marque_id');
+        return $this->belongsTo('App\Marque', 'marque_id');
     }
-
     public function annonces()
     {
         return $this->hasMany('App\Annonce', 'annonce_id');

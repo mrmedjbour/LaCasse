@@ -13,8 +13,19 @@ use Illuminate\Http\Request;
 |
 */
 
+/* Region Api to Fetch */
+Route::get('/region', 'regionController@index');
 
-Route::get('/region','regionController@index');
+/* Marque Model Api to Fetch */
+Route::get('/models', 'ModelApiController@index');
+
+/* Parts Api to Fetch */
+Route::get('/parts', 'PartsApiController@index');
+
+
+
+
+
 
 
 
