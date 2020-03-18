@@ -12,5 +12,4 @@ class Wilaya extends Model
     public function dairas(){
         return $this->hasMany('App\Daira' , 'wilaya_id');
     }
-
 }
