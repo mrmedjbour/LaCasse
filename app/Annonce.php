@@ -12,6 +12,7 @@ class Annonce extends Model
         'annonce_type',
         'annonce_desc',
         'modele_id',
+        'modele_annee',
     ];
 
     public function discussions()

@@ -10,7 +10,7 @@ class Modele extends Model
     protected $primaryKey = 'modele_id';
 
     protected $fillable = [
-        'modele_nom', 'modele_annee', 'marque_id'
+        'modele_nom', 'marque_id',
     ];
 
     public function marque()

@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
             CommuneTableSeeder::class,
             PieceCategorieTableSeeder::class,
             PieceTableSeeder::class,
+            MarqueTableSeeder::class,
+            ModeleTableSeeder::class,
             UsersTableSeeder::class,
         ]);
     }

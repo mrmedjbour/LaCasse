@@ -20,6 +20,7 @@ class CreateAnnoncesTable extends Migration
             $table->boolean('annonce_etat')->default(1);
             $table->string('annonce_desc',500);
             $table->smallInteger('modele_id')->unsigned();
+            $table->year('modele_annee')->nullable();
             $table->foreign('modele_id')->references('modele_id')->on('modele')->onDelete('cascade');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
