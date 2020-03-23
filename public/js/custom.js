@@ -1,11 +1,9 @@
 $(document).ready(function() {
 
-    /* Start API address  */
-
+// /* Start API address  */
     // WILAYA SELECT EVENT
     $("div select#Wilaya").change(function () {
-        $selectedWilaya = $(this).val()
-        $apiWilaya = "http://homestead.test/api/region/?wilaya=" + $selectedWilaya;
+        $apiWilaya = "/api/region/?wilaya=" + $(this).val();
         $.getJSON($apiWilaya, function (data) {
             // Clean select options
             $("div select#Daira,div select#Commune").find('option').remove("option[value]").end().find('option[hidden]').prop('selected', true);
@@ -20,8 +18,7 @@ $(document).ready(function() {
     });
     // DAIRA SELECT EVENT
     $("div select#Daira").change(function () {
-        $selectedDaira = $(this).val();
-        $apiDaira = $apiWilaya + "&daira=" + $selectedDaira;
+        $apiDaira = $apiWilaya + "&daira=" + $(this).val();
         $.getJSON($apiDaira, function (data) {
             // Clean select options
             $("div select#Commune").find('option').remove("option[value]").end().find('option[hidden]').prop('selected', true);
@@ -33,6 +30,33 @@ $(document).ready(function() {
         //enable Commune select
         $("div select#Commune").prop('disabled', false);
     });
+// /* End API address  */
+
+// /* Start API make  */
+    // Make SELECT EVENT
+    $("div select#Make").change(function () {
+        $apiMake = "/api/models/?marque=" + $(this).val();
+        $.getJSON($apiMake, function (data) {
+            // Clean select options
+            $("div select#Modele,div select#Modele").find('option').remove("option[value]").end().find('option[hidden]').prop('selected', true);
+            $("div select#ModeleYear,div select#ModelePart").find('option[hidden]').prop('selected', true);
+            // FETCH ALL Modeles
+            $.each(data, function (key, entry) {
+                $("div select#Modele").append($('<option></option>').attr('value', entry.modele_id).text(entry.modele_nom));
+            })
+        });
+        $("div select#ModelePart").load("/api/parts/?all");
+        //enable Daira disable Commune select
+        $("div select#Modele").prop('disabled', false);
+        $("div select#ModeleYear,div select#ModelePart").prop('disabled', true);
+    });
+    // Modele SELECT EVENT
+    $("div select#Modele").change(function () {
+        $("div select#ModeleYear,div select#ModelePart").prop('disabled', false);
+    });
+
+
+// /* END API make  */
 
 
 // delete User model

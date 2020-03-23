@@ -135,8 +135,6 @@
                                         <select id="Commune" name="commune_id" class="form-control d-md-inline-block"
                                                 disabled required>
                                             <option hidden disabled selected>Commune</option>
-                                            <option value="1">Corso</option>
-                                            <option value="2">AK fahem</option>
                                         </select>
                                         @error('commune_id')
                                         <span class="invalid-feedback" role="alert">

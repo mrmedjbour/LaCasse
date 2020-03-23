@@ -15,7 +15,8 @@ Auth::routes();
 
 /*  Home Page Route */
 Route::get('/', function () {
-    return view('index');
+    $parts = \App\Piece::get();
+    return view('index', compact('parts'));
 })->name('index');
 
 /*  Dashboard */
@@ -58,6 +59,6 @@ Route::view('/home/annonce/add', 'addAds')->name('addAds'); // add ads form
 Route::view('/home/annonce/{id}', 'editAds')->name('EditAds'); // edit ads
 
 /*  Dr Role Routes  */
-Route::view('/home/role', 'dr.role')->name('dr.roles'); // dr roles list
-Route::view('/home/role/add', 'dr.roleAdd')->name('dr.roles'); // dr add role
-Route::view('/home/role/edit', 'dr.roleEdit')->name('dr.roles'); // dr edit role
+Route::view('/home/role', 'dr.role')->name('dr.roles.list'); // dr roles list
+Route::view('/home/role/add', 'dr.roleAdd')->name('dr.roles.add'); // dr add role
+Route::view('/home/role/{id}', 'dr.roleEdit')->name('dr.roles.edit'); // dr edit role

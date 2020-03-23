@@ -47,25 +47,73 @@
                                 <h6 style="margin-bottom: 1rem;">Address :&nbsp;</h6>
                                 <div class="form-group d-flex justify-content-between align-items-center">
                                     <label id="willya" for="email" style="margin: 0;"></label>
-                                    <select class="form-control form-control-sm form-control" id="willya"
+                                    <select class="form-control form-control-sm form-control" id="Wilaya"
                                             style="color: #444;border: 1px solid #9a9a9a;width: auto !important;min-width: 223px;">
-                                        <option value="14">Willya</option>
+                                        <option hidden disabled selected>Wilaya</option>
+                                        <option value="4">ALGER</option>
+                                        <option value="13">BOUMERDES</option>
+                                        <option value="47">Tizi Ouzou</option>
+                                        <option value="1">ADRAR</option>
+                                        <option value="2">AIN TEMOUCHENT</option>
+                                        <option value="3">AIN-DEFLA</option>
+                                        <option value="5">ANNABA</option>
+                                        <option value="6">Bordj Bou Arreridj</option>
+                                        <option value="7">BATNA</option>
+                                        <option value="8">BECHAR</option>
+                                        <option value="9">BEJAIA</option>
+                                        <option value="10">BISKRA</option>
+                                        <option value="11">BLIDA</option>
+                                        <option value="12">BOUIRA</option>
+                                        <option value="14">Chlef</option>
+                                        <option value="15">CONSTANTINE</option>
+                                        <option value="16">DJELFA</option>
+                                        <option value="17">EL BAYADH</option>
+                                        <option value="18">EL TARF</option>
+                                        <option value="19">EL-OUED</option>
+                                        <option value="20">GHARDAIA</option>
+                                        <option value="21">GUELMA</option>
+                                        <option value="22">ILLIZI</option>
+                                        <option value="23">Jijel</option>
+                                        <option value="24">KHENCHELA</option>
+                                        <option value="25">LAGHOUAT</option>
+                                        <option value="26">MASCARA</option>
+                                        <option value="27">MEDEA</option>
+                                        <option value="28">MILA</option>
+                                        <option value="29">MOSTAGANEM</option>
+                                        <option value="30">M&#039;SILA</option>
+                                        <option value="31">NAAMA</option>
+                                        <option value="32">ORAN</option>
+                                        <option value="33">OUARGLA</option>
+                                        <option value="34">Oum El Bouaghi</option>
+                                        <option value="35">RELIZANE</option>
+                                        <option value="36">SAIDA</option>
+                                        <option value="37">SETIF</option>
+                                        <option value="38">Sidi Bel Abbes</option>
+                                        <option value="39">SKIKDA</option>
+                                        <option value="40">SOUK AHRAS</option>
+                                        <option value="41">Tamanrasset</option>
+                                        <option value="42">TEBESSA</option>
+                                        <option value="43">Tiaret</option>
+                                        <option value="44">Tindouf</option>
+                                        <option value="45">TIPAZA</option>
+                                        <option value="46">Tissemsilt</option>
+                                        <option value="48">TLEMCEN</option>
                                     </select>
                                 </div>
                                 <div class="form-group d-flex justify-content-between align-items-center">
-                                    <label id="daira" for="email" style="margin: 0;"></label>
-                                    <select class="form-control form-control-sm form-control" id="daira"
+                                    <label id="daira" for="email" class="m-0"></label>
+                                    <select class="form-control form-control-sm form-control" id="Daira"
                                             style="color: #444;border: 1px solid #9a9a9a;width: auto !important;min-width: 223px;"
-                                            disabled="">
-                                        <option value="14">daira</option>
+                                            disabled>
+                                        <option hidden disabled selected>Daira</option>
                                     </select>
                                 </div>
                                 <div class="form-group d-flex justify-content-between align-items-center">
-                                    <label id="commune" for="email" style="margin: 0;"></label>
-                                    <select class="form-control form-control-sm form-control" id="commune"
+                                    <label id="commune" for="email" class="m-0"></label>
+                                    <select class="form-control form-control-sm form-control" id="Commune"
                                             style="color: #444;border: 1px solid #9a9a9a;width: auto !important;min-width: 223px;"
-                                            disabled="" required="">
-                                        <option value="14">commune</option>
+                                            disabled required>
+                                        <option hidden disabled selected>Commune</option>
                                     </select>
                                 </div>
                                 <h6 style="margin-bottom: 1rem;">Phone numbers (optional):</h6>
