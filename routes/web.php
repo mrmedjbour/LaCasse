@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+/*  Auth Route */
 Auth::routes();
 
 /*  Home Page Route */

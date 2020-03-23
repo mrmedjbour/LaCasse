@@ -1,5 +1,39 @@
 $(document).ready(function() {
 
+    /* Start API address  */
+
+    // WILAYA SELECT EVENT
+    $("div select#Wilaya").change(function () {
+        $selectedWilaya = $(this).val()
+        $apiWilaya = "http://homestead.test/api/region/?wilaya=" + $selectedWilaya;
+        $.getJSON($apiWilaya, function (data) {
+            // Clean select options
+            $("div select#Daira,div select#Commune").find('option').remove("option[value]").end().find('option[hidden]').prop('selected', true);
+            // FETCH ALL DAIRA'S
+            $.each(data, function (key, entry) {
+                $("div select#Daira").append($('<option></option>').attr('value', entry.daira_id).text(entry.daira_nom));
+            })
+        });
+        //enable Daira disable Commune select
+        $("div select#Daira").prop('disabled', false);
+        $("div select#Commune").prop('disabled', true);
+    });
+    // DAIRA SELECT EVENT
+    $("div select#Daira").change(function () {
+        $selectedDaira = $(this).val();
+        $apiDaira = $apiWilaya + "&daira=" + $selectedDaira;
+        $.getJSON($apiDaira, function (data) {
+            // Clean select options
+            $("div select#Commune").find('option').remove("option[value]").end().find('option[hidden]').prop('selected', true);
+            // FETCH ALL COMMUNE's
+            $.each(data, function (key, entry) {
+                $("div select#Commune").append($('<option></option>').attr('value', entry.commune_id).text(entry.commune_nom));
+            })
+        });
+        //enable Commune select
+        $("div select#Commune").prop('disabled', false);
+    });
+
 
 // delete User model
     $("button#DeleteUserRole").click(function () {
