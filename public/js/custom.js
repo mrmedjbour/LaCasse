@@ -1,5 +1,18 @@
 $(document).ready(function() {
 
+// /* Start add annonce script  */
+    // hide upload image if ad type is buy
+    $("div select#ADTYPE").change(function () {
+        if ($(this).val() == 0) {
+            $("div#AdUpImgs").hide();
+            $("input[type=checkbox]").prop("checked", false);
+        } else if ($(this).val() == 1) {
+            $("div#AdUpImgs").show();
+            $("input[type=checkbox]").prop("checked", true);
+        }
+    });
+// /* END add annonce script  */
+
 // /* Start API address  */
     // WILAYA SELECT EVENT
     $("div select#Wilaya").change(function () {
@@ -38,7 +51,7 @@ $(document).ready(function() {
         $apiMake = "/api/models/?marque=" + $(this).val();
         $.getJSON($apiMake, function (data) {
             // Clean select options
-            $("div select#Modele,div select#Modele").find('option').remove("option[value]").end().find('option[hidden]').prop('selected', true);
+            $("div select#Modele").find('option').remove("option[value]").end().find('option[hidden]').prop('selected', true);
             $("div select#ModeleYear,div select#ModelePart").find('option[hidden]').prop('selected', true);
             // FETCH ALL Modeles
             $.each(data, function (key, entry) {
@@ -54,8 +67,6 @@ $(document).ready(function() {
     $("div select#Modele").change(function () {
         $("div select#ModeleYear,div select#ModelePart").prop('disabled', false);
     });
-
-
 // /* END API make  */
 
 
@@ -118,24 +129,32 @@ $(document).ready(function() {
             reader.readAsDataURL(input.files[0]);
         }
     }
+
     $("#Profile input").change(function () {
         filePreview(this);
     });
 
 // delete annonce image on edit page (ajax req to delet img);
-    $("img#deleteAdsImg").click(function(){
-       // alert($(this).attr('src'))
+    $("img#deleteAdsImg").click(function () {
+        // alert($(this).attr('src'))
         $(this).remove();
     });
+// ------- parts select all and Deselect
+    $("div a#DeSelectAllParts").click(function () {
+        $("input[type=checkbox]").prop("checked", false);
+    });
+    $("div a#SelectAllParts").click(function () {
+        $("input[type=checkbox]").prop("checked", true);
+    });
 
-// ------- parts select all and unselect
-    $("input#selectAll").click(function() {
+// ------- parts select all group and Deselect
+    $("input#selectAll").click(function () {
         $cat = "input[type=checkbox][cat=" + $(this).attr('cat') + "]";
         $($cat).prop("checked", $(this).prop("checked"));
     });
 
 
-    $("input[type=checkbox]").click(function() {
+    $("input[type=checkbox]").click(function () {
         if (!$(this).prop("checked")) {
             $cat = "input[id=selectAll][type=checkbox][cat=" + $(this).attr('cat') + "]";
             $($cat).prop("checked", false);

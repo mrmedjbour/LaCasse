@@ -17,8 +17,8 @@ class CreateUsersTable extends Migration
             $table->increments('user_id');
             $table->string('user_prenom',30);
             $table->string('user_nom',30);
-            $table->addColumn('integer', 'user_tel', ['length'=>10, 'unsigned'=>true , 'ZEROFILL'=>true]);
-            $table->string('user_avatar')->default('avatar.png');
+            $table->addColumn('integer', 'user_tel', ['length' => 10, 'unsigned' => true, 'ZEROFILL' => true]);
+            $table->string('user_avatar')->default('avatar.svg');
             $table->boolean('user_etat')->default(1);
             $table->string('email',35)->unique();
             $table->string('password');

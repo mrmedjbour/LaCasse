@@ -51,14 +51,23 @@ Route::view('/home/users/{id}', 'admin.userView')->name('users.view');
 Route::view('/home/account', 'account')->name('account');
 Route::view('/home/messages', 'messages')->name('messages');
 
-/*  Ads Routes  */
-Route::view('/annonce', 'annonce')->name('annonce'); // annoce for anyone public view
-Route::view('/home/annonce', 'annonces')->name('myads'); // users annonce list
-Route::view('/home/annonces', 'admin.annonces')->name('ads'); // admin annonce list
-Route::view('/home/annonce/add', 'addAds')->name('addAds'); // add ads form
-Route::view('/home/annonce/{id}', 'editAds')->name('EditAds'); // edit ads
 
 /*  Dr Role Routes  */
 Route::view('/home/role', 'dr.role')->name('dr.roles.list'); // dr roles list
 Route::view('/home/role/add', 'dr.roleAdd')->name('dr.roles.add'); // dr add role
 Route::view('/home/role/{id}', 'dr.roleEdit')->name('dr.roles.edit'); // dr edit role
+
+
+/*  Ads Routes  */
+Route::view('/annonce', 'annonce')->name('annonce'); // annoce for anyone public view
+//Route::view('/home/annonce', 'annonces')->name('myads'); // users annonce list
+Route::view('/home/annonces', 'admin.annonces')->name('ads'); // admin annonce list
+//Route::get('/home/annonce/add', function (){
+//    $Partscat = \App\PieceCat::with('pieces')->get();
+//    return view('addAds', compact('Partscat'));
+//})->name('addAds');
+//Route::view('/home/annonce/{id}', 'editAds')->name('EditAds'); // edit ads
+
+
+// ----------------------------------------------------------------------------
+Route::resource('/home/annonce', 'User\UserAnnonceController');

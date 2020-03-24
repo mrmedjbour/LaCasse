@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class PartsApiController extends Controller
 {
@@ -12,9 +13,10 @@ class PartsApiController extends Controller
             $partsCat = \App\PieceCat::with('pieces')->get();
             echo "<option disabled hidden selected>Select Part</option>";
             foreach ($partsCat as $parts) {
-                echo "<optgroup label=\"$parts->cat_nom\">";
+                echo "<optgroup label=\"" . Str::title($parts->cat_nom) . "\">";
                 foreach ($parts->pieces as $part) {
-                    echo "<option value=\"$part->piece_id\">$part->piece_nom</option>";
+                    $piece_nom = Str::title($part->piece_nom);
+                    echo "<option value=\"$part->piece_id\">$piece_nom</option>";
                 }
                 echo "</optgroup>";
             }
