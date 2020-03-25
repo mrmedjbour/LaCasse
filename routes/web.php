@@ -59,7 +59,7 @@ Route::view('/home/role/{id}', 'dr.roleEdit')->name('dr.roles.edit'); // dr edit
 
 
 /*  Ads Routes  */
-Route::view('/annonce', 'annonce')->name('annonce'); // annoce for anyone public view
+//Route::view('/annonce', 'annonce')->name('annonce'); // annoce for anyone public view
 //Route::view('/home/annonce', 'annonces')->name('myads'); // users annonce list
 Route::view('/home/annonces', 'admin.annonces')->name('ads'); // admin annonce list
 //Route::get('/home/annonce/add', function (){

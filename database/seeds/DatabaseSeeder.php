@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             MarqueTableSeeder::class,
             ModeleTableSeeder::class,
             UsersTableSeeder::class,
+            RoleTableSeeder::class,
         ]);
     }
 }

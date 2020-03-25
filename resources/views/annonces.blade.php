@@ -8,9 +8,11 @@
                     @include('comp.sidebar')
                 </div>
                 <div class="col-lg-8 dash-info">
-                    <div class="text-center text-sm-right"><a class="btn btn-success btn-sm shadow-none m-2"
-                                                              role="button" href="#"><i class="fa fa-plus mr-1"></i>Add
-                            Annonce</a>
+                    <div class="text-center text-sm-right">
+                        <a class="btn btn-success btn-sm shadow-none m-2" role="button"
+                           href="{{route('annonce.create')}}">
+                            <i class="fa fa-plus mr-1"></i>Add Annonce
+                        </a>
                     </div>
                     <div class="table-responsive table-borderless" style="font-size: 14px;">
                         <table class="table table-striped table-bordered table-sm">

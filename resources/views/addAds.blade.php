@@ -9,21 +9,22 @@
                 </div>
                 <div class="col-lg-8 dash-info">
                     <div id="PaddAnn">
-                        <form id="addAnn" class="p-4">
+                        <form id="addAnn" class="p-4" action="{{route('annonce.store')}}" method="POST">
+                            @csrf
                             <div class="d-md-flex" id="top">
                                 <div class="w-100">
 
                                     <div class="form-group">
                                         <label for="ADTYPE" class="weight500">Select Ad type:</label>
-                                        <select id="ADTYPE" class="form-control" required>
+                                        <select class="form-control" name="ad_type" id="ADTYPE" required>
                                             <option value="1">Sell</option>
                                             <option value="0">Buy</option>
                                         </select>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="Make" class="weight500">Select Make:</label>
-                                        <select id="Make" name="make" class="form-control" required>
+                                        <label class="weight500" for="Make">Select Make:</label>
+                                        <select class="form-control" id="Make" name="make" required>
                                             <option selected disabled hidden>Select Make</option>
                                             <option value="1">Seat</option>
                                             <option value="2">Renault</option>
@@ -178,8 +179,9 @@
                             </div>
                             <div>
                                 <label class="weight500">Description:</label>
-                                <textarea class="form-control form-control-lg rounded border border-dark"
-                                          rows="3"></textarea>
+                                <textarea class="form-control form-control-lg rounded border border-dark" name="ad_desc"
+                                          rows="3">
+                                </textarea>
                             </div>
                             <div class="d-flex flex-column flex-wrap accordion md-accordion mt-3" id="accordionEx"
                                  role="tablist" aria-multiselectable="true">

@@ -8,6 +8,7 @@ class Annonce extends Model
 {
     protected $table = 'annonce';
     protected $primaryKey = 'annonce_id';
+    public $timestamps = false;
     protected $fillable = [
         'annonce_type',
         'annonce_desc',
@@ -35,7 +36,7 @@ class Annonce extends Model
         return $this->hasMany('App\Image', 'img_id');
     }
 
-    public function pieses()
+    public function pieces()
     {
         return $this->belongsToMany('App\Piece', 'inclure', 'annonce_id', 'piece_id');
     }
