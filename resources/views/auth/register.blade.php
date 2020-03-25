@@ -19,7 +19,7 @@
                                     @error('user_prenom')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
-                                        </span>
+                                    </span>
                                     @enderror
                                 </div>
                             </div>
@@ -34,7 +34,7 @@
                                     @error('user_nom')
                                     <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
-                                        </span>
+                                    </span>
                                     @enderror
                                 </div>
                             </div>
@@ -66,7 +66,7 @@
                                     @error('user_tel')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
-                                        </span>
+                                    </span>
                                     @enderror
                                 </div>
                             </div>
@@ -139,7 +139,7 @@
                                         @error('commune_id')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
-                                            </span>
+                                         </span>
                                         @enderror
                                     </div>
 

@@ -8,9 +8,13 @@ class Image extends Model
 {
     protected $table = 'image';
     protected $primaryKey = 'img_id';
+    public $timestamps = false;
+    protected $fillable = [
+        'img_nom',
+    ];
 
     public function annonce()
     {
-        return $this->belongsTo('App\annonce', 'annonce_id');
+        return $this->belongsTo('App\annonce');
     }
 }

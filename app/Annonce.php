@@ -33,7 +33,7 @@ class Annonce extends Model
 
     public function images()
     {
-        return $this->hasMany('App\Image', 'img_id');
+        return $this->hasMany('App\Image', 'annonce_id');
     }
 
     public function pieces()

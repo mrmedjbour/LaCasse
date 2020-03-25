@@ -7,7 +7,6 @@
                 <div class="col-lg-8 offset-1 offset-lg-4 mx-auto form-div">
                     <form method="post" action="{{ route('login') }}">
                         @csrf
-
                         <div class="form-row">
                             <div class="col-lg-12 col-12 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
@@ -17,10 +16,9 @@
                                     </label>
                                     <input class="form-control @error('email') is-invalid @enderror" type="email" name="email" required autocomplete="email" placeholder="Email@example.com">
                                     @error('email')
-
                                     <span class="invalid-feedback" role="alert">
-                  <strong>{{ $message }}</strong>
-                </span>
+                                      <strong>{{ $message }}</strong>
+                                    </span>
                                     @enderror
 
                                 </div>

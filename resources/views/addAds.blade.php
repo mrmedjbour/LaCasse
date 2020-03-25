@@ -11,14 +11,23 @@
                     <div id="PaddAnn">
                         <form id="addAnn" class="p-4" action="{{route('annonce.store')}}" method="POST">
                             @csrf
+                            @if ($errors->any())
+                                <div class="alert alert-danger" role="alert">
+                                    <ul class="m-0">
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+
                             <div class="d-md-flex" id="top">
                                 <div class="w-100">
-
                                     <div class="form-group">
                                         <label for="ADTYPE" class="weight500">Select Ad type:</label>
                                         <select class="form-control" name="ad_type" id="ADTYPE" required>
-                                            <option value="1">Sell</option>
-                                            <option value="0">Buy</option>
+                                            <option value="sell">Sell</option>
+                                            <option value="buy">Buy</option>
                                         </select>
                                     </div>
 
@@ -95,14 +104,13 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="Modele" class="weight500">Select Model:</label>
-                                        <select id="Modele" name="modele" class="form-control" disabled required>
+                                        <select id="Modele" name="Modele_id" class="form-control" disabled required>
                                             <option disabled hidden selected>Select Model</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="ModeleYear" class="weight500">Select Year:</label>
-                                        <select id="ModeleYear" name="ModeleYear" class="form-control" disabled
-                                                required>
+                                        <select id="ModeleYear" name="ModeleYear" class="form-control" disabled>
                                             <option disabled hidden selected>Select Year</option>
                                             <option value="2020">2020</option>
                                             <option value="2019">2019</option>
@@ -169,32 +177,25 @@
                                 </div>
                                 <div class="w-100" id="AdUpImgs">
                                     <label class="weight500" for="upInput">Upload images:</label>
-                                    <div id="addAdsImgPreview"
-                                         class="rounded border border-dark bg-white ml-md-2 mr-md-2">
+                                    <div id="addAdsImgPreview" class="rounded border border-dark bg-white ml-md-2 mr-md-2">
                                         <div id="upImg"></div>
-                                        <input type="file" id="upInput" class="p-1 w-100 bg-success" name="partimg"
-                                               multiple="" accept="image/*">
+                                        <input type="file" id="upInput" class="p-1 w-100 bg-success" name="images" multiple accept="image/*">
                                     </div>
                                 </div>
                             </div>
                             <div>
                                 <label class="weight500">Description:</label>
-                                <textarea class="form-control form-control-lg rounded border border-dark" name="ad_desc"
-                                          rows="3">
-                                </textarea>
+                                <textarea class="form-control form-control-lg rounded border border-dark" name="ad_desc" rows="3"></textarea>
                             </div>
-                            <div class="d-flex flex-column flex-wrap accordion md-accordion mt-3" id="accordionEx"
-                                 role="tablist" aria-multiselectable="true">
+                            <div class="d-flex flex-column flex-wrap accordion md-accordion mt-3" id="accordionEx" role="tablist" aria-multiselectable="true">
                                 <div class="mb-1">
-                                    <a class="btn btn-link text-info font-weight-light p-0" id="SelectAllParts">Select
-                                        All</a>&nbsp;/&nbsp;<a class="btn btn-link text-info font-weight-light p-0"
-                                                               id="DeSelectAllParts">Deselect All</a>
+                                    <a class="btn btn-link text-info font-weight-light p-0" id="SelectAllParts">Select All</a>&nbsp;/&nbsp;<a class="btn btn-link text-info font-weight-light p-0" id="DeSelectAllParts">Deselect All</a>
                                 </div>
                                 @foreach($Partscat as $Parts)
                                     <div class="card shadow mb-2">
                                         <div id="head-{{ Str::camel($Parts->cat_nom) }}" class="card-header" role="tab">
                                             <input type="checkbox" id="selectAll" class="m-1" title="Select All"
-                                                   value="{{ $Parts->cat_id }}" name="parts" cat="{{ $Parts->cat_id }}"
+                                                   value="{{ $Parts->cat_id }}" name="parts_cat" cat="{{ $Parts->cat_id }}"
                                                    checked>
                                             <a class="text-decoration-none"
                                                href="#collapse-{{ Str::camel($Parts->cat_nom) }}" data-toggle="collapse"
@@ -212,7 +213,7 @@
                                                     @foreach($Parts->pieces as $Part)
                                                         <li class="form-check">
                                                             <input type="checkbox" id="{{ $Part->piece_id }}"
-                                                                   name="parts" value="{{ $Part->piece_id }}"
+                                                                   name="parts[]" value="{{ $Part->piece_id }}"
                                                                    class="form-check-input" cat="{{ $Parts->cat_id }}"
                                                                    checked>
                                                             <label class="form-check-label"

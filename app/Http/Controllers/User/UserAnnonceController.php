@@ -5,6 +5,8 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class UserAnnonceController extends Controller
 {
@@ -24,13 +26,26 @@ class UserAnnonceController extends Controller
     // Store The created ad for user
     public function store(Request $request)
     {
-        Auth::user()->annonces()->create([
+        Validator::make($request->all(), array(
+            'ad_type' => ['required', Rule::in(['sell', 'buy']),],
+            'ad_desc' => 'max:500',
+            'parts' => 'required|array',
+            'parts.*' => 'exists:piece,piece_id',
+            'Modele_id' => 'required|exists:modele,modele_id',
+            'ModeleYear' => 'integer|min:1961|max:2020',
+            'images.*' => 'image|mimes:jpeg,png,jpg,bmp,gif,svg|max:2048'
+        ))->validate();
+
+        $ad = Auth::user()->annonces()->create([
             'annonce_type' => $request->ad_type,
             'annonce_desc' => $request->ad_desc,
-            'modele_id' => $request->,
-            'modele_annee' => $request->,
+            'modele_id' => $request->Modele_id,
+            'modele_annee' => $request->ModeleYear,
         ]);
-        return "ok";
+
+        $ad->pieces()->sync($request->parts);
+
+        return redirect(route('annonce.index'));
     }
 
     public function show($id)
