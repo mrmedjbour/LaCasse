@@ -3,10 +3,10 @@ $(document).ready(function() {
 // /* Start add annonce script  */
     // hide upload image if ad type is buy
     $("div select#ADTYPE").change(function () {
-        if ($(this).val() == 0) {
+        if ($(this).val() == "buy") {
             $("div#AdUpImgs").hide();
             $("input[type=checkbox]").prop("checked", false);
-        } else if ($(this).val() == 1) {
+        } else if ($(this).val() == "sell") {
             $("div#AdUpImgs").show();
             $("input[type=checkbox]").prop("checked", true);
         }

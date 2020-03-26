@@ -33,7 +33,7 @@ class UserAnnonceController extends Controller
             'parts.*' => 'exists:piece,piece_id',
             'Modele_id' => 'required|exists:modele,modele_id',
             'ModeleYear' => 'integer|min:1961|max:2020',
-            'images.*' => 'image|mimes:jpeg,png,jpg,bmp,gif,svg|max:2048'
+            'images.*' => 'image|mimes:jpeg,png,jpg,bmp,gif,svg|max:2048',
         ))->validate();
 
         $ad = Auth::user()->annonces()->create([
@@ -45,7 +45,21 @@ class UserAnnonceController extends Controller
 
         $ad->pieces()->sync($request->parts);
 
-        return redirect(route('annonce.index'));
+        if ($request->ad_type == "sell") {
+            if ($images = $request->file('images')) {
+                foreach ($images as $image) {
+                    if (in_array($image->extension(), ['jpeg', 'png', 'jpg', 'bmp', 'gif', 'svg'])) {
+                        $image_name = $ad->annonce_id . '_' . rand(1000000, 99999999) . '.' . $image->extension();
+                        $image->move(public_path('/files/annonce/'), $image_name);
+                        $image_data['img_nom'] = $image_name;
+                        $images_data[] = $image_data;
+                    }
+                }
+                $ad->images()->createMany($images_data);
+            }
+        }
+
+        return redirect(route('annonce.index'))->with('success', 'Your Ad has been successfully added');
     }
 
     public function show($id)

@@ -8,6 +8,11 @@
                     @include('comp.sidebar')
                 </div>
                 <div class="col-lg-8 dash-info">
+                    @if(session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
                     <div class="text-center text-sm-right">
                         <a class="btn btn-success btn-sm shadow-none m-2" role="button"
                            href="{{route('annonce.create')}}">

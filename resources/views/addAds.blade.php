@@ -9,7 +9,7 @@
                 </div>
                 <div class="col-lg-8 dash-info">
                     <div id="PaddAnn">
-                        <form id="addAnn" class="p-4" action="{{route('annonce.store')}}" method="POST">
+                        <form id="addAnn" class="p-4" action="{{route('annonce.store')}}" method="POST" accept-charset="utf-8" enctype="multipart/form-data">
                             @csrf
                             @if ($errors->any())
                                 <div class="alert alert-danger" role="alert">
@@ -179,13 +179,13 @@
                                     <label class="weight500" for="upInput">Upload images:</label>
                                     <div id="addAdsImgPreview" class="rounded border border-dark bg-white ml-md-2 mr-md-2">
                                         <div id="upImg"></div>
-                                        <input type="file" id="upInput" class="p-1 w-100 bg-success" name="images" multiple accept="image/*">
+                                        <input type="file" id="upInput" class="p-1 w-100 bg-success" name="images[]" multiple="multiple" accept="image/*"/>
                                     </div>
                                 </div>
                             </div>
                             <div>
                                 <label class="weight500">Description:</label>
-                                <textarea class="form-control form-control-lg rounded border border-dark" name="ad_desc" rows="3"></textarea>
+                                <textarea class="form-control form-control-lg rounded border border-dark" name="ad_desc" rows="3">{{ old('ad_desc') }}</textarea>
                             </div>
                             <div class="d-flex flex-column flex-wrap accordion md-accordion mt-3" id="accordionEx" role="tablist" aria-multiselectable="true">
                                 <div class="mb-1">
