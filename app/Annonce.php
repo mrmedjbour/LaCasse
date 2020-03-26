@@ -23,7 +23,7 @@ class Annonce extends Model
 
     public function modele()
     {
-        return $this->belongsTo('App\modele', 'modele_id');
+        return $this->belongsTo('App\Modele', 'modele_id');
     }
 
     public function user()

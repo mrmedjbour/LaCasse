@@ -10,7 +10,7 @@ class Modele extends Model
     protected $primaryKey = 'modele_id';
 
     protected $fillable = [
-        'modele_nom', 'marque_id',
+        'modele_nom',
     ];
 
     public function marque()
@@ -19,6 +19,6 @@ class Modele extends Model
     }
     public function annonces()
     {
-        return $this->hasMany('App\Annonce', 'annonce_id');
+        return $this->hasMany('App\Annonce', 'modele_id');
     }
 }

@@ -8,6 +8,9 @@ class Marque extends Model
 {
     protected $table = 'marque';
     protected $primaryKey = 'marque_id';
+    protected $fillable = [
+        'marque_nom',
+    ];
 
     public function modeles()
     {

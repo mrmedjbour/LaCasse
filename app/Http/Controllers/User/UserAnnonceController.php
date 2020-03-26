@@ -13,7 +13,8 @@ class UserAnnonceController extends Controller
     // Show List of ads for user
     public function index()
     {
-        return view('annonces');
+        $ads = Auth::user()->annonces()->with('modele')->get();
+        return view('annonces', compact('ads'));
     }
 
     // Create  New Ad Form for user
@@ -35,16 +36,13 @@ class UserAnnonceController extends Controller
             'ModeleYear' => 'integer|min:1961|max:2020',
             'images.*' => 'image|mimes:jpeg,png,jpg,bmp,gif,svg|max:2048',
         ))->validate();
-
         $ad = Auth::user()->annonces()->create([
             'annonce_type' => $request->ad_type,
             'annonce_desc' => $request->ad_desc,
             'modele_id' => $request->Modele_id,
             'modele_annee' => $request->ModeleYear,
         ]);
-
         $ad->pieces()->sync($request->parts);
-
         if ($request->ad_type == "sell") {
             if ($images = $request->file('images')) {
                 foreach ($images as $image) {
@@ -58,7 +56,6 @@ class UserAnnonceController extends Controller
                 $ad->images()->createMany($images_data);
             }
         }
-
         return redirect(route('annonce.index'))->with('success', 'Your Ad has been successfully added');
     }
 
@@ -69,7 +66,7 @@ class UserAnnonceController extends Controller
 
     public function edit($id)
     {
-        //
+        return "edit";
     }
 
     public function update(Request $request, $id)
@@ -77,8 +74,9 @@ class UserAnnonceController extends Controller
         //
     }
 
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        Auth::user()->annonces()->findOrFail($request->modele_id)->delete();
+        return redirect(route('annonce.index'))->with('success', 'Your Ad has been successfully deleted');
     }
 }
