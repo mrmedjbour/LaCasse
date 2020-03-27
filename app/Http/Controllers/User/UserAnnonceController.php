@@ -10,6 +10,11 @@ use Illuminate\Validation\Rule;
 
 class UserAnnonceController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     // Show List of ads for user
     public function index()
     {
@@ -61,17 +66,48 @@ class UserAnnonceController extends Controller
 
     public function show($id)
     {
-        //
+        return redirect(route('annonce.edit', $id));
     }
 
     public function edit($id)
     {
-        return "edit";
+        $ad = Auth::user()->annonces()->with(['modele', 'images'])->findOrFail($id);
+        return view('editAds', compact('ad'));
     }
 
     public function update(Request $request, $id)
     {
-        //
+        $ad = Auth::user()->annonces()->findOrFail($id);
+        Validator::make($request->all(), array(
+            'ad_desc' => 'max:500',
+            'parts.*' => 'exists:piece,piece_id',
+            'Modele_id' => 'exists:modele,modele_id',
+            'ModeleYear' => 'integer|min:1960|max:2020',
+            'images.*' => 'image|mimes:jpeg,png,jpg,bmp,gif,svg|max:2048',
+        ))->validate();
+        if ($request->Modele_id) {
+            $ad->modele_id = $request->Modele_id;
+        } elseif ($request->ModeleYear) {
+            $ad->modele_annee = $request->ModeleYear;
+        } elseif ($request->ad_desc) {
+            $ad->annonce_desc = $request->ad_desc;
+        }
+        $ad->save();
+        $ad->pieces()->sync($request->parts);
+        if ($ad->annonce_type == "sell") {
+            if ($images = $request->file('images')) {
+                foreach ($images as $image) {
+                    if (in_array($image->extension(), ['jpeg', 'png', 'jpg', 'bmp', 'gif', 'svg'])) {
+                        $image_name = $ad->annonce_id . '_' . rand(1000000, 99999999) . '.' . $image->extension();
+                        $image->move(public_path('/files/annonce/'), $image_name);
+                        $image_data['img_nom'] = $image_name;
+                        $images_data[] = $image_data;
+                    }
+                }
+                $ad->images()->createMany($images_data);
+            }
+        }
+        return redirect(route('annonce.index'))->with('success', 'Your Ad has been successfully updated');
     }
 
     public function destroy(Request $request)

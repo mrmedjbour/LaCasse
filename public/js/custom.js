@@ -136,8 +136,17 @@ $(document).ready(function() {
 
 // delete annonce image on edit page (ajax req to delet img);
     $("img#deleteAdsImg").click(function () {
-        // alert($(this).attr('src'))
-        $(this).remove();
+        $img_id = $(this).attr('img');
+        $target = $(this);
+        $.ajax({
+            url: '/image/' + $img_id,
+            type: 'GET',
+            contentType: 'application/json; charset=UTF-8',
+            dataType: 'json',
+            success: function (data) {
+                $target.remove();
+            }
+        });
     });
 // ------- parts select all and Deselect
     $("div a#DeSelectAllParts").click(function () {

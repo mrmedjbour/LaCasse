@@ -22,12 +22,8 @@ Route::get('/models', 'ModelApiController@index');
 /* Parts Api to Fetch */
 Route::get('/parts', 'PartsApiController@index');
 
-
-
-
-
-
-
+///* Api to delete image */
+//Route::resource('/img', 'ImageController',['only' => ['destroy','show']]);
 
 
 //Route::middleware('auth:api')->get('/user', function (Request $request) {

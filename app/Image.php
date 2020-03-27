@@ -15,6 +15,6 @@ class Image extends Model
 
     public function annonce()
     {
-        return $this->belongsTo('App\Annonce');
+        return $this->belongsTo('App\Annonce', 'annonce_id');
     }
 }

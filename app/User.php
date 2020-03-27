@@ -56,6 +56,18 @@ class User extends Authenticatable
         return $this->hasMany('App\Annonce', 'user_id');
     }
 
+    public function images()
+    {
+        return $this->hasManyThrough(
+            'App\Image',
+            'App\Annonce',
+            'user_id',
+            'annonce_id',
+            'user_id',
+            'annonce_id'
+        );
+    }
+
     public function commune()
     {
         return $this->belongsTo('App\Commune', 'user_id');

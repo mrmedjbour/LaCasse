@@ -1286,9 +1286,35 @@ div.social-links {
         -moz-columns: 2;
     }
 }
+
 @media (max-width: 348px) {
     a#notfMsg.fa-envelope {
         display: none;
     }
 }
+
+#upImg .deleteAdsImgs {
+    position: relative;
+    display: inline-block;
+}
+
+#upImg .deleteAdsImgs img {
+    opacity: 1;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
+
+#upImg .deleteAdsImgs:hover img {
+    opacity: 0.3;
+}
+
+#upImg #deleteAdsImg {
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+}
+
 /* End Hamid added page*/

@@ -9,10 +9,12 @@
                 </div>
                 <div class="col-lg-8 dash-info">
                     <div id="PaddAnn">
-                        <form id="addAnn" class="p-4">
+                        <form id="addAnn" class="p-4" action="{{route('annonce.update', $ad->annonce_id)}}" method="POST" accept-charset="utf-8" enctype="multipart/form-data">
+                            @csrf
+                            <input type="hidden" value="PUT" name="_method">
                             <div class="d-md-flex" id="top">
                                 <div class="w-100">
-                                    <label class="weight500">Ad type: Sell</label>
+                                    <label class="weight500">Ad type: {{Str::title($ad->annonce_type)}}</label>
                                     <div class="form-group">
                                         <label for="Make" class="weight500">Select Make:</label>
                                         <select class="form-control" id="Make" name="make" required>
@@ -82,212 +84,86 @@
                                             <option value="63">Pontiac</option>
                                             <option value="64">Isuzu</option>
                                             <option value="65">Mahindra</option>
+                                            <option value="{{$ad->modele->marque_id}}" hidden selected>{{Str::title($ad->modele->marque->marque_nom)}}</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="weight500">Select Model:</label>
-                                        <select class="form-control" id="Modele" name="modele" required disabled>
+                                        <select class="form-control" id="Modele" name="Modele_id" required disabled>
                                             <option disabled hidden selected>Select Model</option>
+                                            <option value="{{$ad->modele_id}}" selected>{{$ad->modele->modele_nom}}</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="ModeleYear" class="weight500">Select Year:</label>
-                                        <select class="form-control" id="ModeleYear" name="ModeleYear" disabled
-                                                required>
+                                        <select class="form-control" id="ModeleYear" name="ModeleYear" disabled>
                                             <option disabled hidden selected>Select Year</option>
-                                            <option value="2020">2020</option>
-                                            <option value="2019">2019</option>
-                                            <option value="2018">2018</option>
-                                            <option value="2017">2017</option>
-                                            <option value="2016">2016</option>
-                                            <option value="2015">2015</option>
-                                            <option value="2014">2014</option>
-                                            <option value="2013">2013</option>
-                                            <option value="2012">2012</option>
-                                            <option value="2011">2011</option>
-                                            <option value="2010">2010</option>
-                                            <option value="2009">2009</option>
-                                            <option value="2008">2008</option>
-                                            <option value="2007">2007</option>
-                                            <option value="2006">2006</option>
-                                            <option value="2005">2005</option>
-                                            <option value="2004">2004</option>
-                                            <option value="2003">2003</option>
-                                            <option value="2002">2002</option>
-                                            <option value="2001">2001</option>
-                                            <option value="2000">2000</option>
-                                            <option value="1999">1999</option>
-                                            <option value="1998">1998</option>
-                                            <option value="1997">1997</option>
-                                            <option value="1996">1996</option>
-                                            <option value="1995">1995</option>
-                                            <option value="1994">1994</option>
-                                            <option value="1993">1993</option>
-                                            <option value="1992">1992</option>
-                                            <option value="1991">1991</option>
-                                            <option value="1990">1990</option>
-                                            <option value="1989">1989</option>
-                                            <option value="1988">1988</option>
-                                            <option value="1987">1987</option>
-                                            <option value="1986">1986</option>
-                                            <option value="1985">1985</option>
-                                            <option value="1984">1984</option>
-                                            <option value="1983">1983</option>
-                                            <option value="1982">1982</option>
-                                            <option value="1981">1981</option>
-                                            <option value="1980">1980</option>
-                                            <option value="1979">1979</option>
-                                            <option value="1978">1978</option>
-                                            <option value="1977">1977</option>
-                                            <option value="1976">1976</option>
-                                            <option value="1975">1975</option>
-                                            <option value="1974">1974</option>
-                                            <option value="1973">1973</option>
-                                            <option value="1972">1972</option>
-                                            <option value="1971">1971</option>
-                                            <option value="1970">1970</option>
-                                            <option value="1969">1969</option>
-                                            <option value="1968">1968</option>
-                                            <option value="1967">1967</option>
-                                            <option value="1966">1966</option>
-                                            <option value="1965">1965</option>
-                                            <option value="1964">1964</option>
-                                            <option value="1963">1963</option>
-                                            <option value="1962">1962</option>
-                                            <option value="1961">1961</option>
+                                            @for($y = 2020;$y > 1960;$y--)
+                                                <option value="{{ $y }}" {{$ad->modele_annee == $y? 'selected':''}}>{{ $y }}</option>
+                                            @endfor
                                         </select>
                                     </div>
                                 </div>
-                                <div class="w-100">
-                                    <label class="weight500" for="upInput">Upload images:</label>
-                                    <div id="addAdsImgPreview"
-                                         class="rounded border border-dark bg-white ml-md-2 mr-md-2">
-                                        <div id="upImg">
-                                            <img id="deleteAdsImg" class="m-1"
-                                                 src="assets/img/abandoned-orange-sedan-746684.jpg"
-                                                 style="width: 60px;height: 60px;cursor: pointer;" loading="auto">
-                                            <img id="deleteAdsImg" class="m-1"
-                                                 src="assets/img/abandoned-orange-sedan-746684.jpg"
-                                                 style="width: 60px;height: 60px;cursor: pointer;" loading="auto">
+                                @if($ad->annonce_type == "sell")
+                                    <div class="w-100">
+                                        <label class="weight500" for="upInput">Upload images:</label>
+                                        <div id="addAdsImgPreview"
+                                             class="rounded border border-dark bg-white ml-md-2 mr-md-2">
+                                            <div id="upImg">
+                                                @foreach($ad->images as $img)
+                                                    <div class="deleteAdsImgs">
+                                                        <img id="deleteAdsImg" class="m-1" src="{{asset('files/annonce/' . $img->img_nom)}}" img="{{$img->img_id}}" loading="auto">
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                            <input type="file" id="upInput" class="p-1 w-100 bg-success" name="images[]" accept="image/*" multiple="multiple" edit="">
                                         </div>
-                                        <input type="file" id="upInput" class="p-1 w-100 bg-success" name="partimg" accept="image/*" multiple="" edit="">
                                     </div>
-                                </div>
+                                @endif
                             </div>
                             <div>
                                 <label class="weight500">Description:</label>
-                                <textarea class="form-control form-control-lg rounded border border-dark" rows="3"></textarea>
+                                <textarea class="form-control form-control-lg rounded border border-dark" name="ad_desc" rows="3">{{ $ad->annonce_desc ?? '' }}</textarea>
                             </div>
                             <div class="d-flex flex-column flex-wrap accordion md-accordion mt-3" id="accordionEx" role="tablist" aria-multiselectable="true">
-                                <div class="card shadow mb-2">
-                                    <div id="headingOne1" class="card-header" role="tab">
-                                        <input type="checkbox" data-toggle="tooltip" data-bs-tooltip="" id="selectAll" class="m-1" title="Select All" value="carbody" name="parts" cat="carbody">
-                                        <a class="text-decoration-none" href="#collapseOne1" data-toggle="collapse" data-parent="#accordionEx" aria-expanded="false" aria-controls="collapseOne1">
-                                            <h6 class="mb-0">Car Body&nbsp;<i class="fa fa-angle-down rotate-icon m-1"></i></h6>
-                                        </a>
-                                    </div>
-                                    <div id="collapseOne1" class="collapse" role="tabpanel" aria-labelledby="headingOne1" data-parent="#accordionEx">
-                                        <div class="card-body">
-                                            <ul class="list-unstyled">
-                                                <li class="form-check">
-                                                    <input type="checkbox" id="LeftDoor" class="form-check-input" cat="carbody">
-                                                    <label class="form-check-label" for="LeftDoor">Left Door</label>
-                                                </li>
-                                                <li class="form-check">
-                                                    <input type="checkbox" id="Caapo" class="form-check-input" cat="carbody">
-                                                    <label class="form-check-label" for="Caapo">Caapo</label>
-                                                </li>
-                                                <li class="form-check">
-                                                    <input type="checkbox" id="RightDoor" class="form-check-input" cat="carbody">
-                                                    <label class="form-check-label" for="formCheck-1">Right Door</label>
-                                                </li>
-                                            </ul>
+                                <div class="mb-1">
+                                    <a class="btn btn-link text-info font-weight-light p-0" id="SelectAllParts">Select All</a>&nbsp;/&nbsp;<a class="btn btn-link text-info font-weight-light p-0" id="DeSelectAllParts">Deselect All</a>
+                                </div>
+                                <?php
+                                $Partscat = \App\PieceCat::with('pieces')->get();
+                                $partIds = $ad->pieces->pluck('piece_id')->toArray();
+                                ?>
+                                @foreach($Partscat as $Parts)
+                                    <div class="card shadow mb-2">
+                                        <div id="head-{{ Str::camel($Parts->cat_nom) }}" class="card-header" role="tab">
+                                            <?php $cat_partsIds = $Parts->pieces->pluck('piece_id')->toArray(); ?>
+                                            <input type="checkbox" id="selectAll" class="m-1" title="Select All" value="{{ $Parts->cat_id }}" name="parts_cat" cat="{{ $Parts->cat_id }}" {{ count(array_diff($cat_partsIds, $partIds)) ? '':'checked'}}>
+                                            <a class="text-decoration-none" href="#collapse-{{ Str::camel($Parts->cat_nom) }}" data-toggle="collapse" data-parent="#accordionEx" aria-expanded="false" aria-controls="collapse-{{ Str::camel($Parts->cat_nom) }}">
+                                                <h6 class="mb-0">
+                                                    {{ Str::title($Parts->cat_nom) }}&nbsp;
+                                                    <i class="fa fa-angle-down rotate-icon m-1<"></i>
+                                                </h6>
+                                            </a>
+                                        </div>
+                                        <div id="collapse-{{ Str::camel($Parts->cat_nom) }}" class="collapse" role="tabpanel" aria-labelledby="head-{{ Str::camel($Parts->cat_nom) }}" data-parent="#accordionEx">
+                                            <div class="card-body">
+                                                <ul class="list-unstyled">
+                                                    @foreach($Parts->pieces as $Part)
+                                                        <li class="form-check">
+                                                            <input type="checkbox" id="{{ $Part->piece_id }}" name="parts[]" value="{{ $Part->piece_id }}" class="form-check-input" cat="{{ $Parts->cat_id }}" {{in_array($Part->piece_id, $partIds)?'checked':''}}>
+                                                            <label class="form-check-label" for="{{ $Part->piece_id }}">{{ Str::title($Part->piece_nom) }}</label>
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="card shadow mb-2">
-                                    <div id="headingOne1" class="card-header" role="tab">
-                                        <input type="checkbox" data-toggle="tooltip" data-bs-tooltip="" id="selectAll" class="m-1" title="Select All" value="carbody" name="parts" cat="cah">
-                                        <a class="text-decoration-none" href="#collapse2" data-toggle="collapse" data-parent="#accordionEx" aria-expanded="false" aria-controls="collapse2">
-                                            <h6 class="mb-0">Cooling and Heating<i class="fa fa-angle-down rotate-icon m-1"></i></h6>
-                                        </a>
-                                    </div>
-                                    <div id="collapse2" class="collapse" role="tabpanel" aria-labelledby="headingOne1" data-parent="#accordionEx">
-                                        <div class="card-body">
-                                            <ul class="list-unstyled">
-                                                <li class="form-check">
-                                                    <input type="checkbox" id="LeftDoor" class="form-check-input" cat="cah">
-                                                    <label class="form-check-label" for="LeftDoor">Motor Oil Cooler</label>
-                                                </li>
-                                                <li class="form-check">
-                                                    <input type="checkbox" id="Caapo" class="form-check-input" cat="cah">
-                                                    <label class="form-check-label" for="Caapo">AC Compressor</label>
-                                                </li>
-                                                <li class="form-check">
-                                                    <input type="checkbox" id="RightDoor" class="form-check-input" cat="cah">
-                                                    <label class="form-check-label" for="formCheck-1">Radiator</label>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card shadow mb-2">
-                                    <div id="headingOne1" class="card-header" role="tab">
-                                        <input type="checkbox" data-toggle="tooltip" data-bs-tooltip="" id="selectAll" class="m-1" title="Select All" value="carbody" name="parts" cat="Engine">
-                                        <a class="text-decoration-none" href="#collapse3" data-toggle="collapse" data-parent="#accordionEx" aria-expanded="false" aria-controls="collapse3">
-                                            <h6 class="mb-0">Engine<i class="fa fa-angle-down rotate-icon m-1"></i></h6>
-                                        </a>
-                                    </div>
-                                    <div id="collapse3" class="collapse" role="tabpanel" aria-labelledby="headingOne1" data-parent="#accordionEx">
-                                        <div class="card-body">
-                                            <ul class="list-unstyled">
-                                                <li class="form-check">
-                                                    <input type="checkbox" id="LeftDoor" class="form-check-input" cat="Engine">
-                                                    <label class="form-check-label" for="LeftDoor">Motor</label>
-                                                </li>
-                                                <li class="form-check">
-                                                    <input type="checkbox" id="Caapo" class="form-check-input" cat="Engine">
-                                                    <label class="form-check-label" for="Caapo">Starter Motor</label>
-                                                </li>
-                                                <li class="form-check">
-                                                    <input type="checkbox" id="RightDoor" class="form-check-input" cat="Engine">
-                                                    <label class="form-check-label" for="formCheck-1">Cylinder Head</label>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card shadow mb-2">
-                                    <div id="headingOne1" class="card-header" role="tab">
-                                        <input type="checkbox" data-toggle="tooltip" data-bs-tooltip="" id="selectAll" class="m-1" title="Select All" value="carbody" name="parts" cat="Electrical">
-                                        <a class="text-decoration-none" href="#collapse4" data-toggle="collapse" data-parent="#accordionEx" aria-expanded="false" aria-controls="collapse4">
-                                            <h6 class="mb-0">Electrical<i class="fa fa-angle-down rotate-icon m-1"></i></h6>
-                                        </a>
-                                    </div>
-                                    <div id="collapse4" class="collapse" role="tabpanel" aria-labelledby="headingOne1" data-parent="#accordionEx">
-                                        <div class="card-body">
-                                            <ul class="list-unstyled">
-                                                <li class="form-check">
-                                                    <input type="checkbox" id="LeftDoor" class="form-check-input" cat="Electrical">
-                                                    <label class="form-check-label" for="LeftDoor">Alternator</label>
-                                                </li>
-                                                <li class="form-check">
-                                                    <input type="checkbox" id="Caapo" class="form-check-input" cat="Electrical">
-                                                    <label class="form-check-label" for="Caapo">Battery</label>
-                                                </li>
-                                                <li class="form-check">
-                                                    <input type="checkbox" id="RightDoor" class="form-check-input" cat="Electrical">
-                                                    <label class="form-check-label" for="formCheck-1">Engine/Motor Control Module</label>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                             <hr>
                             <div class="text-center text-sm-right">
-                                <button class="btn btn-success shadow-none m-2" type="submit"><i
-                                            class="fa fa-file mr-1"></i>edit
+                                <button class="btn btn-success shadow-none m-2" type="submit">
+                                    <i class="fa fa-file mr-1"></i>Edit
                                 </button>
                             </div>
                         </form>

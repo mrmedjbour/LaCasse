@@ -71,3 +71,5 @@ Route::view('/home/annonces', 'admin.annonces')->name('ads'); // admin annonce l
 
 // ----------------------------------------------------------------------------
 Route::resource('/home/annonce', 'User\UserAnnonceController');
+
+Route::get('/image/{id}', 'ImageController@delete')->name("image.delete");
