@@ -1,6 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
+@extends('layouts.app') @section('content')
     <section>
         <div class="container dashboard">
             <div class="row">
@@ -9,20 +7,20 @@
                 </div>
                 <div class="col-lg-8 dash-info">
                     <div id="PaddAnn">
-                        <form id="GoPro" class="p-4">
+                        <form id="GoPro" class="p-4" action="{{ route("pro.store") }}" method="POST" enctype="multipart/form-data">
+                            @csrf
                             <div class="w-100">
                                 <h5 class="mb-2">Switch to professional account</h5>
                                 <div class="form-group">
-                                    <label class="weight500">Casse name: *</label>
-                                    <input class="form-control" type="text" name="casse_name" required="" minlength="2">
+                                    <label for="casse_name" class="weight500">Casse name: *</label>
+                                    <input class="form-control" type="text" id="casse_name" name="casse_name" required minlength="2">
                                 </div>
                                 <div class="form-group">
-                                    <label class="weight500">Casse addresse: *</label>
-                                    <input class="form-control" type="text" name="casse_address" required=""
-                                           minlength="5">
+                                    <label for="casse_adr" class="weight500">Casse addresse: *</label>
+                                    <input class="form-control" type="text" id="casse_adr" name="casse_adr" required minlength="5">
                                 </div>
                                 <div class="form-group">
-                                    <select id="Wilaya" class="form-control" required>
+                                    <select id="Wilaya" class="form-control">
                                         <option hidden disabled selected>Wilaya</option>
                                         <option value="4">ALGER</option>
                                         <option value="13">BOUMERDES</option>
@@ -72,40 +70,45 @@
                                         <option value="45">TIPAZA</option>
                                         <option value="46">Tissemsilt</option>
                                         <option value="48">TLEMCEN</option>
+                                        <option value="{{$user->commune->daira->wilaya_id}}" hidden selected>{{Str::title($user->commune->daira->wilaya->wilaya_nom)}}</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <select id="Daira" class="form-control" required disabled>
+                                    <select id="Daira" class="form-control" disabled>
                                         <option hidden disabled selected>Daira</option>
+                                        <option value="{{$user->commune->daira->daira_id}}" selected>{{Str::title($user->commune->daira->daira_nom)}}</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <select id="Commune" name="commune_id" class="form-control" required disabled>
+                                    <select id="Commune" name="commune" class="form-control" required disabled>
                                         <option hidden disabled selected>Commune</option>
+                                        <option value="{{$user->commune->commune_id}}" selected>{{Str::title($user->commune->commune_nom)}}</option>
                                     </select>
                                 </div>
-                                @error('commune_id')
+                                @error('commune')
                                 <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                            </span>
+                                        <strong>{{ $message }}</strong>
+                                    </span>
                                 @enderror
                                 <hr>
                                 <div class="form-group" id="CassePhoneNumberinput">
                                     <label class="weight500">Phone Numbers: *</label>
-                                    <input class="form-control" type="tel" name="phone[]" minlength="9" maxlength="14"
-                                           required="">
+                                    @if(empty($user->user_tel))
+                                        <input class="form-control mt-2" type="tel" name="phone[]" placeholder="Phone Number" minlength="9" maxlength="14" inputmode="tel" required>
+                                    @endif
+                                    @foreach($user->user_tel as $phone)
+                                        <input class="form-control mt-2" type="tel" name="phone[]" placeholder="Phone Number" value="{{$phone}}" minlength="9" maxlength="14" inputmode="tel">
+                                    @endforeach
                                 </div>
-                                <a class="btn shadow-none" role="button" id="CassePhoneNumber" href="#"
-                                   style="padding: 0;display: block;color: #007bff;">Add another phone number</a>
+                                <a class="btn shadow-none p-0 d-block" role="button" id="CassePhoneNumber" style="color: #007bff;">Add another phone number</a>
                                 <hr>
                                 <div class="form-group">
-                                    <label class="weight500">trade register number: *</label>
-                                    <input class="form-control" type="tel" name="phone" minlength="9" maxlength="14"
-                                           required="">
+                                    <label for="casse_rc" class="weight500">trade register number: *</label>
+                                    <input class="form-control" type="tel" id="casse_rc" name="casse_rc" minlength="9" maxlength="14" required>
                                 </div>
                                 <div class="form-group">
-                                    <label class="weight500 d-block">Upload trade register document (pdf,img...): *</label>
-                                    <input type="file" required="">
+                                    <label for="casse_doc" class="weight500 d-block">Upload trade register document (pdf,img...): *</label>
+                                    <input type="file" id="casse_doc" name="casse_doc" required>
                                 </div>
                             </div>
                             <div class="text-center text-sm-right">

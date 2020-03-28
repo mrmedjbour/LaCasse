@@ -15,11 +15,11 @@ class CreateCassesTable extends Migration
     {
         Schema::create('casse', function (Blueprint $table) {
             $table->smallIncrements('casse_id');
-            $table->string('casse_nom',30);
-            $table->string('casse_image',50);
-            $table->string('casse_adr',50);
-            $table->string('casse_loc',30);
-            $table->string('casse_rc',10);
+            $table->string('casse_nom', 30);
+            $table->string('casse_image', 50)->nullable();
+            $table->string('casse_adr', 50);
+            $table->string('casse_loc', 30)->nullable();
+            $table->string('casse_rc', 10);
             $table->addColumn('smallInteger', 'commune_id', ['length'=>4, 'unsigned'=>true]);
             $table->foreign('commune_id')->references('commune_id')->on('commune')->onDelete('cascade');
             $table->timestamps();

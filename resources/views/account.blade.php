@@ -97,6 +97,9 @@
                                     </div>
                                     <h6 style="margin-bottom: 1rem;">Phone numbers :</h6>
                                     <div class="form-group ProfInputPhone">
+                                        @if(empty($user->user_tel))
+                                            <input class="form-control form-control-sm" type="tel" placeholder="Phone Number" name="phone[]" inputmode="tel">
+                                        @endif
                                         @foreach($user->user_tel as $phone)
                                             <input class="form-control form-control-sm" type="tel" placeholder="Phone Number" value="{{$phone}}" name="phone[]" inputmode="tel">
                                         @endforeach

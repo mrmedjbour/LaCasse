@@ -38,10 +38,10 @@ Route::view('/home/model/add', 'admin.modelAdd')->name('model.add');
 Route::view('/home/model/{id}', 'admin.modelEdit')->name('model.edit');
 
 /*  Go Pro Routes  */
-Route::view('/home/pro', 'pro')->name('pro'); //sent req to go pro
-Route::view('/home/prosent', 'proSent')->name('pro.sent'); // req send succesfully
-Route::view('/home/pro/list', 'admin.proList')->name('pro.list'); // req list for admin
-Route::view('/home/pro/{id}', 'admin.proReq')->name('pro.req'); // req view for admin
+//Route::view('/home/pro', 'pro')->name('pro'); //sent req to go pro
+//Route::view('/home/prosent', 'proSent')->name('pro.sent'); // req send succesfully
+//Route::view('/home/pro/list', 'admin.proList')->name('pro.list'); // req list for admin
+//Route::view('/home/pro/{id}', 'admin.proReq')->name('pro.req'); // req view for admin
 
 /*  Gs Users Routes  */
 Route::view('/home/users', 'admin.users')->name('users.List');
@@ -69,11 +69,17 @@ Route::view('/home/annonces', 'admin.annonces')->name('ads'); // admin annonce l
 
 
 // ----------------------------------------------------------------------------
+// User Account Routes
 Route::get('/home/account', 'User\UserAccountController@account')->name("user.account");
 Route::post('/home/account', 'User\UserAccountController@updateAccount')->name("user.updateAccount");
 Route::put('/home/account', 'User\UserAccountController@updateAvatar')->name("user.updateAvatar");
 Route::patch('/home/account', 'User\UserAccountController@updatePassword')->name("user.updatePassword");
 
+// User Annnonce Resource Routes
 Route::resource('/home/annonce', 'User\UserAnnonceController');
 
+// User img Route
 Route::get('/image/{id}', 'ImageController@delete')->name("image.delete");
+
+//Go Pro Routes
+Route::resource('/home/pro', 'ProController', ['except' => ['edit', 'create']]);
