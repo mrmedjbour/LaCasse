@@ -103,8 +103,9 @@
                                         <a class="btn shadow-none" role="button" id="addPhoneNumber">Add another phone number</a>
                                     </div>
                                 </div>
+
                                 <div class="text-center" id="Profile" style="width: auto;padding: 2px;">
-                                    <img class="rounded-circle img-fluid" id="AvatarProfile" src="{{ asset("/files/avatar/" . $user->user_avatar)  }}" alt="Avatar" loading="auto" style="width: 200px;height: 200px;margin: 5px;">
+                                    <img class="rounded-circle img-fluid" id="AvatarProfile" src="{{ asset("/files/avatar/" . $user->user_avatar) }}" alt="Avatar" loading="auto" style="width: 200px;height: 200px;margin: 5px;">
                                     <div class="file btn btn-lg btn-primary" style="position: relative;overflow: hidden;">
                                         <span style="font-size: initial;">
                                             <i class="fa fa-upload" style="margin-right: 2px;"></i>Choose Avatar
@@ -112,26 +113,32 @@
                                         <input type="file" accept="image/*" name="avatar" style="position: absolute;opacity: 0;right: 0;top: 0;">
                                     </div>
                                 </div>
+
                             </div>
                             <div class="d-flex justify-content-center justify-content-sm-end m-4">
                                 <button class="btn btn-success shadow-none" type="submit"><i class="fa fa-pencil m-1"></i>Save Changes</button>
                             </div>
                         </form>
                         <hr>
-                        <fieldset style="padding: 0 3%;margin-bottom: 15px;">
-                            <form method="post">
+                        <fieldset class="mb-3" style="padding: 0 3%;">
+                            @if ($errors->has('oldpassword'))
+                                <div class="alert alert-danger m-2">Please Confirm Your Current Password</div>
+                            @endif
+                            <form method="post" id="ChangePasswordForm" action="{{ route("user.updatePassword") }}">
+                                @csrf
+                                <input type="hidden" value="patch" name="_method">
                                 <legend>Change Password</legend>
                                 <div class="form-group d-sm-flex justify-content-sm-between">
-                                    <label class="text-nowrap" for="password">Current Password :&nbsp;</label>
-                                    <input class="form-control form-control-sm" type="text" id="password" style="color: #444;border: 1px solid #9a9a9a;max-width: 300px;" placeholder="Password" required="" minlength="6">
+                                    <label class="text-nowrap" for="oldpassword">Current Password :&nbsp;</label>
+                                    <input class="form-control form-control-sm ProfInputS" type="text" id="oldpassword" name="oldpassword" placeholder="Old Password" required>
                                 </div>
                                 <div class="form-group d-sm-flex justify-content-sm-between">
-                                    <label class="text-nowrap" for="newpassword">New Password :&nbsp;</label>
-                                    <input class="form-control form-control-sm" type="text" id="newpassword" style="color: #444;border: 1px solid #9a9a9a;max-width: 300px;" placeholder="New Password" required="" minlength="6">
+                                    <label class="text-nowrap" for="password">New Password :&nbsp;</label>
+                                    <input class="form-control form-control-sm ProfInputS" type="text" id="password" name="password" placeholder="New Password" required minlength="6">
                                 </div>
                                 <div class="form-group d-sm-flex justify-content-sm-between">
-                                    <label class="text-nowrap" for="confirmpassword">Confirm New Password :&nbsp;</label>
-                                    <input class="form-control form-control-sm" type="text" id="confirmpassword" style="color: #444;border: 1px solid #9a9a9a;max-width: 300px;" placeholder="Confirm New Password" required="" minlength="6">
+                                    <label class="text-nowrap" for="password_confirmation">Confirm New Password :&nbsp;</label>
+                                    <input class="form-control form-control-sm ProfInputS" type="text" id="password_confirmation" name="password_confirmation" placeholder="Confirm New Password" required minlength="6">
                                 </div>
                                 <button class="btn btn-success shadow-none float-right" type="submit"><i class="fa fa-key m-1"></i>Change password</button>
                             </form>

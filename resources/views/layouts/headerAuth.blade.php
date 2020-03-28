@@ -74,11 +74,9 @@
 											<span class="num">7</span>
 						</span>
                     </a>
-                    <div class="dropdown"><a class="btn dropdown-toggle shadow-none" data-toggle="dropdown"
-                                             aria-expanded="false" role="button" href="#"
-                                             style="padding: 0px;color: #fff;">&nbsp;
-                            <img src="{{ asset('files/avatar/') }}/{{ Auth::user()->user_avatar }}"
-                                 style="border-radius: 50%;width: 40px;">
+                    <div class="dropdown">
+                        <a class="btn dropdown-toggle shadow-none p-0 text-white" data-toggle="dropdown" aria-expanded="false" role="button">&nbsp;
+                            <img class="HeadAvatarImg" src="{{ asset('files/avatar/') }}/{{ Auth::user()->user_avatar }}">
                         </a>
                         <div class="dropdown-menu dropdown-menu-right dropdownProfile" role="menu"><a
                                     class="dropdown-item" role="presentation" href="{{ route('home') }}">Dashboard</a>
@@ -90,8 +88,7 @@
                                 <a class="btn btn-dark btn-sm shadow-none" role="button" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();document.getElementById('logout-form').submit();"> <i
                                             class="fas fa-sign-out-alt"></i>Sign out</a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                      style="display: none;">@csrf</form>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">@csrf</form>
                             </div>
                         </div>
                     </div>

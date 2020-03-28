@@ -5,6 +5,7 @@
 #/vendor
 /public/phpmyadmin
 /public/files/annonce/*
+/public/files/avatar/*
 .env
 .env.backup
 .phpunit.result.cache

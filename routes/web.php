@@ -72,6 +72,7 @@ Route::view('/home/annonces', 'admin.annonces')->name('ads'); // admin annonce l
 Route::get('/home/account', 'User\UserAccountController@account')->name("user.account");
 Route::post('/home/account', 'User\UserAccountController@updateAccount')->name("user.updateAccount");
 Route::put('/home/account', 'User\UserAccountController@updateAvatar')->name("user.updateAvatar");
+Route::patch('/home/account', 'User\UserAccountController@updatePassword')->name("user.updatePassword");
 
 Route::resource('/home/annonce', 'User\UserAnnonceController');
 

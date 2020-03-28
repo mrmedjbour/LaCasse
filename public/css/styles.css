@@ -1345,4 +1345,10 @@ select.ProfSelects {
     min-width: 223px;
 }
 
+img.HeadAvatarImg {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
 /* End Hamid added page*/

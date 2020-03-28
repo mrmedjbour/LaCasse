@@ -13,6 +13,14 @@ $(document).ready(function() {
     });
 // /* END add annonce script  */
 
+// Ajax Setup Req
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+// End Ajax Setup Req
+
 // /* Start API address  */
     // WILAYA SELECT EVENT
     $("div select#Wilaya").change(function () {
@@ -23,7 +31,7 @@ $(document).ready(function() {
             // FETCH ALL DAIRA'S
             $.each(data, function (key, entry) {
                 $("div select#Daira").append($('<option></option>').attr('value', entry.daira_id).text(entry.daira_nom));
-            })
+            });
         });
         //enable Daira disable Commune select
         $("div select#Daira").prop('disabled', false);
@@ -120,20 +128,40 @@ $(document).ready(function() {
     });
 
 // account info preview avatar
-    function filePreview(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                $('#Profile #AvatarProfile').attr('src', e.target.result);
-            };
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-
+//     function filePreview(input) {
+//         if (input.files && input.files[0]) {
+//             var reader = new FileReader();
+//             reader.onload = function (e) {
+//                 $('#Profile #AvatarProfile').attr('src', e.target.result);
+//             };
+//             reader.readAsDataURL(input.files[0]);
+//         }
+//     }
+// Upload Avatar Ajax Req
     $("#Profile input").change(function () {
-        filePreview(this);
+        var avatar = new FormData();
+        avatar.append('avatar', $("input[type=file]")[0].files[0]);
+        avatar.append('_method', 'PUT');
+        $.ajax({
+            url: '/home/account',
+            type: 'POST',
+            processData: false,
+            data: avatar,
+            contentType: false,
+            dataType: 'json',
+            success: function (data) {
+                console.log(data);
+                $("#Profile img#AvatarProfile, img.HeadAvatarImg").attr("src", data.avatar)
+            }
+        });
     });
-
+// User Change password validaion
+    $('form#ChangePasswordForm').submit(function () {
+        if ($("form input[name=password]").val() !== $("form input[name=password_confirmation]").val()) {
+            $("form input[name=password_confirmation]").addClass("is-invalid");
+            return false;
+        }
+    });
 // delete annonce image on edit page (ajax req to delet img);
     $("img#deleteAdsImg").click(function () {
         $img_id = $(this).attr('img');
