@@ -6,6 +6,7 @@
 /public/phpmyadmin
 /public/files/annonce/*
 /public/files/avatar/*
+/public/files/doc/*
 .env
 .env.backup
 .phpunit.result.cache
