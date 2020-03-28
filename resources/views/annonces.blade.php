@@ -3,8 +3,10 @@
         <div class="container dashboard">
             <div class="row">
                 <div class="col-lg-4" style="padding: 0px;font-family: Montserrat, sans-serif;font-size: 14px;">@include('comp.sidebar')</div>
-                <div class="col-lg-8 dash-info">@if(session('success'))
-                        <div class="alert alert-success">{{ session('success') }}</div>@endif
+                <div class="col-lg-8 dash-info">
+                    @if(session('success'))
+                        <div class="alert alert-success">{{ session('success') }}</div>
+                    @endif
                     <div class="text-center text-sm-right">
                         <a class="btn btn-success btn-sm shadow-none m-2" role="button" href="{{route('annonce.create')}}"> <i class="fa fa-plus mr-1"></i>Add Annonce</a>
                     </div>

@@ -48,7 +48,6 @@ Route::view('/home/users', 'admin.users')->name('users.List');
 Route::view('/home/users/{id}', 'admin.userView')->name('users.view');
 
 /*  Dashboard Routes    */
-Route::view('/home/account', 'account')->name('account');
 Route::view('/home/messages', 'messages')->name('messages');
 
 
@@ -70,6 +69,10 @@ Route::view('/home/annonces', 'admin.annonces')->name('ads'); // admin annonce l
 
 
 // ----------------------------------------------------------------------------
+Route::get('/home/account', 'User\UserAccountController@account')->name("user.account");
+Route::post('/home/account', 'User\UserAccountController@updateAccount')->name("user.updateAccount");
+Route::put('/home/account', 'User\UserAccountController@updateAvatar')->name("user.updateAvatar");
+
 Route::resource('/home/annonce', 'User\UserAnnonceController');
 
 Route::get('/image/{id}', 'ImageController@delete')->name("image.delete");

@@ -1317,4 +1317,32 @@ div.social-links {
     cursor: pointer;
 }
 
+input.ProfInputS {
+    color: #444;
+    border: 1px solid #9a9a9a;
+    max-width: 300px;
+}
+
+.ProfInputPhone input {
+    color: #444;
+    border: 1px solid #9a9a9a;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    max-width: 300px;
+}
+
+.ProfInputPhone a {
+    padding: 0;
+    display: block;
+    color: #007bff;
+}
+
+select.ProfSelects {
+    color: #444;
+    border: 1px solid #9a9a9a;
+    width: auto !important;
+    min-width: 223px;
+}
+
 /* End Hamid added page*/

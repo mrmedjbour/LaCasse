@@ -1,39 +1,34 @@
-@extends('layouts.app')
-
-@section('content')
+@extends('layouts.app') @section('content')
     <section>
         <div class="container dashboard">
             <div class="row">
-                <div class="col-lg-4" style="padding: 0px;font-family: Montserrat, sans-serif;font-size: 14px;">
-                    @include('comp.sidebar')
-                </div>
+                <div class="col-lg-4" style="padding: 0px;font-family: Montserrat, sans-serif;font-size: 14px;">@include('comp.sidebar')</div>
                 <div class="col-lg-8 dash-info">
                     <div style="background-color: #f8f8f8;border: 1px solid #d5d5d5;border-radius: 3px;margin-bottom: 10vh;">
-                        <form method="post" enctype="multipart/form-data">
+                        <form method="post" action="{{ route('user.updateAccount') }}" enctype="multipart/form-data">
+                            @csrf
+                            @if(session('success'))
+                                <div class="alert alert-success m-2">{{ session('success') }}</div>
+                            @endif
                             <div class="d-md-flex justify-content-around w-100" style="padding: 5px 3%;">
                                 <div style="width: 100%;">
                                     <h6 style="margin-bottom: 1rem;">Personal information :</h6>
                                     <div class="form-group d-sm-flex align-items-center justify-content-sm-between">
-                                        <label class="text-nowrap" for="first-name">Firstname :&nbsp;</label>
-                                        <input class="form-control form-control-sm" type="text" id="first-name" readonly="" value="Hamid" disabled="" style="color: #444;border: 1px solid #9a9a9a;max-width: 300px;">
+                                        <label class="text-nowrap" for="first-name">First name :&nbsp;</label>
+                                        <input class="form-control form-control-sm ProfInputS" type="text" id="first-name" value="{{ $user->user_prenom }}" disabled>
                                     </div>
                                     <div class="form-group d-sm-flex align-items-center justify-content-sm-between">
-                                        <label class="text-nowrap" for="first-name">Lastname :&nbsp;</label>
-                                        <input class="form-control form-control-sm" type="text" id="first-name"
-                                               readonly="" value="Medjbour" disabled=""
-                                               style="color: #444;border: 1px solid #9a9a9a;max-width: 300px;">
+                                        <label class="text-nowrap" for="last-name">Last name :&nbsp;</label>
+                                        <input class="form-control form-control-sm ProfInputS" type="text" id="last-name" value="{{ $user->user_nom }}" disabled>
                                     </div>
                                     <div class="form-group d-sm-flex justify-content-sm-between">
                                         <label class="text-nowrap" for="email">Email :&nbsp; &nbsp; &nbsp;</label>
-                                        <input class="form-control form-control-sm" type="text" id="first-name"
-                                               readonly="" value="demo@example.com" disabled=""
-                                               style="color: #444;border: 1px solid #9a9a9a;max-width: 300px;">
+                                        <input class="form-control form-control-sm ProfInputS" type="text" id="email" value="{{ $user->email }}" disabled>
                                     </div>
-                                    <h6 style="margin-bottom: 1rem;">Address :</h6>
+                                    <h6 class="mb-1">Address :</h6>
                                     <div class="form-group d-flex justify-content-between align-items-center">
                                         <label id="Wilaya" for="email" class="m-0"></label>
-                                        <select class="form-control form-control-sm form-control" id="Wilaya"
-                                                style="color: #444;border: 1px solid #9a9a9a;width: auto !important;min-width: 223px;">
+                                        <select class="form-control form-control-sm form-control ProfSelects" id="Wilaya">
                                             <option hidden disabled selected>Wilaya</option>
                                             <option value="4">ALGER</option>
                                             <option value="13">BOUMERDES</option>
@@ -83,38 +78,37 @@
                                             <option value="45">TIPAZA</option>
                                             <option value="46">Tissemsilt</option>
                                             <option value="48">TLEMCEN</option>
+                                            <option value="{{$user->commune->daira->wilaya_id}}" hidden selected>{{Str::title($user->commune->daira->wilaya->wilaya_nom)}}</option>
                                         </select>
                                     </div>
                                     <div class="form-group d-flex justify-content-between align-items-center">
                                         <label id="Daira" for="email" class="m-0"></label>
-                                        <select class="form-control form-control-sm form-control" id="Daira"
-                                                style="color: #444;border: 1px solid #9a9a9a;width: auto !important;min-width: 223px;"
-                                                disabled>
+                                        <select class="form-control form-control-sm form-control ProfSelects" id="Daira" disabled>
                                             <option hidden disabled selected>Daira</option>
+                                            <option value="{{$user->commune->daira->daira_id}}" selected>{{Str::title($user->commune->daira->daira_nom)}}</option>
                                         </select>
                                     </div>
                                     <div class="form-group d-flex justify-content-between align-items-center">
                                         <label id="Commune" for="email" class="m-0"></label>
-                                        <select class="form-control form-control-sm form-control" id="Commune"
-                                                style="color: #444;border: 1px solid #9a9a9a;width: auto !important;min-width: 223px;"
-                                                required disabled>
+                                        <select class="form-control form-control-sm form-control ProfSelects" id="Commune" name="commune" required disabled>
                                             <option hidden disabled selected>Commune</option>
+                                            <option value="{{$user->commune->commune_id}}" selected>{{Str::title($user->commune->commune_nom)}}</option>
                                         </select>
                                     </div>
                                     <h6 style="margin-bottom: 1rem;">Phone numbers :</h6>
-                                    <div class="form-group">
-                                        <input class="form-control form-control-sm" type="tel"
-                                               placeholder="Phone Number"
-                                               style="color: #444;border: 1px solid #9a9a9a;display: block;margin: 0 auto;margin-bottom: 1rem;max-width: 300px;"
-                                               value="0542569990" name="phone[]" inputmode="tel"> <a
-                                                class="btn shadow-none" role="button" id="addPhoneNumber" href="#"
-                                                style="padding: 0;display: block;color: #007bff;">Add another phone
-                                            number</a>
+                                    <div class="form-group ProfInputPhone">
+                                        @foreach($user->user_tel as $phone)
+                                            <input class="form-control form-control-sm" type="tel" placeholder="Phone Number" value="{{$phone}}" name="phone[]" inputmode="tel">
+                                        @endforeach
+                                        <a class="btn shadow-none" role="button" id="addPhoneNumber">Add another phone number</a>
                                     </div>
                                 </div>
                                 <div class="text-center" id="Profile" style="width: auto;padding: 2px;">
-                                    <img class="rounded-circle img-fluid" id="AvatarProfile" src="{{ asset("img/avatar.svg")  }}" alt="Avatar" loading="auto" style="width: 200px;height: 200px;margin: 5px;">
-                                    <div class="file btn btn-lg btn-primary" style="position: relative;overflow: hidden;"><span style="font-size: initial;"><i class="fa fa-upload" style="margin-right: 2px;"></i>Choose Avatar</span>
+                                    <img class="rounded-circle img-fluid" id="AvatarProfile" src="{{ asset("/files/avatar/" . $user->user_avatar)  }}" alt="Avatar" loading="auto" style="width: 200px;height: 200px;margin: 5px;">
+                                    <div class="file btn btn-lg btn-primary" style="position: relative;overflow: hidden;">
+                                        <span style="font-size: initial;">
+                                            <i class="fa fa-upload" style="margin-right: 2px;"></i>Choose Avatar
+                                        </span>
                                         <input type="file" accept="image/*" name="avatar" style="position: absolute;opacity: 0;right: 0;top: 0;">
                                     </div>
                                 </div>

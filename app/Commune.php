@@ -8,6 +8,10 @@ class Commune extends Model
 {
     protected $table = 'commune';
     protected $primaryKey = 'commune_id';
+    public $timestamps = false;
+    protected $fillable = [
+        'commune_nom',
+    ];
 
     public function daira()
     {
@@ -16,7 +20,7 @@ class Commune extends Model
 
     public function users()
     {
-        return $this->hasMany('App\User', 'user_id');
+        return $this->hasMany('App\User', 'commune_id');
     }
 
     public function casses()

@@ -36,8 +36,8 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'user_tel' => 'array',
     ];
-
     /**
      * methods of class users
      */
@@ -70,6 +70,6 @@ class User extends Authenticatable
 
     public function commune()
     {
-        return $this->belongsTo('App\Commune', 'user_id');
+        return $this->belongsTo('App\Commune', 'commune_id');
     }
 }

@@ -19,7 +19,7 @@
         <a href="{{route('annonce.index')}}" class="list-group-item"> <i class="fa fa-folder-open-o"></i> My ads <span
                     class="badge">14</span>
         </a>
-        <a href="{{route('account')}}" class="list-group-item"> <i class="fa fa-user"></i> Account Information</a>
+        <a href="{{route('user.account')}}" class="list-group-item"> <i class="fa fa-user"></i> Account Information</a>
         <a href="{{route('pro')}}" class="list-group-item"> <i class="fas fa-user-tie"></i> Switch to professional
             account</a>
     </div>
