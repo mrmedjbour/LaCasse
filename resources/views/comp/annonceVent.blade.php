@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <h1 class="searchResultTitle"><strong>Radiator Peugeot 307 - 2011</strong></h1>
+                <h1 class="searchResultTitle"><strong>{{ Str::title($ads->pieces->where('piece_id', $part)[0]->piece_nom) }} - {{ Str::title($ads->modele->marque->marque_nom) }} {{ Str::title($ads->modele->modele_nom) }} {{ $ads->modele_annee ? '- '.$ads->modele_annee : ''}}</strong></h1>
             </div>
         </div>
         <div class="row">
@@ -12,34 +12,37 @@
             <div class="col-12 col-sm-6">
                 <div id="partSideCont">
                     <div class="d-lg-flex justify-content-lg-between" id="postedBy">
-                        <div class="d-inline-block"><span class="text-nowrap">Posted by:</span><a class="text-nowrap" href="{{route('profile',"Casse De Moh Dezairi")}}"><i class="fas fa-address-card"></i>Casse De Moh Dezairi</a>
+                        <div class="d-inline-block">
+                            <span class="text-nowrap">Posted by:</span>
+                            @if($ads->user->role_id == 2)
+                                <a class="text-nowrap" href="#"><i class="fas fa-address-card mr-1"></i>Casse De Moh Dezairi</a>
+                            @else
+                                <a class="text-nowrap"><i class="fas fa-address-card mr-1"></i>{{ $ads->user->user_prenom .' '. $ads->user->user_nom }}</a>
+                            @endif
                         </div>
-                        <div class="d-inline-block"><span class="text-nowrap">Posted on:</span><a class="text-nowrap" href="#">26 Jan 2020</a>
+                        <div class="d-inline-block">
+                            <span class="text-nowrap">Posted on:</span>
+                            <a class="text-nowrap">{{ \Carbon\Carbon::parse($ads->annonce_date)->format('d M Y')}}</a>
                         </div>
                     </div>
                     <div id="CWays">
                         <p style="color: #555555;">For parts pricing, or other inquiries:</p>
                         @auth()
-                        <button class="btn btn-lg shadow-none" id="fContactMsg" type="button" data-toggle="modal" data-target="#contact"><i class="fas fa-comment-dots fa-lg"></i>Contact The Advertiser</button>
+                            <button class="btn btn-lg shadow-none" id="fContactMsg" type="button" data-toggle="modal" data-target="#contact">
+                                <i class="fas fa-comment-dots fa-lg"></i>Contact The Advertiser
+                            </button>
                         @endauth
                         <div class="table-responsive table-borderless">
                             <table class="table table-bordered table-hover">
                                 <tbody>
-                                <tr>
-                                    <td><a class="text-nowrap partPhones" href="tel:+213512345678"><i class="fas fa-phone-square-alt fa-lg"></i>0512 345 678</a>
-                                    </td>
-                                    <td>(mohammed)</td>
-                                </tr>
-                                <tr>
-                                    <td><a class="text-nowrap partPhones" href="tel:+213712345678"><i class="fas fa-phone-square-alt fa-lg"></i><strong>0712 345 678</strong></a>
-                                    </td>
-                                    <td>(Fares)</td>
-                                </tr>
-                                <tr>
-                                    <td><a class="text-nowrap partPhones" href="tel:+213712345678"><i class="fas fa-phone-square-alt fa-lg"></i><strong>0612 345 678</strong></a>
-                                    </td>
-                                    <td>(Atman)</td>
-                                </tr>
+                                @foreach($ads->user->user_tel as $phone)
+                                    <tr>
+                                        <td>
+                                            <a class="text-nowrap partPhones" href="tel:+213512345678"><i class="fas fa-phone-square-alt fa-lg"></i>{{ $phone }}</a>
+                                        </td>
+                                        <td>( {{ Str::title($ads->user->user_prenom) }} )</td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>

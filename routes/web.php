@@ -58,7 +58,7 @@ Route::view('/home/role/{id}', 'dr.roleEdit')->name('dr.roles.edit'); // dr edit
 
 
 /*  Ads Routes  */
-//Route::view('/annonce', 'annonce')->name('annonce'); // annoce for anyone public view
+//Route::view('/annoncex', 'annonce')->name('annoncex'); // annoce for anyone public view
 //Route::view('/home/annonce', 'annonces')->name('myads'); // users annonce list
 Route::view('/home/annonces', 'admin.annonces')->name('ads'); // admin annonce list
 //Route::get('/home/annonce/add', function (){
@@ -84,3 +84,7 @@ Route::get('/image/{id}', 'ImageController@delete')->name("image.delete");
 //Go Pro Routes
 Route::resource('/home/pro', 'ProController', ['except' => ['edit', 'create']]);
 Route::get('/home/pro/doc/{id}', 'Admin\AdminFileAccessContoller@AccessUserDoc')->name("pro.doc");
+
+// Ad Routes
+Route::get('/annonce/{ad}/{part}/{title?}', 'AdController@adSell')->where(['ad' => '[0-9]+', 'part' => '[0-9]+']); // sell
+Route::get('/annonce/{ad}/{title?}', 'AdController@adBuy')->where(['ad' => '[0-9]+', 'title' => '[A-Za-z0-9-]*']); // buy

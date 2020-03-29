@@ -28,6 +28,7 @@ class ProController extends Controller
             return redirect(route("home"));
         }
     }
+
     public function store(Request $request)
     {
         Validator::make($request->all(), array(
@@ -115,11 +116,9 @@ class ProController extends Controller
 
     public function create()
     {
-        //
     }
 
     public function edit($id)
     {
-        //
     }
 }
