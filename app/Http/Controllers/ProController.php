@@ -38,7 +38,7 @@ class ProController extends Controller
             'casse_doc' => 'required|file',
             'commune' => 'exists:commune,commune_id',
             'phone' => 'array',
-            'phone.*' => 'nullable|numeric|regex:/^([0-9]{9,13})$/',
+            'phone.*' => 'nullable|phone:DZ',
         ))->validate();
         $user = Auth::user();
         if ($user->demandes->where('dem_etat', null)->count() or $user->demandes->where('dem_etat', 1)->count() or $user->role_id != 5) {

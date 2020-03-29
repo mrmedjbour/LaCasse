@@ -97,7 +97,7 @@
                                         <input class="form-control mt-2" type="tel" name="phone[]" placeholder="Phone Number" minlength="9" maxlength="14" inputmode="tel" required>
                                     @endif
                                     @foreach($user->user_tel as $phone)
-                                        <input class="form-control mt-2" type="tel" name="phone[]" placeholder="Phone Number" value="{{$phone}}" minlength="9" maxlength="14" inputmode="tel">
+                                        <input class="form-control mt-2" type="tel" name="phone[]" placeholder="Phone Number" value="{{ phone($phone, 'DZ') }}" minlength="9" maxlength="14" inputmode="tel">
                                     @endforeach
                                 </div>
                                 <a class="btn shadow-none p-0 d-block" role="button" id="CassePhoneNumber" style="color: #007bff;">Add another phone number</a>

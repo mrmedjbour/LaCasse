@@ -9,6 +9,10 @@ class Piece extends Model
     protected $table = 'piece';
     protected $primaryKey = 'piece_id';
     public $timestamps = false;
+    protected $fillable = [
+        'piece_nom',
+    ];
+
     public function cat()
     {
         return $this->belongsTo('App\PieceCat', 'cat_id');

@@ -101,7 +101,7 @@
                                             <input class="form-control form-control-sm" type="tel" placeholder="Phone Number" name="phone[]" inputmode="tel">
                                         @endif
                                         @foreach($user->user_tel as $phone)
-                                            <input class="form-control form-control-sm" type="tel" placeholder="Phone Number" value="{{$phone}}" name="phone[]" inputmode="tel">
+                                            <input class="form-control form-control-sm" type="tel" placeholder="Phone Number" value="{{ phone($phone, 'DZ') }}" name="phone[]" inputmode="tel">
                                         @endforeach
                                         <a class="btn shadow-none" role="button" id="addPhoneNumber">Add another phone number</a>
                                     </div>

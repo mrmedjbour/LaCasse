@@ -8,6 +8,9 @@ class PieceCat extends Model
 {
     protected $table = 'piece_categorie';
     protected $primaryKey = 'cat_id';
+    protected $fillable = [
+        'cat_nom',
+    ];
 
     public function pieces()
     {

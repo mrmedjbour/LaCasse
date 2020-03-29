@@ -28,7 +28,7 @@ class UserAccountController extends Controller
         Validator::make($request->all(), array(
             'commune' => 'exists:commune,commune_id',
             'phone' => 'array',
-            'phone.*' => 'nullable|numeric|regex:/^([0-9]{9,13})$/',
+            'phone.*' => 'nullable|phone:DZ',
         ))->validate();
 
         $user = Auth::user();

@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <h1 class="searchResultTitle"><strong>{{ Str::title($ads->pieces->where('piece_id', $part)[0]->piece_nom) }} - {{ Str::title($ads->modele->marque->marque_nom) }} {{ Str::title($ads->modele->modele_nom) }} {{ $ads->modele_annee ? '- '.$ads->modele_annee : ''}}</strong></h1>
+                <h1 class="searchResultTitle">{{ Str::title($ads->pieces->where('piece_id', $part)[0]->piece_nom) }} - {{ Str::title($ads->modele->marque->marque_nom) }} {{ Str::title($ads->modele->modele_nom) }} {{ $ads->modele_annee ? '- '.$ads->modele_annee : ''}}</></h1>
             </div>
         </div>
         <div class="row">
@@ -38,7 +38,7 @@
                                 @foreach($ads->user->user_tel as $phone)
                                     <tr>
                                         <td>
-                                            <a class="text-nowrap partPhones" href="tel:+213512345678"><i class="fas fa-phone-square-alt fa-lg"></i>{{ $phone }}</a>
+                                            <a class="text-nowrap partPhones" href="tel:{{ phone($phone, 'DZ') }}" target="_blank"><i class="fas fa-phone-square-alt fa-lg"></i>{{ phone($phone, 'DZ') }}</a>
                                         </td>
                                         <td>( {{ Str::title($ads->user->user_prenom) }} )</td>
                                     </tr>
@@ -46,7 +46,15 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div style="margin-bottom: 1.5em;"><a class="d-flex align-items-center" href="#" style="color: #444;padding-left: .75rem;" target="_blank"><i class="fas fa-map-marker-alt fa-2x" style="color: #0078c3;margin-right: 6px;"></i><span style="font-size: 1rem;">En Face Rue Nationnel N5<br>Tijelabine, Boumerdes 35000</span></a>
+                        <div class="mb-2">
+                            <a class="d-flex align-items-center pl-1" href="#" style="color: #444;" target="_blank">
+                                <i class="fas fa-map-marker-alt fa-2x mr-1" style="color: #0078c3;"></i>
+                                @if ($ads->user->role_id == 2)
+                                    <span class="font-weight-normal">En Face Rue Nationnel N5<br>Tijelabine, Boumerdes 35000</span>
+                                @else
+                                    <span class="font-weight-normal">{{ $ads->user->commune->commune_nom }}, {{ $ads->user->commune->daira->daira_nom }}, {{ $ads->user->commune->daira->wilaya->wilaya_nom }}</span>
+                                @endif
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -61,7 +69,8 @@
                                 <div class="modal-body">
                                     <div class="d-flex">
                                         <img class="img-thumbnail" src="{{asset('img/annonce-img.png')}}" loading="auto" alt="Annonce picture">
-                                        <div><span>Radiator Peugeot 307 - 2011</span>
+                                        <div>
+                                            <span>Radiator Peugeot 307 - 2011</span>
                                             <ul class="list-unstyled">
                                                 <li><a class="d-flex align-items-center" href="#"><i class="fas fa-address-card"></i>Casse De Moh Dezairi<br></a>
                                                 </li>
@@ -94,21 +103,19 @@
                             <tbody>
                             <tr>
                                 <td>Part category:</td>
-                                <td class="val">Cooling and Heating</td>
+                                <td class="val">{{ Str::title($ads->pieces->where('piece_id', $part)[0]->cat->cat_nom) }}</td>
                             </tr>
                             <tr>
                                 <td>Part name:</td>
-                                <td class="val">Radiator</td>
+                                <td class="val">{{ Str::title($ads->pieces->where('piece_id', $part)[0]->piece_nom) }}</td>
                             </tr>
                             </tbody>
                         </table>
                     </div>
-                    <h4><strong>Description:</strong></h4>
-                    <p class="text-justify">&nbsp; &nbsp;Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-                        <br>
-                        <br>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-                        <br>
-                        <br>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore</p>
+                    @if ($ads->annonce_desc)
+                        <h4><strong>Description:</strong></h4>
+                        <p class="text-justify">{{ $ads->annonce_desc }}</p>
+                    @endif
                 </div>
             </div>
         </div>
