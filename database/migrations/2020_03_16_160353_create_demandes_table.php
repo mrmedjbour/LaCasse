@@ -18,6 +18,9 @@ class CreateDemandesTable extends Migration
             $table->string('dem_doc', 15);
             $table->timestamp('dem_date')->useCurrent();
             $table->boolean('dem_etat')->nullable();
+            $table->smallInteger('casse_id')->unsigned();
+            $table->foreign('casse_id')->references('casse_id')->on('casse')->onDelete('cascade');
+            $table->dropForeign(['casse_id']);
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
             $table->dropForeign(['user_id']);

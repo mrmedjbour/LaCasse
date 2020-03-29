@@ -83,3 +83,4 @@ Route::get('/image/{id}', 'ImageController@delete')->name("image.delete");
 
 //Go Pro Routes
 Route::resource('/home/pro', 'ProController', ['except' => ['edit', 'create']]);
+Route::get('/home/pro/doc/{id}', 'Admin\AdminFileAccessContoller@AccessUserDoc')->name("pro.doc");

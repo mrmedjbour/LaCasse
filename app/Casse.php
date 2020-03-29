@@ -37,4 +37,9 @@ class Casse extends Model
     {
         return $this->hasOne('App\User', 'casse_id');
     }
+
+    public function demande()
+    {
+        return $this->belongsTo('App\Demande', 'dem_id');
+    }
 }

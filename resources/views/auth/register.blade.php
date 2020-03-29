@@ -60,9 +60,7 @@
                                     <label for="user_tel"><strong>Phone Number :</strong>
                                         <br>
                                     </label>
-                                    <input class="form-control @error('user_tel') is-invalid @enderror" id="user_tel"
-                                           name="user_tel" value="{{ old('user_tel') }}" type="tel"
-                                           placeholder="Phone Number" required>
+                                    <input class="form-control @error('user_tel') is-invalid @enderror" id="user_tel" name="phone[]" value="{{ old('user_tel') }}" type="tel" placeholder="Phone Number" required>
                                     @error('user_tel')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

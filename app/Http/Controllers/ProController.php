@@ -63,6 +63,7 @@ class ProController extends Controller
                 $doc->move(public_path('/files/doc/'), $doc_name);
                 if ($doc_name) {
                     $user->demande()->create([
+                        'casse_id' => $casse->casse_id,
                         'dem_doc' => $doc_name,
                     ]);
                 }
@@ -74,17 +75,42 @@ class ProController extends Controller
 
     public function show($id)
     {
-        //
+        $dem = \App\Demande::findOrFail($id);
+        return view("admin.proReq", compact('dem'));
     }
 
     public function update(Request $request, $id)
     {
-        //
+        Validator::make($request->all(), array(
+            'casse_loc' => ['required', 'between:1,30', 'regex:/^[-]?((([0-8]?[0-9])(\.(\d+))?)|(90(\.0+)?)),[-]?((((1[0-7][0-9])|([0-9]?[0-9]))(\.(\d+))?)|180(\.0+)?)$/'],
+        ))->validate();
+        $dem = \App\Demande::findOrFail($id);
+        if ($dem->dem_etat == 1) {
+            return redirect(route("pro.index"))->with('success', 'A request from this user has already been approved');
+        }
+        $dem->user->role_id = 2;
+        if ($dem->casse_id !== $dem->user->casse_id) {
+            $dem->user->casse_id = $dem->casse_id;
+        }
+        $dem->user->save();
+        if ($request->casse_loc) {
+            $dem->casse->casse_loc = $request->casse_loc;
+            $dem->casse->save();
+        }
+        $dem->dem_etat = 1;
+        $dem->save();
+        return redirect(route("pro.index"))->with('success', 'The request has been successfully approved');
     }
 
     public function destroy($id)
     {
-        //
+        $dem = \App\Demande::findOrFail($id);
+        if ($dem->dem_etat == 2) {
+            return redirect(route("pro.index"));
+        }
+        $dem->dem_etat = 2;
+        $dem->save();
+        return redirect(route("pro.index"))->with('success', 'The request has been successfully rejected');
     }
 
     public function create()

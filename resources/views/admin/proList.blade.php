@@ -4,6 +4,9 @@
             <div class="row">
                 <div class="col-lg-4" style="padding: 0px;font-family: Montserrat, sans-serif;font-size: 14px;">@include('comp.sidebar')</div>
                 <div class="col-lg-8 dash-info">
+                    @if(session('success'))
+                        <div class="alert alert-success m-2">{{ session('success') }}</div>
+                    @endif
                     <div class="table-responsive table-borderless" style="font-size: 14px;">
                         <table class="table table-striped table-bordered table-sm">
                             <thead style="background-color: #0078c3;color: white;">

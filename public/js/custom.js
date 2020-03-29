@@ -221,27 +221,28 @@ $(document).ready(function() {
             reader.readAsDataURL(file);
         }
     }
+
     $('#addAdsImgPreview input#upInput').on("change", previewImages);
 
 // add another phone number casse page
-    $( "#CassePhoneNumber" ).click(function(){
+    $("#CassePhoneNumber").click(function () {
         $('#CassePhoneNumberinput').append('<input type="tel" class="form-control mt-2" name="phone[]" minlength="9" maxlength="14" required />')
     });
 // add user profile
-    $( "#addPhoneNumber" ).click(function(){
+    $("#addPhoneNumber").click(function () {
         $('#addPhoneNumber').before('<input type="tel" class="form-control form-control-sm" inputmode="tel" placeholder="Phone Number" style="color: #444;border: 1px solid #9a9a9a;display: block;margin: 0 auto;margin-bottom: 1rem;max-width: 300px;" value="" name="phone[]" />')
+    });
+// Reject user dem to go pro
+    $("a#BtnrejectDemPro").click(function () {
+        $("#rejectDemPro").submit();
     });
 
 
-
-
-
-
-$('#carousel-brand').on('slide.bs.carousel', function(e) {
-    var $e = $(e.relatedTarget);
-    var idx = $e.index();
-    var itemsPerSlide = 5;
-    var totalItems = $('.carousel-item').length;
+    $('#carousel-brand').on('slide.bs.carousel', function (e) {
+        var $e = $(e.relatedTarget);
+        var idx = $e.index();
+        var itemsPerSlide = 5;
+        var totalItems = $('.carousel-item').length;
 
     if (idx >= totalItems - (itemsPerSlide - 1)) {
         var it = itemsPerSlide - (totalItems - idx);
