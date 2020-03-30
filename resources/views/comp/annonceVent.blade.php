@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <h1 class="searchResultTitle">{{ Str::title($ads->pieces->where('piece_id', $part)[0]->piece_nom) }} - {{ Str::title($ads->modele->marque->marque_nom) }} {{ Str::title($ads->modele->modele_nom) }} {{ $ads->modele_annee ? '- '.$ads->modele_annee : ''}}</></h1>
+                <h1 class="searchResultTitle">{{ Str::title($ads->pieces->where('piece_id', $part)[0]->piece_nom.' - '.$ads->modele->marque->marque_nom.' '.$ads->modele->modele_nom) }} {{ $ads->modele_annee ? '- '.$ads->modele_annee : ''}}</h1>
             </div>
         </div>
         <div class="row">
@@ -15,7 +15,7 @@
                         <div class="d-inline-block">
                             <span class="text-nowrap">Posted by:</span>
                             @if($ads->user->role_id == 2)
-                                <a class="text-nowrap" href="#"><i class="fas fa-address-card mr-1"></i>Casse De Moh Dezairi</a>
+                                <a class="text-nowrap" href="/casse/123"><i class="fas fa-address-card mr-1"></i>{{ $ads->user->casse->casse_nom }}</a>
                             @else
                                 <a class="text-nowrap"><i class="fas fa-address-card mr-1"></i>{{ $ads->user->user_prenom .' '. $ads->user->user_nom }}</a>
                             @endif
@@ -37,12 +37,24 @@
                                 <tbody>
                                 @foreach($ads->user->user_tel as $phone)
                                     <tr>
-                                        <td>
+                                        <td width="30%">
                                             <a class="text-nowrap partPhones" href="tel:{{ phone($phone, 'DZ') }}" target="_blank"><i class="fas fa-phone-square-alt fa-lg"></i>{{ phone($phone, 'DZ') }}</a>
                                         </td>
-                                        <td>( {{ Str::title($ads->user->user_prenom) }} )</td>
+                                        <td>({{ Str::title($ads->user->user_prenom) }})</td>
                                     </tr>
                                 @endforeach
+                                @if ($ads->user->role_id == 2)
+                                    @foreach($ads->user->casse->seller as $employee)
+                                        @foreach($employee->user_tel as $phone)
+                                            <tr>
+                                                <td width="30%">
+                                                    <a class="text-nowrap partPhones" href="tel:{{ phone($phone, 'DZ') }}" target="_blank"><i class="fas fa-phone-square-alt fa-lg"></i>{{ phone($phone, 'DZ') }}</a>
+                                                </td>
+                                                <td>({{ Str::title($employee->user_prenom) }})</td>
+                                            </tr>
+                                        @endforeach
+                                    @endforeach
+                                @endif
                                 </tbody>
                             </table>
                         </div>
@@ -50,9 +62,9 @@
                             <a class="d-flex align-items-center pl-1" href="#" style="color: #444;" target="_blank">
                                 <i class="fas fa-map-marker-alt fa-2x mr-1" style="color: #0078c3;"></i>
                                 @if ($ads->user->role_id == 2)
-                                    <span class="font-weight-normal">En Face Rue Nationnel N5<br>Tijelabine, Boumerdes 35000</span>
+                                    <span class="font-weight-normal">{{ Str::title($ads->user->casse->casse_adr) }}<br>{{ Str::title($ads->user->casse->commune->commune_nom.', '.$ads->user->casse->commune->daira->daira_nom.', '.$ads->user->casse->commune->daira->wilaya->wilaya_nom) }}</span>
                                 @else
-                                    <span class="font-weight-normal">{{ $ads->user->commune->commune_nom }}, {{ $ads->user->commune->daira->daira_nom }}, {{ $ads->user->commune->daira->wilaya->wilaya_nom }}</span>
+                                    <span class="font-weight-normal">{{ $ads->user->commune->commune_nom.', '.$ads->user->commune->daira->daira_nom.', '.$ads->user->commune->daira->wilaya->wilaya_nom }}</span>
                                 @endif
                             </a>
                         </div>
@@ -62,27 +74,40 @@
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header"><span class="modal-title"><i class="fa fa-send fa-lg"></i>Send a message</span>
-                                <button class="btn shadow-none close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="color: red;"><strong>×</strong></span>
+                                <button class="btn shadow-none close" type="button" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true" style="color: red;"><strong>×</strong></span>
                                 </button>
                             </div>
                             <form id="form_annonce_1" method="post">
+                                @csrf
                                 <div class="modal-body">
                                     <div class="d-flex">
-                                        <img class="img-thumbnail" src="{{asset('img/annonce-img.png')}}" loading="auto" alt="Annonce picture">
+                                        <img class="img-thumbnail" src="{{asset('files/annonce/' . $ads->images[0]->img_nom)}}  " loading="auto" alt="Annonce">
                                         <div>
-                                            <span>Radiator Peugeot 307 - 2011</span>
+                                            <span>{{ Str::title($ads->pieces->where('piece_id', $part)[0]->piece_nom) }} - {{ Str::title($ads->modele->marque->marque_nom) }} {{ Str::title($ads->modele->modele_nom) }} {{ $ads->modele_annee ? '- '.$ads->modele_annee : ''}}</span>
                                             <ul class="list-unstyled">
-                                                <li><a class="d-flex align-items-center" href="#"><i class="fas fa-address-card"></i>Casse De Moh Dezairi<br></a>
+                                                <li>
+                                                    @if($ads->user->role_id == 2)
+                                                        <a class="d-flex align-items-center"><i class="fas fa-address-card mr-1"></i>{{ $ads->user->casse->casse_nom }}</a>
+                                                    @else
+                                                        <a class="d-flex align-items-center"><i class="fas fa-address-card mr-1"></i>{{ $ads->user->user_prenom .' '. $ads->user->user_nom }}</a>
+                                                    @endif
                                                 </li>
-                                                <li><a class="d-flex align-items-center" href="#"><i class="fas fa-map-marker-alt"></i>Tijelabine, Boumerdes<br></a>
+                                                <li>
+                                                    @if ($ads->user->role_id == 2)
+                                                        <a class="d-flex align-items-center"><i class="fas fa-map-marker-alt"></i>{{ Str::title($ads->user->commune->commune_nom.', '.$ads->user->commune->daira->daira_nom.', '.$ads->user->commune->daira->wilaya->wilaya_nom) }}</a>
+                                                    @else
+                                                        <a class="d-flex align-items-center"><i class="fas fa-map-marker-alt"></i>{{ Str::title($ads->user->commune->commune_nom.', '.$ads->user->commune->daira->daira_nom.', '.$ads->user->commune->daira->wilaya->wilaya_nom) }}</a>
+                                                    @endif
                                                 </li>
                                             </ul>
                                         </div>
                                     </div>
                                     <div class="msg">
-                                        <input class="form-control" type="hidden" name="annonce_id">
+                                        <input class="form-control" type="hidden" name="ad" value="{{ $ads->annonce_id }}">
+                                        <input class="form-control" type="hidden" name="part" value="{{ $part }}">
                                         <label for="message">* Message:</label>
-                                        <textarea class="form-control form-control-sm" id="message" name="message" placeholder="Write a message" rows="0" spellcheck="false" wrap="soft" required=""></textarea>
+                                        <textarea class="form-control form-control-sm" id="message" name="message" placeholder="Write a message" rows="0" spellcheck="false" wrap="soft" required></textarea>
                                     </div>
                                 </div>
                                 <div class="modal-footer d-flex justify-content-between align-items-center">

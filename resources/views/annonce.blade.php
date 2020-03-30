@@ -3,7 +3,8 @@
 @section('content')
     @if ($ads->annonce_type == "buy")
         @include('comp.annonceAchat')
-    @elseif($ads ?? ''->annonce_type == "sell")
+    @elseif($ads->annonce_type == "sell")
         @include('comp.annonceVent')
+    @else
     @endif
 @endsection

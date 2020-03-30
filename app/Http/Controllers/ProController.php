@@ -57,7 +57,6 @@ class ProController extends Controller
             'commune_id' => $request->commune,
         ]);
         $user->casse()->associate($casse);
-
         if ($doc = $request->file('casse_doc')) {
             if (in_array(strtolower($doc->extension()), ['pdf', 'jpeg', 'png', 'jpg', 'docx', 'doc', 'xls', 'xlsx', 'odt', 'PDF', 'ppt', 'txt', 'zip', 'rar', 'rtf'])) {
                 $doc_name = Auth::id() . Str::random(4) . '.' . $doc->extension();

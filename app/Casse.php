@@ -18,24 +18,37 @@ class Casse extends Model
         return $this->belongsTo('App\Commune', 'commune_id');
     }
 
-    public function dr()
+//    public function dr()
+//    {
+//        return $this->hasOne('App\Dr', 'user_id');
+//    }
+//    public function vendeur()
+//    {
+//        return $this->hasMany('App\Vendeur', 'user_id');
+//    }
+//    public function acheteur()
+//    {
+//        return $this->hasMany('App\Acheteur', 'user_id');
+//    }
+
+    public function employee()
     {
-        return $this->hasOne('App\Dr', 'user_id');
+        return $this->hasMany('App\User', 'casse_id')->where('role_id', 3)->orWhere('role_id', 4);
     }
 
-    public function vendeur()
+    public function seller()
     {
-        return $this->hasMany('App\Vendeur', 'user_id');
+        return $this->hasMany('App\User', 'casse_id')->where('role_id', 3);
     }
 
-    public function acheteur()
+    public function buyer()
     {
-        return $this->hasMany('App\Acheteur', 'user_id');
+        return $this->hasMany('App\User', 'casse_id')->where('role_id', 4);
     }
 
     public function user()
     {
-        return $this->hasOne('App\User', 'casse_id');
+        return $this->hasOne('App\User', 'casse_id')->where('role_id', 2);
     }
 
     public function demande()

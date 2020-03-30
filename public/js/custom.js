@@ -236,8 +236,7 @@ $(document).ready(function() {
     $("a#BtnrejectDemPro").click(function () {
         $("#rejectDemPro").submit();
     });
-
-
+// ---------------
     $('#carousel-brand').on('slide.bs.carousel', function (e) {
         var $e = $(e.relatedTarget);
         var idx = $e.index();
@@ -342,7 +341,7 @@ $('#addphonebtn').on('click', function() {
     // if message sent show success page
     $(".modal-footer #fsendMsg").click(
         function() {
-            let succContent = "<div id=\"success\"><div class=\"modal-body\"><img class=\"d-block\" src=\"../../img/success.svg\" /><h4 class=\"text-center\">Message Sent!</h4><p class=\"text-center\">The part owner should be in touch soon. Thank you</p></div><div class=\"modal-footer d-flex justify-content-between align-items-center\"><button class=\"btn btn-sm shadow-none\" type=\"button\" data-dismiss=\"modal\"><i class=\"fas fa-check\"></i>Okey</button></div></div>";
+            let succContent = "<div id=\"success\"><div class=\"modal-body\"><img class=\"d-block\" src=\"/img/success.svg\" /><h4 class=\"text-center\">Message Sent!</h4><p class=\"text-center\">The part owner should be in touch soon. Thank you</p></div><div class=\"modal-footer d-flex justify-content-between align-items-center\"><button class=\"btn btn-sm shadow-none\" type=\"button\" data-dismiss=\"modal\"><i class=\"fas fa-check\"></i>Okey</button></div></div>";
             $(this).parent().parent().hide().parent().append(succContent);
 
         }

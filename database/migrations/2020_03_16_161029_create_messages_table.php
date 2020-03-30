@@ -17,7 +17,7 @@ class CreateMessagesTable extends Migration
             $table->increments('msg_id');
             $table->string('msg_contenu', 200);
             $table->timestamp('msg_stamp')->useCurrent();
-            $table->boolean('msg_etat');
+            $table->boolean('msg_etat')->default(0);
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('user_id')->on('users');
             $table->integer('disc_id')->unsigned();
