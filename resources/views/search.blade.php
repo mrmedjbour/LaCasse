@@ -32,7 +32,7 @@
                                 @auth()
                                     <a class="btn btn-sm shadow-none contact" role="button" id="fContactMsg" data-toggle="modal" data-target="#contact_1"><i class="fas fa-comment-dots"></i>Contact</a>
                                 @endauth
-                                <a class="btn btn-sm shadow-none details" role="button" href="{{route('annonce')}}"><i class="fa fa-clone"></i>Details</a>
+                                <a class="btn btn-sm shadow-none details" role="button" href="#"><i class="fa fa-clone"></i>Details</a>
                             </div>
                         </div>
                         @auth()

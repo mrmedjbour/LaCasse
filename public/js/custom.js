@@ -328,33 +328,51 @@ $('#addphonebtn').on('click', function() {
     $('#sortBy').change(function(){ this.form.submit();});
     // Submit form when you change filter data
     $('#filterBody form div select').change(function(){ this.form.submit();});
-    $('#filterBody form div input').change(function(){ this.form.submit();});
+    $('#filterBody form div input').change(function () {
+        this.form.submit();
+    });
     // Submit form when you change show item number
-    $('.sPage .show form .form-group select').change(function(){ this.form.submit();});
+    $('.sPage .show form .form-group select').change(function () {
+        this.form.submit();
+    });
     // filter collapse btn toggle - +
-    $("#idFilterCollapse").click(function() { $('#idFilterCollapse i').toggleClass('fa-minus');});
+    $("#idFilterCollapse").click(function () {
+        $('#idFilterCollapse i').toggleClass('fa-minus');
+    });
     // if width >= 768 collapse filter
-    if($(window).width() >= 768){
+    if ($(window).width() >= 768) {
         $('#filterBody.collapse').addClass("show");
         $('#idFilterCollapse i').addClass("fa-minus");
-    };
-    // if message sent show success page
-    $(".modal-footer #fsendMsg").click(
-        function() {
-            let succContent = "<div id=\"success\"><div class=\"modal-body\"><img class=\"d-block\" src=\"/img/success.svg\" /><h4 class=\"text-center\">Message Sent!</h4><p class=\"text-center\">The part owner should be in touch soon. Thank you</p></div><div class=\"modal-footer d-flex justify-content-between align-items-center\"><button class=\"btn btn-sm shadow-none\" type=\"button\" data-dismiss=\"modal\"><i class=\"fas fa-check\"></i>Okey</button></div></div>";
-            $(this).parent().parent().hide().parent().append(succContent);
+    }
+    ;
+    // if message sent show success page    form#AdContactAdvForm
+    $("form#AdContactAdvFormx").submit(function (event) {
+        event.preventDefault();
+        var post_url = $(this).attr("action");
+        var form_data = $(this).serialize();
+        $.ajax({
+            type: "POST",
+            url: post_url,
+            data: form_data,
+            dataType: 'json',
+            success: function (data) {
+                alert(1);
+            },
+        });
+    });
 
-        }
-    );
+    // let succContent = "<div id=\"success\"><div class=\"modal-body\"><img class=\"d-block\" src=\"/img/success.svg\" /><h4 class=\"text-center\">Message Sent!</h4><p class=\"text-center\">The part owner should be in touch soon. Thank you</p></div><div class=\"modal-footer d-flex justify-content-between align-items-center\"><button class=\"btn btn-sm shadow-none\" type=\"button\" data-dismiss=\"modal\"><i class=\"fas fa-check\"></i>Okey</button></div></div>";
+    // $(this).parent().parent().hide().parent().append(succContent);
+
     // if contact clicked clear all models
     $("#fContactMsg").click(
-        function() {
+        function () {
             $(".modal.fade .modal-dialog div form").show();
             $(".modal.fade .modal-dialog div #success").remove();
         }
     );
     // fix carousel on parts page
-    $('.carousel').on('slid.bs.carousel', function() {
+    $('.carousel').on('slid.bs.carousel', function () {
         var indicatorsAct = $(".point li.active").data("slide-to");
         $(".carousel-img li").removeClass("active");
         $(".carousel-img").find("[data-slide-to='" + indicatorsAct + "']")
