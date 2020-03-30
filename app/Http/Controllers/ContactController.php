@@ -21,7 +21,7 @@ class ContactController extends Controller
             'ad' => 'required|exists:annonce,annonce_id',
             'message' => 'required|string',
             'part' => Rule::requiredIf(function () use ($request) {
-                return \App\Annonce::findOrFail($request->ad)->annonce_type == "buy";
+                return \App\Annonce::findOrFail($request->ad)->annonce_type == "sell";
             }),
         ))->validate();
         $ads = Annonce::findOrFail($request->ad);
