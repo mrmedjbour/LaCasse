@@ -346,7 +346,7 @@ $('#addphonebtn').on('click', function() {
     }
     ;
     // if message sent show success page    form#AdContactAdvForm
-    $("form#AdContactAdvFormx").submit(function (event) {
+    $("form#AdContactAdvForm").submit(function (event) {
         event.preventDefault();
         var post_url = $(this).attr("action");
         var form_data = $(this).serialize();

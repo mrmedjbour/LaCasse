@@ -78,7 +78,7 @@
                                     <span aria-hidden="true" style="color: red;"><strong>×</strong></span>
                                 </button>
                             </div>
-                            <form id="AdContactAdvForm" method="post" action="{{ route('contactAd') }}">
+                            <form id="AdContactAdvFormX" method="post" action="{{ route('contactAd') }}">
                                 @csrf
                                 <div class="modal-body">
                                     <div class="d-flex">
