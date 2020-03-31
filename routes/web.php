@@ -25,9 +25,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 /* Pages Route */
 Route::view('/example', 'example')->name('example');
 
-/*  Search Routes  */
-Route::view('/search', 'search')->name('search');
-
 /*  Casse Routes  */
 Route::view('/directory', 'directory')->name('directory');
 Route::view('/casse/{id}', 'profile')->name('profile');
@@ -89,3 +86,6 @@ Route::get('/home/pro/doc/{id}', 'Admin\AdminFileAccessContoller@AccessUserDoc')
 Route::get('/annonce/{ad}/{part}/{title?}', 'AdController@adSell')->where(['ad' => '[0-9]+', 'part' => '[0-9]+'])->name("ad.sell"); // sell
 Route::get('/annonce/{ad}/{title?}', 'AdController@adBuy')->where(['ad' => '[0-9]+', 'title' => '[A-Za-z0-9-]*'])->name("ad.buy"); // buy
 Route::post('/annonce/contact', 'ContactController@contactAd')->name("contactAd");
+
+// Search Routes
+Route::view('/search', 'search')->name('search');

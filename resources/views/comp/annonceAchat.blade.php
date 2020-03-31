@@ -96,7 +96,7 @@
                                     <button class="btn shadow-none close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="color: red;"><strong>×</strong></span>
                                     </button>
                                 </div>
-                                <form id="form_annonce_1" method="post">
+                                <form id="AdContactAdvForm" method="post" action="{{ route('contactAd') }}">
                                     @csrf
                                     <div class="modal-body">
                                         <div class="d-flex">
@@ -125,6 +125,25 @@
                                         <button class="btn btn-sm shadow-none" id="fsendMsg" type="submit"><i class="fa fa-send"></i>Send</button>
                                     </div>
                                 </form>
+                                <div id="success" style="display: none">
+                                    <div class="modal-body">
+                                        <img class="d-block" src="/img/success.svg"/>
+                                        <h4 class="text-center">Message Sent!</h4>
+                                        <p class="text-center">The part owner should be in touch soon. Thank you</p>
+                                    </div>
+                                    <div class="modal-footer d-flex justify-content-between align-items-center">
+                                        <button class="btn btn-sm shadow-none" type="button" data-dismiss="modal"><i class="fas fa-check"></i>Okey</button>
+                                    </div>
+                                </div>
+                                <div id="fail" style="display: none">
+                                    <div class="modal-body">
+                                        <img class="d-block" width='70px' src="/img/fail.svg"/>
+                                        <h4 class="text-center">Oops! Something went wrong!</h4>
+                                    </div>
+                                    <div class="modal-footer d-flex justify-content-between align-items-center">
+                                        <button class="btn btn-sm shadow-none" type="button" data-dismiss="modal"><i class="fas fa-check"></i>Okey</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

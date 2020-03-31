@@ -35,6 +35,9 @@ class ContactController extends Controller
             $part = $ads->pieces->where('piece_id', $request->part)->first();
             $title = $part->piece_nom . ' ' . $title;
         }
+        if ($ads->annonce_type == "buy" and $ads->pieces->count() == 1) {
+            $title = $ads->pieces->first()->piece_nom . ' ' . $title;
+        }
 
         $user = Auth::user();
 
@@ -46,7 +49,6 @@ class ContactController extends Controller
             'msg_contenu' => $request->message,
             'user_id' => $user->user_id,
         ]);
-
         if ($msg) {
             return response()->json([
                 "success" => true,
