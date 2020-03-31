@@ -27,4 +27,9 @@ class Message extends Model
     {
         return $this->belongsTo('App\User', 'user_id');
     }
+
+    public function desc()
+    {
+        return $this->belongsTo('App\Discussion', 'disc_id');
+    }
 }

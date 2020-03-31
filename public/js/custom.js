@@ -356,14 +356,15 @@ $('#addphonebtn').on('click', function() {
             data: form_data,
             dataType: 'json',
             success: function (data) {
-                alert(1);
+                let SentSuccess = "<div id=\"success\"><div class=\"modal-body\"><img class=\"d-block\" src=\"/img/success.svg\" /><h4 class=\"text-center\">Message Sent!</h4><p class=\"text-center\">The part owner should be in touch soon. Thank you</p></div><div class=\"modal-footer d-flex justify-content-between align-items-center\"><button class=\"btn btn-sm shadow-none\" type=\"button\" data-dismiss=\"modal\"><i class=\"fas fa-check\"></i>Okey</button></div></div>";
+                $("form#AdContactAdvForm").hide().parent().append(SentSuccess);
+            },
+            error: function (data) {
+                let SentFail = "<div id=\"success\"><div class=\"modal-body\"><img class=\"d-block\" width='70px' src=\"/img/fail.svg\" /><h4 class=\"text-center\">Oops! Something went wrong!</h4></div><div class=\"modal-footer d-flex justify-content-between align-items-center\"><button class=\"btn btn-sm shadow-none\" type=\"button\" data-dismiss=\"modal\"><i class=\"fas fa-check\"></i>Okey</button></div></div>";
+                $("form#AdContactAdvForm").hide().parent().append(SentFail);
             },
         });
     });
-
-    // let succContent = "<div id=\"success\"><div class=\"modal-body\"><img class=\"d-block\" src=\"/img/success.svg\" /><h4 class=\"text-center\">Message Sent!</h4><p class=\"text-center\">The part owner should be in touch soon. Thank you</p></div><div class=\"modal-footer d-flex justify-content-between align-items-center\"><button class=\"btn btn-sm shadow-none\" type=\"button\" data-dismiss=\"modal\"><i class=\"fas fa-check\"></i>Okey</button></div></div>";
-    // $(this).parent().parent().hide().parent().append(succContent);
-
     // if contact clicked clear all models
     $("#fContactMsg").click(
         function () {

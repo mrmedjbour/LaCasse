@@ -46,11 +46,6 @@ class User extends Authenticatable
         return $this->belongsTo('App\Role', 'role_id');
     }
 
-    public function messages()
-    {
-        return $this->hasMany('App\Message', 'user_id');
-    }
-
     public function annonces()
     {
         return $this->hasMany('App\Annonce', 'user_id');
@@ -86,5 +81,10 @@ class User extends Authenticatable
     public function commune()
     {
         return $this->belongsTo('App\Commune', 'commune_id');
+    }
+
+    public function desc()
+    {
+        return $this->hasMany('App\Discussion', 'user_id');
     }
 }

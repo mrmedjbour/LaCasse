@@ -12,17 +12,21 @@ class Discussion extends Model
     protected $fillable = [
         'disc_titre',
         'disc_stamp',
-        'user_id',
         'annonce_id',
     ];
 
-    public function messages()
+    public function msg()
     {
-        return $this->hasMany('App\Message', 'msg_id');
+        return $this->hasMany('App\Message', 'disc_id');
     }
 
-    public function annonce()
+    public function ad()
     {
         return $this->belongsTo('App\Annonce', 'annonce_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User', 'user_id');
     }
 }

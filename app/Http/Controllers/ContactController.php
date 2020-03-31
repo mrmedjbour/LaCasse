@@ -6,6 +6,7 @@ use App\Annonce;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 
 class ContactController extends Controller
@@ -34,10 +35,26 @@ class ContactController extends Controller
             $part = $ads->pieces->where('piece_id', $request->part)->first();
             $title = $part->piece_nom . ' ' . $title;
         }
+
         $user = Auth::user();
 
+        $desc = $user->desc()->firstOrCreate(
+            ['disc_titre' => Str::title($title), 'annonce_id' => $ads->annonce_id]
+        );
 
-        return response()->json($title);
+        $msg = $desc->msg()->create([
+            'msg_contenu' => $request->message,
+            'user_id' => $user->user_id,
+        ]);
+
+        if ($msg) {
+            return response()->json([
+                "success" => true,
+                "message" => "sent",
+                "disc" => $msg->disc_id
+            ]);
+        }
+        return response()->json(["success" => false, "message" => "can't send message"], 404);
     }
 }
 
