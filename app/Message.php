@@ -8,6 +8,14 @@ class Message extends Model
 {
     protected $table = 'message';
     protected $primaryKey = 'msg_id';
+    public $timestamps = false;
+    protected $fillable = [
+        'msg_contenu',
+        'msg_stamp',
+        'msg_etat',
+        'user_id',
+        'disc_id',
+    ];
 
 
     public function messages()

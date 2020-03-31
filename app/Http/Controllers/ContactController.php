@@ -24,17 +24,20 @@ class ContactController extends Controller
                 return Annonce::findOrFail($request->ad)->annonce_type == "sell";
             }),
         ))->validate();
-
         $ads = Annonce::findOrFail($request->ad);
 
-        if ($request->part) {
-            $part = $ads->pieces->where('piece_id', $request->part);
+        $title = $ads->modele->marque->marque_nom . ' ' . $ads->modele->modele_nom;
+        if ($ads->modele_annee) {
+            $title = $title . ' - ' . $ads->modele_annee;
         }
-
+        if ($request->part) {
+            $part = $ads->pieces->where('piece_id', $request->part)->first();
+            $title = $part->piece_nom . ' ' . $title;
+        }
         $user = Auth::user();
 
 
-        return response()->json($part);
+        return response()->json($title);
     }
 }
 
