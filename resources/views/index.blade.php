@@ -7,7 +7,8 @@
             </div>
             <div id="searchBox">
                 <h1 class="text-center text-lg-left">Search For Used Auto Parts Online Instantly</h1>
-                <form class="d-none d-lg-inline input-group-addon" id="lg-form">
+                <form class="d-none d-lg-inline input-group-addon" id="lg-form" method="post" action="{{ route("search") }}">
+                    @csrf
                     <div class="form-group input-group inputGroup mb-0">
                         <select class="form-control form-control-lg" autofocus id="Make" name="make" required
                                 style="border-top-left-radius: 20px;border-bottom-left-radius: 20px;">

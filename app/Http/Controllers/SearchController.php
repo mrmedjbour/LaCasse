@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Validator;
 
 class SearchController extends Controller
 {
@@ -30,11 +31,20 @@ class SearchController extends Controller
             $result = $result->where('modele_annee', '=', $request->year);
         }
 
-
         $result = $result->latest('annonce_date');
         $result = $result->get();
 
         return view("search", compact(['result', 'request']));
     }
 
+    public function searchQuery(Request $request)
+    {
+        Validator::make($request->all(), array(
+            'make' => 'required|exists:marque,marque_id',
+            'modele' => 'required|exists:modele,modele_id',
+            'ModeleYear' => 'between:1,5',
+            'ModelePart' => 'required|exists:piece,piece_id',
+        ))->validate();
+        return redirect(route("search.result", [$request->make, $request->modele, $request->ModelePart, $request->ModeleYear]));
+    }
 }

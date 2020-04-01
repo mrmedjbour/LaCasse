@@ -8,8 +8,8 @@
     </div>
     <div id="right" class="width100">
         <div class="d-flex justify-content-between align-items-center" id="annonce_top">
-            <a class="text-decoration-none" href="#">
-                <h2 id="annonce_title">{{ Str::title($ad->pieces->first()->piece_nom.' '.$ad->modele->marque->marque_nom.' '.$ad->modele->modele_nom) }}{{$ad->modele_annee?" - $ad->modele_annee":''}}</h2>
+            <a class="text-decoration-none" href="{{route("ad.sell", [$ad->annonce_id, $ad->pieces->where('piece_id', '=', $request->part)->first()->piece_id])}}" target="_blank">
+                <h2 id="annonce_title">{{ Str::title($ad->pieces->where('piece_id', '=', $request->part)->first()->piece_nom.' '.$ad->modele->marque->marque_nom.' '.$ad->modele->modele_nom) }}{{$ad->modele_annee?" - $ad->modele_annee":''}}</h2>
             </a>
             <span class="d-none d-lg-inline-block">{{ $ad->annonce_date->format('d M y')}}</span>
         </div>
@@ -43,11 +43,11 @@
         </div>
         <div class="d-flex justify-content-between justify-content-lg-end" id="annonce_btn">
             @auth()
-                <a class="btn btn-sm shadow-none contact" id="SrBtnCon" role="button" data-ad="{{ $ad->annonce_id }}" data-part="{{$ad->pieces->first()->piece_id}}">
+                <a class="btn btn-sm shadow-none contact" id="SrBtnCon" role="button" data-ad="{{ $ad->annonce_id }}" data-part="{{ $ad->pieces->where('piece_id', '=', $request->part)->first()->piece_id }}">
                     <i class="fas fa-comment-dots"></i>Contact
                 </a>
             @endauth
-            <a class="btn btn-sm shadow-none details" role="button" href="{{route("ad.sell", [$ad->annonce_id, $ad->pieces->first()->piece_id])}}"><i class="fa fa-clone"></i>Details</a>
+            <a class="btn btn-sm shadow-none details" role="button" target="_blank" href="{{route("ad.sell", [$ad->annonce_id, $ad->pieces->where('piece_id', '=', $request->part)->first()->piece_id])}}"><i class="fa fa-clone"></i>Details</a>
         </div>
     </div>
 </div>

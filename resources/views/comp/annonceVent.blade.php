@@ -89,7 +89,7 @@
                                             <img class="img-thumbnail" src="{{ asset('img/car.svg') }}" loading="auto" alt="Annonce">
                                         @endif
                                         <div>
-                                            <span>{{ Str::title($ads->pieces->where('piece_id', $part)[0]->piece_nom) }} - {{ Str::title($ads->modele->marque->marque_nom) }} {{ Str::title($ads->modele->modele_nom) }} {{ $ads->modele_annee ? '- '.$ads->modele_annee : ''}}</span>
+                                            <span>{{ Str::title($ads->pieces->where('piece_id', $part)->first()->piece_nom) }} - {{ Str::title($ads->modele->marque->marque_nom) }} {{ Str::title($ads->modele->modele_nom) }} {{ $ads->modele_annee ? '- '.$ads->modele_annee : ''}}</span>
                                             <ul class="list-unstyled">
                                                 <li>
                                                     @if($ads->user->role_id == 2)
@@ -152,11 +152,11 @@
                             <tbody>
                             <tr>
                                 <td>Part category:</td>
-                                <td class="val">{{ Str::title($ads->pieces->where('piece_id', $part)[0]->cat->cat_nom) }}</td>
+                                <td class="val">{{ Str::title($ads->pieces->where('piece_id', $part)->first()->cat->cat_nom) }}</td>
                             </tr>
                             <tr>
                                 <td>Part name:</td>
-                                <td class="val">{{ Str::title($ads->pieces->where('piece_id', $part)[0]->piece_nom) }}</td>
+                                <td class="val">{{ Str::title($ads->pieces->where('piece_id', $part)->first()->piece_nom) }}</td>
                             </tr>
                             </tbody>
                         </table>

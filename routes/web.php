@@ -88,8 +88,10 @@ Route::get('/annonce/{ad}/{title?}', 'AdController@adBuy')->where(['ad' => '[0-9
 Route::post('/annonce/contact', 'ContactController@contactAd')->name("contactAd");
 
 // Search Routes
-Route::match(['GET', 'POST'], '/search/{make}/{model}/{part}/{year?}', 'SearchController@search');
+Route::match(['GET', 'POST'], '/search/{make}/{model}/{part}/{year?}', 'SearchController@search')->name("search.result");
+Route::match(['GET', 'POST'], '/search', 'SearchController@searchQuery')->name("search");
 
-//Route::get('/search', 'SearchController', ['only' => ['index', 'store']]);
-//Route::view('/search', 'search')->name('search');
-//Route::view('/search', 'search')->name('search');
+// Ads  Req Page
+Route::get('/requests', function () {
+    return view("AdRequest");
+});
