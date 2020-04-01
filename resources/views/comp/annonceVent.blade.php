@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <h1 class="searchResultTitle">{{ Str::title($ads->pieces->where('piece_id', $part)[0]->piece_nom.' - '.$ads->modele->marque->marque_nom.' '.$ads->modele->modele_nom) }} {{ $ads->modele_annee ? '- '.$ads->modele_annee : ''}}</h1>
+                <h1 class="searchResultTitle">{{ Str::title($ads->pieces->where('piece_id', $part)->first()->piece_nom.' - '.$ads->modele->marque->marque_nom.' '.$ads->modele->modele_nom) }} {{ $ads->modele_annee ? '- '.$ads->modele_annee : ''}}</h1>
             </div>
         </div>
         <div class="row">
@@ -22,7 +22,7 @@
                         </div>
                         <div class="d-inline-block">
                             <span class="text-nowrap">Posted on:</span>
-                            <a class="text-nowrap">{{ \Carbon\Carbon::parse($ads->annonce_date)->format('d M Y')}}</a>
+                            <a class="text-nowrap">{{ $ads->annonce_date->format('d M Y')}}</a>
                         </div>
                     </div>
                     <div id="CWays">
@@ -73,7 +73,8 @@
                 <div class="modal fade SendModel" role="dialog" tabindex="-1" id="contact" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
-                            <div class="modal-header"><span class="modal-title"><i class="fa fa-send fa-lg"></i>Send a message</span>
+                            <div class="modal-header">
+                                <span class="modal-title"><i class="fa fa-send fa-lg"></i>Send a message</span>
                                 <button class="btn shadow-none close" type="button" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true" style="color: red;"><strong>×</strong></span>
                                 </button>
@@ -82,7 +83,11 @@
                                 @csrf
                                 <div class="modal-body">
                                     <div class="d-flex">
-                                        <img class="img-thumbnail" src="{{asset('files/annonce/' . $ads->images[0]->img_nom)}}  " loading="auto" alt="Annonce">
+                                        @if($ads->images->count() > 0)
+                                            <img class="img-thumbnail" src="{{asset('files/annonce/' . $ads->images->first()->img_nom)}}" loading="auto" alt="Annonce">
+                                        @else
+                                            <img class="img-thumbnail" src="{{ asset('img/car.svg') }}" loading="auto" alt="Annonce">
+                                        @endif
                                         <div>
                                             <span>{{ Str::title($ads->pieces->where('piece_id', $part)[0]->piece_nom) }} - {{ Str::title($ads->modele->marque->marque_nom) }} {{ Str::title($ads->modele->modele_nom) }} {{ $ads->modele_annee ? '- '.$ads->modele_annee : ''}}</span>
                                             <ul class="list-unstyled">

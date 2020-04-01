@@ -15,6 +15,9 @@ class Annonce extends Model
         'modele_id',
         'modele_annee',
     ];
+    protected $dates = [
+        'annonce_date',
+    ];
 
     public function discussions()
     {

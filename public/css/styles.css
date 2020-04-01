@@ -1351,4 +1351,15 @@ img.HeadAvatarImg {
     height: 40px;
 }
 
+/*//762*/
+div.thumbSearchAd {
+    max-width: 142px;
+}
+
+@media (min-width: 762px) {
+    div.thumbSearchAd {
+        min-width: 130px;
+    }
+}
+
 /* End Hamid added page*/

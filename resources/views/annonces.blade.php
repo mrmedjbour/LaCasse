@@ -27,8 +27,8 @@
                             @foreach($ads as $ad)
                                 <tr>
                                     <td>{{ $ad->annonce_id }}</td>
-                                    <td>{{ Str::title($ad->modele->marque->marque_nom) }} {{ Str::title($ad->modele->modele_nom) }}{{$ad->modele_annee?" - $ad->modele_annee":''}}</td>
-                                    <td>{{ \Carbon\Carbon::parse($ad->annonce_date)->format('d/m/y H:i')}}</td>
+                                    <td>{{ Str::title($ad->modele->marque->marque_nom.' '.$ad->modele->modele_nom) }}{{$ad->modele_annee?" - $ad->modele_annee":''}}</td>
+                                    <td>{{ $ad->annonce_date->format('d/m/y H:i')}}</td>
                                     <td>{{ Str::title($ad->annonce_type) }}</td>
                                     <td class="text-center p-0">
                                         <button class="btn btn-sm shadow-none" id="DeleteMakeModelBtn" type="button" m_id="{{ $ad->annonce_id }}">

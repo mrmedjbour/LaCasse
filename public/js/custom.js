@@ -373,6 +373,29 @@ $('#addphonebtn').on('click', function() {
             $(".modal.fade .modal-dialog div div#fail").hide();
         }
     );
+    // Search Page Contact Btn refresh
+    $("a#SrBtnCon").click(
+        function () {
+            $ad = $(this).attr('data-ad');
+            $part = $(this).attr('data-part');
+            $target = $(this).closest('#annonceSearch');
+            $adr = $.trim($target.find('#adr').text());
+            $name = $.trim($target.find('#name').text());
+            $title = $.trim($target.find('#annonce_title').text());
+            $img = $.trim($target.find('img.img-thumbnail').attr('src'));
+            $("#SrContactModal textarea#message").val('');
+            $("#SrContactModal input[name=ad]").val($ad);
+            $("#SrContactModal input[name=part]").val($part);
+            $("#SrContactModal img.img-thumbnail").attr('src', $img);
+            $("#SrContactModal span#mtitle").text($title);
+            $("#SrContactModal a#name").html("<i class=\"fas fa-address-card\"></i>" + $name);
+            $("#SrContactModal a#adr").html("<i class=\"fas fa-map-marker-alt\"></i>" + $adr);
+            $(".modal-dialog div form").show();
+            $(".modal-dialog div div#success").hide();
+            $(".modal-dialog div div#fail").hide();
+            $('#SrContactModal').modal('show');
+        }
+    );
     // fix carousel on parts page
     $('.carousel').on('slid.bs.carousel', function () {
         var indicatorsAct = $(".point li.active").data("slide-to");
@@ -381,7 +404,7 @@ $('#addphonebtn').on('click', function() {
             .addClass("active");
     });
 
-    $('ol.point li').on("click",function(){
+    $('ol.point li').on("click", function () {
         $('ol.point li.active').removeClass("active");
         $("ol.carousel-img li.active").removeClass("active");
         $(this).addClass("active");

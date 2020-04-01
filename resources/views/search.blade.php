@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <h1 class="searchResultTitle">Search results for: 2011 Peugeot 307 Radiator</h1>
+                    <h1 class="searchResultTitle">Search results for: {{ Str::title($request->partTitle.' '.$request->makeTitle.' '.$request->modeleTitle) }} {{ $request->year? "- $request->year":'' }}</h1>
                 </div>
             </div>
             <div class="row">
@@ -12,7 +12,9 @@
                     @foreach($result as $ad)
                         @include('comp.searchAd')
                     @endforeach
-
+                    @auth()
+                        @include('comp.contactSearchModal')
+                    @endauth
                     <div class="d-flex justify-content-around align-items-center justify-content-sm-between sPage" style="padding: 2px 10px;">
                         <div class="show">
                             <form class="form-inline d-inline-flex" method="get">
