@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
     <section id="sectionContent">
         <div class="container">
@@ -22,7 +21,7 @@
                                 <ul class="list-unstyled" style="margin: 5px 0px;">
                                     <li class="d-lg-none">&nbsp;<span class="annonce_date">26 Jan 2020</span>
                                     </li>
-                                    <li class="annonceClientName"><a class="d-flex align-items-center" href="{{route('profile',"Casse De Moh Dezairi")}}"><i class="fas fa-address-card"></i>Casse De Moh Dezairi<br></a>
+                                    <li class="annonceClientName"><a class="d-flex align-items-center" href="{{route('profile'," Casse De Moh Dezairi ")}}"><i class="fas fa-address-card"></i>Casse De Moh Dezairi<br></a>
                                     </li>
                                     <li class="annonceClientAddress"><a class="d-flex align-items-center" href="#"><i class="fas fa-map-marker-alt"></i>Tijelabine, Boumerdes<br></a>
                                     </li>
@@ -39,8 +38,6 @@
                             @include('comp.contactSearchModal')
                         @endauth
                     </div>
-
-
                     <div class="d-flex justify-content-around align-items-center justify-content-sm-between sPage" style="padding: 2px 10px;">
                         <div class="show">
                             <form class="form-inline d-inline-flex" method="get">

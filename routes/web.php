@@ -88,4 +88,8 @@ Route::get('/annonce/{ad}/{title?}', 'AdController@adBuy')->where(['ad' => '[0-9
 Route::post('/annonce/contact', 'ContactController@contactAd')->name("contactAd");
 
 // Search Routes
-Route::view('/search', 'search')->name('search');
+Route::match(['GET', 'POST'], '/search/{make}/{model}/{part}/{year?}', 'SearchController@search');
+
+//Route::get('/search', 'SearchController', ['only' => ['index', 'store']]);
+//Route::view('/search', 'search')->name('search');
+//Route::view('/search', 'search')->name('search');
