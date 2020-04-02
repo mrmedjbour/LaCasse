@@ -10,17 +10,20 @@
                                 <p><span>Adresse :&nbsp;</span>informica En face Toyota<br> Boumerdes 35000, Algeria</p>
                             </div>
                             <div>
-                                <p class="footer-center-info email text-left" ><span>Tel :&nbsp;</span>+213 664146126</p>
+                                <p class="footer-center-info email text-left"><span>Tel :&nbsp;</span>+213 664146126</p>
                             </div>
                             <div>
-                                <p> <span>Email :&nbsp;</span><a href="#" target="_blank">&nbsp;info@lacasse.dz</a></p>
+                                <p><span>Email :&nbsp;</span><a href="#" target="_blank">&nbsp;info@lacasse.dz</a></p>
                             </div>
                         </div>
                         <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 d-inline-flex align-items-lg-center footer-contacts">
                             <div class="row" style="height: auto;width: 100%;margin: 0px;">
                                 <div class="col">
                                     <ul class="list-unstyled app-links">
-                                        <li><a href="{{ route('directory') }}"> Casse Directory</a></li>
+                                        @auth()
+                                            <li><a href="{{ route('requests') }}">Parts Requests</a></li>
+                                        @endauth
+                                        <li><a href="{{ route('directory') }}">Casse Directory</a></li>
                                         <li><a href="#">How To Use</a></li>
                                         <li><a href="#">Contact us</a></li>
                                         <li><a href="#">Privacy Policy</a></li>
@@ -63,6 +66,5 @@
 @if( Route::currentRouteName() == 'messages' )
 <script src="{{ asset('js/msgframe.js') }}"></script>
 @endif
-
 </body>
 </html>

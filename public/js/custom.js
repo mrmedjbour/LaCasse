@@ -380,8 +380,8 @@ $('#addphonebtn').on('click', function() {
             $part = $(this).attr('data-part');
             $target = $(this).closest('#annonceSearch');
             $adr = $.trim($target.find('#adr').text());
-            $name = $.trim($target.find('#name').text());
-            $title = $.trim($target.find('#annonce_title').text());
+            $name = $.trim($target.find('#name').text()); // -----
+            $title = $.trim($target.find('#annonce_title').text()); //  -----
             $img = $.trim($target.find('img.img-thumbnail').attr('src'));
             $("#SrContactModal textarea#message").val('');
             $("#SrContactModal input[name=ad]").val($ad);

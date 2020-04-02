@@ -92,6 +92,4 @@ Route::match(['GET', 'POST'], '/search/{make}/{model}/{part}/{year?}', 'SearchCo
 Route::match(['GET', 'POST'], '/search', 'SearchController@searchQuery')->name("search");
 
 // Ads  Req Page
-Route::get('/requests', function () {
-    return view("AdRequest");
-});
+Route::get('/requests', 'SearchController@AdRequest')->name("requests");

@@ -47,4 +47,10 @@ class SearchController extends Controller
         ))->validate();
         return redirect(route("search.result", [$request->make, $request->modele, $request->ModelePart, $request->ModeleYear]));
     }
+
+    public function AdRequest(Request $request)
+    {
+        $result = \App\Annonce::has('pieces')->where('annonce_type', '=', 'buy')->where('annonce_etat', '=', 1)->get();
+        return view("AdRequest", compact(['result', 'request']));
+    }
 }

@@ -23,7 +23,7 @@
                             <i class="fas fa-address-card"></i>{{ $ad->user->casse->casse_nom }}
                         </a>
                     @else
-                        <a class="d-flex align-items-center">
+                        <a class="d-flex align-items-center" id="name">
                             <i class="fas fa-address-card"></i>{{ $ad->user->user_prenom }}
                         </a>
                     @endif
