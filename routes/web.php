@@ -25,10 +25,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 /* Pages Route */
 Route::view('/example', 'example')->name('example');
 
-/*  Casse Routes  */
-Route::view('/directory', 'directory')->name('directory');
-Route::view('/casse/{id}', 'profile')->name('profile');
-
 /*  Car Models Routes  */
 Route::view('/home/model', 'admin.model')->name('model');
 Route::view('/home/model/add', 'admin.modelAdd')->name('model.add');
@@ -87,9 +83,13 @@ Route::get('/annonce/{ad}/{part}/{title?}', 'AdController@adSell')->where(['ad' 
 Route::get('/annonce/{ad}/{title?}', 'AdController@adBuy')->where(['ad' => '[0-9]+', 'title' => '[A-Za-z0-9-]*'])->name("ad.buy"); // buy
 Route::post('/annonce/contact', 'ContactController@contactAd')->name("contactAd");
 
+// Ads Req Page
+Route::get('/requests', 'SearchController@AdRequest')->name("requests");
+
 // Search Routes
 Route::match(['GET', 'POST'], '/search/{make}/{model}/{part}/{year?}', 'SearchController@search')->name("search.result");
 Route::match(['GET', 'POST'], '/search', 'SearchController@searchQuery')->name("search");
 
-// Ads  Req Page
-Route::get('/requests', 'SearchController@AdRequest')->name("requests");
+/*  Casse Routes  */
+Route::get('/directory', 'CasseDirectory@directory')->name('directory');
+Route::view('/casse/{id}', 'profile')->name('profile');
