@@ -20,6 +20,9 @@
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <link rel="stylesheet" href="{{ asset('css/styleSendMsgBox.css') }}">
     <link rel="stylesheet" href="{{ asset('css/x-dropdown.css') }}">
+    @if( Route::currentRouteName() == 'directory' )
+        @mapstyles
+    @endif
 </head>
 <body>
 @guest

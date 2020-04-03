@@ -64,7 +64,10 @@
 <script src="{{ asset('js/Card-Carousel.js') }}"></script>
 <script src="{{ asset('js/custom.js') }}"></script>
 @if( Route::currentRouteName() == 'messages' )
-<script src="{{ asset('js/msgframe.js') }}"></script>
+    <script src="{{ asset('js/msgframe.js') }}"></script>
 @endif
-</body>
-</html>
+@if( Route::currentRouteName() == 'directory' )
+    @mapscripts
+    @endif
+    </body>
+    </html>

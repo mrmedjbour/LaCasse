@@ -9,7 +9,7 @@ class Wilaya extends Model
     protected $table = 'wilaya';
     protected $primaryKey = 'wilaya_id';
     protected $fillable = [
-        'daira_nom',
+        'wilaya_nom',
     ];
 
     public function dairas()

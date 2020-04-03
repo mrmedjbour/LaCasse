@@ -5,25 +5,49 @@
         <div class="container">
             <div class="row" id="casse-directory">
                 <div class="col-lg-4" id="casses">
-
-                    @for($i = 0; $i < 10; $i++)
-                    <div class="align-items-lg-center casse">
-                        <img class="rounded-circle" src="{{asset('img/profile-5.jpeg')}}">
-                        <h6><a href="{{route('profile' , 1)}}">Casse de Moh Dezairi</a></h6>
-                        <span class="casse-info"><i class="fa fa-map-marker"></i>Tijelabine, Boumerdes<br></span>
-                        <span class="casse-info"><i class="fa fa-phone"></i>0551234567<br></span>
-                        <span class="casse-links">
-                            <a href="#"><i class="fa fa-map"></i></a>
-                            <a href="{{route('profile' , 1)}}"><i class="fa fa-external-link"></i></a><br>
-                        </span>
-                    </div>
-                    @endfor
+                    @foreach($casses as $casse)
+                        <div class="d-inline-flex justify-content-between align-items-center w-100 mt-2 py-1" style="border:1px solid #ddd;box-shadow:0 2px 5px 0 rgba(0, 0, 0, 0.26);">
+                            <div class="p-1">
+                                <img class="rounded-circle" src="{{ asset('files/avatar/'.$casse->user->user_avatar) }}" style="height: 70px;width: 70px;"/>
+                            </div>
+                            <div class="p-2 w-100">
+                                <a class="text-decoration-none" href="{{route('profile' , 1)}}" target="_blank">
+                                    <h5 class="m-0" style="color:#007bff;">{{ $casse->casse_nom }}</h5>
+                                </a>
+                                <span class="text-secondary">
+                                <i class="fa fa-map-marker pr-1"></i>{{ Str::title($casse->commune->commune_nom .' '.$casse->commune->daira->daira_nom .' '.$casse->commune->daira->wilaya->wilaya_nom) }}
+                            </span>
+                                <div class="text-right px-2">
+                                    <a class="mx-1" href="#">
+                                        <i class="fa fa-map fa-lg" style="color:#55a90d;"></i>
+                                    </a>
+                                    <a class="mx-1" href="{{route('profile' , $casse->casse_id)}}" target="_blank">
+                                        <i class="fa fa-external-link fa-lg" style="color:#3e3e3e;"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
 
                 </div>
                 <div class="col dash-info order-first order-xs-first order-sm-first order-md-first order-lg-last">
+                    <style>
+                        .gnw-map-service {
+                            height: 500px;
+                        }
+                    </style>
                     <div id="map">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3197.9675702565482!2d3.6655801152907097!3d36.723340079722036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128e79fdd3dd5d4f%3A0x4e8cda14149b3761!2sIsser%2C%20Issers!5e0!3m2!1sfr!2sdz!4v1583261373164!5m2!1sfr!2sdz" width="100%" height="500" frameborder="0" style="border:1px solid #444;" allowfullscreen=""></iframe>
+                        @map($map)
                     </div>
+                    <script>
+                        window.addEventListener('LaravelMaps:MarkerClicked', function (event) {
+                            var element = event.detail.element;
+                            var map = event.detail.map;
+                            var marker = event.detail.marker;
+                            var service = event.detail.service;
+                            console.log('marker clicked', element, map, marker, service);
+                        });
+                    </script>
                 </div>
             </div>
         </div>

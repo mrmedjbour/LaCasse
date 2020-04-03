@@ -121,6 +121,7 @@ class ComposerStaticInitdd2677ab7a69e877e3b8d6087c89ad93
         ),
         'G' => 
         array (
+            'GoNoWare\\Maps\\' => 14,
             'Giggsey\\Locale\\' => 15,
         ),
         'F' => 
@@ -353,6 +354,10 @@ class ComposerStaticInitdd2677ab7a69e877e3b8d6087c89ad93
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate',
         ),
+        'GoNoWare\\Maps\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/gonoware/laravel-maps/src',
+        ),
         'Giggsey\\Locale\\' => 
         array (
             0 => __DIR__ . '/..' . '/giggsey/locale/src',
@@ -457,6 +462,7 @@ class ComposerStaticInitdd2677ab7a69e877e3b8d6087c89ad93
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
+        'App\\Http\\Controllers\\CasseDirectory' => __DIR__ . '/../..' . '/app/Http/Controllers/CasseDirectory.php',
         'App\\Http\\Controllers\\ContactController' => __DIR__ . '/../..' . '/app/Http/Controllers/ContactController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
@@ -464,6 +470,7 @@ class ComposerStaticInitdd2677ab7a69e877e3b8d6087c89ad93
         'App\\Http\\Controllers\\ModelApiController' => __DIR__ . '/../..' . '/app/Http/Controllers/ModelApiController.php',
         'App\\Http\\Controllers\\PartsApiController' => __DIR__ . '/../..' . '/app/Http/Controllers/PartsApiController.php',
         'App\\Http\\Controllers\\ProController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProController.php',
+        'App\\Http\\Controllers\\SearchController' => __DIR__ . '/../..' . '/app/Http/Controllers/SearchController.php',
         'App\\Http\\Controllers\\User\\UserAccountController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/UserAccountController.php',
         'App\\Http\\Controllers\\User\\UserAnnonceController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/UserAnnonceController.php',
         'App\\Http\\Controllers\\regionController' => __DIR__ . '/../..' . '/app/Http/Controllers/regionController.php',
@@ -1240,6 +1247,7 @@ class ComposerStaticInitdd2677ab7a69e877e3b8d6087c89ad93
         'Fideloper\\Proxy\\TrustProxies' => __DIR__ . '/..' . '/fideloper/proxy/src/TrustProxies.php',
         'Fideloper\\Proxy\\TrustedProxyServiceProvider' => __DIR__ . '/..' . '/fideloper/proxy/src/TrustedProxyServiceProvider.php',
         'Giggsey\\Locale\\Locale' => __DIR__ . '/..' . '/giggsey/locale/src/Locale.php',
+        'GoNoWare\\Maps\\MapsServiceProvider' => __DIR__ . '/..' . '/gonoware/laravel-maps/src/MapsServiceProvider.php',
         'Hamcrest\\Arrays\\IsArray' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArray.php',
         'Hamcrest\\Arrays\\IsArrayContaining' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArrayContaining.php',
         'Hamcrest\\Arrays\\IsArrayContainingInAnyOrder' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArrayContainingInAnyOrder.php',

@@ -53,6 +53,6 @@ class Casse extends Model
 
     public function demande()
     {
-        return $this->belongsTo('App\Demande', 'dem_id');
+        return $this->belongsTo('App\Demande', 'casse_id');
     }
 }
