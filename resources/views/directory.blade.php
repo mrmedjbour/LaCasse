@@ -18,9 +18,11 @@
                                 <i class="fa fa-map-marker pr-1"></i>{{ Str::title($casse->commune->commune_nom .' '.$casse->commune->daira->daira_nom .' '.$casse->commune->daira->wilaya->wilaya_nom) }}
                             </span>
                                 <div class="text-right px-2">
-                                    <a class="mx-1" href="#">
-                                        <i class="fa fa-map fa-lg" style="color:#55a90d;"></i>
-                                    </a>
+                                    @if ($casse->casse_loc != "0,0" AND $casse->casse_loc != null)
+                                        <a class="mx-1" id="GoToCasse" data-latlng="[{{ $casse->casse_loc }}]">
+                                            <i class="fa fa-map fa-lg" style="color:#55a90d;"></i>
+                                        </a>
+                                    @endif
                                     <a class="mx-1" href="{{route('profile' , $casse->casse_id)}}" target="_blank">
                                         <i class="fa fa-external-link fa-lg" style="color:#3e3e3e;"></i>
                                     </a>
@@ -36,16 +38,21 @@
                             height: 500px;
                         }
                     </style>
-                    <div id="map">
+                    <div id="xmap">
                         @map($map)
                     </div>
                     <script>
-                        window.addEventListener('LaravelMaps:MarkerClicked', function (event) {
-                            var element = event.detail.element;
-                            var map = event.detail.map;
-                            var marker = event.detail.marker;
+                        window.addEventListener('LaravelMaps:MapInitialized', function (event) {
                             var service = event.detail.service;
-                            console.log('marker clicked', element, map, marker, service);
+                            if (service === 'google') {
+                                var map = event.detail.map;
+                                $("a#GoToCasse").click(function () {
+                                    $latlng = $(this).data('latlng');
+                                    var laLatLng = new google.maps.LatLng($latlng[0], $latlng[1]);
+                                    map.panTo(laLatLng);
+                                    map.setZoom(12);
+                                });
+                            }
                         });
                     </script>
                 </div>
