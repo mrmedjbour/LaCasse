@@ -18,6 +18,10 @@ class UserAnnonceController extends Controller
     // Show List of ads for user
     public function index()
     {
+        if (Auth::user()->role_id == 1) {
+            $ads = \App\Annonce::all()->sortByDesc('annonce_date');
+            return view('admin.annonces', compact('ads'));
+        }
         $ads = Auth::user()->annonces()->with('modele')->get();
         return view('annonces', compact('ads'));
     }
@@ -71,13 +75,21 @@ class UserAnnonceController extends Controller
 
     public function edit($id)
     {
+        if (Auth::user()->role_id == 1) {
+            $ad = \App\Annonce::with(['modele', 'images'])->findOrFail($id);
+            return view('editAds', compact('ad'));
+        }
         $ad = Auth::user()->annonces()->with(['modele', 'images'])->findOrFail($id);
         return view('editAds', compact('ad'));
     }
 
     public function update(Request $request, $id)
     {
-        $ad = Auth::user()->annonces()->findOrFail($id);
+        if (Auth::user()->role_id == 1) {
+            $ad = \App\Annonce::findOrFail($id);
+        } else {
+            $ad = Auth::user()->annonces()->findOrFail($id);
+        }
         Validator::make($request->all(), array(
             'ad_desc' => 'max:500',
             'parts.*' => 'exists:piece,piece_id',
@@ -112,7 +124,20 @@ class UserAnnonceController extends Controller
 
     public function destroy(Request $request)
     {
-        Auth::user()->annonces()->findOrFail($request->modele_id)->delete();
+        if (Auth::user()->role_id == 1) {
+            if ($request->option == "block") {
+                $ad = \App\Annonce::findOrFail($request->ad);
+                $ad->annonce_etat = !$ad->annonce_etat;
+                $ad->save();
+                return response()->json([
+                    "success" => true,
+                    "status" => $ad->annonce_etat
+                ]);
+            }
+            \App\Annonce::findOrFail($request->ad_id)->delete();
+            return redirect(route('annonce.index'))->with('success', 'Ad has been successfully deleted');
+        }
+        Auth::user()->annonces()->findOrFail($request->ad_id)->delete();
         return redirect(route('annonce.index'))->with('success', 'Your Ad has been successfully deleted');
     }
 }

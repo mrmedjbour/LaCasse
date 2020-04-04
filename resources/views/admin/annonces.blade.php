@@ -8,6 +8,9 @@
                     @include('comp.sidebar')
                 </div>
                 <div class="col-lg-8 dash-info">
+                    @if(session('success'))
+                        <div class="alert alert-success">{{ session('success') }}</div>
+                    @endif
                     <div class="table-responsive table-borderless" style="font-size: 14px;">
                         <table class="table table-striped table-bordered table-sm">
                             <thead style="background-color: #0078c3;color: white;">
@@ -23,63 +26,27 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>1234</td>
-                                <td>Peugeot 307 - 2011</td>
-                                <td>17/03/20 14:02</td>
-                                <td>Sell</td>
-                                <td class="text-center p-0">
-                                    <button class="btn btn-sm shadow-none" id="StatusAdblock" type="button" a_id="1234">
-                                        <i class="fa fa-check text-success"></i>
-                                    </button>
-                                </td>
-                                <td class="text-center p-0">
-                                    <button class="btn btn-sm shadow-none" id="DeleteAdBtn" type="button" a_id="1234"><i
-                                                class="fa fa-remove shadow-none text-danger"></i>
-                                    </button>
-                                </td>
-                                <td class="text-center p-0"><a class="btn btn-link btn-sm" role="button" href="#"><i
-                                                class="fa fa-edit fa-lg"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>1233</td>
-                                <td>Peugeot 308 - 2019</td>
-                                <td>11/02/20 07:02</td>
-                                <td>Sell</td>
-                                <td class="text-center p-0">
-                                    <button class="btn btn-sm shadow-none" id="StatusAdblock" type="button" a_id="1233">
-                                        <i class="fa fa-ban text-warning"></i>
-                                    </button>
-                                </td>
-                                <td class="text-center p-0">
-                                    <button class="btn btn-sm shadow-none" id="DeleteAdBtn" type="button" a_id="1233"><i
-                                                class="fa fa-remove shadow-none text-danger"></i>
-                                    </button>
-                                </td>
-                                <td class="text-center p-0"><a class="btn btn-link btn-sm" role="button" href="#"><i
-                                                class="fa fa-edit fa-lg"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>1232</td>
-                                <td>Peugeot 207 - 2010</td>
-                                <td>10/02/20 10:51</td>
-                                <td>Buy</td>
-                                <td class="text-center p-0">
-                                    <button class="btn btn-sm shadow-none" id="StatusAdblock" type="button" a_id="1232">
-                                        <i class="fa fa-ban text-warning"></i>
-                                    </button>
-                                </td>
-                                <td class="text-center p-0">
-                                    <button class="btn btn-sm shadow-none" id="DeleteAdBtn" type="button" a_id="1232"><i
-                                                class="fa fa-remove shadow-none text-danger"></i>
-                                    </button>
-                                </td>
-                                <td class="text-center p-0"><a class="btn btn-link btn-sm" role="button" href="#"><i
-                                                class="fa fa-edit fa-lg"></i></a>
-                                </td>
-                            </tr>
+                            @foreach($ads as $ad)
+                                <tr>
+                                    <td>{{ $ad->annonce_id }}</td>
+                                    <td>{{ Str::title($ad->modele->marque->marque_nom.' '.$ad->modele->modele_nom) }}{{$ad->modele_annee?" - $ad->modele_annee":''}}</td>
+                                    <td>{{ $ad->annonce_date->format('d/m/y H:i')}}</td>
+                                    <td>{{ Str::title($ad->annonce_type) }}</td>
+                                    <td class="text-center p-0">
+                                        <button class="btn btn-sm shadow-none" id="StatusAdblock" type="button" a_id="{{ $ad->annonce_id }}">
+                                            @if ($ad->annonce_etat == 1)<i class="fa fa-check text-success"></i>@else<i class="fa fa-ban text-warning"></i>@endif
+                                        </button>
+                                    </td>
+                                    <td class="text-center p-0">
+                                        <button class="btn btn-sm shadow-none" id="DeleteAdBtn" type="button" a_id="{{ $ad->annonce_id }}">
+                                            <i class="fa fa-remove shadow-none text-danger"></i>
+                                        </button>
+                                    </td>
+                                    <td class="text-center p-0">
+                                        <a class="btn btn-link btn-sm" role="button" href="{{ route('annonce.edit', $ad->annonce_id) }}"><i class="fa fa-edit fa-lg"></i></a>
+                                    </td>
+                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -105,22 +72,18 @@
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header py-1" style="background-color: #0078c3;color: white;">
-                                    <h4 class="modal-title font-weight-normal" style="font-size: medium;">Delete
-                                        Confirmation</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                                aria-hidden="true">×</span>
-                                    </button>
+                                    <h4 class="modal-title font-weight-normal" style="font-size: medium;">Delete Confirmation</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                 </div>
-                                <div class="modal-body text-center pb-0"><i class="fas fa-exclamation-circle fa-5x"
-                                                                            style="color: red;"></i>
+                                <div class="modal-body text-center pb-0"><i class="fas fa-exclamation-circle fa-5x" style="color: red;"></i>
                                     <p class="pt-3">Are you sure you want to delete this record?</p>
                                 </div>
                                 <div class="modal-footer p-2 px-sm-3">
-                                    <form class="d-flex justify-content-between m-0 w-100" method="post">
-                                        <input class="form-control" type="hidden" id="a_id" name="annonce_id">
-                                        <button class="btn btn-secondary shadow-none" type="button"
-                                                data-dismiss="modal">No
-                                        </button>
+                                    <form class="d-flex justify-content-between m-0 w-100" action="{{route('annonce.destroy', "delete")}}" method="post">
+                                        @csrf
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <input type="hidden" id="a_id" name="ad_id">
+                                        <button class="btn btn-secondary shadow-none" type="button" data-dismiss="modal">No</button>
                                         <button class="btn btn-danger shadow-none" type="submit">Yes, Delete</button>
                                     </form>
                                 </div>

@@ -31,7 +31,7 @@
                                     <td>{{ $ad->annonce_date->format('d/m/y H:i')}}</td>
                                     <td>{{ Str::title($ad->annonce_type) }}</td>
                                     <td class="text-center p-0">
-                                        <button class="btn btn-sm shadow-none" id="DeleteMakeModelBtn" type="button" m_id="{{ $ad->annonce_id }}">
+                                        <button class="btn btn-sm shadow-none" id="DeleteAdBtn" type="button" a_id="{{ $ad->annonce_id }}">
                                             <i class="fa fa-remove shadow-none text-danger"></i>
                                         </button>
                                     </td>
@@ -63,30 +63,28 @@
                             </ul>
                         </nav>
                     </div>
-                    <div class="modal fade" role="dialog" tabindex="-1" id="DeleteMakeModel">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header py-1" style="background-color: #0078c3;color: white;">
-                                    <h4 class="modal-title font-weight-normal" style="font-size: medium;">Delete
-                                        Confirmation</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body text-center pb-0"><i class="fas fa-exclamation-circle fa-5x" style="color: red;"></i>
-                                    <p class="pt-3">Are you sure you want to delete this record?</p>
-                                </div>
-                                <div class="modal-footer p-2 px-sm-3">
-                                    <form class="d-flex justify-content-between m-0 w-100" action="{{route('annonce.destroy', "delete")}}" method="post">
+                        <div class="modal fade" role="dialog" tabindex="-1" id="DeleteAdModel">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header py-1" style="background-color: #0078c3;color: white;">
+                                        <h4 class="modal-title font-weight-normal" style="font-size: medium;">Delete Confirmation</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                    </div>
+                                    <div class="modal-body text-center pb-0"><i class="fas fa-exclamation-circle fa-5x" style="color: red;"></i>
+                                        <p class="pt-3">Are you sure you want to delete this record?</p>
+                                    </div>
+                                    <div class="modal-footer p-2 px-sm-3">
+                                        <form class="d-flex justify-content-between m-0 w-100" action="{{route('annonce.destroy', "delete")}}" method="post">
                                         @csrf
-                                        <input type="hidden" name="_method" value="DELETE">
-                                        <input type="hidden" id="m_id" name="modele_id">
-                                        <button class="btn btn-secondary shadow-none" type="button" data-dismiss="modal">No</button>
-                                        <button class="btn btn-danger shadow-none" type="submit">Yes, Delete</button>
-                                    </form>
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <input type="hidden" id="a_id" name="ad_id">
+                                            <button class="btn btn-secondary shadow-none" type="button" data-dismiss="modal">No</button>
+                                            <button class="btn btn-danger shadow-none" type="submit">Yes, Delete</button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                 </div>
             </div>
         </div>

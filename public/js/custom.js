@@ -106,14 +106,24 @@ $(document).ready(function() {
 // ad state block
     $("button#StatusAdblock").click(function () {
         var a_id = $(this).attr('a_id');
+        var ad = new FormData();
+        ad.append('ad', a_id);
+        ad.append('_method', 'DELETE');
+        ad.append('option', 'block');
+        $.ajax({
+            url: '/home/annonce/delete',
+            type: 'POST',
+            processData: false,
+            data: ad,
+            contentType: false,
+            dataType: 'json',
+        });
         if ($(this).children('i').hasClass('fa-ban')) {
             $(this).children('i').removeClass('fa-ban text-warning').addClass('fa-check text-success');
         } else {
             $(this).children('i').removeClass('fa-check text-success').addClass('fa-ban text-warning')
         }
-        alert(a_id);
     });
-
 // delete ad model
     $("button#DeleteAdBtn").click(function () {
         var a_id = $(this).attr('a_id');
@@ -151,7 +161,7 @@ $(document).ready(function() {
             dataType: 'json',
             success: function (data) {
                 console.log(data);
-                $("#Profile img#AvatarProfile, img.HeadAvatarImg").attr("src", data.avatar)
+                $("#Profile img#AvatarProfile, img.HeadAvatarImg").attr("src", data.avatar);
             }
         });
     });
