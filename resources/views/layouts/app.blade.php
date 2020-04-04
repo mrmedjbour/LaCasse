@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <link rel="stylesheet" href="{{ asset('css/styleSendMsgBox.css') }}">
     <link rel="stylesheet" href="{{ asset('css/x-dropdown.css') }}">
-    @if( Route::currentRouteName() == 'directory' )
+    @if(Route::currentRouteName() == 'directory' OR Route::currentRouteName() == 'profile')
         @mapstyles
     @endif
 </head>
@@ -49,6 +49,5 @@
 @endif
 
 @yield('content')
-
 
 @include('layouts.footer')

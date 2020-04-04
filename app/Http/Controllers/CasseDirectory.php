@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Str;
 
 class CasseDirectory extends Controller
 {
@@ -37,5 +39,26 @@ class CasseDirectory extends Controller
         });
 
         return view("directory", compact(['map', 'casses']));
+    }
+
+    public function profile($id, $title = null)
+    {
+        $casse = \App\Casse::whereHas('demande', function (Builder $query) {
+            $query->where('dem_etat', '=', 1);
+        })->findOrFail($id);
+
+        if (empty($title)) {
+            return redirect(route('profile', [$id, Str::slug($casse->casse_nom, '-')]));
+        }
+
+        $av_mod = \App\Annonce::select('modele_id')->where('user_id', $casse->user->user_id)->where('annonce_type', 'sell')->distinct()->pluck('modele_id');
+
+        $av_marques = \App\Marque::whereHas('modeles', function (Builder $query) use ($av_mod) {
+            $query->whereIn('modele_id', $av_mod);
+        })->with(['modeles' => function ($query) use ($av_mod) {
+            $query->whereIn('modele_id', $av_mod);
+        }])->get();
+
+        return view('profile', compact(['casse', 'av_marques']));
     }
 }

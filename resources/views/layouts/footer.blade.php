@@ -66,7 +66,7 @@
 @if( Route::currentRouteName() == 'messages' )
     <script src="{{ asset('js/msgframe.js') }}"></script>
 @endif
-@if( Route::currentRouteName() == 'directory' )
+@if( Route::currentRouteName() == 'directory' OR Route::currentRouteName() == 'profile')
     @mapscripts
     @endif
     </body>

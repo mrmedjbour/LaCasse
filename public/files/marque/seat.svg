@@ -1,0 +1,61 @@
+<svg width="192.755" height="192.755" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="a" x1="-0.00163" y1="0.499962" x2="1.000003" y2="0.499962">
+            <stop offset="0" stop-color="#929496"/>
+            <stop offset="0.07" stop-color="#97999b"/>
+            <stop offset="0.165" stop-color="#a4a6a8"/>
+            <stop offset="0.274" stop-color="#bbbdbf"/>
+            <stop offset="0.393" stop-color="#dcddde"/>
+            <stop offset="0.489" stop-color="#fff"/>
+            <stop offset="0.565" stop-color="#f8f8f8"/>
+            <stop offset="0.661" stop-color="#eaeaeb"/>
+            <stop offset="0.768" stop-color="#d4d5d7"/>
+            <stop offset="0.881" stop-color="#b6b8ba"/>
+            <stop offset="1" stop-color="#929496"/>
+        </linearGradient>
+        <linearGradient id="b" x1="0.001659" y1="0.499982" x2="1.000003" y2="0.499982">
+            <stop offset="0" stop-color="#929496"/>
+            <stop offset="0.07" stop-color="#97999b"/>
+            <stop offset="0.165" stop-color="#a4a6a8"/>
+            <stop offset="0.274" stop-color="#bbbdbf"/>
+            <stop offset="0.393" stop-color="#dcddde"/>
+            <stop offset="0.489" stop-color="#fff"/>
+            <stop offset="0.565" stop-color="#f8f8f8"/>
+            <stop offset="0.661" stop-color="#eaeaeb"/>
+            <stop offset="0.768" stop-color="#d4d5d7"/>
+            <stop offset="0.881" stop-color="#b6b8ba"/>
+            <stop offset="1" stop-color="#929496"/>
+        </linearGradient>
+        <linearGradient id="c" x1="-0.001643" y1="0.499977" x2="0.998352" y2="0.499977">
+            <stop offset="0" stop-color="#929496"/>
+            <stop offset="0.07" stop-color="#97999b"/>
+            <stop offset="0.165" stop-color="#a4a6a8"/>
+            <stop offset="0.274" stop-color="#bbbdbf"/>
+            <stop offset="0.393" stop-color="#dcddde"/>
+            <stop offset="0.489" stop-color="#fff"/>
+            <stop offset="0.565" stop-color="#f8f8f8"/>
+            <stop offset="0.661" stop-color="#eaeaeb"/>
+            <stop offset="0.768" stop-color="#d4d5d7"/>
+            <stop offset="0.881" stop-color="#b6b8ba"/>
+            <stop offset="1" stop-color="#929496"/>
+        </linearGradient>
+    </defs>
+    <g>
+        <title>background</title>
+        <rect x="-1" y="-1" width="77.566287" height="77.566287" id="canvas_background" fill="none"/>
+    </g>
+    <g>
+        <title>Layer 1</title>
+        <g fill="#b3b3b3" stroke="#b3b3b3" stroke-width="0.45" id="svg_6">
+            <path d="m50.769,58.574s-0.276,-12.872 6.6,-16.801c8.4,-4.799 30.3,-9 83.102,-2.399c0,0 0.599,16.799 0.599,18c0,0 -39.312,-3.369 -46.499,-2.801c-5.1,0.402 -2.7,3.102 0,3.496c0,0 39.6,6.506 46.499,8.004l0,6.902c-0.001,0 -62.101,-12.301 -90.301,-14.401zm-0.299,4.799s69.6,10.801 90.599,15.9l0,6.301s-70.8,-15.901 -90.3,-17.701l-0.299,-4.5zm0.299,9.602s68.101,10.5 90.3,19.199c0,0 1.8,14.4 -5.399,18.9c-10.301,6.438 -49.199,6.3 -84,2.1c0,0 -0.9,-16.5 0,-24.602c0,0 38.418,2.853 46.801,3.901c4.799,0.601 4.801,-1.8 1.8,-3.601c0,0 -37.2,-10.2 -49.201,-11.699l-0.301,-4.198z"
+                  id="svg_7"/>
+        </g>
+        <g fill="#4d4d4d" stroke="#4d4d4d" stroke-width="0.45" id="svg_8">
+            <path d="m52.57,60.374s-0.277,-12.872 6.6,-16.801c8.4,-4.799 30.299,-9 83.1,-2.399c0,0 0.6,16.799 0.6,18c0,0 -39.312,-3.37 -46.499,-2.803c-5.1,0.402 -2.7,3.104 0,3.496c0,0 39.601,6.506 46.499,8.006l0,6.9c-0.001,0 -62.101,-12.299 -90.3,-14.399zm-0.301,4.799s69.602,10.801 90.6,15.901l0,6.3s-70.799,-15.901 -90.299,-17.701l-0.301,-4.5zm0.301,9.6s68.1,10.501 90.299,19.2c0,0 1.801,14.4 -5.399,18.9c-10.301,6.438 -49.2,6.3 -84,2.1c0,0 -0.899,-16.5 0,-24.601c0,0 38.418,2.852 46.801,3.9c4.799,0.601 4.801,-1.8 1.8,-3.6c0,0 -37.2,-10.201 -49.201,-11.7l-0.3,-4.199z"
+                  id="svg_9"/>
+        </g>
+        <path d="m51.669,59.475s-0.277,-12.872 6.6,-16.802c8.4,-4.799 30.299,-9 83.101,-2.399c0,0 0.6,16.799 0.6,18c0,0 -39.312,-3.369 -46.499,-2.802c-5.1,0.402 -2.701,3.103 0,3.496c0,0 39.6,6.506 46.499,8.005l0,6.901c-0.001,0 -62.101,-12.3 -90.301,-14.399z" fill="url(#a)" id="svg_10"/>
+        <path d="m51.37,64.273s69.601,10.801 90.6,15.9l0,6.301s-70.8,-15.902 -90.3,-17.701l-0.3,-4.5z" fill="url(#b)" id="svg_11"/>
+        <path d="m51.669,74.328532s68.1,10.501 90.3,19.2c0,0 1.8,14.399 -5.4,18.899c-10.301,6.438 -49.199,6.3 -83.999,2.101c0,0 -0.9,-16.5 0,-24.602c0,0 38.418,2.853 46.801,3.9c4.799,0.601 4.801,-1.799 1.8,-3.6c0,0 -37.2,-10.201 -49.201,-11.699l-0.301,-4.199z" fill="url(#c)" id="svg_12"/>
+    </g>
+</svg>

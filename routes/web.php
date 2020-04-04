@@ -92,4 +92,4 @@ Route::match(['GET', 'POST'], '/search', 'SearchController@searchQuery')->name("
 
 /*  Casse Routes  */
 Route::get('/directory', 'CasseDirectory@directory')->name('directory');
-Route::view('/casse/{id}', 'profile')->name('profile');
+Route::any('/casse/{id}/{title?}', 'CasseDirectory@profile')->name('profile');

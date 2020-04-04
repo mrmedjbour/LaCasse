@@ -259,7 +259,7 @@ div.social-links {
     background-color: #ffffff;
 }
 
-.available h5 {
+.available h5.titleH {
     margin-left: 3%;
     margin-top: 30px;
     font-weight: bold;
@@ -277,14 +277,12 @@ div.social-links {
     margin-left: 20px;
     width: 70px;
 }
-.available-brand h4{
+
+.available-brand h5 {
     color: #656565;
-    line-height: 80px;
-    margin-left: 10px;
-    position: absolute;
-    top: 15px;
-    left: 120px;
+    display: inline-block;
 }
+
 .model-dispo {
     margin: 0 40px;
 }

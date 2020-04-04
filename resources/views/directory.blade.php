@@ -38,7 +38,7 @@
                             height: 500px;
                         }
                     </style>
-                    <div id="xmap">
+                    <div id="map">
                         @map($map)
                     </div>
                     <script>
