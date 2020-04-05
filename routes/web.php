@@ -25,11 +25,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 /* Pages Route */
 Route::view('/example', 'example')->name('example');
 
-/*  Car Models Routes  */
-Route::view('/home/model', 'admin.model')->name('model');
-Route::view('/home/model/add', 'admin.modelAdd')->name('model.add');
-Route::view('/home/model/{id}', 'admin.modelEdit')->name('model.edit');
-
 /*  Go Pro Routes  */
 //Route::view('/home/pro', 'pro')->name('pro'); //sent req to go pro
 //Route::view('/home/prosent', 'proSent')->name('pro.sent'); // req send succesfully
@@ -93,3 +88,9 @@ Route::match(['GET', 'POST'], '/search', 'SearchController@searchQuery')->name("
 /*  Casse Routes  */
 Route::get('/directory', 'CasseDirectory@directory')->name('directory');
 Route::any('/casse/{id}/{title?}', 'CasseDirectory@profile')->name('profile');
+
+/*  Car Models Routes  */
+Route::resource('/home/model', 'Admin\AdminModelController');
+//Route::view('/home/model', 'admin.model')->name('model');
+//Route::view('/home/model/add', 'admin.modelAdd')->name('model.add');
+//Route::view('/home/model/{id}', 'admin.modelEdit')->name('model.edit');

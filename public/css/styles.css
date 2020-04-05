@@ -1360,4 +1360,19 @@ div.thumbSearchAd {
     }
 }
 
+@media screen and ( max-width: 520px ) {
+    nav.pagin li.page-item {
+        display: none;
+    }
+
+    nav.pagin .page-item:first-child,
+    nav.pagin .page-item:nth-child( 2 ),
+    nav.pagin .page-item:nth-last-child( 2 ),
+    nav.pagin .page-item:last-child,
+    nav.pagin .page-item.active,
+    nav.pagin .page-item.disabled {
+        display: block;
+    }
+}
+
 /* End Hamid added page*/

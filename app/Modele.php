@@ -8,7 +8,7 @@ class Modele extends Model
 {
     protected $table = 'modele';
     protected $primaryKey = 'modele_id';
-
+    public $timestamps = false;
     protected $fillable = [
         'modele_nom',
     ];
