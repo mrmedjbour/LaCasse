@@ -78,4 +78,23 @@ class UserAccountController extends Controller
         }
         return redirect(route('user.account'))->with('success', 'Your Password has been changed successfully');
     }
+
+    public function updateCasseCover(Request $request)
+    {
+        Validator::make($request->all(), array(
+            'cover' => 'image|mimes:jpeg,png,jpg,bmp,gif,svg|max:2048',
+        ))->validate();
+        if ($cover = $request->file('cover')) {
+            if (in_array($cover->extension(), ['jpeg', 'png', 'jpg', 'bmp', 'gif', 'svg'])) {
+                $cover_name = "casse_" . Auth::id() . '.' . $cover->extension();
+                $cover->move(public_path('/files/casse/'), $cover_name);
+                $casse_id = Auth::user()->casse_id;
+                $casse = \App\Casse::findOrFail($casse_id);
+                $casse->casse_image = $cover_name;
+                $casse->save();
+                return redirect(route('user.account'))->with('success', 'Cover changed successfully');
+            }
+        }
+        return redirect(route('user.account'));
+    }
 }

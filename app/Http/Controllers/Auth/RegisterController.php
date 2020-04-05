@@ -50,13 +50,13 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'user_prenom' => ['required', 'string', 'max:255'],
-            'user_nom' => ['required', 'string', 'max:255'],
+            'user_prenom' => ['required', 'string', 'max:30'],
+            'user_nom' => ['required', 'string', 'max:30'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'phone' => 'array',
             'phone.*' => 'required|numeric|regex:/^([0-9]{9,13})$/',
-            'commune_id' => ['required'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'commune_id' => ['required', 'exists:commune,commune_id'],
+            'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
     }
 

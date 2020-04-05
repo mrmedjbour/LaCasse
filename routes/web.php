@@ -39,10 +39,6 @@ Route::view('/home/users/{id}', 'admin.userView')->name('users.view');
 Route::view('/home/messages', 'messages')->name('messages');
 
 
-/*  Dr Role Routes  */
-Route::view('/home/role', 'dr.role')->name('dr.roles.list'); // dr roles list
-Route::view('/home/role/add', 'dr.roleAdd')->name('dr.roles.add'); // dr add role
-Route::view('/home/role/{id}', 'dr.roleEdit')->name('dr.roles.edit'); // dr edit role
 
 
 /*  Ads Routes  */
@@ -62,6 +58,7 @@ Route::get('/home/account', 'User\UserAccountController@account')->name("user.ac
 Route::post('/home/account', 'User\UserAccountController@updateAccount')->name("user.updateAccount");
 Route::put('/home/account', 'User\UserAccountController@updateAvatar')->name("user.updateAvatar");
 Route::patch('/home/account', 'User\UserAccountController@updatePassword')->name("user.updatePassword");
+Route::delete('/home/account', 'User\UserAccountController@updateCasseCover')->name("user.updateCasseCover");
 
 // User Annnonce Resource Routes
 Route::resource('/home/annonce', 'User\UserAnnonceController');
@@ -91,6 +88,6 @@ Route::any('/casse/{id}/{title?}', 'CasseDirectory@profile')->name('profile');
 
 /*  Car Models Routes  */
 Route::resource('/home/model', 'Admin\AdminModelController');
-//Route::view('/home/model', 'admin.model')->name('model');
-//Route::view('/home/model/add', 'admin.modelAdd')->name('model.add');
-//Route::view('/home/model/{id}', 'admin.modelEdit')->name('model.edit');
+
+/*  Dr Role Routes  */
+Route::resource('/home/role', 'DrRolesController');

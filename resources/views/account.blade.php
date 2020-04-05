@@ -4,25 +4,62 @@
             <div class="row">
                 <div class="col-lg-4" style="padding: 0px;font-family: Montserrat, sans-serif;font-size: 14px;">@include('comp.sidebar')</div>
                 <div class="col-lg-8 dash-info">
-                    <div style="background-color: #f8f8f8;border: 1px solid #d5d5d5;border-radius: 3px;margin-bottom: 10vh;">
+                    <div style="background-color: #f8f8f8;border: 1px solid #d5d5d5;border-radius: 3px;">
+                        @if (Auth::user()->role_id == 2)
+                            <div style="padding: 5px 3%;">
+                                @if(session('success'))
+                                    <div class="alert alert-success m-2">{{ session('success') }}</div>
+                                @endif
+                                <h6>Professional information :</h6>
+                                <form method="post" action="{{ route('user.updateCasseCover') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    @method('DELETE')
+                                    <div class="form-group d-sm-flex justify-content-between align-items-center">
+                                        <label class="m-0" for="casseName">Casse Name :</label>
+                                        <input type="text" class="form-control" id="casseName" value="{{ Auth::user()->casse->casse_nom }}" disabled style="max-width: 300px;"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="casseName">Address :</label>
+                                        <p class="text-black-50">Paragraph</p>
+                                    </div>
+                                    <div class="text-center p-2">
+                                        @if ($cover_img = Auth::user()->casse->casse_image)
+                                            <img class="img-fluid w-75" src="{{ asset('/files/casse/'.$cover_img) }}" style="max-height: 90px;"/>
+                                        @else
+                                            <img class="img-fluid w-75" src="{{ asset('/files/casse/casse.jpg') }}" style="max-height: 90px;"/>
+                                        @endif
+                                    </div>
+                                    <div class="form-group d-sm-flex justify-content-between align-items-center">
+                                        <label class="m-0" for="cover">Casse Cover : (720x90)</label>
+                                        <input type="file" id="cover" style="max-width: 300px;" name="cover"/>
+                                    </div>
+                                    <div class="form-group text-center text-md-right">
+                                        <button class="btn btn-success shadow-none" type="submit">Change Cover</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <hr/>
+                        @endif
                         <form method="post" action="{{ route('user.updateAccount') }}" enctype="multipart/form-data">
                             @csrf
-                            @if(session('success'))
-                                <div class="alert alert-success m-2">{{ session('success') }}</div>
+                            @if (Auth::user()->role_id != 2)
+                                @if(session('success'))
+                                    <div class="alert alert-success m-2">{{ session('success') }}</div>
+                                @endif
                             @endif
                             <div class="d-md-flex justify-content-around w-100" style="padding: 5px 3%;">
-                                <div style="width: 100%;">
-                                    <h6 style="margin-bottom: 1rem;">Personal information :</h6>
+                                <div class="w-100">
+                                    <h6 class="mb-3">Personal information :</h6>
                                     <div class="form-group d-sm-flex align-items-center justify-content-sm-between">
-                                        <label class="text-nowrap" for="first-name">First name :&nbsp;</label>
+                                        <label class="text-nowrap" for="first-name">First name :</label>
                                         <input class="form-control form-control-sm ProfInputS" type="text" id="first-name" value="{{ $user->user_prenom }}" disabled>
                                     </div>
                                     <div class="form-group d-sm-flex align-items-center justify-content-sm-between">
-                                        <label class="text-nowrap" for="last-name">Last name :&nbsp;</label>
+                                        <label class="text-nowrap" for="last-name">Last name :&nbsp</label>
                                         <input class="form-control form-control-sm ProfInputS" type="text" id="last-name" value="{{ $user->user_nom }}" disabled>
                                     </div>
                                     <div class="form-group d-sm-flex justify-content-sm-between">
-                                        <label class="text-nowrap" for="email">Email :&nbsp; &nbsp; &nbsp;</label>
+                                        <label class="text-nowrap" for="email">Email :</label>
                                         <input class="form-control form-control-sm ProfInputS" type="text" id="email" value="{{ $user->email }}" disabled>
                                     </div>
                                     <h6 class="mb-1">Address :</h6>
