@@ -7,6 +7,9 @@
                     @include('comp.sidebar')
                 </div>
                 <div class="col-lg-8 dash-info">
+                    @if(session('success'))
+                        <div class="alert alert-success">{{ session('success') }}</div>
+                    @endif
                     <div class="mb-1">
                         <form class="form-inline d-flex justify-content-end pr-2 mb-2" method="get">
                             <input class="form-control form-control-sm w-auto mr-2" type="search" placeholder="Search" aria-label="Search" name="search"><i class="fa fa-search text-success" aria-hidden="true"></i>
@@ -48,7 +51,7 @@
                                         </button>
                                     </td>
                                     <td class="text-center p-0">
-                                        <button class="btn btn-sm shadow-none" id="DeleteUserRole" type="button" u_id="{{ $user->user_id }}">
+                                        <button class="btn btn-sm shadow-none" id="DeleteUserBtn" type="button" u_id="{{ $user->user_id }}">
                                             <i class="fa fa-remove shadow-none text-danger"></i>
                                         </button>
                                     </td>
@@ -79,8 +82,9 @@
                                     <p class="pt-3">Are you sure you want to delete this record?</p>
                                 </div>
                                 <div class="modal-footer p-2 px-sm-3">
-                                    <form class="d-flex justify-content-between m-0 w-100" method="post">
-                                        <input class="form-control" type="hidden" id="u_id" name="user_id">
+                                    <form class="d-flex justify-content-between m-0 w-100" id="delete" method="post">
+                                        @csrf
+                                        @method('DELETE')
                                         <button class="btn btn-secondary shadow-none" type="button" data-dismiss="modal">No</button>
                                         <button class="btn btn-danger shadow-none" type="submit">Yes, Delete</button>
                                     </form>

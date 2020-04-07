@@ -33,12 +33,12 @@ class AdminUsersController extends Controller
 
     public function create()
     {
-        //
+        redirect(route('users.index'));
     }
 
     public function store(Request $request)
     {
-        //
+        redirect(route('users.index'));
     }
 
     public function show($id)
@@ -49,7 +49,7 @@ class AdminUsersController extends Controller
 
     public function edit($id)
     {
-        //
+        return redirect(route('users.show', $id));
     }
 
     public function update(Request $request, $id)
@@ -74,6 +74,22 @@ class AdminUsersController extends Controller
 
     public function destroy($id)
     {
-        //
+
+        $user = User::findOrFail($id);
+        if ($user->role_id == 1) {
+            return false;
+        }
+        if ($user->role_id == 2) {
+            $casse_id = $user->casse_id;
+            $users = User::where('casse_id', $casse_id)->where('user_id', '<>', $user->user_id)->delete();
+            $users = User::withTrashed()->where('casse_id', $casse_id)->where('user_id', '<>', $user->user_id)->update(['casse_id' => null], ['role_id' => 5]);
+        }
+        $user->annonces()->delete();
+        $user->casse()->delete();
+        $user->casse_id = null;
+        $user->role_id = 5;
+        if ($user->delete()) {
+            return redirect(route('users.index'))->with('success', 'User Successfully deleted');
+        }
     }
 }

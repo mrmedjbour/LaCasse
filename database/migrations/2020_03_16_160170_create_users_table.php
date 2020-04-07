@@ -17,7 +17,6 @@ class CreateUsersTable extends Migration
             $table->increments('user_id');
             $table->string('user_prenom', 30);
             $table->string('user_nom', 30);
-//            $table->addColumn('integer', 'user_tel', ['length' => 10, 'unsigned' => true, 'ZEROFILL' => true]);
             $table->string('user_tel')->default("[]");
             $table->string('user_avatar')->default('avatar.svg');
             $table->boolean('user_etat')->default(1);
@@ -31,6 +30,7 @@ class CreateUsersTable extends Migration
             $table->addColumn('smallInteger', 'commune_id', ['length' => 4, 'unsigned' => true]);
             $table->foreign('commune_id')->references('commune_id')->on('commune');
             $table->rememberToken();
+            $table->softDeletes();
             $table->timestamps();
             $table->dropForeign(['role_id']);
             $table->dropForeign(['casse_id']);

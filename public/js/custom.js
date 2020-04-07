@@ -79,9 +79,9 @@ $(document).ready(function() {
 
 
 // delete User model
-    $("button#DeleteUserRole").click(function () {
+    $("button#DeleteUserBtn").click(function () {
         var u_id = $(this).attr('u_id');
-        $("#DeleteUserModel #u_id").val(u_id);
+        $("#DeleteUserModel form#delete").attr('action', '/home/users/' + u_id);
         $("#DeleteUserModel").modal('show');
     });
 
@@ -91,7 +91,7 @@ $(document).ready(function() {
         $("#DeleteRoleUserModel #u_id").val(u_id);
         $("#DeleteRoleUserModel").modal('show');
     });
-// User state block/unblock
+// user state block User state block/unblock
     $("button#StatusUserblock").click(function () {
         var u_id = $(this).attr('u_id');
         var form = new FormData();
