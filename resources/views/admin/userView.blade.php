@@ -13,32 +13,37 @@
                                 <div class="w-100">
                                     <h6 class="mb-1">User information :</h6>
                                     <div class="form-group d-sm-flex align-items-center justify-content-sm-between">
-                                        <label class="text-nowrap" for="first-name">Role :&nbsp;</label>
-                                        <input class="form-control form-control-sm" type="text" id="first-name" readonly="" value="Client" disabled="" style="color: #444;border: 1px solid #9a9a9a;max-width: 300px;">
+                                        <label class="text-nowrap" for="roleUser">Role :</label>
+                                        <input class="form-control form-control-sm ProfInputS" type="text" id="roleUser" value="{{ $user->role->role_nom }}" disabled>
                                     </div>
                                     <div class="form-group d-sm-flex align-items-center justify-content-sm-between">
-                                        <label class="text-nowrap" for="first-name">Firstname :&nbsp;</label>
-                                        <input class="form-control form-control-sm" type="text" id="first-name" readonly="" value="Hamid" disabled="" style="color: #444;border: 1px solid #9a9a9a;max-width: 300px;">
+                                        <label class="text-nowrap" for="first-name">Firstname :</label>
+                                        <input class="form-control form-control-sm ProfInputS" type="text" id="first-name" value="{{ $user->user_prenom }}" disabled>
                                     </div>
                                     <div class="form-group d-sm-flex align-items-center justify-content-sm-between">
-                                        <label class="text-nowrap" for="first-name">Lastname :&nbsp;</label>
-                                        <input class="form-control form-control-sm" type="text" id="first-name" readonly="" value="Medjbour" disabled="" style="color: #444;border: 1px solid #9a9a9a;max-width: 300px;">
+                                        <label class="text-nowrap" for="Lastname">Lastname :</label>
+                                        <input class="form-control form-control-sm ProfInputS" type="text" id="Lastname" value="{{ $user->user_nom }}" disabled>
                                     </div>
                                     <div class="form-group d-sm-flex justify-content-sm-between">
-                                        <label class="text-nowrap" for="email">Email :&nbsp; &nbsp; &nbsp;</label>
-                                        <input class="form-control form-control-sm" type="text" id="first-name" readonly="" value="demo@example.com" disabled="" style="color: #444;border: 1px solid #9a9a9a;max-width: 300px;">
+                                        <label class="text-nowrap" for="email">Email :</label>
+                                        <input class="form-control form-control-sm ProfInputS" type="text" id="email" value="{{ $user->email  }}" disabled>
                                     </div>
-                                    <h6 class="mb-1" style="margin-bottom: 1rem;">Address :</h6>
-                                    <p class="font-weight-light pl-2 text-dark">Cheloute, isser, boumerdes</p>
-                                    <h6 class="mb-1" style="margin-bottom: 1rem;">Phone numbers :</h6>
-                                    <input class="form-control form-control-sm d-block mb-1 ml-2" type="tel" placeholder="Phone Number" style="color: #444;border: 1px solid #9a9a9a;max-width: 250px;" value="0654000000" inputmode="tel" disabled="" readonly="">
-                                    <input class="form-control form-control-sm d-block mb-1 ml-2" type="tel" placeholder="Phone Number" style="color: #444;border: 1px solid #9a9a9a;max-width: 250px;" value="0540000000" inputmode="tel" disabled="" readonly="">
+                                    <h6 class="mb-1 mb-1">Address :</h6>
+                                    <p class="font-weight-light pl-2 text-dark">{{ Str::title($user->commune->commune_nom .', '.$user->commune->daira->daira_nom.', '.$user->commune->daira->wilaya->wilaya_nom) }}</p>
+                                    @foreach($user->user_tel as $phone)
+                                        @if ($loop->first)
+                                            <h6 class="mb-1">Phone numbers :</h6>
+                                        @endif
+                                        <input class="form-control form-control-sm d-block mb-1 ml-2 UserViewInput" value="{{ $phone }}" disabled>
+                                    @endforeach
+
                                 </div>
-                                <div class="text-center" id="Profile" style="width: auto;padding: 2px;">
-                                    <img class="rounded-circle img-fluid" id="AvatarProfile" src="{{ asset('img/avatar.svg') }}" alt="Avatar" loading="auto" style="width: 200px;height: 200px;margin: 5px;">
+                                <div class="text-center w-auto p-1" id="Profile">
+                                    <img class="rounded-circle img-fluid" id="AvatarProfile" src="{{ asset('/files/avatar/' . $user->user_avatar) }}" alt="Avatar" loading="auto" style="width: 200px;height: 200px;margin: 5px;">
                                 </div>
                             </div>
-                            <div class="d-flex justify-content-start justify-content-xl-start mx-4 mb-3 mt-1"><a class="btn btn-dark shadow-none" role="button" href="#"><i class="fa fa-chevron-left m-1"></i>&nbsp;Back</a>
+                            <div class="d-flex justify-content-start justify-content-xl-start mx-4 mb-3 mt-1">
+                                <a class="btn btn-dark shadow-none" role="button" href="{{ route('users.index') }}"><i class="fa fa-chevron-left m-1"></i>&nbsp;Back</a>
                             </div>
                         </form>
                     </div>

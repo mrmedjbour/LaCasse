@@ -1321,6 +1321,12 @@ input.ProfInputS {
     max-width: 300px;
 }
 
+input.UserViewInput {
+    color: #444;
+    border: 1px solid #9a9a9a;
+    max-width: 250px;
+}
+
 .ProfInputPhone input {
     color: #444;
     border: 1px solid #9a9a9a;

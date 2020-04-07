@@ -26,7 +26,6 @@
                             </tr>
                             </thead>
                             <tbody>
-
                             @foreach($users as $user)
                                 @if ($user->role_id == 1)
                                     @continue
@@ -64,8 +63,8 @@
                         </table>
                     </div>
                     <div class="text-center text-sm-right">
-                        <nav class="d-inline-block m-2">
-                            {{--                            {{ $users->links() }}--}}
+                        <nav class="d-inline-block m-2 pagin">
+                            {{ $users->links() }}
                         </nav>
                     </div>
                     <div class="modal fade" role="dialog" tabindex="-1" id="DeleteUserModel">
