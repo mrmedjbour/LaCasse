@@ -20,9 +20,7 @@
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <link rel="stylesheet" href="{{ asset('css/styleSendMsgBox.css') }}">
     <link rel="stylesheet" href="{{ asset('css/x-dropdown.css') }}">
-    @if(Route::currentRouteName() == 'directory' OR Route::currentRouteName() == 'profile')
-        @mapstyles
-    @endif
+
 </head>
 <body>
 @guest
@@ -31,23 +29,18 @@
     @include('layouts.headerAuth')
 @endguest
 
-@if( Route::currentRouteName() != 'index')
-    <div id="breadCrumb" style="margin-top: 2em;padding-bottom: 20px;">
-        <div class="container">
-            <div class="row">
-                <div class="col-auto">
-                    <div>
-                        <ul class="list-inline text-capitalize d-flex align-items-center" id="breadCrumbList" style="margin-bottom: 0;font-size: 0px;">
-                            <li class="list-inline-item" id="beadCrumbHome"><a href="{{route('index')}}"><i class="fa fa-home fa-lg" style="color: #58ba25;"></i></a></li>
-                            <li class="list-inline-item" id="beadCrumbPage"><a href="#">» Search Results<br></a></li>
-                        </ul>
-                    </div>
-                </div>
+<script>
+    var x = document.getElementById("breadCrumb").style.display = "none";
+</script>
+<section id="sectionContent">
+    <div class="container py-4">
+        <div class="row" style="min-height: 45vh;">
+            <div class="col-12">
+                @yield('code')
+                @yield('message')
             </div>
         </div>
     </div>
-@endif
-
-@yield('content')
+</section>
 
 @include('layouts.footer')
