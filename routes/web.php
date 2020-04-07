@@ -25,11 +25,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 /* Pages Route */
 Route::view('/example', 'example')->name('example');
 
-
-/*  Gs Users Routes  */
-Route::view('/home/users', 'admin.users')->name('users.List');
-Route::view('/home/users/{id}', 'admin.userView')->name('users.view');
-
 /*  Dashboard Routes    */
 Route::view('/home/messages', 'messages')->name('messages');
 
@@ -75,3 +70,6 @@ Route::resource('/home/model', 'Admin\AdminModelController');
 
 /*  Dr Role Routes  */
 Route::resource('/home/role', 'DrRolesController');
+
+/*  Gs Users Routes  */
+Route::resource('/home/users', 'Admin\AdminUsersController');
