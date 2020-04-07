@@ -1,8 +1,7 @@
 # Maps for your Laravel application
 
 [![GitLab Repository](https://img.shields.io/badge/GitLab-gonoware/laravel--maps-blue.svg?logo=gitlab&style=flat-square&longCache=true)](https://gitlab.com/gonoware/laravel-maps)
-[![Laravel Version](https://img.shields.io/badge/Laravel-5.5-blue.svg?logo=laravel&style=flat-square&longCache=true)]()
-[![Laravel Version](https://img.shields.io/badge/Laravel-6-blue.svg?logo=laravel&style=flat-square&longCache=true)]()
+[![Laravel Version](https://img.shields.io/badge/Laravel-7-blue.svg?logo=laravel&style=flat-square&longCache=true)]()
 [![Latest Stable Version](https://poser.pugx.org/gonoware/laravel-maps/v/stable?format=flat-square)](https://packagist.org/packages/gonoware/laravel-maps)
 [![StyleCI](https://gitlab.styleci.io/repos/8146646/shield)](https://gitlab.styleci.io/repos/8146646)
 [![License](https://poser.pugx.org/gonoware/laravel-maps/license?format=flat-square)](https://packagist.org/packages/gonoware/laravel-maps)
@@ -20,6 +19,7 @@ Supported map services:
 
 > Note: Yandex Maps API does not work in Chrome.
 
+For Laravel 5.5 use version [1.0.3](https://gitlab.com/gonoware/laravel-maps/tree/v1.0.3)
 
 ## Features
 | | Google Maps | OpenStreetMap | Bing Maps | MapQuest | Yandex Maps | MapKit |  
@@ -128,10 +128,10 @@ Show a popup when a marker is clicked. The `popup` attribute may contain HTML ma
     'zoom' => 6,
     'markers' => [
         [
-                'title' => 'Go NoWare',
-                'lat' => 48.134664,
-                'lng' => 11.555220,
-                'popup' => '<h3>Details</h3><p>Click <a href="https://gonoware.com">here</a>.</p>',
+            'title' => 'Go NoWare',
+            'lat' => 48.134664,
+            'lng' => 11.555220,
+            'popup' => '<h3>Details</h3><p>Click <a href="https://gonoware.com">here</a>.</p>',
         ],
     ],
 ])
@@ -147,8 +147,8 @@ Show a custom marker icon. Absolute and relative URLs are supported.
     'markers' => [
         [
             'title' => 'Go NoWare',
-            'lat' => '48.134664',
-            'lng' => '11.555220',
+            'lat' => 48.134664,
+            'lng' => 11.555220,
             'url' => 'https://gonoware.com',
             'icon' => 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
         ],
@@ -159,14 +159,14 @@ Show a custom marker icon. Absolute and relative URLs are supported.
 Additionally you may also specify the icon image size and anchor in pixels. The image will be aligned so that the tip of the icon is at the marker's geographical location.
 ```php
 @map([
-    'lat' => '48.134664',
-    'lng' => '11.555220',
-    'zoom' => '6',
+    'lat' => 48.134664,
+    'lng' => 11.555220,
+    'zoom' => 6,
     'markers' => [
         [
             'title' => 'Go NoWare',
-            'lat' => '48.134664',
-            'lng' => '11.555220',
+            'lat' => 48.134664,
+            'lng' => 11.555220,
             'url' => 'https://gonoware.com',
             'icon' => 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
             'icon_size' => [20, 32],
@@ -225,7 +225,7 @@ Please refer to the respective documentation for advanced customization:
  * [MapKit (beta)](https://developer.apple.com/documentation/mapkitjs)
 
 ### Marker Clicked
-The event `LaravelMaps:MarkerClicked` will be dispatched when a marker was clicked. The DOM element, map, markers and 
+The event `LaravelMaps:MarkerClicked` will be dispatched when a marker was clicked. The DOM element, map, marker and 
 service name can be accessed via the event details.
 ```js
 window.addEventListener('LaravelMaps:MarkerClicked', function (event) {
