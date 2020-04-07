@@ -15,7 +15,7 @@ class AdminUsersController extends Controller
 
     public function index()
     {
-        $users = User::all();
+        $users = User::with('casse')->latest()->paginate(20);
         return view('admin.users', compact(['users']));
     }
 

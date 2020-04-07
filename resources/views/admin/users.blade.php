@@ -18,7 +18,7 @@
                             <tr>
                                 <th style="width: 8%;">#</th>
                                 <th>Full name</th>
-                                <th>Role</th>
+                                <th style="width: 10%;">Role</th>
                                 <th style="width: 8%;">Status</th>
                                 <th style="width: 8%;"><strong>Delete</strong>
                                 </th>
@@ -28,10 +28,17 @@
                             <tbody>
 
                             @foreach($users as $user)
+                                @if ($user->role_id == 1)
+                                    @continue
+                                @endif
                                 <tr>
                                     <td>{{ $user->user_id }}</td>
-                                    <td>{{ $user->user_prenom.' '.$user->user_nom }}</td>
-                                    <td> {{ $user->role->role_nom }} </td>
+                                    <td>{{ $user->user_prenom.' '.$user->user_nom }}
+                                        @if($user->role_id == 2)
+                                            <a class="text-decoration-none font-weight-light" target="_blank" href="{{ route('profile', $user->casse->casse_id) }}">({{ $user->casse->casse_nom }})</a>
+                                        @endif
+                                    </td>
+                                    <td> {{ $user->role->role_nom }}</td>
                                     <td class="text-center p-0">
                                         <button class="btn btn-sm shadow-none" id="StatusUserblock" type="button" u_id="{{ $user->user_id }}">
                                             @if ($user->user_etat == 1)
@@ -53,24 +60,12 @@
                                     </td>
                                 </tr>
                             @endforeach
-                            {{--                  &nbsp;      <a class="text-decoration-none font-weight-light" href="#">(CasseAutoCrosso)</a>--}}
                             </tbody>
                         </table>
                     </div>
                     <div class="text-center text-sm-right">
                         <nav class="d-inline-block m-2">
-                            <ul class="pagination mb-0">
-                                <li class="page-item"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">1</a>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">2</a>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">3</a>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a>
-                                </li>
-                            </ul>
+                            {{--                            {{ $users->links() }}--}}
                         </nav>
                     </div>
                     <div class="modal fade" role="dialog" tabindex="-1" id="DeleteUserModel">
