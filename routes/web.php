@@ -25,11 +25,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 /* Pages Route */
 Route::view('/example', 'example')->name('example');
 
-/*  Go Pro Routes  */
-//Route::view('/home/pro', 'pro')->name('pro'); //sent req to go pro
-//Route::view('/home/prosent', 'proSent')->name('pro.sent'); // req send succesfully
-//Route::view('/home/pro/list', 'admin.proList')->name('pro.list'); // req list for admin
-//Route::view('/home/pro/{id}', 'admin.proReq')->name('pro.req'); // req view for admin
 
 /*  Gs Users Routes  */
 Route::view('/home/users', 'admin.users')->name('users.List');
@@ -39,17 +34,6 @@ Route::view('/home/users/{id}', 'admin.userView')->name('users.view');
 Route::view('/home/messages', 'messages')->name('messages');
 
 
-
-
-/*  Ads Routes  */
-//Route::view('/annoncex', 'annonce')->name('annoncex'); // annoce for anyone public view
-//Route::view('/home/annonce', 'annonces')->name('myads'); // users annonce list
-Route::view('/home/annonces', 'admin.annonces')->name('ads'); // admin annonce list
-//Route::get('/home/annonce/add', function (){
-//    $Partscat = \App\PieceCat::with('pieces')->get();
-//    return view('addAds', compact('Partscat'));
-//})->name('addAds');
-//Route::view('/home/annonce/{id}', 'editAds')->name('EditAds'); // edit ads
 
 
 // ----------------------------------------------------------------------------

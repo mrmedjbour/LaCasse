@@ -20,7 +20,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="casseName">Address :</label>
-                                        <p class="text-black-50">Paragraph</p>
+                                        <p class="text-black-50">{{ Str::title(Auth::user()->casse->casse_adr) }}<br>{{ Str::title(Auth::user()->casse->commune->commune_nom.' '.Auth::user()->casse->commune->daira->daira_nom.' '.Auth::user()->casse->commune->daira->wilaya->wilaya_nom) }}</p>
                                     </div>
                                     <div class="text-center p-2">
                                         @if ($cover_img = Auth::user()->casse->casse_image)

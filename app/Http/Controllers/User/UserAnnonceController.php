@@ -19,7 +19,8 @@ class UserAnnonceController extends Controller
     public function index()
     {
         if (Auth::user()->role_id == 1) {
-            $ads = \App\Annonce::all()->sortByDesc('annonce_date');
+//            $ads = \App\Annonce::all()->sortByDesc('annonce_date');
+            $ads = \App\Annonce::orderBy('annonce_date', 'DESC')->paginate(20);
             return view('admin.annonces', compact('ads'));
         }
         $ads = Auth::user()->annonces()->with('modele')->get();

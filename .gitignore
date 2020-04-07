@@ -7,6 +7,7 @@
 /public/files/annonce/*
 /public/files/avatar/*
 /public/files/doc/*
+/public/files/casse/*
 .env
 .env.backup
 .phpunit.result.cache
