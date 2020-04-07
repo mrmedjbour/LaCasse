@@ -85,24 +85,31 @@ $(document).ready(function() {
         $("#DeleteUserModel").modal('show');
     });
 
-// User state block/unblock
-    $("button#StatusUserblock").click(function () {
-        var u_id = $(this).attr('u_id');
-        if ($(this).children('i').hasClass('fa-ban')) {
-            $(this).children('i').removeClass('fa-ban text-warning').addClass('fa-check text-success');
-        } else {
-            $(this).children('i').removeClass('fa-check text-success').addClass('fa-ban text-warning')
-        }
-        alert(u_id);
-    });
-
 // delete role user model
     $("button#DeleteUserRole").click(function () {
         var u_id = $(this).attr('u_id');
         $("#DeleteRoleUserModel #u_id").val(u_id);
         $("#DeleteRoleUserModel").modal('show');
     });
-
+// User state block/unblock
+    $("button#StatusUserblock").click(function () {
+        var u_id = $(this).attr('u_id');
+        var form = new FormData();
+        form.append('_method', 'PUT');
+        $.ajax({
+            url: '/home/users/' + u_id,
+            type: 'POST',
+            processData: false,
+            data: form,
+            contentType: false,
+            dataType: 'json',
+        });
+        if ($(this).children('i').hasClass('fa-ban')) {
+            $(this).children('i').removeClass('fa-ban text-warning').addClass('fa-check text-success');
+        } else {
+            $(this).children('i').removeClass('fa-check text-success').addClass('fa-ban text-warning')
+        }
+    });
 // ad state block
     $("button#StatusAdblock").click(function () {
         var a_id = $(this).attr('a_id');

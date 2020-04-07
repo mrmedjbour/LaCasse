@@ -39,7 +39,7 @@
                                     </td>
                                     <td> {{ $user->role->role_nom }}</td>
                                     <td class="text-center p-0">
-                                        <button class="btn btn-sm shadow-none" id="StatusUserblock" type="button" u_id="{{ $user->user_id }}">
+                                        <button class="btn btn-sm shadow-none" id="StatusUserblock" type="button" u_id="{{ $user->user_id }}">
                                             @if ($user->user_etat == 1)
                                                 <i class="fa fa-check text-success"></i>
                                             @else
@@ -48,7 +48,7 @@
                                         </button>
                                     </td>
                                     <td class="text-center p-0">
-                                        <button class="btn btn-sm shadow-none" id="DeleteUserRole" type="button" u_id="{{ $user->user_id }}">
+                                        <button class="btn btn-sm shadow-none" id="DeleteUserRole" type="button" u_id="{{ $user->user_id }}">
                                             <i class="fa fa-remove shadow-none text-danger"></i>
                                         </button>
                                     </td>
