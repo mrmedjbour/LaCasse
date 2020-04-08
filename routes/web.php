@@ -73,3 +73,6 @@ Route::resource('/home/role', 'DrRolesController');
 
 /*  Gs Users Routes  */
 Route::resource('/home/users', 'Admin\AdminUsersController');
+
+/*  Contact Us Routes  */
+Route::resource('/contact', 'ContactUsController', ['only' => ['index', 'store']]);
