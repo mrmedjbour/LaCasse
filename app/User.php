@@ -101,6 +101,6 @@ class User extends Authenticatable
 
     public function isOnline()
     {
-        return $this->last_online <= Carbon::now()->addMinutes(5);
+        return $this->last_online <= Carbon::now()->addMinutes(4);
     }
 }
