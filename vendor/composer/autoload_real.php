@@ -13,9 +13,6 @@ class ComposerAutoloaderInitdd2677ab7a69e877e3b8d6087c89ad93
         }
     }
 
-    /**
-     * @return \Composer\Autoload\ClassLoader
-     */
     public static function getLoader()
     {
         if (null !== self::$loader) {
