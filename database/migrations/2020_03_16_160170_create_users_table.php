@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->boolean('user_etat')->default(1);
             $table->string('email', 35)->unique();
             $table->string('password');
+            $table->timestamp("last_online")->useCurrent()->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->addColumn('tinyInteger', 'role_id', ['length' => 1, 'unsigned' => true])->default(5);
             $table->foreign('role_id')->references('role_id')->on('role');

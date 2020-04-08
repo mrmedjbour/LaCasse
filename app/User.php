@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -19,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'user_prenom', 'user_nom', 'email', 'user_tel', 'password', 'role_id', 'commune_id', 'casse_id',
+        'user_prenom', 'user_nom', 'email', 'user_tel', 'password', 'role_id', 'commune_id', 'casse_id', 'last_online',
     ];
 
     /**
@@ -44,8 +45,10 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'last_online' => 'datetime',
         'user_tel' => 'array',
     ];
+
     /**
      * methods of class users
      */
@@ -94,5 +97,10 @@ class User extends Authenticatable
     public function desc()
     {
         return $this->hasMany('App\Discussion', 'user_id');
+    }
+
+    public function isOnline()
+    {
+        return $this->last_online <= Carbon::now()->addMinutes(5);
     }
 }
