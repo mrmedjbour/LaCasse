@@ -21,16 +21,12 @@
 @else
     @include('layouts.headerAuth')
 @endguest
-<script>
-    var x = document.getElementById("breadCrumb").style.display = "none";
-</script>
-<section id="sectionContent">
-    <div class="container py-4">
-        <div class="row" style="min-height: 45vh;">
-            <div class="col-12">
-                @yield('code')
-                <img src="{{ asset('/img/break.svg') }}">
-                @yield('message')
+<section>
+    <div class="container">
+        <div class="row p-5">
+            <div class="col-12 text-center"><img class="img-fluid" src="{{ asset('/img/break.svg') }}" loading="auto" style="width: 250px;"/>
+                <h1 class="font-weight-bolder m-0" style="color: #58ba25;font-size: 60px;"> @yield('code') </h1>
+                <h2> @yield('message') </h2>
             </div>
         </div>
     </div>
