@@ -9,9 +9,9 @@
                     @if(session('success'))
                         <div class="alert alert-success mb-3 text-center">{{ session('success') }}</div>
                     @endif
-                    <input type="text" class="form-control d-block mb-3" name="email" placeholder="Email"/>
-                    <input type="text" class="form-control d-block mb-4" name="phone" placeholder="Phone Number"/>
-                    <textarea class="form-control" placeholder="Enter Message" rows="8" name="message"></textarea>
+                    <input type="text" class="form-control d-block mb-3" name="email" placeholder="Email" required/>
+                    <input type="tel" class="form-control d-block mb-4" name="phone" placeholder="Phone Number"/>
+                    <textarea class="form-control" placeholder="Enter Message" rows="8" name="message" required></textarea>
                     <button class="btn btn-success my-3" type="submit"><i class="fa fa-send-o mr-2"></i>{{ __('SEND') }}</button>
                 </form>
             </div>

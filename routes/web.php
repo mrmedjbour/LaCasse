@@ -22,9 +22,6 @@ Route::get('/', function () {
 /*  Dashboard */
 Route::get('/home', 'HomeController@index')->name('home');
 
-/* Pages Route */
-Route::view('/example', 'example')->name('example');
-
 /*  Dashboard Routes    */
 Route::view('/home/messages', 'messages')->name('messages');
 
@@ -76,3 +73,6 @@ Route::resource('/home/users', 'Admin\AdminUsersController');
 
 /*  Contact Us Routes  */
 Route::resource('/contact', 'ContactUsController', ['only' => ['index', 'store']]);
+
+/* Pages Route */
+Route::any('/page/{title}', 'PagesController@page');
