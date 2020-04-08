@@ -22,9 +22,6 @@ Route::get('/', function () {
 /*  Dashboard */
 Route::get('/home', 'HomeController@index')->name('home');
 
-/*  Dashboard Routes    */
-Route::view('/home/messages', 'messages')->name('messages');
-
 
 
 
@@ -76,3 +73,6 @@ Route::resource('/contact', 'ContactUsController', ['only' => ['index', 'store']
 
 /* Pages Route */
 Route::any('/page/{title}', 'PagesController@page');
+
+/*  Messages Routes    */
+Route::match(['GET', 'POST'], '/home/messages', 'MessagesController@messages')->name('messages');;
