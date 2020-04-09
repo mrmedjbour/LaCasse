@@ -75,4 +75,5 @@ Route::resource('/contact', 'ContactUsController', ['only' => ['index', 'store']
 Route::any('/page/{title}', 'PagesController@page');
 
 /*  Messages Routes    */
-Route::match(['GET', 'POST'], '/home/messages', 'MessagesController@messages')->name('messages');;
+Route::any('/home/messages/discussion', 'MessagesController@discussion');
+Route::match(['GET', 'POST'], '/home/messages/{disc?}', 'MessagesController@messages')->name('messages');;

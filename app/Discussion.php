@@ -12,12 +12,20 @@ class Discussion extends Model
     protected $fillable = [
         'disc_titre',
         'disc_stamp',
+        'user_id',
         'annonce_id',
     ];
+
+    protected $hidden = ['laravel_through_key'];
 
     public function msg()
     {
         return $this->hasMany('App\Message', 'disc_id');
+    }
+
+    public function latestmsg()
+    {
+        return $this->hasOne('App\Message', 'disc_id')->latest('msg_stamp');
     }
 
     public function ad()

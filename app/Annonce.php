@@ -21,7 +21,7 @@ class Annonce extends Model
 
     public function discussions()
     {
-        return $this->hasMany('App\Discussion', 'disc_id');
+        return $this->hasMany('App\Discussion', 'annonce_id');
     }
 
     public function modele()

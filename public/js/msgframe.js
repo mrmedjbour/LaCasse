@@ -51,7 +51,8 @@ $(function(){
     $("#contacts_list li.contact").click(function() {
         $("li.contact").removeClass('active');
         $(this).addClass('active');
-        var user_id = $(this).children("input#user_id").val();
+        var disc_id = $(this).children("input#disc_id").val();
+        alert(disc_id);
         $("#msgframe #sidepanel").hide();
         $("#msgframe .content").show();
     });
@@ -64,12 +65,16 @@ $(function(){
     });
 
 
-    function refreshMsg(){
+    function refreshMsg() {
         var oldmsgs = $(".content .messages ul").html();
         $(".content .messages ul").html(oldmsgs);
     }
-    setInterval(refreshMsg,5000);
 
+    setInterval(refreshMsg, 5000);
+
+    // setInterval(function(){
+    //     $("#screen").load('banners.php')
+    // }, 3000);
 
 })
 

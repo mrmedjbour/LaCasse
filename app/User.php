@@ -99,6 +99,18 @@ class User extends Authenticatable
         return $this->hasMany('App\Discussion', 'user_id');
     }
 
+    public function adDesc()
+    {
+        return $this->hasManyThrough(
+            'App\Discussion',
+            'App\Annonce',
+            'user_id', // Foreign key on users table...
+            'annonce_id', // Foreign key on posts table...
+            'user_id', // Local key on countries table...
+            'annonce_id' // Local key on users table...
+        );
+    }
+
     public function isOnline()
     {
         return $this->last_online <= Carbon::now()->addMinutes(4);

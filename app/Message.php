@@ -17,6 +17,12 @@ class Message extends Model
         'disc_id',
     ];
 
+    protected $dates = ['msg_stamp'];
+
+    protected $casts = [
+        'msg_stamp' => 'datetime',
+    ];
+
 
     public function messages()
     {

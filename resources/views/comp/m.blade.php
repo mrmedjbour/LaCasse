@@ -2,16 +2,16 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 
 
-<div class="col-12 col-lg-8 p-0 mr-0 mb-3" id="colMsgframe">
+<div class="col-12 col-lg-8 p-0 mr-0 mb-3" id="colMsgframe" style="margin-bottom: 30px;margin-right: 0px;padding: 0px;">
     <div class="d-flex align-items-center" id="msgframe">
         <div id="sidepanel">
             <div id="search">
-                <label for=""><i class="fa fa-search" aria-hidden="true"></i></label>
+                <label for=""><i class="fa fa-search" aria-hidden="true"></i>
+                </label>
                 <input type="text" id="contactSearch" placeholder="Search contacts...">
             </div>
             <div id="contacts">
                 <ul id="contacts_list">
-
                     <li class="contact">
                         <div class="d-flex align-items-center wrap">
                             <div class="contact_icon"><span class="contact-status"></span>
@@ -22,7 +22,7 @@
                                 <p class="preview"><span><i class="fa fa-reply"></i></span>Hi</p>
                             </div>
                         </div>
-                        <input type="hidden" id="disc_id" value="1">
+                        <input type="hidden" id="user_id" value="1">
                     </li>
                     <li class="contact">
                         <div class="d-flex align-items-center wrap">
@@ -36,7 +36,20 @@
                         </div>
                         <input type="hidden" id="user_id" value="2">
                     </li>
-
+                    @for($i = 0 ; $i < 10 ; $i++)
+                        <li class="contact">
+                            <div class="d-flex align-items-center wrap">
+                                <div class="contact_icon"><span class="contact-status"></span>
+                                    <img src="{{ asset('img/avatar.svg') }}" alt="">
+                                </div>
+                                <div class="meta">
+                                    <p class="name">Hamid Fares</p>
+                                    <p class="preview"><span><i class="fa fa-reply"></i></span>You just got.You just got.You just got.You just got.You just got.</p>
+                                </div>
+                            </div>
+                            <input type="hidden" id="user_id" value="3">
+                        </li>
+                    @endfor
                 </ul>
             </div>
         </div>
