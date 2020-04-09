@@ -1,5 +1,5 @@
 $(function(){
-    $(".messages").animate({ scrollTop: $(document).height() }, "fast");
+    $(".messages").animate({scrollTop: 9000000}, "fast");
 
     $(".expand-button").click(function() {
         $("#profile").toggleClass("expanded");
@@ -9,13 +9,24 @@ $(function(){
 
     function newMessage() {
         message = $(".message-input input").val();
-        if($.trim(message) == '') {
+        if ($.trim(message) == '' || !$('#contacter_disc').val()) {
             return false;
         }
-        $('<li class="sent"><p>' + message + '</p></li>').appendTo($('.messages ul'));
-        $('.message-input input').val(null);
-        $('.contact.active .wrap .meta .preview').html('<i class="fa fa-reply"></i>' + ' ' + message);
-        $(".messages").animate({ scrollTop: $(document).height() }, "fast");
+        disc_id = $('#contacter_disc').val();
+        $.ajax({
+            type: "POST",
+            url: "/home/messages/send",
+            data: {disc_id: disc_id, message: message},
+            success: function (data) {
+                $('.message-input input').val(null);
+                refreshMsg();
+                $(".messages").animate({scrollTop: 9000000}, "fast");
+                setTimeout(function () {
+                    $(".messages").animate({scrollTop: 9000000}, "fast");
+                }, 1000);
+            },
+            dataType: 'json'
+        });
     }
 
     $('.submit').click(function() {
@@ -36,22 +47,11 @@ $(function(){
         });
     });
 
-    $.urlParam = function (par) {
-        var results = new RegExp('[\?&]' + par + '=([^&#]*)').exec(window.location.href);
-        if (results == null) {
-            return null;
-        }
-        return decodeURI(results[1]) || 0;
-    };
-    if($.urlParam('m')){
-        $("#msgframe #sidepanel").hide();
-        $("#msgframe .content").show();
-    }
-
     $ContactEvent = function () {
         $("li.contact").removeClass('active');
         $(this).addClass('active');
-        var disc_id = $(this).children("input#disc_id").val();
+        disc_id = $(this).children("input#disc_id").val();
+        alert(disc_id);
         $("#msgframe #sidepanel").hide();
         $("#msgframe .content").show();
     };
@@ -60,6 +60,7 @@ $(function(){
 
 
     $(".contact-profile #BackToContacts").click(function () {
+        refreshDiscussion();
         $("#contacts_list li.contact").removeClass('active');
         $("#msgframe #sidepanel").show();
         $("#msgframe .content").hide();
@@ -73,12 +74,13 @@ $(function(){
         }
     }
 
-    setInterval(refreshMsg, 5000);
+    setInterval(refreshMsg, 8000);
 
-
-    setInterval(function () {
+    function refreshDiscussion() {
         $("#contacts_list").load("/home/messages/discussion", {get: 'discussion'});
-    }, 8000);
+    }
+
+    setInterval(refreshDiscussion, 8000);
 
 });
 

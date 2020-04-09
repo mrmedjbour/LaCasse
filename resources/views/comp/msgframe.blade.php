@@ -1,7 +1,5 @@
 <link rel="stylesheet" href="{{ asset('css/msgframe.css') }}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-
-
 <div class="col-12 col-lg-8 p-0 mr-0 mb-3" id="colMsgframe">
     <div class="d-flex align-items-center" id="msgframe">
         <div id="sidepanel" @if (isset($msgs)) style="display: none;" @endif>

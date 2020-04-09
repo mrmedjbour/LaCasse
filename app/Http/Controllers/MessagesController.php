@@ -7,6 +7,8 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class MessagesController extends Controller
 {
@@ -80,7 +82,38 @@ class MessagesController extends Controller
 
     public function send(Request $request)
     {
+        Validator::make($request->all(), array(
+            'disc_id' => 'required|exists:discussion,disc_id',
+            'message' => 'required|string',
+        ))->validate();
 
+        $contact_id = Auth::id();
+        if (Auth::user()->isEmployee()) {
+            $contact_id = User::where('casse_id', Auth::user()->casse_id)->where('role_id', 2)->first()->user_id;
+        }
+
+        $disc_id = $request->disc_id;
+
+        $disc = Discussion::where('disc_id', $disc_id)
+            ->where('user_id', $contact_id)
+            ->orWhereHas('ad', function (Builder $query) use ($contact_id) {
+                $query->where('user_id', $contact_id);
+            })
+            ->find($disc_id);
+
+        $msg = $disc->msg()->create([
+            'msg_contenu' => $request->message,
+            'user_id' => $contact_id,
+        ]);
+
+        if ($msg) {
+            return response()->json([
+                "success" => true,
+                "message" => "sent"
+            ]);
+        }
+
+        return response()->json(["success" => false, "message" => "can't send message"], 404);
     }
 
 }
