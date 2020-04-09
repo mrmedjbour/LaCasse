@@ -11,32 +11,7 @@
             </div>
             <div id="contacts">
                 <ul id="contacts_list">
-
-                    <li class="contact">
-                        <div class="d-flex align-items-center wrap">
-                            <div class="contact_icon"><span class="contact-status"></span>
-                                <img src="{{ asset('img/avatar.svg') }}" alt="">
-                            </div>
-                            <div class="meta">
-                                <p class="name">وهابي فارس</p>
-                                <p class="preview"><span><i class="fa fa-reply"></i></span>Hi</p>
-                            </div>
-                        </div>
-                        <input type="hidden" id="disc_id" value="1">
-                    </li>
-                    <li class="contact">
-                        <div class="d-flex align-items-center wrap">
-                            <div class="contact_icon"><span class="contact-status online"></span>
-                                <img src="{{ asset('img/avatar.svg') }}" alt="">
-                            </div>
-                            <div class="meta">
-                                <p class="name">Louis Litt</p>
-                                <p class="preview">What are you talking about? You do what they say or they shoot you</p>
-                            </div>
-                        </div>
-                        <input type="hidden" id="user_id" value="2">
-                    </li>
-
+                    @include('msg.contacts')
                 </ul>
             </div>
         </div>

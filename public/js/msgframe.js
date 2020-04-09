@@ -16,7 +16,7 @@ $(function(){
         $('.message-input input').val(null);
         $('.contact.active .wrap .meta .preview').html('<i class="fa fa-reply"></i>' + ' ' + message);
         $(".messages").animate({ scrollTop: $(document).height() }, "fast");
-    };
+    }
 
     $('.submit').click(function() {
         newMessage();
@@ -36,26 +36,28 @@ $(function(){
         });
     });
 
-    $.urlParam = function(par){
+    $.urlParam = function (par) {
         var results = new RegExp('[\?&]' + par + '=([^&#]*)').exec(window.location.href);
-        if (results==null) {
+        if (results == null) {
             return null;
         }
         return decodeURI(results[1]) || 0;
-    }
+    };
     if($.urlParam('m')){
         $("#msgframe #sidepanel").hide();
         $("#msgframe .content").show();
     }
 
-    $("#contacts_list li.contact").click(function() {
+    $ContactEvent = function () {
         $("li.contact").removeClass('active');
         $(this).addClass('active');
         var disc_id = $(this).children("input#disc_id").val();
         alert(disc_id);
         $("#msgframe #sidepanel").hide();
         $("#msgframe .content").show();
-    });
+    };
+    $("#contacts_list li.contact").on('click', $ContactEvent);
+    $(document).on('click', '#contacts_list li.contact', $ContactEvent);
 
 
     $(".contact-profile #BackToContacts").click(function () {
@@ -72,10 +74,11 @@ $(function(){
 
     setInterval(refreshMsg, 5000);
 
-    // setInterval(function(){
-    //     $("#screen").load('banners.php')
-    // }, 3000);
 
-})
+    setInterval(function () {
+        $("#contacts_list").load('/home/messages/discussion');
+    }, 8000);
+
+});
 
 

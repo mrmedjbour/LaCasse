@@ -113,6 +113,11 @@ class User extends Authenticatable
 
     public function isOnline()
     {
-        return $this->last_online <= Carbon::now()->addMinutes(4);
+        return $this->last_online >= Carbon::now()->subMinutes(4);
+    }
+
+    public function isEmployee()
+    {
+        return $this->role_id == 3 or $this->role_id == 4;
     }
 }

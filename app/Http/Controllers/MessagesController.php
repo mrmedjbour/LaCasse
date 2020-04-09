@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Discussion;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Builder;
@@ -16,39 +17,41 @@ class MessagesController extends Controller
 
     public function messages()
     {
-        return view('messages');
-    }
-
-    public function discussion()
-    {
-
-//        $adDesc = Auth::user()->adDesc()->select(['disc_id','disc_titre','disc_stamp','user_id','annonce_id'])->get();
-//        $desc = Auth::user()->desc()->select('disc_id')->get('disc_id');
-//        $adDesc = Auth::user()->adDesc()->latest();        latest('msg_stamp');
         $user_id = Auth::id();
 
-//        $desc = Discussion::with('msg')->where('user_id', $user_id)->orWhereHas('ad', function (Builder $query) use ($user_id) {
-//            $query->where('user_id', $user_id);
-//        })->latest('disc_stamp')->get();
-
-//        $desc = Discussion::with(['msg' => function($query) { $query->orderBy('msg_stamp', 'desc'); }])
-//            ->where('user_id', $user_id)
-//            ->orWhereHas('ad', function (Builder $query) use ($user_id) { $query->where('user_id', $user_id); })
-//            ->latest('disc_stamp')
-//            ->get();
-//        $desc = Discussion::with(['msg' => function($query) { $query->orderBy('msg_stamp', 'desc'); }])
-//            ->where('user_id', $user_id)
-//            ->orWhereHas('ad', function (Builder $query) use ($user_id) { $query->where('user_id', $user_id); })
-//            ->latest('disc_stamp')
-//            ->get();
-        $desc = Discussion::with('latestmsg')
+        $descs = Discussion::with('latestmsg')
             ->where('user_id', $user_id)
             ->orWhereHas('ad', function (Builder $query) use ($user_id) {
                 $query->where('user_id', $user_id);
             })
-            ->orderByDesc('disc_stamp')->get();
+            ->orderByDesc('disc_stamp')
+            ->get();
+        $contact_id = Auth::id();
+        if (Auth::user()->isEmployee()) {
+            $contact_id = User::where('casse_id', Auth::user()->casse_id)->where('role_id', 2)->first()->user_id;
+        }
 
-        return response()->json($desc);
+        return view('messages', compact(['descs', 'contact_id']));
+    }
+
+    public function discussion()
+    {
+        $user_id = Auth::id();
+
+        $descs = Discussion::with('latestmsg')
+            ->where('user_id', $user_id)
+            ->orWhereHas('ad', function (Builder $query) use ($user_id) {
+                $query->where('user_id', $user_id);
+            })
+            ->orderByDesc('disc_stamp')
+            ->get();
+
+        $contact_id = Auth::id();
+        if (Auth::user()->isEmployee()) {
+            $contact_id = User::where('casse_id', Auth::user()->casse_id)->where('role_id', 2)->first()->user_id;
+        }
+
+        return view('msg.contacts', compact(['descs', 'contact_id']));
     }
 
 }
