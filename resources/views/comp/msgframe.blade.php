@@ -4,7 +4,7 @@
 
 <div class="col-12 col-lg-8 p-0 mr-0 mb-3" id="colMsgframe">
     <div class="d-flex align-items-center" id="msgframe">
-        <div id="sidepanel">
+        <div id="sidepanel" @if (isset($msgs)) style="display: none;" @endif>
             <div id="search">
                 <label for=""><i class="fa fa-search" aria-hidden="true"></i></label>
                 <input type="text" id="contactSearch" placeholder="Search contacts...">
@@ -15,33 +15,16 @@
                 </ul>
             </div>
         </div>
-        <div class="content" style="display: none;">
-            <div class="contact-profile"><a id="BackToContacts" href="#"><i class="fa fa-arrow-left"></i></a>
-                <img class="active" src="{{ asset('img/avatar.svg') }}" alt="">
-                <p>Louis Litt</p>
+        <div class="content" @if (!isset($msgs)) style="display: none;" @endif>
+            <div class="contact-profile">
+                <a id="BackToContacts" type="button"><i class="fa fa-arrow-left"></i></a>
+                <img class="active" id="contacter_img" src="{{ asset('img/avatar.svg') }}">
+                <p id="contacter_title">@if (isset($msgs)){{ $msgs->disc_titre  }}@endif</p>
+                <input type="hidden" id="contacter_disc" value="@if (isset($msgs)){{ $msgs->disc_id  }}@endif">
             </div>
             <div class="messages">
                 <ul>
-                    <li class="replies">
-                        <img src="{{ asset('img/avatar.svg') }}" alt="">
-                        <p data-date="01/03/2020 13:51">
-                            <a href="#" class="msg_preview"> <span>Radiator Peugeot 307 - 2011</span>
-                            </a>Excuses don't win championships.</p>
-                    </li>
-                    <li class="sent">
-                        <p data-date="01/03/2020 13:52">Oh yeah, did Michael Jordan tell you that?</p>
-                    </li>
-                    <li class="replies">
-                        <img src="{{ asset('img/avatar.svg') }}" alt="">
-                        <p data-date="01/03/2020 13:29">No, I told him that.</p>
-                    </li>
-                    <li class="sent">
-                        <p data-date="01/03/2020 13:42">What are your choices when someone puts a gun to your head?</p>
-                    </li>
-                    <li class="replies">
-                        <img src="{{ asset('img/avatar.svg') }}" alt="">
-                        <p data-date="01/03/2020 13:29">What are you talking about? You do what they say or they shoot you.</p>
-                    </li>
+                    @include('msg.messages')
                 </ul>
             </div>
             <div class="message-input">

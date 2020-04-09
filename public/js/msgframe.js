@@ -52,7 +52,6 @@ $(function(){
         $("li.contact").removeClass('active');
         $(this).addClass('active');
         var disc_id = $(this).children("input#disc_id").val();
-        alert(disc_id);
         $("#msgframe #sidepanel").hide();
         $("#msgframe .content").show();
     };
@@ -68,15 +67,17 @@ $(function(){
 
 
     function refreshMsg() {
-        var oldmsgs = $(".content .messages ul").html();
-        $(".content .messages ul").html(oldmsgs);
+        if ($('#contacter_disc').val()) {
+            $disc_id = $('#contacter_disc').val();
+            $(".messages ul").load("/home/messages/fetch", {get: 'messages', disc_id: $disc_id});
+        }
     }
 
     setInterval(refreshMsg, 5000);
 
 
     setInterval(function () {
-        $("#contacts_list").load('/home/messages/discussion');
+        $("#contacts_list").load("/home/messages/discussion", {get: 'discussion'});
     }, 8000);
 
 });

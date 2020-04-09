@@ -15,43 +15,72 @@ class MessagesController extends Controller
         $this->middleware('auth');
     }
 
-    public function messages()
+    public function messages($disc = null)
     {
-        $user_id = Auth::id();
-
-        $descs = Discussion::with('latestmsg')
-            ->where('user_id', $user_id)
-            ->orWhereHas('ad', function (Builder $query) use ($user_id) {
-                $query->where('user_id', $user_id);
-            })
-            ->orderByDesc('disc_stamp')
-            ->get();
         $contact_id = Auth::id();
         if (Auth::user()->isEmployee()) {
             $contact_id = User::where('casse_id', Auth::user()->casse_id)->where('role_id', 2)->first()->user_id;
         }
-
-        return view('messages', compact(['descs', 'contact_id']));
+        $descs = Discussion::with('latestmsg')
+            ->where('user_id', $contact_id)
+            ->orWhereHas('ad', function (Builder $query) use ($contact_id) {
+                $query->where('user_id', $contact_id);
+            })
+            ->orderByDesc('disc_stamp')
+            ->get();
+        $msgs = null;
+        if ($disc) {
+            $msgs = Discussion::with(['msg'])->where('disc_id', $disc)
+                ->where('user_id', $contact_id)
+                ->orWhereHas('ad', function (Builder $query) use ($contact_id) {
+                    $query->where('user_id', $contact_id);
+                })
+                ->find($disc);
+        }
+        return view('messages', compact(['descs', 'contact_id', 'msgs']));
     }
 
-    public function discussion()
+    public function discussion(Request $request)
     {
-        $user_id = Auth::id();
-
-        $descs = Discussion::with('latestmsg')
-            ->where('user_id', $user_id)
-            ->orWhereHas('ad', function (Builder $query) use ($user_id) {
-                $query->where('user_id', $user_id);
-            })
-            ->orderByDesc('disc_stamp')
-            ->get();
-
+        if ($request->get != "discussion") {
+            abort(404);
+        }
         $contact_id = Auth::id();
         if (Auth::user()->isEmployee()) {
             $contact_id = User::where('casse_id', Auth::user()->casse_id)->where('role_id', 2)->first()->user_id;
         }
-
+        $descs = Discussion::with('latestmsg')
+            ->where('user_id', $contact_id)
+            ->orWhereHas('ad', function (Builder $query) use ($contact_id) {
+                $query->where('user_id', $contact_id);
+            })
+            ->orderByDesc('disc_stamp')
+            ->get();
         return view('msg.contacts', compact(['descs', 'contact_id']));
+    }
+
+    public function fetch(Request $request)
+    {
+        if ($request->get != "messages") {
+            abort(404);
+        }
+        $contact_id = Auth::id();
+        if (Auth::user()->isEmployee()) {
+            $contact_id = User::where('casse_id', Auth::user()->casse_id)->where('role_id', 2)->first()->user_id;
+        }
+        $disc = $request->disc_id;
+        $msgs = Discussion::with(['msg'])->where('disc_id', $disc)
+            ->where('user_id', $contact_id)
+            ->orWhereHas('ad', function (Builder $query) use ($contact_id) {
+                $query->where('user_id', $contact_id);
+            })
+            ->find($disc);
+        return view('msg.messages', compact(['msgs', 'contact_id']));
+    }
+
+    public function send(Request $request)
+    {
+
     }
 
 }

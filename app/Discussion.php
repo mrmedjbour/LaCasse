@@ -20,7 +20,7 @@ class Discussion extends Model
 
     public function msg()
     {
-        return $this->hasMany('App\Message', 'disc_id');
+        return $this->hasMany('App\Message', 'disc_id')->oldest('msg_stamp');
     }
 
     public function latestmsg()
