@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Annonce;
+use App\Casse;
+use App\User;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +28,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $homeInfo = null;
+        if (Auth::user()->role_id == 1) {
+            $homeInfo['totalAds'] = Annonce::all()->count();
+            $homeInfo['totalUsers'] = User::all()->count();
+            $homeInfo['totalCasses'] = Casse::whereHas('demande', function (Builder $query) {
+                $query->where('dem_etat', '=', 1);
+            })->count();
+        }
+        return view('home', compact('homeInfo'));
     }
 }

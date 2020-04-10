@@ -53,22 +53,22 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-12 col-md-6">
-                                <div class="Infobox">
-                                    <i class="fa fa-folder-open-o an-statistic"></i>
-                                    <span class="heading"><strong>Ads</strong></span>
-                                    <span class="value"><strong>{{ Auth::user()->annonces->count() }}</strong></span>
+                            <div class="row">
+                                <div class="col-12 col-md-6">
+                                    <div class="Infobox">
+                                        <i class="fa fa-folder-open-o an-statistic"></i>
+                                        <span class="heading"><strong>Ads</strong></span>
+                                        <span class="value"><strong>{{ $totalAdsCount }}</strong></span>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="Infobox">
+                                        <i class="fa fa-comments msg-static"></i>
+                                        <span class="heading"><strong>Unread Messages</strong></span>
+                                        <span class="value"><strong>{{ $unreadMsgCount }}</strong></span>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-12 col-md-6">
-                                <div class="Infobox">
-                                    <i class="fa fa-comments msg-static"></i>
-                                    <span class="heading"><strong>Unread Messages</strong></span>
-                                    <span class="value"><strong>{{ $unreadMsgCount }}</strong></span>
-                                </div>
-                            </div>
-                        </div>
                     @elseif(Auth::user()->role_id == 2)
                         <div class="row">
                             <div class="col-12 col-md-6">
@@ -112,39 +112,39 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-12 col-md-6">
-                                <div class="Infobox">
-                                    <i class="fa fa-folder-open-o an-statistic"></i>
-                                    <span class="heading"><strong>Total Ads</strong></span>
-                                    <span class="value"><strong>{{ Auth::user()->annonces->count() }}</strong></span>
+                            <div class="row">
+                                <div class="col-12 col-md-6">
+                                    <div class="Infobox">
+                                        <i class="fa fa-folder-open-o an-statistic"></i>
+                                        <span class="heading"><strong>Total Ads</strong></span>
+                                        <span class="value"><strong>{{ $homeInfo['totalAds'] }}</strong></span>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="Infobox">
+                                        <i class="fa fa-comments msg-static"></i>
+                                        <span class="heading"><strong>Unread Messages</strong></span>
+                                        <span class="value"><strong>{{ $unreadMsgCount }}</strong></span>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-12 col-md-6">
-                                <div class="Infobox">
-                                    <i class="fa fa-comments msg-static"></i>
-                                    <span class="heading"><strong>Unread Messages</strong></span>
-                                    <span class="value"><strong>{{ $unreadMsgCount }}</strong></span>
+                            <div class="row">
+                                <div class="col-12 col-md-6">
+                                    <div class="Infobox">
+                                        <i class="fa fa-users an-statistic"></i>
+                                        <span class="heading"><strong>Total Users</strong></span>
+                                        <span class="value"><strong>{{ $homeInfo['totalUsers'] }}</strong></span>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="Infobox">
+                                        <i class="fas fa-warehouse" style="font-size:3em;color:#eb650c"></i>
+                                        <span class="heading"><strong>Total Casse</strong></span>
+                                        <span class="value"><strong>{{ $homeInfo['totalCasses'] }}</strong></span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12 col-md-6">
-                                <div class="Infobox">
-                                    <i class="fa fa-users an-statistic"></i>
-                                    <span class="heading"><strong>Total Users</strong></span>
-                                    <span class="value"><strong>30</strong></span>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <div class="Infobox">
-                                    <i class="fas fa-warehouse" style="font-size:3em;color:#eb650c"></i>
-                                    <span class="heading"><strong>Total Casse</strong></span>
-                                    <span class="value"><strong>10</strong></span>
-                                </div>
-                            </div>
-                        </div>
-                    @endif
+                        @endif
 
                 </div>
             </div>

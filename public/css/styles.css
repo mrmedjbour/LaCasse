@@ -447,11 +447,14 @@ div.social-links {
 }
 .an-statistic{color: #0078c3;}
 .membership{color: #3e3e3e;}
-.msg-static{color: #55a90d;}
-.heading {
+.msg-static {
+    color: #55a90d;
+}
+
+.Infobox .heading {
     display: block;
     position: relative;
-    height:8px;
+    height: 8px;
     color: #515d6e;
     text-align: right;
     z-index: 10;
@@ -459,14 +462,23 @@ div.social-links {
     font: inherit;
     vertical-align: baseline;
 }
-.value {
-    font-size: 2.5em;height: 49px;
+
+.Infobox .value {
+    font-size: 2.5em;
+    height: 49px;
     display: block;
     position: relative;
     color: #eb650c;
     text-align: right;
     z-index: 10;
     vertical-align: baseline;
+}
+
+@media (max-width: 448px) {
+    .Infobox .value {
+        font-size: 1rem;
+        padding-top: 1rem;
+    }
 }
 /* info boxes end*/
 
