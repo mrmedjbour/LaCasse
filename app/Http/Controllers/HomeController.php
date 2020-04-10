@@ -31,7 +31,7 @@ class HomeController extends Controller
         $homeInfo = null;
         if (Auth::user()->role_id == 1) {
             $homeInfo['totalAds'] = Annonce::all()->count();
-            $homeInfo['totalUsers'] = User::all()->count();
+            $homeInfo['totalUsers'] = User::where('user_etat', 1)->count();
             $homeInfo['totalCasses'] = Casse::whereHas('demande', function (Builder $query) {
                 $query->where('dem_etat', '=', 1);
             })->count();
