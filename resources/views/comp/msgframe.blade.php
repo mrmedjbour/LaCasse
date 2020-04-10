@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="{{ asset('css/msgframe.css') }}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+{{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"> --}}
 <div class="col-12 col-lg-8 p-0 mr-0 mb-3" id="colMsgframe">
     <div class="d-flex align-items-center" id="msgframe">
         <div id="sidepanel" @if (isset($msgs)) style="display: none;" @endif>
@@ -16,7 +16,7 @@
         <div class="content" @if (!isset($msgs)) style="display: none;" @endif>
             <div class="contact-profile">
                 <a id="BackToContacts" type="button"><i class="fa fa-arrow-left"></i></a>
-                <img class="active" id="contacter_img" src="{{ asset('img/avatar.svg') }}">
+                <img class="active cmf" id="contacter_img" src="{{ asset('img/avatar.svg') }}">
                 <p id="contacter_title">@if (isset($msgs)){{ $msgs->disc_titre  }}@endif</p>
                 <input type="hidden" id="contacter_disc" value="@if (isset($msgs)){{ $msgs->disc_id  }}@endif">
             </div>

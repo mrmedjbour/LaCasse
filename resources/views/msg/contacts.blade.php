@@ -9,9 +9,9 @@
                 @endif
 
                 @if ($desc->user_id == $contact_id)
-                    <img src="{{ asset('/files/avatar/' . $desc->ad->user->user_avatar) }}">
+                    <img class="cmf" src="{{ asset('/files/avatar/' . $desc->ad->user->user_avatar) }}">
                 @else
-                    <img src="{{ asset('/files/avatar/' . $desc->user->user_avatar) }}">
+                    <img class="cmf" src="{{ asset('/files/avatar/' . $desc->user->user_avatar) }}">
                 @endif
             </div>
             <div class="meta">
