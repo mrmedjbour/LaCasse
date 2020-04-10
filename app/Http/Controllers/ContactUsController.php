@@ -28,7 +28,7 @@ class ContactUsController extends Controller
             'email' => $request->email
         ];
 
-        Mail::to($request->user())->send(new ContactUsMail($contactUs));
+        Mail::to(env('MAIL_TO_ADDRESS'))->send(new ContactUsMail($contactUs));
         return redirect(route('contact.index'))->with('success', "Thank you for contacting us.");
     }
 

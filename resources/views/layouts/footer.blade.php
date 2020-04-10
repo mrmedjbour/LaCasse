@@ -25,7 +25,7 @@
                                         @endauth
                                         <li><a href="{{ route('directory') }}">Casse Directory</a></li>
                                         <li><a href="#">How To Use</a></li>
-                                        <li><a href="#">Contact us</a></li>
+                                        <li><a href="{{ route('contact.index') }}">Contact us</a></li>
                                         <li><a href="#">Privacy Policy</a></li>
                                         <li><a href="#">Terms &amp; conditions</a></li>
                                         <li><a href="#">About Lacasse.dz</a></li>

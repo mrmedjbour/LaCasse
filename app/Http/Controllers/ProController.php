@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Demande;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -20,7 +21,7 @@ class ProController extends Controller
         if (($user->demandes->where('dem_etat', null)->count() or $user->demandes->where('dem_etat', 1)->count()) and $user->role_id == 5) {
             return view('proSent', compact('user'));
         } elseif ($user->role_id == 1) {
-            $dems = \App\Demande::all()->sortByDesc('dem_date');
+            $dems = Demande::orderBy('dem_date', 'DESC')->paginate(20);
             return view('admin.proList', compact('dems'));
         } elseif ($user->role_id == 5) {
             return view('pro', compact('user'));
@@ -75,7 +76,7 @@ class ProController extends Controller
 
     public function show($id)
     {
-        $dem = \App\Demande::findOrFail($id);
+        $dem = Demande::findOrFail($id);
         return view("admin.proReq", compact('dem'));
     }
 
@@ -84,7 +85,7 @@ class ProController extends Controller
         Validator::make($request->all(), array(
             'casse_loc' => ['required', 'between:1,30', 'regex:/^[-]?((([0-8]?[0-9])(\.(\d+))?)|(90(\.0+)?)),[-]?((((1[0-7][0-9])|([0-9]?[0-9]))(\.(\d+))?)|180(\.0+)?)$/'],
         ))->validate();
-        $dem = \App\Demande::findOrFail($id);
+        $dem = Demande::findOrFail($id);
         if ($dem->dem_etat == 1) {
             return redirect(route("pro.index"))->with('success', 'A request from this user has already been approved');
         }
@@ -104,7 +105,7 @@ class ProController extends Controller
 
     public function destroy($id)
     {
-        $dem = \App\Demande::findOrFail($id);
+        $dem = Demande::findOrFail($id);
         if ($dem->dem_etat == 2) {
             return redirect(route("pro.index"));
         }

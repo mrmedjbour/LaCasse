@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Annonce;
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -19,11 +21,14 @@ class UserAnnonceController extends Controller
     public function index()
     {
         if (Auth::user()->role_id == 1) {
-//            $ads = \App\Annonce::all()->sortByDesc('annonce_date');
-            $ads = \App\Annonce::orderBy('annonce_date', 'DESC')->paginate(20);
+            $ads = Annonce::orderBy('annonce_date', 'DESC')->paginate(20);
             return view('admin.annonces', compact('ads'));
         }
-        $ads = Auth::user()->annonces()->with('modele')->get();
+        $contactId = Auth::id();
+        if (Auth::user()->isEmployee()) {
+            $contactId = User::where('casse_id', Auth::user()->casse_id)->where('role_id', 2)->first()->user_id;
+        }
+        $ads = Annonce::where('user_id', $contactId)->orderBy('annonce_date', 'DESC')->paginate(20);
         return view('annonces', compact('ads'));
     }
 
@@ -46,12 +51,23 @@ class UserAnnonceController extends Controller
             'ModeleYear' => 'integer|min:1961|max:2020',
             'images.*' => 'image|mimes:jpeg,png,jpg,bmp,gif,svg|max:2048',
         ))->validate();
-        $ad = Auth::user()->annonces()->create([
-            'annonce_type' => $request->ad_type,
-            'annonce_desc' => $request->ad_desc,
-            'modele_id' => $request->Modele_id,
-            'modele_annee' => $request->ModeleYear,
-        ]);
+
+        if (Auth::user()->isEmployee()) {
+            $contactId = User::where('casse_id', Auth::user()->casse_id)->where('role_id', 2)->first()->user_id;
+            $ad = User::findOrFail($contactId)->annonces()->create([
+                'annonce_type' => $request->ad_type,
+                'annonce_desc' => $request->ad_desc,
+                'modele_id' => $request->Modele_id,
+                'modele_annee' => $request->ModeleYear,
+            ]);
+        } else {
+            $ad = Auth::user()->annonces()->create([
+                'annonce_type' => $request->ad_type,
+                'annonce_desc' => $request->ad_desc,
+                'modele_id' => $request->Modele_id,
+                'modele_annee' => $request->ModeleYear,
+            ]);
+        }
         $ad->pieces()->sync($request->parts);
         if ($request->ad_type == "sell") {
             if ($images = $request->file('images')) {
@@ -77,7 +93,7 @@ class UserAnnonceController extends Controller
     public function edit($id)
     {
         if (Auth::user()->role_id == 1) {
-            $ad = \App\Annonce::with(['modele', 'images'])->findOrFail($id);
+            $ad = Annonce::with(['modele', 'images'])->findOrFail($id);
             return view('editAds', compact('ad'));
         }
         $ad = Auth::user()->annonces()->with(['modele', 'images'])->findOrFail($id);
@@ -87,7 +103,7 @@ class UserAnnonceController extends Controller
     public function update(Request $request, $id)
     {
         if (Auth::user()->role_id == 1) {
-            $ad = \App\Annonce::findOrFail($id);
+            $ad = Annonce::findOrFail($id);
         } else {
             $ad = Auth::user()->annonces()->findOrFail($id);
         }
@@ -127,7 +143,7 @@ class UserAnnonceController extends Controller
     {
         if (Auth::user()->role_id == 1) {
             if ($request->option == "block") {
-                $ad = \App\Annonce::findOrFail($request->ad);
+                $ad = Annonce::findOrFail($request->ad);
                 $ad->annonce_etat = !$ad->annonce_etat;
                 $ad->save();
                 return response()->json([
@@ -135,7 +151,7 @@ class UserAnnonceController extends Controller
                     "status" => $ad->annonce_etat
                 ]);
             }
-            \App\Annonce::findOrFail($request->ad_id)->delete();
+            Annonce::findOrFail($request->ad_id)->delete();
             return redirect(route('annonce.index'))->with('success', 'Ad has been successfully deleted');
         }
         Auth::user()->annonces()->findOrFail($request->ad_id)->delete();
