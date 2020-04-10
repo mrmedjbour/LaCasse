@@ -206,6 +206,7 @@
 
 #msgframe #sidepanel #contacts ul li.contact .wrap .contact_icon img {
     width: 40px;
+    height: 40px;
     border-radius: 50%;
     margin-right: 10px;
 }
@@ -267,6 +268,7 @@
 
 #msgframe .content .contact-profile img {
     width: 40px;
+    height: 40px;
     border-radius: 50%;
     float: left;
 }
@@ -359,6 +361,7 @@
 
 #msgframe .content .messages ul li img {
     width: 22px;
+    height: 22px;
     border-radius: 50%;
     float: left;
 }

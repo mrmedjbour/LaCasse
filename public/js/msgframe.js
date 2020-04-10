@@ -6,7 +6,6 @@ $(function(){
         $("#contacts").toggleClass("expanded");
     });
 
-
     function newMessage() {
         message = $(".message-input input").val();
         if ($.trim(message) == '' || !$('#contacter_disc').val()) {
@@ -19,11 +18,9 @@ $(function(){
             data: {disc_id: disc_id, message: message},
             success: function (data) {
                 $('.message-input input').val(null);
-                refreshMsg();
-                $(".messages").animate({scrollTop: 9000000}, "fast");
-                setTimeout(function () {
-                    $(".messages").animate({scrollTop: 9000000}, "fast");
-                }, 1000);
+                $(".messages ul").load("/home/messages/fetch", {get: 'messages', disc_id: disc_id}, function () {
+                    $(".messages").animate({scrollTop: 90000000}, "fast");
+                });
             },
             dataType: 'json'
         });
@@ -50,14 +47,28 @@ $(function(){
     $ContactEvent = function () {
         $("li.contact").removeClass('active');
         $(this).addClass('active');
+        $target = $(this);
         disc_id = $(this).children("input#disc_id").val();
-        alert(disc_id);
-        $("#msgframe #sidepanel").hide();
-        $("#msgframe .content").show();
+        if (disc_id == $('#contacter_disc').val()) {
+            $("#msgframe #sidepanel").hide();
+            $("#msgframe .content").show();
+            return false;
+        }
+        $('#contacter_disc').val(disc_id);
+        $(".messages ul").load("/home/messages/fetch", {get: 'messages', disc_id: disc_id}, function (data) {
+            if (!$.trim(data)) {
+                return false;
+            }
+            $("p#contacter_title").text($target.find("p.name").text());
+            $("img#contacter_img").attr('src', $target.find("img").attr('src'));
+            $("#msgframe #sidepanel").hide();
+            $("#msgframe .content").show(0, function () {
+                $(".messages").animate({scrollTop: 9000000}, "fast");
+            });
+        });
     };
     $("#contacts_list li.contact").on('click', $ContactEvent);
     $(document).on('click', '#contacts_list li.contact', $ContactEvent);
-
 
     $(".contact-profile #BackToContacts").click(function () {
         refreshDiscussion();
@@ -66,22 +77,17 @@ $(function(){
         $("#msgframe .content").hide();
     });
 
-
     function refreshMsg() {
         if ($('#contacter_disc').val()) {
             $disc_id = $('#contacter_disc').val();
             $(".messages ul").load("/home/messages/fetch", {get: 'messages', disc_id: $disc_id});
         }
     }
-
     setInterval(refreshMsg, 8000);
-
     function refreshDiscussion() {
         $("#contacts_list").load("/home/messages/discussion", {get: 'discussion'});
     }
-
     setInterval(refreshDiscussion, 8000);
-
 });
 
 

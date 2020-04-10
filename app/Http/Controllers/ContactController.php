@@ -49,6 +49,7 @@ class ContactController extends Controller
             'msg_contenu' => $request->message,
             'user_id' => $user->user_id,
         ]);
+        $desc->update(['disc_stamp' => $msg->msg_stamp]);
         if ($msg) {
             return response()->json([
                 "success" => true,

@@ -3,7 +3,7 @@
     <section>
         <div class="container dashboard">
             <div class="row">
-                <div class="col-lg-4" style="padding: 0px;font-family: Montserrat, sans-serif;font-size: 14px;"> @include('comp.sidebar') </div>
+                <div class="col-lg-4 p-0 HomeSideManU"> @include('comp.sidebar') </div>
                 <div class="col-lg-8 dash-info">
                     <div style="background-color: #f8f8f8;border: 1px solid #d5d5d5;border-radius: 3px;margin-bottom: 10vh;">
                         <form method="post" action="{{ route('role.update', $user->user_id) }}" method="post">

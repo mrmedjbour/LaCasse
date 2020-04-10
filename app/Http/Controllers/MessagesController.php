@@ -105,7 +105,7 @@ class MessagesController extends Controller
             'msg_contenu' => $request->message,
             'user_id' => $contact_id,
         ]);
-
+        $disc->update(['disc_stamp' => $msg->msg_stamp]);
         if ($msg) {
             return response()->json([
                 "success" => true,

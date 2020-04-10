@@ -77,5 +77,5 @@ Route::any('/page/{title}', 'PagesController@page');
 /*  Messages Routes    */
 Route::post('/home/messages/discussion', 'MessagesController@discussion');
 Route::post('/home/messages/fetch', 'MessagesController@fetch');
-Route::any('/home/messages/send', 'MessagesController@send');
+Route::post('/home/messages/send', 'MessagesController@send');
 Route::match(['GET', 'POST'], '/home/messages/{disc?}', 'MessagesController@messages')->name('messages');;

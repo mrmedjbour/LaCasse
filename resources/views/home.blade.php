@@ -3,7 +3,7 @@
     <section>
         <div class="container dashboard">
             <div class="row">
-                <div class="col-lg-4" style="padding: 0px;">
+                <div class="col-lg-4 p-0 HomeSideManU">
                     @include('comp.sidebar')
                 </div>
                 <div class="col content-section">
