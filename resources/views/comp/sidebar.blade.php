@@ -9,7 +9,7 @@
         <a href="{{route('home')}}" class="list-group-item"> <i class="fa fa-tachometer"></i> Dashboard</a>
         <a href="{{route('annonce.create')}}" class="list-group-item"> <i class="fa fa-plus"></i> Add Annonce</a>
         <a href="{{route('messages')}}" class="list-group-item"> <i class="fa fa-comments"></i> Messages @if($unreadMsgCount) <span class="badge">{{ $unreadMsgCount ?? '' }}</span> @endif</a>
-        <a href="{{route('annonce.index')}}" class="list-group-item"> <i class="fa fa-folder-open-o"></i> My ads <span class="badge">14</span></a>
+        <a href="{{route('annonce.index')}}" class="list-group-item"> <i class="fa fa-folder-open-o"></i> My ads @if($totalAdsCount) <span class="badge">{{ $totalAdsCount ?? '' }}</span> @endif</a>
         <a href="{{route('user.account')}}" class="list-group-item"> <i class="fa fa-user"></i> Account Information</a>
         <a href="{{route('pro.index')}}" class="list-group-item"> <i class="fas fa-user-tie"></i> Switch to professional account</a>
     </div>

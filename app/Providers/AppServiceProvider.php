@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Annonce;
 use App\Discussion;
 use App\User;
 use Illuminate\Support\Facades\Auth;
@@ -47,7 +48,13 @@ class AppServiceProvider extends ServiceProvider
                 if ($unreadMsgCount > 99) {
                     $unreadMsgCount = 99;
                 }
-                $view->with('unreadMsgCount', $unreadMsgCount);
+                // Total Ads Count
+                $totalAdsCount = Annonce::where('user_id', $contactId)->count();
+                if (Auth::user()->role_id == 1) {
+                    $totalAdsCount = Annonce::all()->count();
+                }
+
+                $view->with(['unreadMsgCount' => $unreadMsgCount, 'totalAdsCount' => $totalAdsCount]);
             }
         });
     }
