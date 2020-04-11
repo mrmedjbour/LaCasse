@@ -9,6 +9,12 @@
             </div>
             <div class="row">
                 <div class="col-12 col-md-8 order-2 order-md-1" id="content">
+                    @if($result->count() == 0)
+                        <div class="text-center py-5">
+                            <img width="120" class="mb-2 d-inline-block" src="{{ asset('/img/no-result.svg') }}"/>
+                            <h3 class="text-black-50">Sorry, No Requests found</h3>
+                        </div>
+                    @endif
                     @foreach($result as $ad)
                         @include('comp.ReqAd')
                     @endforeach
@@ -17,7 +23,8 @@
                     @endauth
                     {{ $result->appends($_GET)->links('vendor.pagination.searchPagination') }}
                 </div>
-                <div class="col-12 col-md-4 order-1 order-md-2" id="sideFilter">
+                @if($result->count() != 0)
+                    <div class="col-12 col-md-4 order-1 order-md-2" id="sideFilter">
                     <div class="sideFilter">
                         <div id="sort">
                             <form class="form-inline" method="get">
@@ -72,6 +79,7 @@
                         {{--                        </div>--}}
                     </div>
                 </div>
+                @endif
             </div>
         </div>
     </section>
