@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Annonce;
+use App\Marque;
+use App\Modele;
+use App\Piece;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Validator;
@@ -11,17 +15,17 @@ class SearchController extends Controller
 
     public function search(Request $request)
     {
-        if ($request->partTitle = \App\Piece::where('piece_id', $request->part)->first()) {
+        if ($request->partTitle = Piece::where('piece_id', $request->part)->first()) {
             $request->partTitle = $request->partTitle->piece_nom;
         }
-        if ($request->modeleTitle = \App\Modele::where('modele_id', $request->model)->first()) {
+        if ($request->modeleTitle = Modele::where('modele_id', $request->model)->first()) {
             $request->modeleTitle = $request->modeleTitle->modele_nom;
         }
-        if ($request->makeTitle = \App\Marque::where('marque_id', $request->make)->first()) {
+        if ($request->makeTitle = Marque::where('marque_id', $request->make)->first()) {
             $request->makeTitle = $request->makeTitle->marque_nom;
         }
 
-        $result = \App\Annonce::whereHas('pieces', function (Builder $query) use ($request) {
+        $result = Annonce::whereHas('pieces', function (Builder $query) use ($request) {
             $query->where('piece.piece_id', '=', $request->part);
         })->whereHas('modele', function (Builder $query) use ($request) {
             $query->where('modele.modele_id', '=', $request->model)->where('modele.marque_id', '=', $request->make);
@@ -31,12 +35,17 @@ class SearchController extends Controller
             $result = $result->where('modele_annee', '=', $request->year);
         }
 
-//        $result = $result->latest('annonce_date');
-//        $result = $result->get();
-        $perPage = request('show', 10);
+        if ($request->sortBy == "asc") {
+            $result = $result->oldest('annonce_date');
+        } else {
+            $result = $result->latest('annonce_date');
+        }
+
+        $perPage = intval(request('show', 10));
         if (!in_array($perPage, [10, 15, 20, 30])) {
             $perPage = 10;
         }
+
         $result = $result->paginate($perPage);
 
         return view("search", compact(['result', 'request']));
@@ -55,7 +64,19 @@ class SearchController extends Controller
 
     public function AdRequest(Request $request)
     {
-        $result = \App\Annonce::has('pieces')->where('annonce_type', '=', 'buy')->where('annonce_etat', '=', 1)->get();
+        $result = Annonce::has('pieces')->where('annonce_type', '=', 'buy')->where('annonce_etat', '=', 1);
+        if ($request->sortBy == "asc") {
+            $result = $result->oldest('annonce_date');
+        } else {
+            $result = $result->latest('annonce_date');
+        }
+
+        $perPage = intval(request('show', 10));
+        if (!in_array($perPage, [10, 15, 20, 30])) {
+            $perPage = 10;
+        }
+
+        $result = $result->paginate($perPage);
         return view("AdRequest", compact(['result', 'request']));
     }
 }
