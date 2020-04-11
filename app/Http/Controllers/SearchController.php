@@ -31,8 +31,13 @@ class SearchController extends Controller
             $result = $result->where('modele_annee', '=', $request->year);
         }
 
-        $result = $result->latest('annonce_date');
-        $result = $result->get();
+//        $result = $result->latest('annonce_date');
+//        $result = $result->get();
+        $perPage = request('show', 10);
+        if (!in_array($perPage, [10, 15, 20, 30])) {
+            $perPage = 10;
+        }
+        $result = $result->paginate($perPage);
 
         return view("search", compact(['result', 'request']));
     }

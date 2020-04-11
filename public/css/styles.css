@@ -1412,4 +1412,47 @@ div.thumbSearchAd {
     font-size: 14px !important;
     margin-bottom: 1rem !important;
 }
+
+/* page results pagination */
+.resultPages .page-link {
+    color: #474747;
+    background-color: #fff;
+    border: 1px solid #afafaf;
+}
+
+.resultPages .page-link:hover {
+    z-index: 2;
+    color: #fff;
+    text-decoration: none;
+    background-color: #5cba0a;
+    border-color: #5cba0a;
+}
+
+.resultPages .page-item {
+    margin: 2px;
+}
+
+.resultPages .page-item.active .page-link {
+    color: #fff;
+    border-color: #5cba0a;
+    background-color: #5cba0a;
+}
+
+@media screen and ( max-width: 520px ) {
+    .resultPages li.page-item {
+        display: none;
+    }
+
+    .resultPages .page-item:first-child,
+    .resultPages .page-item:nth-child( 2 ),
+    .resultPages .page-item:nth-last-child( 2 ),
+    .resultPages .page-item:last-child,
+    .resultPages .page-item.active,
+    .resultPages .page-item.disabled {
+        display: block;
+    }
+}
+
+/* end of page result pagination */
+
 /* End Hamid added page*/

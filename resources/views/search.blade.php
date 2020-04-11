@@ -15,39 +15,10 @@
                     @auth()
                         @include('comp.contactSearchModal')
                     @endauth
-                    <div class="d-flex justify-content-around align-items-center justify-content-sm-between sPage" style="padding: 2px 10px;">
-                        <div class="show">
-                            <form class="form-inline d-inline-flex" method="get">
-                                <div class="form-group d-flex align-items-xl-center">
-                                    <label class="d-flex align-items-center" for="show">Show</label>
-                                    <select class="form-control form-control-sm widthAuto" name="show">
-                                        <option value="10">10</option>
-                                        <option value="15" selected="">15</option>
-                                        <option value="20">20</option>
-                                        <option value="30">30</option>
-                                    </select>
-                                </div>
-                            </form>
-                        </div>
-                        <ul class="list-inline d-inline-flex align-items-center" id="pagination">
-                            <li class="list-inline-item"><a class="d-flex justify-content-center align-items-center" href="#"><i class="fa fa-angle-left"></i></a>
-                            </li>
-                            <li class="list-inline-item"><a class="d-flex justify-content-center align-items-center" href="#">1</a>
-                            </li>
-                            <li class="list-inline-item"><a class="d-flex justify-content-center align-items-center" href="#">2</a>
-                            </li>
-                            <li class="list-inline-item"><a class="d-flex justify-content-center align-items-center" href="#">3</a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a class="d-flex justify-content-center align-items-center" href="#">
-                                    <br><i class="fa fa-angle-right"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                    {{ $result->links('vendor.pagination.searchPagination') }}
                 </div>
                 <div class="col-12 col-md-4 order-1 order-md-2" id="sideFilter">
-                    <div class="sideFilter" style="/*margin: 0px;*/">
+                    <div class="sideFilter">
                         <div id="sort">
                             <form class="form-inline" method="get" action="#">
                                 <div class="form-group d-flex justify-content-around align-items-center sortByG">
