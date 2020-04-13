@@ -40,19 +40,16 @@
                 @if( Route::currentRouteName() != 'index' )
                     <button class="btn shadow-none navbar-toggler toggler-example" id="idHeadSearch" type="button" style="color: #ffffff;" title="Search" data-toggle="collapse" data-target="#HeadSearch" aria-controls="HeadSearch" aria-expanded="false">
 							<span>
-								<i class="fas fa-search fa-sm" style="color: #ffffff;font-size: 20px;"></i>
+								<i class="fas fa-search fa-sm" style="color: #fff;font-size: 20px;"></i>
 							</span>
                     </button>
                 @endif
-
             </div>
-            <div class="col-3 col-sm-3 col-md-3 col-lg-2 col-xl-2 d-flex justify-content-center align-items-center justify-content-lg-start" style="padding: 0px;">
+            <div class="col-3 col-lg-2 d-flex justify-content-center align-items-center justify-content-lg-start p-0">
                 <a href="{{route('index')}}">
                     <img class="lacasseLogo" src="{{ asset('img/logo.png') }}">
                 </a>
             </div>
-
-
             <div class="col-md-3 col-lg-5 d-none d-lg-inline-block position-relative">
                 <div class="d-inline-flex w-100" id="TopSearchBar">
                     <div class="d-inline-flex align-items-center bg-white rounded-left w-100 d-inline-block px-1" id="TopSearchAddChip" data-placeholder="Search"></div>
@@ -129,29 +126,14 @@
                         <li data-type="make" data-id="65">Mahindra</li>
                     </ul>
                 </div>
+                <form action="{{ route("search") }}" id="TopSearchBarForm" class="d-none" method="post">
+                    @csrf
+                    <input type="hidden" id="inputTopSMake" name="make">
+                    <input type="hidden" id="inputTopSModele" name="modele">
+                    <input type="hidden" id="inputTopSYear" name="ModeleYear">
+                    <input type="hidden" id="inputTopSPart" name="ModelePart">
+                </form>
             </div>
-
-
-            {{--            <div class="d-inline-block chipTag"><i class="fa fa-times" id="ChipDelete"></i><span>Peugeut</span></div>--}}
-
-            {{--            <div class="col-md-3 col-lg-5 col-xl-5 d-none d-lg-inline d-xl-inline">--}}
-
-
-            {{--                <form class="navbar-left" method="get" action="#" target="_self">--}}
-            {{--                    <div id="TopSearchInput">--}}
-            {{--                        <div class="form-group input-group">--}}
-            {{--                            <input class="form-control" type="text" placeholder="Search" aria-describedby="basic-addon1">--}}
-            {{--                            <button class="btn shadow-none input-group-addon" id="TopSearChBar" type="submit">--}}
-            {{--                                <i class="fa fa-search"></i>--}}
-            {{--                            </button>--}}
-            {{--                        </div>--}}
-            {{--                    </div>--}}
-            {{--                </form>--}}
-
-
-
-            {{--            </div>--}}
-
             <div class="col-3 col-sm-2 col-md-7 col-lg-5 col-xl-5 d-flex flex-row-reverse justify-content-start align-items-center" style="color: #ffffff;font-family: Montserrat, sans-serif;">
                 <div class="d-flex align-items-center">
                     <a class="d-inline-flex align-items-center" href="{{route('directory')}}" style="font-size: 16px;margin-right: 20px;">

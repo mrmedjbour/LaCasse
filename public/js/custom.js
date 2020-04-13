@@ -436,19 +436,64 @@ $('#addphonebtn').on('click', function() {
     $("div#TopSearchAddChip").on('click', function (e) {
         if (e.target !== this) return;
         if ($('div#TopSearchBarDropContent ul').children().length == 0) return;
+        if ($("div[data-type=make], div[data-type=year], div[data-type=part], div[data-type=modele]").length == 4) return;
         $("div#TopSearchBarDropContent").slideToggle();
     });
     // delete chip
-    $("i#ChipDelete").on('click', function () {
-        $(this).parent().remove();
-    });
+    $deleteChipTagEvent = function () {
+        type = $(this).parent().data('type');
+        if (type == "make") {
+            $("div#TopSearchBarDropContent ul").empty();
+            $("div#TopSearchBarDropContent ul").load("/api/models/?allMarque");
+            $("div#TopSearchAddChip").empty();
+        } else if (type == "modele") {
+            $("div#TopSearchBarDropContent").hide(0, function () {
+                id = $("div[data-type=make]").data('id');
+                $apiMod = "/api/models/?marque=" + id;
+                $.getJSON($apiMod, function (data) {
+                    // Clean Drop Down list
+                    $("div#TopSearchBarDropContent ul").empty();
+                    // FETCH ALL Modeles
+                    $.each(data, function (key, entry) {
+                        $("div#TopSearchBarDropContent ul").append(makeListItem('modele', entry.modele_id, entry.modele_nom));
+                    });
+                });
+            });
+            $("div[data-type=year], div[data-type=part], div[data-type=modele]").remove();
+        } else if (type == "part") {
+            $("div#TopSearchBarDropContent").hide(0, function () {
+                $("div#TopSearchBarDropContent ul").empty();
+                $("div#TopSearchBarDropContent ul").load("/api/parts/?allParts");
+            });
+            $(this).parent().remove();
+            $("div[data-type=year], div[data-type=part]").remove();
+        } else if (type == "year") {
+            $("div#TopSearchBarDropContent").hide(0, function () {
+                $("div#TopSearchBarDropContent ul").empty();
+                $("div#TopSearchBarDropContent ul").load("/api/parts/?Years");
+            });
+            $("div[data-type=year]").remove();
+        }
+    };
+    $("i#ChipDelete").on('click', $deleteChipTagEvent);
+    $(document).on('click', 'i#ChipDelete', $deleteChipTagEvent);
+
     // submit search bar
     $("div#SubmitTopSearchBar").on('click', function () {
-        alert("submit");
+        if ($("div[data-type=make], div[data-type=part], div[data-type=modele]").length != 3) return;
+        make = $("div[data-type=make]").data('id');
+        year = $("div[data-type=year]").data('id');
+        part = $("div[data-type=part]").data('id');
+        modele = $("div[data-type=modele]").data('id');
+        $("input#inputTopSMake").val(make);
+        $("input#inputTopSModele").val(modele);
+        $("input#inputTopSYear").val(year);
+        $("input#inputTopSPart").val(part);
+        $('form#TopSearchBarForm').submit();
     });
 
     // click elemnt (make ?)
-    $("div#TopSearchBarDropContent li[data-type]").on('click', function () {
+    $clickElementEvent = function () {
         type = $(this).data('type');
         id = $(this).data('id');
         title = $(this).text();
@@ -478,8 +523,12 @@ $('#addphonebtn').on('click', function() {
                 $("div#TopSearchBarDropContent ul").empty();
                 $("div#TopSearchBarDropContent ul").load("/api/parts/?Years");
             });
+        } else if (type == "year") {
+            $("div#TopSearchBarDropContent").hide();
         }
-    });
+    };
+    $("div#TopSearchBarDropContent li[data-type]").on('click', $clickElementEvent);
+    $(document).on('click', 'div#TopSearchBarDropContent li[data-type]', $clickElementEvent);
 
     $(document).click(function (event) {
         // hide Drop Down menu if click outside

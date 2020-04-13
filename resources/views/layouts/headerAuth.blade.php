@@ -37,14 +37,88 @@
                     <img class="lacasseLogo" src="{{ asset('img/logo.png') }}">
                 </a>
             </div>
-            <div class="col-md-3 col-lg-5 col-xl-5 d-none d-lg-inline d-xl-inline">
-                <form class="navbar-left">
-                    <div class="input-group">
-                        <input class="form-control" type="text" placeholder="Search" aria-describedby="basic-addon1">
-                        <span class="d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex justify-content-center align-items-center align-items-sm-center input-group-addon" title="Search" style="background-color: #58ba25;width: 40px;border-top-right-radius: 5px;border-bottom-right-radius: 5px;">
-							<i class="fa fa-search"></i>
-						</span>
+            <div class="col-md-3 col-lg-5 d-none d-lg-inline-block position-relative">
+                <div class="d-inline-flex w-100" id="TopSearchBar">
+                    <div class="d-inline-flex align-items-center bg-white rounded-left w-100 d-inline-block px-1" id="TopSearchAddChip" data-placeholder="Search"></div>
+                    <div class="d-flex justify-content-center align-items-center bg-success d-inline-block rounded-right" id="SubmitTopSearchBar">
+                        <i class="fa fa-search"></i>
                     </div>
+                </div>
+                <div id="TopSearchBarDropContent" class="bg-white p-1">
+                    <ul class="list-unstyled px-2 mb-0 text-body">
+                        <li data-type="make" data-id="1">Seat</li>
+                        <li data-type="make" data-id="2">Renault</li>
+                        <li data-type="make" data-id="3">Peugeot</li>
+                        <li data-type="make" data-id="4">Dacia</li>
+                        <li data-type="make" data-id="5">Citroen</li>
+                        <li data-type="make" data-id="6">Opel</li>
+                        <li data-type="make" data-id="7">Alfa romeo</li>
+                        <li data-type="make" data-id="8">Skoda</li>
+                        <li data-type="make" data-id="9">Chevrolet</li>
+                        <li data-type="make" data-id="10">Porsche</li>
+                        <li data-type="make" data-id="11">Honda</li>
+                        <li data-type="make" data-id="12">Subaru</li>
+                        <li data-type="make" data-id="13">Mazda</li>
+                        <li data-type="make" data-id="14">Mitsubishi</li>
+                        <li data-type="make" data-id="15">Lexus</li>
+                        <li data-type="make" data-id="16">Toyota</li>
+                        <li data-type="make" data-id="17">Bmw</li>
+                        <li data-type="make" data-id="18">Volkswagen</li>
+                        <li data-type="make" data-id="19">Suzuki</li>
+                        <li data-type="make" data-id="20">Mercedes benz</li>
+                        <li data-type="make" data-id="21">Saab</li>
+                        <li data-type="make" data-id="22">Audi</li>
+                        <li data-type="make" data-id="23">Kia</li>
+                        <li data-type="make" data-id="24">Land rover</li>
+                        <li data-type="make" data-id="25">Dodge</li>
+                        <li data-type="make" data-id="26">Chrysler</li>
+                        <li data-type="make" data-id="27">Ford</li>
+                        <li data-type="make" data-id="28">Hummer</li>
+                        <li data-type="make" data-id="29">Hyundai</li>
+                        <li data-type="make" data-id="30">Infiniti</li>
+                        <li data-type="make" data-id="31">Jaguar</li>
+                        <li data-type="make" data-id="32">Jeep</li>
+                        <li data-type="make" data-id="33">Nissan</li>
+                        <li data-type="make" data-id="34">Volvo</li>
+                        <li data-type="make" data-id="35">Daewoo</li>
+                        <li data-type="make" data-id="36">Fiat</li>
+                        <li data-type="make" data-id="37">Mini</li>
+                        <li data-type="make" data-id="38">Rover</li>
+                        <li data-type="make" data-id="39">Smart</li>
+                        <li data-type="make" data-id="40">Chery</li>
+                        <li data-type="make" data-id="41">Hino</li>
+                        <li data-type="make" data-id="42">Acura</li>
+                        <li data-type="make" data-id="43">Dfsk</li>
+                        <li data-type="make" data-id="44">Dfm</li>
+                        <li data-type="make" data-id="45">Great wall</li>
+                        <li data-type="make" data-id="46">Cadillac</li>
+                        <li data-type="make" data-id="47">Ssangyong</li>
+                        <li data-type="make" data-id="48">Am general</li>
+                        <li data-type="make" data-id="49">Avanti Motors</li>
+                        <li data-type="make" data-id="50">Asia</li>
+                        <li data-type="make" data-id="51">Baic yinxiang</li>
+                        <li data-type="make" data-id="52">Baic</li>
+                        <li data-type="make" data-id="53">Brilliance</li>
+                        <li data-type="make" data-id="54">Byd</li>
+                        <li data-type="make" data-id="55">Changan</li>
+                        <li data-type="make" data-id="56">Changhe</li>
+                        <li data-type="make" data-id="57">Daihatsu</li>
+                        <li data-type="make" data-id="58">Datsun</li>
+                        <li data-type="make" data-id="59">Faw</li>
+                        <li data-type="make" data-id="60">Foton</li>
+                        <li data-type="make" data-id="61">Geely</li>
+                        <li data-type="make" data-id="62">Gonow</li>
+                        <li data-type="make" data-id="63">Pontiac</li>
+                        <li data-type="make" data-id="64">Isuzu</li>
+                        <li data-type="make" data-id="65">Mahindra</li>
+                    </ul>
+                </div>
+                <form action="{{ route("search") }}" id="TopSearchBarForm" class="d-none" method="post">
+                    @csrf
+                    <input type="hidden" id="inputTopSMake" name="make">
+                    <input type="hidden" id="inputTopSModele" name="modele">
+                    <input type="hidden" id="inputTopSYear" name="ModeleYear">
+                    <input type="hidden" id="inputTopSPart" name="ModelePart">
                 </form>
             </div>
             <div class="col-4 col-sm-auto col-md-3 col-lg-5 col-xl-5 d-flex justify-content-end align-items-center justify-content-md-end" style="color: #ffffff;font-family: Montserrat, sans-serif;">
