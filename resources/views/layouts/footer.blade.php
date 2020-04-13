@@ -62,6 +62,7 @@
 <script src="{{ asset('js/bs-init.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
 <script src="{{ asset('js/Card-Carousel.js') }}"></script>
+{{--<script src="{{ asset('select2/dist/js/select2.full.min.js') }}"></script>--}}
 <script src="{{ asset('js/custom.js') }}"></script>
 @if( Route::currentRouteName() == 'messages' )
     <script src="{{ asset('js/msgframe.js') }}"></script>

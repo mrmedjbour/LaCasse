@@ -1455,4 +1455,87 @@ div.thumbSearchAd {
 
 /* end of page result pagination */
 
-/* End Hamid added page*/
+/* Top search bar style */
+#TopSearchBarDropContent {
+    max-height: 250px;
+    position: absolute;
+    width: 85.5%;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+    display: none;
+}
+
+#TopSearchBarDropContent ul li {
+    border-bottom: 1px solid #efefef;
+    cursor: pointer;
+    padding: 0.25rem !important;
+}
+
+#TopSearchBarDropContent ul li:last-child {
+    border-bottom: none;
+    cursor: pointer;
+}
+
+#TopSearchBarDropContent ul li:hover {
+    background-color: #eeeeee;
+}
+
+#SubmitTopSearchBar {
+    height: 38px;
+    width: 43px;
+    cursor: pointer;
+}
+
+#TopSearchAddChip {
+    height: 38px;
+    cursor: text;
+    overflow-y: hidden;
+}
+
+#TopSearchAddChip:empty:not(:focus):before {
+    content: attr(data-placeholder);
+    padding-left: 5px;
+    color: #666;
+}
+
+.chipTag {
+    height: 32px;
+    padding: 0 8px;
+    margin-right: 2px;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 32px;
+    color: rgba(0, 0, 0, 0.6);
+    background-color: #eceff1;
+    border-radius: 16px;
+    -webkit-transition: all .3s linear;
+    transition: all .3s linear;
+    cursor: default;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100px;
+}
+
+.chipTag i {
+    float: left;
+    padding-right: 4px;
+    font-size: 14px;
+    line-height: 32px;
+    cursor: pointer;
+    -webkit-transition: all .1s linear;
+    transition: all .1s linear;
+    color: #767676;
+    cursor: pointer;
+}
+
+.chipTag span {
+    color: #474747;
+    line-height: 32px;
+}
+
+/* end of Top search bar style */
+
+
+/* End Hamid added page */

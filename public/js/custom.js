@@ -144,16 +144,6 @@ $(document).ready(function() {
         $("#DeleteMakeModel").modal('show');
     });
 
-// account info preview avatar
-//     function filePreview(input) {
-//         if (input.files && input.files[0]) {
-//             var reader = new FileReader();
-//             reader.onload = function (e) {
-//                 $('#Profile #AvatarProfile').attr('src', e.target.result);
-//             };
-//             reader.readAsDataURL(input.files[0]);
-//         }
-//     }
 // Upload Avatar Ajax Req
     $("#Profile input").change(function () {
         var avatar = new FormData();
@@ -428,6 +418,74 @@ $('#addphonebtn').on('click', function() {
         var indicators = $(this).data("slide-to");
         $(".carousel-img").find("[data-slide-to='" + indicators + "']")
             .addClass("active");
+    });
+
+//------------------------------------------------------------------- search top bar start here ------------------------------------------------------------
+
+    // generate tag chip
+    function makeTagChip(type, id, title) {
+        return "<div class='d-inline-block chipTag' data-id='" + id + "' data-type='" + type + "'><i class='fa fa-times' id='ChipDelete'></i><span>" + title + "</span></div>";
+    }
+
+    // generate list item
+    function makeListItem(type, id, title) {
+        return "<li data-type='" + type + "' data-id='" + id + "'>" + title + "</li>";
+    }
+
+    // show menu slide down
+    $("div#TopSearchAddChip").on('click', function (e) {
+        if (e.target !== this) return;
+        if ($('div#TopSearchBarDropContent ul').children().length == 0) return;
+        $("div#TopSearchBarDropContent").slideToggle();
+    });
+    // delete chip
+    $("i#ChipDelete").on('click', function () {
+        $(this).parent().remove();
+    });
+    // submit search bar
+    $("div#SubmitTopSearchBar").on('click', function () {
+        alert("submit");
+    });
+
+    // click elemnt (make ?)
+    $("div#TopSearchBarDropContent li[data-type]").on('click', function () {
+        type = $(this).data('type');
+        id = $(this).data('id');
+        title = $(this).text();
+        if ($('div#TopSearchAddChip div[data-type=' + type + ']').length > 0) {
+            return false;
+        }
+        $("div#TopSearchAddChip").append(makeTagChip(type, id, title));
+        if (type == "make") {
+            $("div#TopSearchBarDropContent").hide(0, function () {
+                $apiMod = "/api/models/?marque=" + id;
+                $.getJSON($apiMod, function (data) {
+                    // Clean Drop Down list
+                    $("div#TopSearchBarDropContent ul").empty();
+                    // FETCH ALL Modeles
+                    $.each(data, function (key, entry) {
+                        $("div#TopSearchBarDropContent ul").append(makeListItem('modele', entry.modele_id, entry.modele_nom));
+                    });
+                });
+            });
+        } else if (type == "modele") {
+            $("div#TopSearchBarDropContent").hide(0, function () {
+                $("div#TopSearchBarDropContent ul").empty();
+                $("div#TopSearchBarDropContent ul").load("/api/parts/?allParts");
+            });
+        } else if (type == "part") {
+            $("div#TopSearchBarDropContent").hide(0, function () {
+                $("div#TopSearchBarDropContent ul").empty();
+                $("div#TopSearchBarDropContent ul").load("/api/parts/?Years");
+            });
+        }
+    });
+
+    $(document).click(function (event) {
+        // hide Drop Down menu if click outside
+        if ((!$(event.target).closest('div#TopSearchBarDropContent').length) && (!$(event.target).closest('div#TopSearchBar').length)) {
+            $("div#TopSearchBarDropContent").slideUp("fast");
+        }
     });
 
 

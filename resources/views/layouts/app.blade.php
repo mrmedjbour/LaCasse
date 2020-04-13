@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <link rel="stylesheet" href="{{ asset('css/styleSendMsgBox.css') }}">
     <link rel="stylesheet" href="{{ asset('css/x-dropdown.css') }}">
+    {{--    <link rel="stylesheet" href="{{ asset('select2/dist/css/select2.min.css') }}">--}}
+    {{--    <link rel="stylesheet" href="{{ asset('select2/dist/css/select2-bootstrap4.min.css') }}">--}}
     @if(Route::currentRouteName() == 'directory' OR Route::currentRouteName() == 'profile')
         @mapstyles
     @endif
