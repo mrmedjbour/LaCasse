@@ -22,10 +22,6 @@ Route::get('/', function () {
 /*  Dashboard */
 Route::get('/home', 'HomeController@index')->name('home');
 
-
-
-
-// ----------------------------------------------------------------------------
 // User Account Routes
 Route::get('/home/account', 'User\UserAccountController@account')->name("user.account");
 Route::post('/home/account', 'User\UserAccountController@updateAccount')->name("user.updateAccount");

@@ -34,7 +34,7 @@
                                 <div class="form-group" id="CassePhoneNumberinput">
                                     <label class="weight500">Phone Numbers:</label>
                                     @foreach($dem->user->user_tel as $phone)
-                                        <input class="form-control mb-2" type="tel" value="{{ $phone }}" readonly>
+                                        <input class="form-control mb-2" type="tel" value="{{ phone($phone, 'DZ') }}" readonly>
                                     @endforeach
                                 </div>
                                 <hr>
