@@ -134,10 +134,11 @@
                     <div class="dropdown">
                         <a class="btn dropdown-toggle shadow-none p-0 text-white" data-toggle="dropdown" aria-expanded="false" role="button">&nbsp; <img class="HeadAvatarImg" src="{{ asset('files/avatar/') }}/{{ Auth::user()->user_avatar }}">
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right dropdownProfile" role="menu"><a class="dropdown-item" role="presentation" href="{{ route('home') }}">Dashboard</a>
-                            <a class="dropdown-item" role="presentation" href="#">My Messages</a>
-                            <a class="dropdown-item" role="presentation" href="#">My Ads</a>
-                            <a class="dropdown-item lastdropdown-item" role="presentation" href="#">Menu Item</a>
+                        <div class="dropdown-menu dropdown-menu-right dropdownProfile" role="menu">
+                            <a class="dropdown-item" role="presentation" href="{{ route('home') }}">Dashboard</a>
+                            <a class="dropdown-item" role="presentation" href="{{ route('messages') }}">My Messages</a>
+                            <a class="dropdown-item" role="presentation" href="{{route('annonce.index')}}">My Ads</a>
+                            <a class="dropdown-item lastdropdown-item" role="presentation" href="{{ route('user.account') }}">Account information</a>
                             <div class="d-flex justify-content-between foot">
                                 <a class="btn btn-light btn-sm" role="button" href="#"> <i class="fas fa-cog"></i>Profile</a>
                                 <a class="btn btn-dark btn-sm shadow-none" role="button" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"> <i class="fas fa-sign-out-alt"></i>Sign out</a>

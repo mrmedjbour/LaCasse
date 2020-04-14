@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Discussion;
+use App\Message;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -77,6 +78,9 @@ class MessagesController extends Controller
                 $query->where('user_id', $contact_id);
             })
             ->find($disc);
+
+        $markAsRead = Message::where('disc_id', $msgs->disc_id)->where('user_id', '<>', $contact_id)->update(['msg_etat' => 1]);
+
         return view('msg.messages', compact(['msgs', 'contact_id']));
     }
 
