@@ -34,7 +34,8 @@
 @endguest
 
 @if( Route::currentRouteName() != 'index')
-    @include('comp.breadcrumb')
+    {{--    @include('comp.breadcrumb')--}}
+    {{ Breadcrumbs::render() }}
 @endif
 
 @yield('content')

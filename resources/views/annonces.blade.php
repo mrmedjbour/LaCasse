@@ -1,4 +1,5 @@
-@extends('layouts.app') @section('content')
+@extends('layouts.app')
+@section('content')
     <section>
         <div class="container dashboard">
             <div class="row">
@@ -8,7 +9,7 @@
                         <div class="alert alert-success">{{ session('success') }}</div>
                     @endif
                     @if (Auth::user()->role_id != 3)
-                    <div class="text-center text-sm-right">
+                        <div class="text-center text-sm-right">
                         <a class="btn btn-success btn-sm shadow-none m-2" role="button" href="{{route('annonce.create')}}"> <i class="fa fa-plus mr-1"></i>Add Annonce</a>
                     </div>
                     @endif

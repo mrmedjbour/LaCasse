@@ -68,7 +68,7 @@ Route::resource('/home/users', 'Admin\AdminUsersController');
 Route::resource('/contact', 'ContactUsController', ['only' => ['index', 'store']]);
 
 /* Pages Route */
-Route::any('/page/{title}', 'PagesController@page');
+Route::any('/page/{title}', 'PagesController@page')->name('page');
 
 /*  Messages Routes    */
 Route::post('/home/messages/discussion', 'MessagesController@discussion');

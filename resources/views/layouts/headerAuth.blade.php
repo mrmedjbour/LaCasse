@@ -137,10 +137,9 @@
                         <div class="dropdown-menu dropdown-menu-right dropdownProfile" role="menu">
                             <a class="dropdown-item" role="presentation" href="{{ route('home') }}">Dashboard</a>
                             <a class="dropdown-item" role="presentation" href="{{ route('messages') }}">My Messages</a>
-                            <a class="dropdown-item" role="presentation" href="{{route('annonce.index')}}">My Ads</a>
-                            <a class="dropdown-item lastdropdown-item" role="presentation" href="{{ route('user.account') }}">Account information</a>
+                            <a class="dropdown-item lastdropdown-item" role="presentation" href="{{route('annonce.index')}}">My Ads</a>
                             <div class="d-flex justify-content-between foot">
-                                <a class="btn btn-light btn-sm" role="button" href="#"> <i class="fas fa-cog"></i>Profile</a>
+                                <a class="btn btn-light btn-sm" role="button" href="{{ route('user.account') }}"> <i class="fas fa-cog"></i>Account</a>
                                 <a class="btn btn-dark btn-sm shadow-none" role="button" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"> <i class="fas fa-sign-out-alt"></i>Sign out</a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">@csrf</form>
                             </div>

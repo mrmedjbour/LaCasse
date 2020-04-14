@@ -96,7 +96,11 @@ class UserAnnonceController extends Controller
             $ad = Annonce::with(['modele', 'images'])->findOrFail($id);
             return view('editAds', compact('ad'));
         }
-        $ad = Auth::user()->annonces()->with(['modele', 'images'])->findOrFail($id);
+        $correntUser = Auth::user();
+        if (Auth::user()->isEmployee()) {
+            $correntUser = User::where('casse_id', Auth::user()->casse_id)->where('role_id', 2)->first();
+        }
+        $ad = $correntUser->annonces()->with(['modele', 'images'])->findOrFail($id);
         return view('editAds', compact('ad'));
     }
 

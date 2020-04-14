@@ -18,7 +18,7 @@
             <a href="{{route('annonce.index')}}" class="list-group-item"> <i class="fa fa-folder-open-o"></i> Ads @if($totalAdsCount) <span class="badge">{{ $totalAdsCount ?? '' }}</span> @endif</a>
             <a href="{{route('pro.index')}}" class="list-group-item"> <i class="fas fa-tasks"></i> Professional Account Requests</a>
             <a href="{{route('users.index')}}" class="list-group-item"> <i class="fa fa-users" aria-hidden="true"></i> Manage users</a>
-            <a href="{{route('users.index')}}" class="list-group-item"> <i class="fa fa-car" aria-hidden="true"></i> Manage vehicle models</a>
+            <a href="{{route('model.index')}}" class="list-group-item"> <i class="fa fa-car" aria-hidden="true"></i> Manage vehicle models</a>
             <a href="{{route('user.account')}}" class="list-group-item"> <i class="fa fa-user"></i> Account information</a>
         @elseif(Auth::user()->role_id == 2)
             <a href="{{route('annonce.create')}}" class="list-group-item"> <i class="fa fa-plus"></i> Add ad</a>
