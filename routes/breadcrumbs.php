@@ -122,3 +122,23 @@ Breadcrumbs::for('page', function ($trail) {
 Breadcrumbs::for('contact.index', function ($trail) {
     $trail->push('Contact us');
 });
+
+Breadcrumbs::for('login', function ($trail) {
+    $trail->push('Login');
+});
+
+Breadcrumbs::for('password.confirm', function ($trail) {
+    $trail->push('Password Confirmation');
+});
+
+Breadcrumbs::for('password.request', function ($trail) {
+    $trail->push('Forgot password');
+});
+
+Breadcrumbs::for('password.reset', function ($trail) {
+    $trail->push('Change password');
+});
+
+Breadcrumbs::for('register', function ($trail) {
+    $trail->push('Sign up');
+});
