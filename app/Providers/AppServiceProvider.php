@@ -36,14 +36,16 @@ class AppServiceProvider extends ServiceProvider
                 if (Auth::user()->isEmployee()) {
                     $contactId = User::where('casse_id', Auth::user()->casse_id)->where('role_id', 2)->first()->user_id;
                 }
-                $count_v_1 = Discussion::whereHas('latestmsg', function ($q) {
-                    $q->whereNull('msg_etat');
+                $count_1 = Discussion::whereHas('latestmsg', function ($q) use ($contactId) {
+                    $q->whereNull('msg_etat')->where('user_id', '<>', $contactId);
                 })->whereHas('ad', function (Builder $query) use ($contactId) {
                     $query->where('user_id', $contactId);
-                })->count();
-                $count_v_2 = Discussion::whereHas('latestmsg', function ($q) {
-                    $q->whereNull('msg_etat');
-                })->where('user_id', $contactId)->count();
+                });
+                $getEdDiscId = $count_1->pluck('disc_id');
+                $count_v_1 = $count_1->count();
+                $count_v_2 = Discussion::whereHas('latestmsg', function ($q) use ($contactId) {
+                    $q->whereNull('msg_etat')->where('user_id', '<>', $contactId);
+                })->where('user_id', $contactId)->whereNotIn('disc_id', $getEdDiscId)->count();
                 $unreadMsgCount = $count_v_2 + $count_v_1;
                 if ($unreadMsgCount > 99) {
                     $unreadMsgCount = 99;
