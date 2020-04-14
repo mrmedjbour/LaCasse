@@ -30,11 +30,20 @@ class HomeController extends Controller
     {
         $homeInfo = null;
         if (Auth::user()->role_id == 1) {
-            $homeInfo['totalAds'] = Annonce::all()->count();
-            $homeInfo['totalUsers'] = User::where('user_etat', 1)->count();
-            $homeInfo['totalCasses'] = Casse::whereHas('demande', function (Builder $query) {
-                $query->where('dem_etat', '=', 1);
-            })->count();
+            $allAdCounts = cache()->remember('AdminallAdCounts', 60, function () {
+                return Annonce::all()->count();
+            });
+            $TotalUsersCounts = cache()->remember('AdminTotalUsersCounts', 70, function () {
+                return User::where('user_etat', 1)->count();
+            });
+            $TotalCassesCounts = cache()->remember('AdminTotalUsersCounts', 60 * 4, function () {
+                return Casse::whereHas('demande', function (Builder $query) {
+                    $query->where('dem_etat', '=', 1);
+                })->count();
+            });
+            $homeInfo['totalAds'] = $allAdCounts;
+            $homeInfo['totalUsers'] = $TotalUsersCounts;
+            $homeInfo['totalCasses'] = $TotalCassesCounts;
         }
         return view('home', compact('homeInfo'));
     }

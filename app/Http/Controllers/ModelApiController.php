@@ -11,7 +11,9 @@ class ModelApiController extends Controller
     public function index(Request $request)
     {
         if ($request->has('allMarque')) {
-            $marques = Marque::all();
+            $marques = cache()->remember('allMarques', 60 * 60 * 48, function () {
+                return Marque::all();
+            });
             foreach ($marques as $mar) {
                 echo "<li data-type=\"make\" data-id=\"" . $mar->marque_id . "\">" . $mar->marque_nom . "</li>";
             }

@@ -79,7 +79,7 @@ class MessagesController extends Controller
             })
             ->find($disc);
 
-        $markAsRead = Message::where('disc_id', $msgs->disc_id)->where('user_id', '<>', $contact_id)->update(['msg_etat' => 1]);
+        Message::where('disc_id', $msgs->disc_id)->where('user_id', '<>', $contact_id)->update(['msg_etat' => 1]);
 
         return view('msg.messages', compact(['msgs', 'contact_id']));
     }

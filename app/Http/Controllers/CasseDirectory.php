@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Casse;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\App;
@@ -18,7 +19,7 @@ class CasseDirectory extends Controller
             'markers' => [],
         ];
 
-        $casses = \App\Casse::whereHas('demande', function (Builder $query) {
+        $casses = Casse::whereHas('demande', function (Builder $query) {
             $query->where('dem_etat', '=', 1);
         })->get();
 
@@ -43,7 +44,7 @@ class CasseDirectory extends Controller
 
     public function profile($id, $title = null)
     {
-        $casse = \App\Casse::whereHas('demande', function (Builder $query) {
+        $casse = Casse::whereHas('demande', function (Builder $query) {
             $query->where('dem_etat', '=', 1);
         })->findOrFail($id);
 
