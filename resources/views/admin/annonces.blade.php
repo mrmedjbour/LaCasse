@@ -22,7 +22,7 @@
                                 <th style="width: 8%;">Status</th>
                                 <th style="width: 8%;"><strong>Delete</strong>
                                 </th>
-                                <th style="width: 6%;">Edit</th>
+                                <th style="width: 6%;">View</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -43,7 +43,7 @@
                                         </button>
                                     </td>
                                     <td class="text-center p-0">
-                                        <a class="btn btn-link btn-sm" role="button" href="{{ route('annonce.edit', $ad->annonce_id) }}"><i class="fa fa-edit fa-lg"></i></a>
+                                        <a class="btn btn-link btn-sm" role="button" href="{{ route('annonce.show', $ad->annonce_id) }}"><i class="fa fa-eye fa-lg"></i></a>
                                     </td>
                                 </tr>
                             @endforeach

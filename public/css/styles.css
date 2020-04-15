@@ -419,8 +419,9 @@ div.social-links {
 
 /*control menu end*/
 
-
-
+#GoPro input#casse_doc {
+    width: 230px;
+}
 
 /*info boxes begin*/
 .Infobox {
@@ -914,38 +915,6 @@ div.social-links {
 
 #HeadTopBar .dropdown-menu a:last-child {
     border-bottom: none;
-}
-
-#breadCrumb #beadCrumbPage {
-    background-color: #f2f2f2;
-    margin-right: 0 !important;
-    margin-left: 0;
-    padding-right: .5rem;
-    border-top: 1px solid #e3e3e3;
-    border-bottom: 1px solid #e3e3e3;
-}
-
-#breadCrumb #beadCrumbPage a {
-    color: #777777;
-    padding: 3px 0;
-    display: inline-block;
-    font-size: small;
-}
-
-#breadCrumbList li:last-child {
-    border-right: 1px solid #e3e3e3;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-}
-
-#breadCrumbList li:nth-child(2) {
-    border-left: 1px solid #e3e3e3;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-}
-
-#breadCrumb li {
-    font-size: 0.83rem;
 }
 
 #annonceSearch {
@@ -1537,5 +1506,66 @@ div.thumbSearchAd {
 
 /* end of Top search bar style */
 
+/* BreadCrumb style */
+#breadCrumb {
+    margin-top: 2em;
+    padding-bottom: 20px;
+}
+
+#breadCrumb #beadCrumbHome i {
+    color: #58ba25;
+}
+
+#breadCrumb ul#breadCrumbList {
+    font-size: 0;
+}
+
+#breadCrumb #beadCrumbPage {
+    background-color: #f2f2f2;
+    margin-right: 0 !important;
+    margin-left: 0;
+    padding-right: .5rem;
+    border-top: 1px solid #e3e3e3;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+#breadCrumb li#beadCrumbPage:before {
+    display: inline-block;
+    padding-right: .5rem;
+    color: #6c757d;
+    content: "»";
+}
+
+@media screen and ( max-width: 900px ) {
+    #breadCrumb li#beadCrumbPage {
+        white-space: nowrap;
+        overflow: hidden;
+    }
+}
+
+#breadCrumb #beadCrumbPage a {
+    color: #777777;
+    padding: 3px 0;
+    display: inline-block;
+    font-size: small;
+}
+
+#breadCrumbList li:last-child {
+    border-right: 1px solid #e3e3e3;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+#breadCrumbList li:nth-child(2) {
+    border-left: 1px solid #e3e3e3;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+#breadCrumb li {
+    font-size: 0.83rem;
+}
+
+/* end of BreadCrumb style */
 
 /* End Hamid added page */

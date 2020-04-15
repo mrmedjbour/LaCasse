@@ -16,6 +16,12 @@
                                         <label class="text-nowrap" for="roleUser">Role :</label>
                                         <input class="form-control form-control-sm ProfInputS" type="text" id="roleUser" value="{{ $user->role->role_nom }}" disabled>
                                     </div>
+                                    @if ($user->role_id == 2 OR $user->isEmployee())
+                                        <div class="form-group d-sm-flex align-items-center justify-content-sm-between">
+                                            <label class="text-nowrap" for="roleUser">Casse :</label>
+                                            <input class="form-control form-control-sm ProfInputS" type="text" id="roleUser" value="{{ $user->casse->casse_nom }}" disabled>
+                                        </div>
+                                    @endif
                                     <div class="form-group d-sm-flex align-items-center justify-content-sm-between">
                                         <label class="text-nowrap" for="first-name">Firstname :</label>
                                         <input class="form-control form-control-sm ProfInputS" type="text" id="first-name" value="{{ $user->user_prenom }}" disabled>

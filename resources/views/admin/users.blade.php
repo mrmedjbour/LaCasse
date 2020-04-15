@@ -36,7 +36,7 @@
                                 <tr>
                                     <td>{{ $user->user_id }}</td>
                                     <td>{{ $user->user_prenom.' '.$user->user_nom }}
-                                        @if($user->role_id == 2)
+                                        @if($user->role_id == 2 OR $user->isEmployee())
                                             <a class="text-decoration-none font-weight-light" target="_blank" href="{{ route('profile', $user->casse->casse_id) }}">({{ $user->casse->casse_nom }})</a>
                                         @endif
                                     </td>

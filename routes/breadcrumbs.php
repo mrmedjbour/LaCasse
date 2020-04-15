@@ -28,6 +28,11 @@ Breadcrumbs::for('annonce.edit', function ($trail, $id) {
     $trail->push('Edit Ad', route('annonce.edit', $id));
 });
 
+Breadcrumbs::for('annonce.show', function ($trail, $id) {
+    $trail->parent('annonce.index');
+    $trail->push('Ad : ' . $id);
+});
+
 Breadcrumbs::for('messages', function ($trail) {
     $trail->parent('home');
     $trail->push('Mailbox');
@@ -74,6 +79,16 @@ Breadcrumbs::for('pro.index', function ($trail) {
     }
 });
 
+Breadcrumbs::for('pro.show', function ($trail) {
+    $trail->parent('home');
+    if (Auth::user()->role_id == 1) {
+        $trail->push('Professional Account Requests', route('pro.index'));
+    } else {
+        $trail->push('Switch to professional account', route('pro.index'));
+    }
+    $trail->push('Requests information');
+});
+
 Breadcrumbs::for('users.index', function ($trail) {
     $trail->parent('home');
     $trail->push('Manage Users', route('users.index'));
@@ -90,12 +105,12 @@ Breadcrumbs::for('model.index', function ($trail) {
 });
 
 Breadcrumbs::for('model.create', function ($trail) {
-    $trail->parent('home');
+    $trail->parent('model.index');
     $trail->push('Add a vehicle model');
 });
 
 Breadcrumbs::for('model.edit', function ($trail) {
-    $trail->parent('home');
+    $trail->parent('model.index');
     $trail->push('Edit vehicle model');
 });
 

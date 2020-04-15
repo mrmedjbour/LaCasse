@@ -1,11 +1,11 @@
 @foreach($descs as $desc)
-    <li class="contact">
+    <li class="contact" id="liStItem">
         <div class="d-flex align-items-center wrap">
             <div class="contact_icon">
                 @if ($desc->user_id == $contact_id)
-                    <span class="contact-status @if ($desc->ad->user->isOnline()) online @endif"></span>
+                    <span id="spaAn" class="contact-status @if ($desc->ad->user->isOnline()) online @endif"></span>
                 @else
-                    <span class="contact-status @if ($desc->user->isOnline()) online @endif"></span>
+                    <span id="spaAn" class="contact-status @if ($desc->user->isOnline()) online @endif"></span>
                 @endif
 
                 @if ($desc->user_id == $contact_id)
@@ -17,7 +17,7 @@
             <div class="meta">
                 <p class="name">{{ $desc->disc_titre }}</p>
                 @if ($desc->latestmsg->user_id == $contact_id)
-                    <p class="preview"><span><i class="fa fa-reply"></i></span>{{ $desc->latestmsg->msg_contenu }}</p>
+                    <p class="preview"><span id="spaAn"><i class="fa fa-reply" id="iIconID"></i></span>{{ $desc->latestmsg->msg_contenu }}</p>
                 @else
                     <p class="preview">{{ $desc->latestmsg->msg_contenu }}</p>
                 @endif

@@ -87,15 +87,15 @@ class UserAnnonceController extends Controller
 
     public function show($id)
     {
+        if (Auth::user()->role_id == 1) {
+            $ad = Annonce::with(['modele', 'images'])->findOrFail($id);
+            return view('admin.viewAd', compact('ad'));
+        }
         return redirect(route('annonce.edit', $id));
     }
 
     public function edit($id)
     {
-        if (Auth::user()->role_id == 1) {
-            $ad = Annonce::with(['modele', 'images'])->findOrFail($id);
-            return view('editAds', compact('ad'));
-        }
         $correntUser = Auth::user();
         if (Auth::user()->isEmployee()) {
             $correntUser = User::where('casse_id', Auth::user()->casse_id)->where('role_id', 2)->first();
