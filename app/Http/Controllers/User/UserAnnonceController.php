@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Annonce;
 use App\Http\Controllers\Controller;
+use App\PieceCat;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,6 +16,7 @@ class UserAnnonceController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('hasAccess:1,2,4,5')->only(['store', 'create']);
     }
 
     // Show List of ads for user
@@ -35,7 +37,7 @@ class UserAnnonceController extends Controller
     // Create  New Ad Form for user
     public function create()
     {
-        $Partscat = \App\PieceCat::with('pieces')->get();
+        $Partscat = PieceCat::with('pieces')->get();
         return view('addAds', compact('Partscat'));
     }
 

@@ -13,6 +13,7 @@ class DrRolesController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('hasAccess:2');
     }
 
     public function index()

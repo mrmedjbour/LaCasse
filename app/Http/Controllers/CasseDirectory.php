@@ -28,11 +28,12 @@ class CasseDirectory extends Controller
                 return false;
             }
             $loc = explode(",", $c->casse_loc);
+            $profileLink = route('profile', [$c->casse_id, Str::slug($c->casse_nom, '-')]);
             return [
                 'title' => $c->casse_nom,
                 'lat' => $loc[0],
                 'lng' => $loc[1],
-                'popup' => "<h6>$c->casse_nom</h6><p class='text-center'><a href=\"#\" target=\"_blank\"><i class=\"fa fa-external-link fa-lg mr-1\"></i></a></p>",
+                'popup' => "<h6>$c->casse_nom</h6><p class='text-center'><a href=\"" . $profileLink . "\" target=\"_blank\"><i class=\"fa fa-external-link fa-lg mr-1\"></i></a></p>",
                 'icon' => '/img/pin.png',
                 'icon_size' => [30, 30],
                 'icon_anchor' => [0, 30],

@@ -14,6 +14,7 @@ class UserAccountController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('hasAccess:2')->only('updateCasseCover');
     }
 
     public function account()

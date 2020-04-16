@@ -13,6 +13,9 @@ class ProController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('hasAccess:1,5')->only('index');
+        $this->middleware('hasAccess:5')->only('store');
+        $this->middleware('hasAccess:1')->only(['show', 'update', 'destroy']);
     }
 
     public function index()
@@ -116,9 +119,11 @@ class ProController extends Controller
 
     public function create()
     {
+        return redirect('home');
     }
 
     public function edit($id)
     {
+        return redirect('home');
     }
 }
