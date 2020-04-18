@@ -3,13 +3,13 @@
         <div class="d-flex align-items-center wrap">
             <div class="contact_icon">
                 @if ($desc->user_id == $contact_id)
-                    <span id="spaAn" class="contact-status @if ($desc->ad->user->isOnline()) online @endif"></span>
+                    <span id="spaAn" class="contact-status @if ($desc->adWithDeleted->user->isOnline()) online @endif"></span>
                 @else
                     <span id="spaAn" class="contact-status @if ($desc->user->isOnline()) online @endif"></span>
                 @endif
 
                 @if ($desc->user_id == $contact_id)
-                    <img class="cmf" src="{{ asset('/files/avatar/' . $desc->ad->user->user_avatar) }}">
+                    <img class="cmf" src="{{ asset('/files/avatar/' . $desc->adWithDeleted->user->user_avatar) }}">
                 @else
                     <img class="cmf" src="{{ asset('/files/avatar/' . $desc->user->user_avatar) }}">
                 @endif
