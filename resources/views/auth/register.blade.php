@@ -10,11 +10,11 @@
                         <div class="form-row">
                             <div class="col col-12 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label for="user_prenom"><strong>First Name :</strong>
+                                    <label for="user_prenom"><strong>{{ __('First Name') }} :</strong>
                                         <br>
                                     </label>
                                     <input class="form-control @error('user_prenom') is-invalid @enderror"
-                                           id="user_prenom" name="user_prenom" type="text" placeholder="First Name"
+                                           id="user_prenom" name="user_prenom" type="text" placeholder="{{ __('First Name') }}"
                                            value="{{ old('user_prenom') }}" required>
                                     @error('user_prenom')
                                     <span class="invalid-feedback" role="alert">
@@ -25,12 +25,10 @@
                             </div>
                             <div class="col col-12 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label for="user_nom"><strong>Last Name :</strong>
+                                    <label for="user_nom"><strong>{{ __('Last Name') }} :</strong>
                                         <br>
                                     </label>
-                                    <input class="form-control @error('user_nom') is-invalid @enderror" id="user_nom"
-                                           type="text" placeholder="Last Name" name="user_nom"
-                                           value="{{ old('user_nom') }}" required>
+                                    <input class="form-control @error('user_nom') is-invalid @enderror" id="user_nom" type="text" placeholder="{{ __('Last Name') }}" name="user_nom" value="{{ old('user_nom') }}" required>
                                     @error('user_nom')
                                     <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -42,12 +40,10 @@
                         <div class="form-row">
                             <div class="col col-12 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label for="email"><strong>Email Address :</strong>
+                                    <label for="email"><strong>{{ __('E-Mail Address') }} :</strong>
                                         <br>
                                     </label>
-                                    <input id="email" type="email"
-                                           class="form-control @error('email') is-invalid @enderror" name="email"
-                                           value="{{ old('email') }}" required placeholder="Email Address" required>
+                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required placeholder="{{ __('E-Mail Address') }}" required>
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -57,10 +53,10 @@
                             </div>
                             <div class="col col-12 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label for="user_tel"><strong>Phone Number :</strong>
+                                    <label for="user_tel"><strong>{{ __('Phone Number') }} :</strong>
                                         <br>
                                     </label>
-                                    <input class="form-control @error('user_tel') is-invalid @enderror" id="user_tel" name="phone[]" value="{{ old('user_tel') }}" type="tel" placeholder="Phone Number" required>
+                                    <input class="form-control @error('user_tel') is-invalid @enderror" id="user_tel" name="phone[]" value="{{ old('user_tel') }}" type="tel" placeholder="{{ __('Phone Number') }}" required>
                                     @error('user_tel')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -73,7 +69,7 @@
                             <div class="col">
                                 <div class="form-group">
                                     <label for="Wilaya">
-                                        <strong>Address:</strong>
+                                        <strong>{{ __('Address') }} :</strong>
                                     </label>
                                     <div class="d-md-flex justify-content-md-between align-items-md-center RegAdr">
                                         <select id="Wilaya" class="form-control d-md-inline-block">
@@ -147,12 +143,10 @@
                         <div class="form-row">
                             <div class="col col-12 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label for="password"><strong>Password :</strong>
+                                    <label for="password"><strong>{{ __('Password') }} :</strong>
                                         <br>
                                     </label>
-                                    <input id="password" type="password"
-                                           class="form-control @error('password') is-invalid @enderror" name="password"
-                                           required placeholder="Password">
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required placeholder="{{ __('Password') }}">
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -162,32 +156,30 @@
                             </div>
                             <div class="col col-12 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label for="password-confirm"><strong>Confirm Password :</strong>
+                                    <label for="password-confirm"><strong>{{ __('Confirm Password') }} :</strong>
                                         <br>
                                     </label>
                                     <input id="password-confirm" type="password" class="form-control"
-                                           name="password_confirmation" required placeholder="Confirm Password :">
+                                           name="password_confirmation" required placeholder="{{ __('Confirm Password') }}">
                                 </div>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="col">
                                 <div class="form-check">
-                                    <input class="form-check-input" name="terms" type="checkbox" id="termsCheck"
-                                           required>
-                                    <label class="form-check-label m-0" for="termsCheck">I agree to the <a href="#">Terms</a>
-                                        of Use and Privacy Policy.</label>
+                                    <input class="form-check-input" name="terms" type="checkbox" id="termsCheck" required>
+                                    <label class="form-check-label m-0" for="termsCheck">{{ __('I agree to the terms of use and privacy policy.') }}</label>
                                 </div>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="col d-sm-flex d-md-flex d-lg-flex justify-content-sm-center justify-content-md-center justify-content-lg-end">
-                                <button class="btn btn-success" type="submit">Create account</button>
+                                <button class="btn btn-success" type="submit">{{ __('Create an Account') }}</button>
                             </div>
                         </div>
                     </form>
                     <hr>
-                    <span>Already registered?&nbsp;<a href="{{ route('login') }}">Login<br><br></a></span>
+                    <span>{{ __('Already registered ?') }}&nbsp;<a href="{{ route('login') }}">{{ __('Login') }}</a></span>
                 </div>
             </div>
         </div>

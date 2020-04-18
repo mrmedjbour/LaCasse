@@ -577,8 +577,9 @@ div.social-links {
 }
 
 .form-div button {
-    width: 300px;
+    width: 236px;
     background-color: #5cba0a;
+    border: 1px solid #5cba0a;
     margin: 10px 0;
 }
 
@@ -887,7 +888,7 @@ div.social-links {
 }
 
 #searchBox h1 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     line-height: 1.2;
     color: #fff;
     font-weight: 600;
@@ -1564,6 +1565,14 @@ div.thumbSearchAd {
 
 #breadCrumb li {
     font-size: 0.83rem;
+}
+
+.fontS1rem {
+    font-size: 1rem;
+}
+
+.fontS15rem {
+    font-size: 1.2rem !important;
 }
 
 /* end of BreadCrumb style */

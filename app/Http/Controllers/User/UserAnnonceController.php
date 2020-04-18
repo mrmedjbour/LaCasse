@@ -111,7 +111,11 @@ class UserAnnonceController extends Controller
         if (Auth::user()->role_id == 1) {
             $ad = Annonce::findOrFail($id);
         } else {
-            $ad = Auth::user()->annonces()->findOrFail($id);
+            $correntUser = Auth::user();
+            if (Auth::user()->isEmployee()) {
+                $correntUser = User::where('casse_id', Auth::user()->casse_id)->where('role_id', 2)->first();
+            }
+            $ad = $correntUser->annonces()->findOrFail($id);
         }
         Validator::make($request->all(), array(
             'ad_desc' => 'max:500',
@@ -160,7 +164,11 @@ class UserAnnonceController extends Controller
             Annonce::findOrFail($request->ad_id)->delete();
             return redirect(route('annonce.index'))->with('success', 'Ad has been successfully deleted');
         }
-        Auth::user()->annonces()->findOrFail($request->ad_id)->delete();
+        $correntUser = Auth::user();
+        if (Auth::user()->isEmployee()) {
+            $correntUser = User::where('casse_id', Auth::user()->casse_id)->where('role_id', 2)->first();
+        }
+        $correntUser->annonces()->findOrFail($request->ad_id)->delete();
         return redirect(route('annonce.index'))->with('success', 'Your Ad has been successfully deleted');
     }
 }

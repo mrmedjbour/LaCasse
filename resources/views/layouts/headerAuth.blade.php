@@ -39,7 +39,7 @@
             </div>
             <div class="col-md-3 col-lg-5 d-none d-lg-inline-block position-relative">
                 <div class="d-inline-flex w-100" id="TopSearchBar">
-                    <div class="d-inline-flex align-items-center bg-white rounded-left w-100 d-inline-block px-1" id="TopSearchAddChip" data-placeholder="Search"></div>
+                    <div class="d-inline-flex align-items-center bg-white rounded-left w-100 d-inline-block px-1" id="TopSearchAddChip" data-placeholder="{{__('Search')}}"></div>
                     <div class="d-flex justify-content-center align-items-center bg-success d-inline-block rounded-right" id="SubmitTopSearchBar">
                         <i class="fa fa-search"></i>
                     </div>
@@ -124,7 +124,7 @@
             <div class="col-4 col-sm-auto col-md-3 col-lg-5 col-xl-5 d-flex justify-content-end align-items-center justify-content-md-end" style="color: #ffffff;font-family: Montserrat, sans-serif;">
                 <div class="d-flex align-items-center">
                     <a class="d-inline-flex align-items-center pcassedir" href="{{route('directory')}}" style="font-size: 16px;margin-right: 20px;"> <i class="fas fa-map-marked-alt fa-lg" style="color: #58ba25;margin-right: 4px;"></i>
-                        <div class="hideon-sm-log">Casse Directory</div>
+                        <div class="hideon-sm-log">{{__('Casse Directory')}}</div>
                     </a>
                     <a id="notfMsg" class="fas fa-envelope" href="{{ route('messages') }}">
                         <span class="d-flex justify-content-center align-items-center fa fa-circle">
@@ -135,12 +135,12 @@
                         <a class="btn dropdown-toggle shadow-none p-0 text-white" data-toggle="dropdown" aria-expanded="false" role="button">&nbsp; <img class="HeadAvatarImg" src="{{ asset('files/avatar/') }}/{{ Auth::user()->user_avatar }}">
                         </a>
                         <div class="dropdown-menu dropdown-menu-right dropdownProfile" role="menu">
-                            <a class="dropdown-item" role="presentation" href="{{ route('home') }}">Dashboard</a>
-                            <a class="dropdown-item" role="presentation" href="{{ route('messages') }}">My Messages</a>
-                            <a class="dropdown-item lastdropdown-item" role="presentation" href="{{route('annonce.index')}}">My Ads</a>
+                            <a class="dropdown-item" role="presentation" href="{{ route('home') }}">{{__('Dashboard')}}</a>
+                            <a class="dropdown-item" role="presentation" href="{{ route('messages') }}">{{__('Mailbox')}}</a>
+                            <a class="dropdown-item lastdropdown-item" role="presentation" href="{{route('annonce.index')}}">@if (in_array(Auth::user()->role_id, [1,3,4])) {{__('Ads')}} @else {{__('My Ads')}} @endif</a>
                             <div class="d-flex justify-content-between foot">
-                                <a class="btn btn-light btn-sm" role="button" href="{{ route('user.account') }}"> <i class="fas fa-cog"></i>Account</a>
-                                <a class="btn btn-dark btn-sm shadow-none" role="button" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"> <i class="fas fa-sign-out-alt"></i>Sign out</a>
+                                <a class="btn btn-light btn-sm" role="button" href="{{ route('user.account') }}"> <i class="fas fa-cog"></i>{{__('Account')}}</a>
+                                <a class="btn btn-dark btn-sm shadow-none" role="button" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"> <i class="fas fa-sign-out-alt"></i>{{__('Logout')}}</a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">@csrf</form>
                             </div>
                         </div>

@@ -3,16 +3,15 @@
     <section class="d-flex justify-content-center align-items-center" id="sectionSearchBox">
         <div class="container" id="containerSearchBox">
             <div class="d-none d-md-block" id="h1">
-                <h2 class="text-center">Get your wheels back on the Road</h2><span class="text-center d-block">Let's find the part you need!</span>
+                <h2 class="text-center">{{ __('Get your wheels back on the Road') }}</h2><span class="text-center d-block">{{ __('Find the Part that you need now!') }}</span>
             </div>
             <div id="searchBox">
-                <h1 class="text-center text-lg-left">Search For Used Auto Parts Online Instantly</h1>
+                <h1 class="text-center text-lg-left">{{ __('Search For Used Auto Parts Online Instantly') }}</h1>
                 <form class="d-none d-lg-inline input-group-addon" id="lg-form" method="post" action="{{ route("search") }}">
                     @csrf
                     <div class="form-group input-group inputGroup mb-0">
-                        <select class="form-control form-control-lg" autofocus id="Make" name="make" required
-                                style="border-top-left-radius: 20px;border-bottom-left-radius: 20px;">
-                            <option selected disabled hidden>Select Make</option>
+                        <select class="form-control form-control-lg" autofocus id="Make" name="make" required style="border-top-left-radius: 20px;border-bottom-left-radius: 20px;">
+                            <option selected disabled hidden>{{ __('Select Make') }}</option>
                             <option value="1">Seat</option>
                             <option value="2">Renault</option>
                             <option value="3">Peugeot</option>
@@ -79,13 +78,11 @@
                             <option value="64">Isuzu</option>
                             <option value="65">Mahindra</option>
                         </select>
-                        <select class="form-control form-control-lg" id="Modele" name="modele" autofocus required
-                                disabled>
-                            <option disabled hidden selected>Select Model</option>
+                        <select class="form-control form-control-lg" id="Modele" name="modele" autofocus required disabled>
+                            <option disabled hidden selected>{{__('Select Model')}}</option>
                         </select>
-                        <select id="ModeleYear" name="ModeleYear" class="form-control form-control-lg" autofocus
-                                disabled>
-                            <option disabled hidden selected>Select Year</option>
+                        <select id="ModeleYear" name="ModeleYear" class="form-control form-control-lg" autofocus disabled>
+                            <option disabled hidden selected>{{ __('Select Year') }}</option>
                             <option value="2020">2020</option>
                             <option value="2019">2019</option>
                             <option value="2018">2018</option>
@@ -147,18 +144,17 @@
                             <option value="1962">1962</option>
                             <option value="1961">1961</option>
                         </select>
-                        <select id="ModelePart" name="ModelePart" class="form-control form-control-lg" autofocus
-                                required disabled>
-                            <option disabled hidden selected>Select Part</option>
+                        <select id="ModelePart" name="ModelePart" class="form-control form-control-lg" autofocus required disabled>
+                            <option disabled hidden selected>{{ __('Select a Part') }}</option>
                         </select>
-                        <button class="btn btn-success btn-lg input-group-addon" type="submit"
-                                style="border-radius: 0px;border-top-right-radius: 20px;border-bottom-right-radius: 20px;">
+                        <button class="btn btn-success btn-lg input-group-addon" type="submit" style="border-radius: 0px;border-top-right-radius: 20px;border-bottom-right-radius: 20px;">
                             <i class="fas fa-search fa-lg"></i>
                         </button>
                     </div>
                 </form>
-                <form class="d-lg-none input-group-addon" id="md-form">
-                    <div class="form-group" style="margin-bottom: 0px;">
+                <form class="d-lg-none input-group-addon" id="md-form" method="post" action="{{ route("search") }}">
+                    @csrf
+                    <div class="form-group mb-0">
                         <select id="Make" name="make" class="form-control form-control-lg" autofocus required>
                             <option selected disabled hidden>Select Make</option>
                             <option value="1">Seat</option>
@@ -300,7 +296,7 @@
                             <option disabled hidden selected>Select Part</option>
                         </select>
                         <button class="btn btn-success btn-lg input-group-addon" type="submit">
-                            <strong>Find part&nbsp;</strong><i class="fas fa-search fa-lg"></i>
+                            <strong>{{ __('Find Part') }}&nbsp;</strong><i class="fas fa-search fa-lg"></i>
                         </button>
                     </div>
                 </form>
@@ -311,44 +307,44 @@
     <div class="features-boxed">
         <div class="container">
             <div class="intro">
-                <h2 class="text-center"><strong>main features</strong></h2>
+                <h2 class="text-center">{{__('main features')}}</h2>
                 <hr>
             </div>
             <div class="row justify-content-center features">
                 <div class="col-sm-6 col-md-5 col-lg-4 d-flex d-lg-flex justify-content-center justify-content-lg-center item">
                     <div class="shadow box" data-aos="zoom-in" data-aos-duration="600"><i class="fa fa-map-marker icon"></i>
-                        <h3><strong>Find nearest used part</strong></h3>
-                        <p class="description">save extremely valuable time and resources in locating parts</p>
+                        <h3><strong>{{__('Find nearest used part')}}</strong></h3>
+                        <p class="description">{{__('save extremely valuable time and resources in locating parts')}}</p>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-5 col-lg-4 d-flex d-lg-flex justify-content-center justify-content-lg-center item">
                     <div class="shadow box" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="100"><i class="fa fa-search icon"></i>
-                        <h3><strong>Search for used parts easily</strong></h3>
-                        <p class="description">Our simple to use online search tool above makes finding your auto part easy and convenient</p>
+                        <h3><strong>{{__('Search for used parts easily')}}</strong></h3>
+                        <p class="description">{{__('Our simple to use online search tool above makes finding your auto part easy and convenient')}}</p>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-5 col-lg-4 d-flex d-lg-flex justify-content-center justify-content-lg-center item">
                     <div class="shadow box" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="200"><i class="fa fa-money icon"></i>
-                        <h3><strong>Get the best deal</strong></h3>
-                        <p class="description">Used parts are easier for the wallet! search for the best price on the parts you need.</p>
+                        <h3><strong>{{__('Get the best deal')}}</strong></h3>
+                        <p class="description">{{__('Used parts are easier for the wallet! search for the best price on the parts you need.')}}</p>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-5 col-lg-4 d-flex d-lg-flex justify-content-center justify-content-lg-center item">
                     <div class="shadow box" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="300"><i class="fa fa-handshake-o icon"></i>
-                        <h3><strong>Reliability</strong></h3>
-                        <p class="description">all parts are from reliable partner in sourcing quality used parts</p>
+                        <h3><strong>{{__('Reliability')}}</strong></h3>
+                        <p class="description">{{__('all parts are from reliable source of quality used parts')}}</p>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-5 col-lg-4 d-flex d-lg-flex justify-content-center justify-content-lg-center item">
                     <div class="shadow box" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="400"><i class="fa fa-comments icon"></i>
-                        <h3><strong>Communicate easily</strong></h3>
-                        <p class="description">We offer a way to easily communicate with all advertisers online</p>
+                        <h3><strong>{{__('Communicate easily')}}</strong></h3>
+                        <p class="description">{{__('We offer a way to easily communicate with all advertisers online')}}</p>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-5 col-lg-4 d-flex d-lg-flex justify-content-center justify-content-lg-center item">
                     <div class="shadow box" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="500"><i class="fa fa-share-alt icon"></i>
-                        <h3><strong>a place to share your ads</strong></h3>
-                        <p class="description">we offer a place to share all your used auto parts as regular client or professional</p>
+                        <h3><strong>{{__('a place to share your ads')}}</strong></h3>
+                        <p class="description">{{__('we offer a place to share all your used auto parts as regular client or professional')}}</p>
                     </div>
                 </div>
             </div>
@@ -358,11 +354,10 @@
         <div>
             <div class="container find-call-box">
                 <div>
-                    <p class="lead text-center">Get your wheels back on the road. Let's find the part you need!</p>
+                    <p class="lead text-center">{{__('Get your wheels back on the road. Let\'s find the part you need!')}}</p>
                     <p class="text-center">
                         <button class="btn shadow-none" data-aos="zoom-in" data-aos-duration="500" type="button"
-                                onclick="window.location.href='#HeadTopBar'">Find Your Parts now&nbsp;<i
-                                    class="fa fa-chevron-right"></i>
+                                onclick="window.location.href='#HeadTopBar'">{{__('Find Your Parts now')}}&nbsp;<i class="fa fa-chevron-right"></i>
                         </button>
                     </p>
                 </div>

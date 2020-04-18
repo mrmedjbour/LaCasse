@@ -14,11 +14,11 @@
                             <input type="hidden" value="PUT" name="_method">
                             <div class="d-md-flex" id="top">
                                 <div class="w-100">
-                                    <label class="weight500">Ad type: {{Str::title($ad->annonce_type)}}</label>
+                                    <label class="weight500">{{__('Ad type:')}} {{__(Str::title($ad->annonce_type))}}</label>
                                     <div class="form-group">
-                                        <label for="Make" class="weight500">Select Make:</label>
+                                        <label for="Make" class="weight500">{{__('Select make')}}:</label>
                                         <select class="form-control" id="Make" name="make" required>
-                                            <option selected disabled hidden>Select Make</option>
+                                            <option selected disabled hidden>{{__('Select make')}}</option>
                                             <option value="1">Seat</option>
                                             <option value="2">Renault</option>
                                             <option value="3">Peugeot</option>
@@ -88,16 +88,16 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label class="weight500">Select Model:</label>
+                                        <label class="weight500">{{__('Select model')}}:</label>
                                         <select class="form-control" id="Modele" name="Modele_id" required disabled>
-                                            <option disabled hidden selected>Select Model</option>
+                                            <option disabled hidden selected>{{__("Select model")}}</option>
                                             <option value="{{$ad->modele_id}}" selected>{{$ad->modele->modele_nom}}</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="ModeleYear" class="weight500">Select Year:</label>
+                                        <label for="ModeleYear" class="weight500">{{__('Select year')}}:</label>
                                         <select class="form-control" id="ModeleYear" name="ModeleYear" disabled>
-                                            <option disabled hidden selected>Select Year</option>
+                                            <option disabled hidden selected>{{__('Select year')}}</option>
                                             @for($y = 2020;$y > 1960;$y--)
                                                 <option value="{{ $y }}" {{$ad->modele_annee == $y? 'selected':''}}>{{ $y }}</option>
                                             @endfor
@@ -106,7 +106,7 @@
                                 </div>
                                 @if($ad->annonce_type == "sell")
                                     <div class="w-100">
-                                        <label class="weight500" for="upInput">Upload images:</label>
+                                        <label class="weight500" for="upInput">{{__('Upload picture')}}:</label>
                                         <div id="addAdsImgPreview"
                                              class="rounded border border-dark bg-white ml-md-2 mr-md-2">
                                             <div id="upImg">
@@ -122,12 +122,12 @@
                                 @endif
                             </div>
                             <div>
-                                <label class="weight500">Description:</label>
+                                <label class="weight500">{{__('Description')}}:</label>
                                 <textarea class="form-control form-control-lg rounded border border-dark" name="ad_desc" rows="3">{{ $ad->annonce_desc ?? '' }}</textarea>
                             </div>
                             <div class="d-flex flex-column flex-wrap accordion md-accordion mt-3" id="accordionEx" role="tablist" aria-multiselectable="true">
                                 <div class="mb-1">
-                                    <a class="btn btn-link text-info font-weight-light p-0" id="SelectAllParts">Select All</a>&nbsp;/&nbsp;<a class="btn btn-link text-info font-weight-light p-0" id="DeSelectAllParts">Deselect All</a>
+                                    <a class="btn btn-link text-info font-weight-light p-0" id="SelectAllParts">{{__('Select All')}}</a>&nbsp;/&nbsp;<a class="btn btn-link text-info font-weight-light p-0" id="DeSelectAllParts">{{__('Deselect All')}}</a>
                                 </div>
                                 <?php
                                 $Partscat = \App\PieceCat::with('pieces')->get();
@@ -163,7 +163,7 @@
                             <hr>
                             <div class="text-center text-sm-right">
                                 <button class="btn btn-success shadow-none m-2" type="submit">
-                                    <i class="fa fa-file mr-1"></i>Edit
+                                    <i class="fa fa-file mr-1"></i>{{__('Edit')}}
                                 </button>
                             </div>
                         </form>

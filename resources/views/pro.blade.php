@@ -10,13 +10,13 @@
                         <form id="GoPro" class="p-4" action="{{ route("pro.store") }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="w-100">
-                                <h5 class="mb-2">Switch to professional account</h5>
+                                <h5 class="mb-2">{{__('Switch to professional account')}}</h5>
                                 <div class="form-group">
-                                    <label for="casse_name" class="weight500">Casse name: *</label>
+                                    <label for="casse_name" class="weight500">{{__('Casse name')}}: *</label>
                                     <input class="form-control" type="text" id="casse_name" name="casse_name" required minlength="2">
                                 </div>
                                 <div class="form-group">
-                                    <label for="casse_adr" class="weight500">Casse addresse: *</label>
+                                    <label for="casse_adr" class="weight500">{{__('Casse address')}}: *</label>
                                     <input class="form-control" type="text" id="casse_adr" name="casse_adr" required minlength="5">
                                 </div>
                                 <div class="form-group">
@@ -92,7 +92,7 @@
                                 @enderror
                                 <hr>
                                 <div class="form-group" id="CassePhoneNumberinput">
-                                    <label class="weight500">Phone Numbers: *</label>
+                                    <label class="weight500">{{__('Phone Numbers')}}: *</label>
                                     @if(empty($user->user_tel))
                                         <input class="form-control mt-2" type="tel" name="phone[]" placeholder="Phone Number" minlength="9" maxlength="14" inputmode="tel" required>
                                     @endif
@@ -100,19 +100,19 @@
                                         <input class="form-control mt-2" type="tel" name="phone[]" placeholder="Phone Number" value="{{ phone($phone, 'DZ') }}" minlength="9" maxlength="14" inputmode="tel">
                                     @endforeach
                                 </div>
-                                <a class="btn shadow-none p-0 d-block" role="button" id="CassePhoneNumber" style="color: #007bff;">Add another phone number</a>
+                                <a class="btn shadow-none p-0 d-block" role="button" id="CassePhoneNumber" style="color: #007bff;">{{__('Add another phone number')}}</a>
                                 <hr>
                                 <div class="form-group">
-                                    <label for="casse_rc" class="weight500">trade register number: *</label>
+                                    <label for="casse_rc" class="weight500">{{__('trade register number')}}: *</label>
                                     <input class="form-control" type="tel" id="casse_rc" name="casse_rc" minlength="9" maxlength="14" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="casse_doc" class="weight500 d-block">Upload trade register document (pdf,img...): *</label>
+                                    <label for="casse_doc" class="weight500 d-block">{{__('Upload trade register document')}} (pdf,img...): *</label>
                                     <input type="file" id="casse_doc" name="casse_doc" required>
                                 </div>
                             </div>
                             <div class="text-center text-sm-right">
-                                <button class="btn btn-success shadow-none m-2 px-5 font-weight-bold" type="submit">Submit</button>
+                                <button class="btn btn-success shadow-none m-2 px-5 font-weight-bold" type="submit">{{__('Submit')}}</button>
                             </div>
                         </form>
                     </div>

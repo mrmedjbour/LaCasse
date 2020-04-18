@@ -11,34 +11,34 @@
                         <form method="post" enctype="multipart/form-data">
                             <div class="d-md-flex justify-content-around w-100" style="padding: 5px 3%;">
                                 <div class="w-100">
-                                    <h6 class="mb-1">User information :</h6>
+                                    <h6 class="mb-3">{{__('User information')}} :</h6>
                                     <div class="form-group d-sm-flex align-items-center justify-content-sm-between">
-                                        <label class="text-nowrap" for="roleUser">Role :</label>
+                                        <label class="text-nowrap" for="roleUser">{{__('Role')}} :</label>
                                         <input class="form-control form-control-sm ProfInputS" type="text" id="roleUser" value="{{ $user->role->role_nom }}" disabled>
                                     </div>
                                     @if ($user->role_id == 2 OR $user->isEmployee())
                                         <div class="form-group d-sm-flex align-items-center justify-content-sm-between">
-                                            <label class="text-nowrap" for="roleUser">Casse :</label>
+                                            <label class="text-nowrap" for="roleUser">{{__('Casse')}} :</label>
                                             <input class="form-control form-control-sm ProfInputS" type="text" id="roleUser" value="{{ $user->casse->casse_nom }}" disabled>
                                         </div>
                                     @endif
                                     <div class="form-group d-sm-flex align-items-center justify-content-sm-between">
-                                        <label class="text-nowrap" for="first-name">Firstname :</label>
+                                        <label class="text-nowrap" for="first-name">{{__('First Name')}} :</label>
                                         <input class="form-control form-control-sm ProfInputS" type="text" id="first-name" value="{{ $user->user_prenom }}" disabled>
                                     </div>
                                     <div class="form-group d-sm-flex align-items-center justify-content-sm-between">
-                                        <label class="text-nowrap" for="Lastname">Lastname :</label>
+                                        <label class="text-nowrap" for="Lastname">{{__('Last Name')}} :</label>
                                         <input class="form-control form-control-sm ProfInputS" type="text" id="Lastname" value="{{ $user->user_nom }}" disabled>
                                     </div>
                                     <div class="form-group d-sm-flex justify-content-sm-between">
-                                        <label class="text-nowrap" for="email">Email :</label>
+                                        <label class="text-nowrap" for="email">{{__('E-Mail Address')}} :</label>
                                         <input class="form-control form-control-sm ProfInputS" type="text" id="email" value="{{ $user->email  }}" disabled>
                                     </div>
-                                    <h6 class="mb-1 mb-1">Address :</h6>
+                                    <h6 class="mb-1 mb-1">{{__('Address')}} :</h6>
                                     <p class="font-weight-light pl-2 text-dark">{{ Str::title($user->commune->commune_nom .', '.$user->commune->daira->daira_nom.', '.$user->commune->daira->wilaya->wilaya_nom) }}</p>
                                     @foreach($user->user_tel as $phone)
                                         @if ($loop->first)
-                                            <h6 class="mb-1">Phone numbers :</h6>
+                                            <h6 class="mb-3">{{__('Phone Numbers')}} :</h6>
                                         @endif
                                         <input class="form-control form-control-sm d-block mb-1 ml-2 UserViewInput" value="{{ $phone }}" disabled>
                                     @endforeach
@@ -49,7 +49,7 @@
                                 </div>
                             </div>
                             <div class="d-flex justify-content-start justify-content-xl-start mx-4 mb-3 mt-1">
-                                <a class="btn btn-dark shadow-none" role="button" href="{{ route('users.index') }}"><i class="fa fa-chevron-left m-1"></i>&nbsp;Back</a>
+                                <a class="btn btn-dark shadow-none" role="button" href="{{ route('users.index') }}"><i class="fa fa-chevron-left m-1"></i>&nbsp;{{__('Back')}}</a>
                             </div>
                         </form>
                     </div>

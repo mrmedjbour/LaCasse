@@ -38,7 +38,7 @@ class AppServiceProvider extends ServiceProvider
                 }
                 $count_1 = Discussion::whereHas('latestmsg', function ($q) use ($contactId) {
                     $q->whereNull('msg_etat')->where('user_id', '<>', $contactId);
-                })->whereHas('ad', function (Builder $query) use ($contactId) {
+                })->whereHas('adWithDeleted', function (Builder $query) use ($contactId) {
                     $query->where('user_id', $contactId);
                 });
                 $getEdDiscId = $count_1->pluck('disc_id');

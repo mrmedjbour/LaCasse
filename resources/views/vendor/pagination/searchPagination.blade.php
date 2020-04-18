@@ -3,7 +3,7 @@
         <div class="show">
             <form class="form-inline d-inline-flex" method="get">
                 <div class="form-group d-flex align-items-xl-center">
-                    <label class="d-flex align-items-center" for="show">Show</label>
+                    <label class="d-flex align-items-center" for="show">{{__('Show')}}</label>
                     <select class="form-control form-control-sm widthAuto" name="show">
                         <option value="10">10</option>
                         <option value="15">15</option>

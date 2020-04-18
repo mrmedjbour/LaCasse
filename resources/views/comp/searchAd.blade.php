@@ -44,10 +44,10 @@
         <div class="d-flex justify-content-between justify-content-lg-end" id="annonce_btn">
             @auth()
                 <a class="btn btn-sm shadow-none contact" id="SrBtnCon" role="button" data-ad="{{ $ad->annonce_id }}" data-part="{{ $ad->pieces->where('piece_id', '=', $request->part)->first()->piece_id }}">
-                    <i class="fas fa-comment-dots"></i>Contact
+                    <i class="fas fa-comment-dots"></i>{{__('Contact')}}
                 </a>
             @endauth
-            <a class="btn btn-sm shadow-none details" role="button" target="_blank" href="{{route("ad.sell", [$ad->annonce_id, $ad->pieces->where('piece_id', '=', $request->part)->first()->piece_id])}}"><i class="fa fa-clone"></i>Details</a>
+            <a class="btn btn-sm shadow-none details" role="button" target="_blank" href="{{route("ad.sell", [$ad->annonce_id, $ad->pieces->where('piece_id', '=', $request->part)->first()->piece_id])}}"><i class="fa fa-clone"></i>{{__('Details')}}</a>
         </div>
     </div>
 </div>

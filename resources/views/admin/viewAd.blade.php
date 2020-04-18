@@ -14,24 +14,24 @@
                             <input type="hidden" value="PUT" name="_method">
                             <div class="d-md-flex" id="top">
                                 <div class="w-100">
-                                    <label class="weight500">Ad type: {{Str::title($ad->annonce_type)}}</label>
+                                    <label class="weight500">{{__('Ad type:') .' '. __(Str::title($ad->annonce_type))}}</label>
                                     <div class="form-group">
-                                        <label for="Make" class="weight500">Select Make:</label>
+                                        <label for="Make" class="weight500">{{__('Make:')}}</label>
                                         <select class="form-control" id="Make" disabled required>
                                             <option value="{{$ad->modele->marque_id}}" hidden selected>{{Str::title($ad->modele->marque->marque_nom)}}</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label class="weight500">Select Model:</label>
+                                        <label class="weight500">{{__('Model:')}}</label>
                                         <select class="form-control" id="Modele" disabled>
                                             <option disabled hidden selected>Select Model</option>
                                             <option value="{{$ad->modele_id}}" selected>{{$ad->modele->modele_nom}}</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="ModeleYear" class="weight500">Select Year:</label>
+                                        <label for="ModeleYear" class="weight500">{{__('Year')}}:</label>
                                         <select class="form-control" id="ModeleYear" name="ModeleYear" disabled>
-                                            <option disabled hidden selected>Select Year</option>
+                                            <option disabled hidden selected>{{__('Year')}}</option>
                                             @for($y = 2020;$y > 1960;$y--)
                                                 <option value="{{ $y }}" {{$ad->modele_annee == $y? 'selected':''}}>{{ $y }}</option>
                                             @endfor
@@ -40,7 +40,6 @@
                                 </div>
                                 @if($ad->annonce_type == "sell" && empty($ad->images))
                                     <div class="w-100">
-                                        <label class="weight500" for="upInput">Upload images:</label>
                                         <div id="addAdsImgPreview"
                                              class="rounded border border-dark bg-white ml-md-2 mr-md-2">
                                             <div id="upImg">
@@ -55,7 +54,7 @@
                                 @endif
                             </div>
                             <div>
-                                <label class="weight500">Description:</label>
+                                <label class="weight500">{{__('Description')}}:</label>
                                 <textarea class="form-control form-control-lg rounded border border-dark" disabled rows="3">{{ $ad->annonce_desc ?? '' }}</textarea>
                             </div>
                             <div class="d-flex flex-column flex-wrap accordion md-accordion mt-3" id="accordionEx" role="tablist" aria-multiselectable="true">

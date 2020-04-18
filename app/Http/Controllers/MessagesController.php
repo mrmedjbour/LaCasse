@@ -26,7 +26,7 @@ class MessagesController extends Controller
         }
         $descs = Discussion::with('latestmsg')
             ->where('user_id', $contact_id)
-            ->orWhereHas('ad', function (Builder $query) use ($contact_id) {
+            ->orWhereHas('adWithDeleted', function (Builder $query) use ($contact_id) {
                 $query->where('user_id', $contact_id);
             })
             ->orderByDesc('disc_stamp')
@@ -35,7 +35,7 @@ class MessagesController extends Controller
         if ($disc) {
             $msgs = Discussion::with(['msg'])->where('disc_id', $disc)
                 ->where('user_id', $contact_id)
-                ->orWhereHas('ad', function (Builder $query) use ($contact_id) {
+                ->orWhereHas('adWithDeleted', function (Builder $query) use ($contact_id) {
                     $query->where('user_id', $contact_id);
                 })
                 ->find($disc);
@@ -54,7 +54,7 @@ class MessagesController extends Controller
         }
         $descs = Discussion::with('latestmsg')
             ->where('user_id', $contact_id)
-            ->orWhereHas('ad', function (Builder $query) use ($contact_id) {
+            ->orWhereHas('adWithDeleted', function (Builder $query) use ($contact_id) {
                 $query->where('user_id', $contact_id);
             })
             ->orderByDesc('disc_stamp')
@@ -74,7 +74,7 @@ class MessagesController extends Controller
         $disc = $request->disc_id;
         $msgs = Discussion::with(['msg'])->where('disc_id', $disc)
             ->where('user_id', $contact_id)
-            ->orWhereHas('ad', function (Builder $query) use ($contact_id) {
+            ->orWhereHas('adWithDeleted', function (Builder $query) use ($contact_id) {
                 $query->where('user_id', $contact_id);
             })
             ->find($disc);
@@ -100,7 +100,7 @@ class MessagesController extends Controller
 
         $disc = Discussion::where('disc_id', $disc_id)
             ->where('user_id', $contact_id)
-            ->orWhereHas('ad', function (Builder $query) use ($contact_id) {
+            ->orWhereHas('adWithDeleted', function (Builder $query) use ($contact_id) {
                 $query->where('user_id', $contact_id);
             })
             ->find($disc_id);

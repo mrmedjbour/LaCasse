@@ -20,12 +20,12 @@
                             <thead style="background-color: #0078c3;color: white;">
                             <tr>
                                 <th style="width: 8%;">#</th>
-                                <th>Full name</th>
-                                <th style="width: 10%;">Role</th>
-                                <th style="width: 8%;">Status</th>
-                                <th style="width: 8%;"><strong>Delete</strong>
+                                <th>{{__('Full name')}}</th>
+                                <th style="width: 15%;">{{__('Role')}}</th>
+                                <th style="width: 8%;">{{__('Status')}}</th>
+                                <th style="width: 8%;"><strong>{{__('Delete')}}</strong>
                                 </th>
-                                <th style="width: 6%;">View</th>
+                                <th style="width: 6%;">{{__('View')}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -40,7 +40,7 @@
                                             <a class="text-decoration-none font-weight-light" target="_blank" href="{{ route('profile', $user->casse->casse_id) }}">({{ $user->casse->casse_nom }})</a>
                                         @endif
                                     </td>
-                                    <td> {{ $user->role->role_nom }}</td>
+                                    <td> {{ __($user->role->role_nom) }}</td>
                                     <td class="text-center p-0">
                                         <button class="btn btn-sm shadow-none" id="StatusUserblock" type="button" u_id="{{ $user->user_id }}">
                                             @if ($user->user_etat == 1)
@@ -74,19 +74,19 @@
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header py-1" style="background-color: #0078c3;color: white;">
-                                    <h4 class="modal-title font-weight-normal" style="font-size: medium;">Delete Confirmation</h4>
+                                    <h4 class="modal-title font-weight-normal" style="font-size: medium;">{{__('Delete Confirmation')}}</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
                                     </button>
                                 </div>
                                 <div class="modal-body text-center pb-0"><i class="fas fa-exclamation-circle fa-5x" style="color: red;"></i>
-                                    <p class="pt-3">Are you sure you want to delete this record?</p>
+                                    <p class="pt-3">{{__('Are you sure you want to delete this user ?')}}</p>
                                 </div>
                                 <div class="modal-footer p-2 px-sm-3">
                                     <form class="d-flex justify-content-between m-0 w-100" id="delete" method="post">
                                         @csrf
                                         @method('DELETE')
-                                        <button class="btn btn-secondary shadow-none" type="button" data-dismiss="modal">No</button>
-                                        <button class="btn btn-danger shadow-none" type="submit">Yes, Delete</button>
+                                        <button class="btn btn-secondary shadow-none" type="button" data-dismiss="modal">{{__('No')}}</button>
+                                        <button class="btn btn-danger shadow-none" type="submit">{{__('Yes, Delete')}}</button>
                                     </form>
                                 </div>
                             </div>

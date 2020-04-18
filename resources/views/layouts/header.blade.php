@@ -3,10 +3,10 @@
         <div class="row">
             <div class="col-8 col-sm-8 col-md-7 col-lg-7 col-xl-8 d-inline-flex align-items-center align-items-sm-center align-items-md-center align-items-lg-center align-items-xl-center">
                 <a class="btn btn-sm d-md-none" role="button" style="color: #fff;background-color: #014876;padding: 1px 10px;margin-right: 5px;" href="{{ route('register') }}">
-                    <i class="fas fa-user-plus" style="margin-right: 3px;color: #c3c3c3;"></i>Register
+                    <i class="fas fa-user-plus" style="margin-right: 3px;color: #c3c3c3;"></i> {{ __('Register') }}
                 </a>
                 <a class="btn btn-sm d-md-none" role="button" style="color: #fff;background-color: #014876;padding: 1px 10px;" href="{{ route('login') }}">
-                    <i class="fas fa-user-plus" style="margin-right: 3px;color: #c3c3c3;"></i>Login
+                    <i class="fas fa-user-plus" style="margin-right: 3px;color: #c3c3c3;"></i>{{__('Login')}}
                 </a>
                 <span class="d-none d-md-inline d-lg-inline d-xl-inline">+213 542569990</span>
             </div>
@@ -52,7 +52,7 @@
             </div>
             <div class="col-md-3 col-lg-5 d-none d-lg-inline-block position-relative">
                 <div class="d-inline-flex w-100" id="TopSearchBar">
-                    <div class="d-inline-flex align-items-center bg-white rounded-left w-100 d-inline-block px-1" id="TopSearchAddChip" data-placeholder="Search"></div>
+                    <div class="d-inline-flex align-items-center bg-white rounded-left w-100 d-inline-block px-1" id="TopSearchAddChip" data-placeholder="{{__('Search')}}"></div>
                     <div class="d-flex justify-content-center align-items-center bg-success d-inline-block rounded-right" id="SubmitTopSearchBar">
                         <i class="fa fa-search"></i>
                     </div>
@@ -138,14 +138,14 @@
                 <div class="d-flex align-items-center">
                     <a class="d-inline-flex align-items-center" href="{{route('directory')}}" style="font-size: 16px;margin-right: 20px;">
                         <i class="fas fa-map-marked-alt fa-lg" style="color: #58ba25;margin-right: 4px;"></i>
-                        <div class="hideon-sm">Casse Directory</div>
+                        <div class="hideon-sm">{{__('Casse Directory')}}</div>
                     </a>
                     <div class="d-none d-md-inline-block d-lg-inline-block d-xl-inline-block">
                         <a class="align-items-center" href="{{ route('register') }}" style="font-size: 16px;margin-right: 20px;">
-                            <i class="fas fa-user-plus fa-lg" style="color: #58ba25;margin-right: 4px;"></i>Register
+                            <i class="fas fa-user-plus fa-lg" style="color: #58ba25;margin-right: 4px;"></i>{{ __('Register') }}
                         </a>
                         <a class="d-xl-inline-flex align-items-center" href="{{ route('login') }}" style="font-size: 16px;font-family: Montserrat, sans-serif;">
-                            <i class="fa fa-sign-in fa-lg" style="color: #58ba25;margin-right: 4px;"></i>Login
+                            <i class="fa fa-sign-in fa-lg" style="color: #58ba25;margin-right: 4px;"></i>{{__('Login')}}
                         </a>
                     </div>
                 </div>

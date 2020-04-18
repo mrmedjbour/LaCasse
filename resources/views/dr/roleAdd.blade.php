@@ -12,35 +12,35 @@
                         <form method="post" action="{{ route('role.store') }}">
                             @csrf
                             <div class="w-100" style="padding: 5px 3%;">
-                                <h6 style="margin-bottom: 1rem;">Add User Role</h6>
+                                <h6 style="margin-bottom: 1rem;">{{__('Add User Role')}}</h6>
                                 <div class="form-group d-sm-flex align-items-center justify-content-sm-between">
-                                    <label class="text-nowrap" for="userRole">User Role :</label>
+                                    <label class="text-nowrap" for="userRole">{{__('User Role')}} :</label>
                                     <select class="form-control ProfSelects" id="userRole" name="userRole" required>
-                                        <option value="3">Seller</option>
-                                        <option value="4">Buyer</option>
+                                        <option value="3">{{__('Seller')}}</option>
+                                        <option value="4">{{__('Buyer')}}</option>
                                     </select>
                                 </div>
                                 <div class="form-group d-sm-flex align-items-center justify-content-sm-between">
-                                    <label class="text-nowrap" for="first-name">First name :</label>
-                                    <input class="form-control ProfInputS" type="text" id="first-name" name="firstname" placeholder="First name" required>
+                                    <label class="text-nowrap" for="first-name">{{__('First Name')}} :</label>
+                                    <input class="form-control ProfInputS" type="text" id="first-name" name="firstname" placeholder="{{__('First Name')}}" required>
                                 </div>
                                 <div class="form-group d-sm-flex align-items-center justify-content-sm-between">
-                                    <label class="text-nowrap" for="last-name">Last name :</label>
-                                    <input class="form-control ProfInputS" type="text" id="last-name" name="lastname" placeholder="Last name" required>
+                                    <label class="text-nowrap" for="last-name">{{__('Last Name')}} :</label>
+                                    <input class="form-control ProfInputS" type="text" id="last-name" name="lastname" placeholder="{{__('Last Name')}}" required>
                                 </div>
                                 <div class="form-group d-sm-flex justify-content-sm-between">
-                                    <label class="text-nowrap" for="email">Email :</label>
-                                    <input class="form-control ProfInputS" type="email" id="email" name="email" placeholder="E-mail" required>
+                                    <label class="text-nowrap" for="email">{{__('E-Mail Address')}} :</label>
+                                    <input class="form-control ProfInputS" type="email" id="email" name="email" placeholder="{{__('E-Mail Address')}}" required>
                                 </div>
                                 <div class="form-group d-sm-flex justify-content-sm-between">
-                                    <label class="text-nowrap" for="password">Password :</label>
-                                    <input class="form-control ProfInputS" type="password" id="password" name="password" placeholder="Password" required>
+                                    <label class="text-nowrap" for="password">{{__('Password')}} :</label>
+                                    <input class="form-control ProfInputS" type="password" id="password" name="password" placeholder="{{__('Password')}}" required>
                                 </div>
                                 <div class="form-group d-sm-flex justify-content-sm-between">
-                                    <label class="text-nowrap" for="password_confirmation">Password Confirmation:</label>
-                                    <input class="form-control ProfInputS" type="password" id="password_confirmation" name="password_confirmation" placeholder="Password Confirmation" required>
+                                    <label class="text-nowrap" for="password_confirmation">{{__('Confirm Password')}}:</label>
+                                    <input class="form-control ProfInputS" type="password" id="password_confirmation" name="password_confirmation" placeholder="{{__('Confirm Password')}}" required>
                                 </div>
-                                <h6 class="mb-1">Address :</h6>
+                                <h6 class="mb-1">{{__('Address')}} :</h6>
                                 <div class="form-group d-flex justify-content-between align-items-center">
                                     <label class="m-0" id="willya" for="email"></label>
                                     <select class="form-control ProfSelects" id="Wilaya">
@@ -107,15 +107,15 @@
                                         <option hidden disabled selected>Commune</option>
                                     </select>
                                 </div>
-                                <h6 class="mb-1">Phone numbers (optional):</h6>
+                                <h6 class="mb-1">{{__('Phone Numbers')}} ({{__('optional')}}):</h6>
                                 <div class="form-group">
-                                    <input class="form-control form-control-sm d-block mx-auto mb-3 mt-3 ProfInputS" type="tel" placeholder="Phone Number" name="phone[]" inputmode="tel">
-                                    <a class="btn shadow-none p-0 d-block" role="button" id="addPhoneNumber" style="color: #007bff;">Add another phone number</a>
+                                    <input class="form-control form-control-sm d-block mx-auto mb-3 mt-3 ProfInputS" type="tel" placeholder="{{__('Phone Number')}}" name="phone[]" inputmode="tel">
+                                    <a class="btn shadow-none p-0 d-block" role="button" id="addPhoneNumber" style="color: #007bff;">{{__('Add another phone number')}}</a>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-between mx-4 mb-3">
-                                <a class="btn btn-danger btn-sm shadow-none" role="button" href="{{ route('role.index') }}"><i class="fa fa-remove m-1"></i>Cancel</a>
-                                <button class="btn btn-success btn-sm shadow-none" type="submit"><i class="fa fa-user-plus m-1"></i>Add Role</button>
+                                <a class="btn btn-danger btn-sm shadow-none" role="button" href="{{ route('role.index') }}"><i class="fa fa-remove m-1"></i>{{__('Cancel')}}</a>
+                                <button class="btn btn-success btn-sm shadow-none" type="submit"><i class="fa fa-user-plus m-1"></i>{{__('Add Role')}}</button>
                             </div>
                         </form>
                     </div>

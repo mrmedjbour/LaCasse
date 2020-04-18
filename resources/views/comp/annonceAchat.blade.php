@@ -2,15 +2,13 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <h1 class="searchResultTitle">
-                    @if ($ads->pieces->count() <= 1)I Need {{ Str::title($ads->pieces[0]->piece_nom) }} -@else I Need Parts For @endif {{ Str::title($ads->modele->marque->marque_nom.' '.$ads->modele->modele_nom) }} {{ $ads->modele_annee ? '- '.$ads->modele_annee : ''}}
-                </h1>
+                <h1 class="searchResultTitle">{{ trans_choice('I need for', $ads->pieces->count(), ['part' => Str::title($ads->pieces->first()->piece_nom)]) }} {{ Str::title($ads->modele->marque->marque_nom.' '.$ads->modele->modele_nom) }} {{ $ads->modele_annee ? '- '.$ads->modele_annee : ''}}</h1>
             </div>
         </div>
         <div class="row">
             <div class="col-12 col-md-8">
                 <div id="PartDesc" class="ToBuy">
-                    <h4>Part(s) that i need :</h4>
+                    <h4>{{__('Part(s) that i need')}} :</h4>
                     <div class="table-responsive table-borderless">
                         <table class="table table-bordered table-sm partToBuy">
                             <tbody>
@@ -31,7 +29,7 @@
                 <div id="partSideCont" style="overflow: hidden;">
                     <div id="postedBy">
                         <div class="d-inline-block">
-                            <span class="text-nowrap">Posted by:</span>
+                            <span class="text-nowrap">{{__('Posted by')}}:</span>
                             @if($ads->user->role_id == 2)
                                 <a class="text-nowrap" href="/casse/123"><i class="fas fa-address-card mr-1"></i>{{ $ads->user->casse->casse_nom }}</a>
                             @else
@@ -39,15 +37,15 @@
                             @endif
                         </div>
                         <div class="d-inline-block">
-                            <span class="text-nowrap">Posted on:</span>
+                            <span class="text-nowrap">{{__('Posted on')}}:</span>
                             <a class="text-nowrap">{{ \Carbon\Carbon::parse($ads->annonce_date)->format('d M Y') }}</a>
                         </div>
                     </div>
                     <div id="CWays">
-                        <p style="color: #555555;">For parts offers, or other inquiries:</p>
+                        <p style="color: #555555;">{{__('For parts offers, or other inquiries')}}:</p>
                         @auth()
                             <button class="btn btn-lg shadow-none" id="fContactMsg" type="button" data-toggle="modal" data-target="#contact">
-                                <i class="fas fa-comment-dots fa-lg"></i>Contact
+                                <i class="fas fa-comment-dots fa-lg"></i>{{__('Contact')}}
                             </button>
                         @endauth
                         <div class="table-responsive table-borderless">
@@ -92,7 +90,7 @@
                     <div class="modal fade SendModel" role="dialog" tabindex="-1" id="contact" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
-                                <div class="modal-header"><span class="modal-title"><i class="fa fa-send fa-lg"></i>Send a message</span>
+                                <div class="modal-header"><span class="modal-title"><i class="fa fa-send fa-lg"></i>{{__('Send a message')}}</span>
                                     <button class="btn shadow-none close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="color: red;"><strong>×</strong></span>
                                     </button>
                                 </div>
@@ -101,8 +99,7 @@
                                     <div class="modal-body">
                                         <div class="d-flex">
                                             <div>
-                                                <span>@if ($ads->pieces->count() <= 1)I Need {{ Str::title($ads->pieces[0]->piece_nom) }} -@else I Need Parts
-                                                    For @endif {{ Str::title($ads->modele->marque->marque_nom.' '.$ads->modele->modele_nom) }} {{ $ads->modele_annee ? '- '.$ads->modele_annee : ''}}</span>
+                                                <span>{{ trans_choice('I need for', $ads->pieces->count(), ['part' => Str::title($ads->pieces->first()->piece_nom)]) }} {{ Str::title($ads->modele->marque->marque_nom.' '.$ads->modele->modele_nom) }} {{ $ads->modele_annee ? '- '.$ads->modele_annee : ''}}</span>
                                                 <ul class="list-unstyled">
                                                     <li>
                                                         @if($ads->user->role_id == 2)
@@ -116,32 +113,32 @@
                                         </div>
                                         <div class="msg">
                                             <input class="form-control" type="hidden" name="ad" value="{{ $ads->annonce_id }}">
-                                            <label for="message">* Message:</label>
-                                            <textarea class="form-control form-control-sm" id="message" name="message" placeholder="Write a message" rows="0" spellcheck="false" wrap="soft" required=""></textarea>
+                                            <label for="message">* {{__('Message')}}:</label>
+                                            <textarea class="form-control form-control-sm" id="message" name="message" placeholder="{{__('Write your message..')}}" rows="0" spellcheck="false" wrap="soft" required=""></textarea>
                                         </div>
                                     </div>
                                     <div class="modal-footer d-flex justify-content-between align-items-center">
-                                        <button class="btn btn-sm shadow-none" type="reset" data-dismiss="modal"><i class="far fa-times-circle"></i>Close</button>
-                                        <button class="btn btn-sm shadow-none" id="fsendMsg" type="submit"><i class="fa fa-send"></i>Send</button>
+                                        <button class="btn btn-sm shadow-none" type="reset" data-dismiss="modal"><i class="far fa-times-circle"></i>{{__('Close')}}</button>
+                                        <button class="btn btn-sm shadow-none" id="fsendMsg" type="submit"><i class="fa fa-send"></i>{{__('Send')}}</button>
                                     </div>
                                 </form>
                                 <div id="success" style="display: none">
                                     <div class="modal-body">
                                         <img class="d-block" src="/img/success.svg"/>
-                                        <h4 class="text-center">Message Sent!</h4>
-                                        <p class="text-center">The part owner should be in touch soon. Thank you</p>
+                                        <h4 class="text-center">{{__('Message Sent!')}}</h4>
+                                        <p class="text-center">{{__('The ad owner should be in touch soon. Thank you')}}</p>
                                     </div>
                                     <div class="modal-footer d-flex justify-content-between align-items-center">
-                                        <button class="btn btn-sm shadow-none" type="button" data-dismiss="modal"><i class="fas fa-check"></i>Okey</button>
+                                        <button class="btn btn-sm shadow-none" type="button" data-dismiss="modal"><i class="fas fa-check"></i>{{__('Okey')}}</button>
                                     </div>
                                 </div>
                                 <div id="fail" style="display: none">
                                     <div class="modal-body">
                                         <img class="d-block" width='70px' src="/img/fail.svg"/>
-                                        <h4 class="text-center">Oops! Something went wrong!</h4>
+                                        <h4 class="text-center">{{__('Oops! Something went wrong!')}}</h4>
                                     </div>
                                     <div class="modal-footer d-flex justify-content-between align-items-center">
-                                        <button class="btn btn-sm shadow-none" type="button" data-dismiss="modal"><i class="fas fa-check"></i>Okey</button>
+                                        <button class="btn btn-sm shadow-none" type="button" data-dismiss="modal"><i class="fas fa-check"></i>{{__('Okey')}}</button>
                                     </div>
                                 </div>
                             </div>

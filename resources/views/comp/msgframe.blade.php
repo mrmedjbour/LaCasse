@@ -4,7 +4,7 @@
         <div id="sidepanel" @if (isset($msgs)) style="display: none;" @endif>
             <div id="search">
                 <label for=""><i class="fa fa-search" aria-hidden="true" id="iIconID"></i></label>
-                <input type="text" id="contactSearch" placeholder="Search contacts...">
+                <input type="text" id="contactSearch" placeholder="{{__('Search contacts...')}}">
             </div>
             <div id="contacts">
                 <ul class="UlList" id="contacts_list">
@@ -26,7 +26,7 @@
             </div>
             <div class="message-input">
                 <div class="wrap">
-                    <input type="text" placeholder="Write your message..">
+                    <input type="text" placeholder="{{__('Write your message..')}}">
                     <button class="btn shadow-none submit rounded-0"><i class="fa fa-paper-plane" aria-hidden="true" id="iIconID"></i>
                     </button>
                 </div>

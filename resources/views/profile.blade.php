@@ -14,7 +14,7 @@
                 <div class="col available">
                     <div class="row">
                         <div class="col">
-                            <h5 class="titleH">Available</h5>
+                            <h5 class="titleH">{{ __('Available') }}</h5>
                         </div>
                     </div>
                     <div class="row">

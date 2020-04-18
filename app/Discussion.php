@@ -33,6 +33,11 @@ class Discussion extends Model
         return $this->belongsTo('App\Annonce', 'annonce_id');
     }
 
+    public function adWithDeleted()
+    {
+        return $this->belongsTo('App\Annonce', 'annonce_id')->withTrashed();
+    }
+
     public function user()
     {
         return $this->belongsTo('App\User', 'user_id');

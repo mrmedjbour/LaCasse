@@ -20,11 +20,10 @@
                                     </ul>
                                 </div>
                             @endif
-
                             <div class="d-md-flex" id="top">
                                 <div class="w-100">
                                     <div class="form-group">
-                                        <label for="ADTYPE" class="weight500">Select Ad type:</label>
+                                        <label for="ADTYPE" class="weight500">{{__('Select Ad type')}}:</label>
                                         <select class="form-control" name="ad_type" id="ADTYPE" required>
                                             <option value="sell">Sell</option>
                                             <option value="buy">Buy</option>
@@ -32,9 +31,9 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="weight500" for="Make">Select Make:</label>
+                                        <label class="weight500" for="Make">{{__('Select make')}}:</label>
                                         <select class="form-control" id="Make" name="make" required>
-                                            <option selected disabled hidden>Select Make</option>
+                                            <option selected disabled hidden>{{__('Select make')}}</option>
                                             <option value="1">Seat</option>
                                             <option value="2">Renault</option>
                                             <option value="3">Peugeot</option>
@@ -103,15 +102,15 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="Modele" class="weight500">Select Model:</label>
+                                        <label for="Modele" class="weight500">{{__('Select model')}}:</label>
                                         <select id="Modele" name="Modele_id" class="form-control" disabled required>
-                                            <option disabled hidden selected>Select Model</option>
+                                            <option disabled hidden selected>{{__('Select model')}}</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="ModeleYear" class="weight500">Select Year:</label>
+                                        <label for="ModeleYear" class="weight500">{{__('Select year')}}:</label>
                                         <select id="ModeleYear" name="ModeleYear" class="form-control" disabled>
-                                            <option disabled hidden selected>Select Year</option>
+                                            <option disabled hidden selected>{{__('Select year')}}</option>
                                             <option value="2020">2020</option>
                                             <option value="2019">2019</option>
                                             <option value="2018">2018</option>
@@ -176,7 +175,7 @@
                                     </div>
                                 </div>
                                 <div class="w-100" id="AdUpImgs">
-                                    <label class="weight500" for="upInput">Upload images:</label>
+                                    <label class="weight500" for="upInput">{{__('Upload picture')}}:</label>
                                     <div id="addAdsImgPreview" class="rounded border border-dark bg-white ml-md-2 mr-md-2">
                                         <div id="upImg"></div>
                                         <input type="file" id="upInput" class="p-1 w-100 bg-success" name="images[]" multiple="multiple" accept="image/*"/>
@@ -184,12 +183,12 @@
                                 </div>
                             </div>
                             <div>
-                                <label class="weight500">Description:</label>
+                                <label class="weight500">{{__('Description')}}:</label>
                                 <textarea class="form-control form-control-lg rounded border border-dark" name="ad_desc" rows="3">{{ old('ad_desc') }}</textarea>
                             </div>
                             <div class="d-flex flex-column flex-wrap accordion md-accordion mt-3" id="accordionEx" role="tablist" aria-multiselectable="true">
                                 <div class="mb-1">
-                                    <a class="btn btn-link text-info font-weight-light p-0" id="SelectAllParts">Select All</a>&nbsp;/&nbsp;<a class="btn btn-link text-info font-weight-light p-0" id="DeSelectAllParts">Deselect All</a>
+                                    <a class="btn btn-link text-info font-weight-light p-0" id="SelectAllParts">{{__('Select All')}}</a>&nbsp;/&nbsp;<a class="btn btn-link text-info font-weight-light p-0" id="DeSelectAllParts">{{__('Deselect All')}}</a>
                                 </div>
                                 @foreach($Partscat as $Parts)
                                     <div class="card shadow mb-2">
@@ -228,7 +227,7 @@
                             </div>
                             <hr>
                             <div class="text-center text-sm-right">
-                                <button class="btn btn-success shadow-none m-2" type="submit"><i class="fa fa-file mr-1"></i>Publish</button>
+                                <button class="btn btn-success shadow-none m-2" type="submit"><i class="fa fa-file mr-1"></i>{{__('Publish')}}</button>
                             </div>
                         </form>
                     </div>

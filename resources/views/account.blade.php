@@ -10,16 +10,16 @@
                                 @if(session('success'))
                                     <div class="alert alert-success m-2">{{ session('success') }}</div>
                                 @endif
-                                <h6>Professional information :</h6>
+                                <h6>{{__('Professional information')}} :</h6>
                                 <form method="post" action="{{ route('user.updateCasseCover') }}" enctype="multipart/form-data">
                                     @csrf
                                     @method('DELETE')
                                     <div class="form-group d-sm-flex justify-content-between align-items-center">
-                                        <label class="m-0" for="casseName">Casse Name :</label>
+                                        <label class="m-0" for="casseName">{{__('Casse name')}} :</label>
                                         <input type="text" class="form-control" id="casseName" value="{{ Auth::user()->casse->casse_nom }}" disabled style="max-width: 300px;"/>
                                     </div>
                                     <div class="form-group">
-                                        <label for="casseName">Address :</label>
+                                        <label for="casseName">{{__('Address')}} :</label>
                                         <p class="text-black-50">{{ Str::title(Auth::user()->casse->casse_adr) }}<br>{{ Str::title(Auth::user()->casse->commune->commune_nom.' '.Auth::user()->casse->commune->daira->daira_nom.' '.Auth::user()->casse->commune->daira->wilaya->wilaya_nom) }}</p>
                                     </div>
                                     <div class="text-center p-2">
@@ -30,11 +30,11 @@
                                         @endif
                                     </div>
                                     <div class="form-group d-sm-flex justify-content-between align-items-center">
-                                        <label class="m-0" for="cover">Casse Cover : (720x90)</label>
+                                        <label class="m-0" for="cover">{{__('Casse Cover')}} : (720x90)</label>
                                         <input type="file" id="cover" style="max-width: 300px;" name="cover"/>
                                     </div>
                                     <div class="form-group text-center text-md-right">
-                                        <button class="btn btn-success shadow-none" type="submit">Change Cover</button>
+                                        <button class="btn btn-success shadow-none" type="submit">{{__('Change Cover')}}</button>
                                     </div>
                                 </form>
                             </div>
@@ -49,20 +49,20 @@
                             @endif
                             <div class="d-md-flex justify-content-around w-100" style="padding: 5px 3%;">
                                 <div class="w-100">
-                                    <h6 class="mb-3">Personal information :</h6>
+                                    <h6 class="mb-3">{{__('Personal information')}} :</h6>
                                     <div class="form-group d-sm-flex align-items-center justify-content-sm-between">
-                                        <label class="text-nowrap" for="first-name">First name :</label>
+                                        <label class="text-nowrap" for="first-name">{{__('First Name')}} :</label>
                                         <input class="form-control form-control-sm ProfInputS" type="text" id="first-name" value="{{ $user->user_prenom }}" disabled>
                                     </div>
                                     <div class="form-group d-sm-flex align-items-center justify-content-sm-between">
-                                        <label class="text-nowrap" for="last-name">Last name :&nbsp</label>
+                                        <label class="text-nowrap" for="last-name">{{__('Last Name')}} :</label>
                                         <input class="form-control form-control-sm ProfInputS" type="text" id="last-name" value="{{ $user->user_nom }}" disabled>
                                     </div>
                                     <div class="form-group d-sm-flex justify-content-sm-between">
-                                        <label class="text-nowrap" for="email">Email :</label>
+                                        <label class="text-nowrap" for="email">{{__('E-Mail Address')}} :</label>
                                         <input class="form-control form-control-sm ProfInputS" type="text" id="email" value="{{ $user->email }}" disabled>
                                     </div>
-                                    <h6 class="mb-1">Address :</h6>
+                                    <h6 class="mb-1">{{__('Address')}} :</h6>
                                     <div class="form-group d-flex justify-content-between align-items-center">
                                         <label id="Wilaya" for="email" class="m-0"></label>
                                         <select class="form-control form-control-sm form-control ProfSelects" id="Wilaya">
@@ -132,7 +132,7 @@
                                             <option value="{{$user->commune->commune_id}}" selected>{{Str::title($user->commune->commune_nom)}}</option>
                                         </select>
                                     </div>
-                                    <h6 style="margin-bottom: 1rem;">Phone numbers :</h6>
+                                    <h6 style="margin-bottom: 1rem;">{{__('Phone Numbers')}} :</h6>
                                     <div class="form-group ProfInputPhone">
                                         @if(empty($user->user_tel))
                                             <input class="form-control form-control-sm" type="tel" placeholder="Phone Number" name="phone[]" inputmode="tel">
@@ -140,7 +140,7 @@
                                         @foreach($user->user_tel as $phone)
                                             <input class="form-control form-control-sm" type="tel" placeholder="Phone Number" value="{{ phone($phone, 'DZ') }}" name="phone[]" inputmode="tel">
                                         @endforeach
-                                        <a class="btn shadow-none" role="button" id="addPhoneNumber">Add another phone number</a>
+                                        <a class="btn shadow-none" role="button" id="addPhoneNumber">{{__('Add another phone number')}}</a>
                                     </div>
                                 </div>
 
@@ -148,7 +148,7 @@
                                     <img class="rounded-circle img-fluid" id="AvatarProfile" src="{{ asset("/files/avatar/" . $user->user_avatar) }}" alt="Avatar" loading="auto" style="width: 200px;height: 200px;margin: 5px;">
                                     <div class="file btn btn-lg btn-primary" style="position: relative;overflow: hidden;">
                                         <span style="font-size: initial;">
-                                            <i class="fa fa-upload" style="margin-right: 2px;"></i>Choose Avatar
+                                            <i class="fa fa-upload" style="margin-right: 2px;"></i>{{__('Choose Avatar')}}
                                         </span>
                                         <input type="file" accept="image/*" name="avatar" style="position: absolute;opacity: 0;right: 0;top: 0;">
                                     </div>
@@ -156,31 +156,31 @@
 
                             </div>
                             <div class="d-flex justify-content-center justify-content-sm-end m-4">
-                                <button class="btn btn-success shadow-none" type="submit"><i class="fa fa-pencil m-1"></i>Save Changes</button>
+                                <button class="btn btn-success shadow-none" type="submit"><i class="fa fa-pencil m-1"></i>{{__('Save Changes')}}</button>
                             </div>
                         </form>
                         <hr>
                         <fieldset class="mb-3" style="padding: 0 3%;">
                             @if ($errors->has('oldpassword'))
-                                <div class="alert alert-danger m-2">Please Confirm Your Current Password</div>
+                                <div class="alert alert-danger m-2">{{__('Please Confirm Your Current Password')}}</div>
                             @endif
                             <form method="post" id="ChangePasswordForm" action="{{ route("user.updatePassword") }}">
                                 @csrf
                                 <input type="hidden" value="patch" name="_method">
-                                <legend>Change Password</legend>
+                                <legend>{{__('Change Password')}}</legend>
                                 <div class="form-group d-sm-flex justify-content-sm-between">
-                                    <label class="text-nowrap" for="oldpassword">Current Password :&nbsp;</label>
-                                    <input class="form-control form-control-sm ProfInputS" type="text" id="oldpassword" name="oldpassword" placeholder="Old Password" required>
+                                    <label class="text-nowrap" for="oldpassword">{{__('Current Password')}} :&nbsp;</label>
+                                    <input class="form-control form-control-sm ProfInputS" type="text" id="oldpassword" name="oldpassword" placeholder="{{__('Current Password')}}" required>
                                 </div>
                                 <div class="form-group d-sm-flex justify-content-sm-between">
-                                    <label class="text-nowrap" for="password">New Password :&nbsp;</label>
-                                    <input class="form-control form-control-sm ProfInputS" type="text" id="password" name="password" placeholder="New Password" required minlength="6">
+                                    <label class="text-nowrap" for="password">{{__('New Password')}} :&nbsp;</label>
+                                    <input class="form-control form-control-sm ProfInputS" type="text" id="password" name="password" placeholder="{{__('New Password')}}" required minlength="6">
                                 </div>
                                 <div class="form-group d-sm-flex justify-content-sm-between">
-                                    <label class="text-nowrap" for="password_confirmation">Confirm New Password :&nbsp;</label>
-                                    <input class="form-control form-control-sm ProfInputS" type="text" id="password_confirmation" name="password_confirmation" placeholder="Confirm New Password" required minlength="6">
+                                    <label class="text-nowrap" for="password_confirmation">{{__('Confirm New Password')}} :&nbsp;</label>
+                                    <input class="form-control form-control-sm ProfInputS" type="text" id="password_confirmation" name="password_confirmation" placeholder="{{__('Confirm New Password')}}" required minlength="6">
                                 </div>
-                                <button class="btn btn-success shadow-none float-right" type="submit"><i class="fa fa-key m-1"></i>Change password</button>
+                                <button class="btn btn-success shadow-none float-right" type="submit"><i class="fa fa-key m-1"></i>{{__('Change Password')}}</button>
                             </form>
                         </fieldset>
                     </div>

@@ -2,7 +2,9 @@
     <div id="right" class="width100">
         <div class="d-flex justify-content-between align-items-center" id="annonce_top">
             <a class="text-decoration-none" href="{{ route("ad.buy", $ad->annonce_id) }}" target="_blank">
-                <h2 id="annonce_title">@if ($ad->pieces->count() > 1)I need Parts for @else{{ 'I need '.Str::title($ad->pieces->first()->piece_nom).' for ' }}@endif{{ Str::title($ad->modele->marque->marque_nom.' '.$ad->modele->modele_nom) }}{{$ad->modele_annee?" - $ad->modele_annee":''}}</h2>
+                <h2 id="annonce_title">
+                    {{ trans_choice('I need for', $ad->pieces->count(), ['part' => Str::title($ad->pieces->first()->piece_nom)]) }} {{ Str::title($ad->modele->marque->marque_nom.' '.$ad->modele->modele_nom) }}{{$ad->modele_annee?" - $ad->modele_annee":''}}
+                </h2>
             </a>
             <span class="d-none d-lg-inline-block">{{ $ad->annonce_date->format('d M y') }}</span>
         </div>
@@ -26,11 +28,11 @@
         <div class="d-flex justify-content-between justify-content-lg-end" id="annonce_btn">
             @auth()
                 <a class="btn btn-sm shadow-none contact" role="button" id="SrBtnCon" data-ad="{{ $ad->annonce_id }}">
-                    <i class="fas fa-comment-dots"></i>Contact
+                    <i class="fas fa-comment-dots"></i>{{__('Contact')}}
                 </a>
             @endauth
             <a class="btn btn-sm shadow-none details" role="button" href="{{ route("ad.buy", $ad->annonce_id) }}" target="_blank">
-                <i class="fa fa-clone"></i>Details
+                <i class="fa fa-clone"></i>{{__('Details')}}
             </a>
         </div>
     </div>
