@@ -18,10 +18,10 @@
                 </ul>
                 <div class="dropdown float-right">
                     <a class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false" role="button" style="font-size: 14px;background-color: #004876;border: none;border-radius: 0;padding: 4px 13px;" href="#">English</a>
-                    <div class="dropdown-menu dropdown-menu-right" role="menu" style="font-size: 14px;">
-                        <a class="dropdown-item text-center" role="presentation" href="#" style="font-size: 15px;">العربية</a>
-                        <a class="dropdown-item text-center" role="presentation" href="#" style="font-size: 15px;">English</a>
-                        <a class="dropdown-item text-center" role="presentation" href="#" style="font-size: 15px;">Francais</a>
+                    <div class="dropdown-menu dropdown-menu-right" role="menu">
+                        <a class="dropdown-item" role="presentation" href="{{ request()->fullUrlWithQuery(['lang' => 'ar']) }}">العربية</a>
+                        <a class="dropdown-item" role="presentation" href="{{ request()->fullUrlWithQuery(['lang' => 'en']) }}">English</a>
+                        <a class="dropdown-item" role="presentation" href="{{ request()->fullUrlWithQuery(['lang' => 'fr']) }}">Francais</a>
                     </div>
                 </div>
             </div>
