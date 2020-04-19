@@ -13,7 +13,7 @@
                 <li class="d-lg-none">&nbsp<span class="annonce_date">{{ $ad->annonce_date->format('d M y') }}</span></li>
                 <li class="annonceClientName">
                     @if($ad->user->role_id == 2)
-                        <a class="d-flex align-items-center" href="{{route('profile',"Casse De Moh Dezairi")}}" target="_blank" id="name">
+                        <a class="d-flex align-items-center" href="{{route('profile', [$ad->user->casse_id, Str::slug($ad->user->casse->casse_nom, '-')])}}" target="_blank" id="name">
                             <i class="fas fa-address-card mr-1"></i>{{ $ad->user->casse->casse_nom }}
                         </a>
                     @else

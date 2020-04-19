@@ -169,10 +169,11 @@
 @if( Route::currentRouteName() != 'index' )
 
     <div class="d-lg-none collapse navbar-collapse" id="HeadSearch" style="padding: 2em;">
-        <form>
+        <form method="post" action="{{ route("search") }}">
+            @csrf
             <div class="form-group">
                 <select id="Make" name="make" class="form-control mdb-select md-form" required>
-                    <option selected disabled hidden>Select Make</option>
+                    <option selected disabled hidden>{{__('Select make')}}</option>
                     <option value="1">Seat</option>
                     <option value="2">Renault</option>
                     <option value="3">Peugeot</option>
@@ -242,12 +243,12 @@
             </div>
             <div class="form-group">
                 <select id="Modele" name="modele" class="form-control mdb-select md-form" required disabled>
-                    <option disabled hidden selected>Select Model</option>
+                    <option disabled hidden selected>{{__('Select model')}}</option>
                 </select>
             </div>
             <div class="form-group">
                 <select id="ModeleYear" name="ModeleYear" class="form-control mdb-select md-form" disabled>
-                    <option disabled hidden selected>Select Year</option>
+                    <option disabled hidden selected>{{__('Select year')}}</option>
                     <option value="2020">2020</option>
                     <option value="2019">2019</option>
                     <option value="2018">2018</option>
@@ -312,15 +313,15 @@
             </div>
             <div class="form-group">
                 <select id="ModelePart" name="ModelePart" class="form-control mdb-select md-form" required disabled>
-                    <option disabled hidden selected>Select Part</option>
+                    <option disabled hidden selected>{{__('Select part')}}</option>
                 </select>
             </div>
             <div class="form-group d-flex justify-content-between align-items-center">
                 <button class="btn" type="reset" style="background-color: #656565;color: rgb(255,255,255);"><i
-                            class="fa fa-close" style="margin: 3px;"></i>Cancel
+                            class="fa fa-close" style="margin: 3px;"></i>{{__('Cancel')}}
                 </button>
                 <button class="btn" type="submit" style="background-color: #58ba25;color: rgb(255,255,255);"><i
-                            class="fa fa-search" style="margin: 3px;"></i>Search
+                            class="fa fa-search" style="margin: 3px;"></i>{{__('Search')}}
                 </button>
             </div>
         </form>

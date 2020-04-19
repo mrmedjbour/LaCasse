@@ -31,7 +31,7 @@
                         <div class="d-inline-block">
                             <span class="text-nowrap">{{__('Posted by')}}:</span>
                             @if($ads->user->role_id == 2)
-                                <a class="text-nowrap" href="/casse/123"><i class="fas fa-address-card mr-1"></i>{{ $ads->user->casse->casse_nom }}</a>
+                                <a class="text-nowrap" href="{{route('profile', [$ads->user->casse_id, Str::slug($ads->user->casse->casse_nom, '-')])}}"><i class="fas fa-address-card mr-1"></i>{{ $ads->user->casse->casse_nom }}</a>
                             @else
                                 <a class="text-nowrap"><i class="fas fa-address-card mr-1"></i>{{ $ads->user->user_prenom .' '. $ads->user->user_nom }}</a>
                             @endif
