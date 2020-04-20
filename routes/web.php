@@ -14,10 +14,7 @@
 Auth::routes();
 
 /*  Home Page Route */
-Route::get('/', function () {
-    $parts = \App\Piece::get();
-    return view('index', compact('parts'));
-})->name('index');
+Route::get('/', 'indexController@index')->name('index');
 
 /*  Dashboard */
 Route::get('/home', 'HomeController@index')->name('home');

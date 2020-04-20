@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Annonce;
 use App\Casse;
+use App\Marque;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\App;
@@ -53,9 +55,9 @@ class CasseDirectory extends Controller
             return redirect(route('profile', [$id, Str::slug($casse->casse_nom, '-')]));
         }
 
-        $av_mod = \App\Annonce::select('modele_id')->where('user_id', $casse->user->user_id)->where('annonce_type', 'sell')->distinct()->pluck('modele_id');
+        $av_mod = Annonce::select('modele_id')->where('user_id', $casse->user->user_id)->where('annonce_type', 'sell')->distinct()->pluck('modele_id');
 
-        $av_marques = \App\Marque::whereHas('modeles', function (Builder $query) use ($av_mod) {
+        $av_marques = Marque::whereHas('modeles', function (Builder $query) use ($av_mod) {
             $query->whereIn('modele_id', $av_mod);
         })->with(['modeles' => function ($query) use ($av_mod) {
             $query->whereIn('modele_id', $av_mod);
