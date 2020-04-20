@@ -1,17 +1,16 @@
-<div id="HeadTopBar" style="background-color: #005a93;color: #ffffff;font-size: 14px;">
+<div id="HeadTopBar" class="text-white">
     <div class="container">
         <div class="row">
-            <div class="col-8 col-sm-8 col-md-7 col-lg-7 col-xl-8 d-inline-flex align-items-center align-items-sm-center align-items-md-center align-items-lg-center align-items-xl-center">
-                <span class="d-inline">+213 542569990</span>
-            </div>
-            <div class="col-4 col-sm-4 col-md-5 col-xl-4 align-items-center" style="height: 30px;">
-                <ul class="list-inline text-capitalize d-none float-left d-sm-none d-md-none d-lg-flex d-xl-flex align-items-md-center align-items-lg-center align-items-xl-center visible" style="height: 30px;">
-                    <li class="list-inline-item">About us</li>
-                    <li class="list-inline-item">Contact us</li>
-                    <li class="list-inline-item">privacy plocy</li>
+            <div class="col-6 col-md-4 d-inline-flex align-items-center"><span>+213 542569990</span></div>
+            <div class="col-6 col-md-8 d-inline-flex justify-content-end align-items-center">
+                <ul class="list-inline d-none d-lg-inline-block m-0 mr-4">
+                    <li class="list-inline-item"><a href="{{ route('page', 'about') }}">{{__('About us')}}</a></li>
+                    <li class="list-inline-item"><a href="{{ route('contact.index') }}">{{__('Contact us')}}</a></li>
+                    <li class="list-inline-item"><a href="{{ route('page', 'privacy') }}">{{__('Privacy Policy')}}</a></li>
                 </ul>
-                <div class="dropdown float-right"><a class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false" role="button" style="font-size: 14px;background-color: #004876;border: none;border-radius: 0;padding: 4px 15px;" href="#">English</a>
-                    <div class="dropdown-menu dropdown-menu-right" role="menu">
+                <div class="dropdown d-inline-block">
+                    <button class="btn btn-sm dropdown-toggle shadow-none text-white mr-md-1" data-toggle="dropdown" aria-expanded="false" type="button">@if (App::isLocale('en')) English @elseif(App::isLocale('ar')) العربية @elseif(App::isLocale('fr')) Francais @endif</button>
+                    <div role="menu" class="dropdown-menu dropdown-menu-right">
                         <a class="dropdown-item" role="presentation" href="{{ request()->fullUrlWithQuery(['lang' => 'ar']) }}">العربية</a>
                         <a class="dropdown-item" role="presentation" href="{{ request()->fullUrlWithQuery(['lang' => 'en']) }}">English</a>
                         <a class="dropdown-item" role="presentation" href="{{ request()->fullUrlWithQuery(['lang' => 'fr']) }}">Francais</a>
@@ -21,7 +20,7 @@
         </div>
     </div>
 </div>
-<header class="d-flex align-items-center" style="color: #ffffff;height: 66px;background-color: #0078c3;margin: 0px;">
+<header class="d-flex align-items-center m-0 text-white HeaderClass">
     <div class="container">
         <div class="row d-flex justify-content-between align-items-center">
             <div class="col-auto col-md-3 d-flex d-lg-none">

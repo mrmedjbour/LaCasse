@@ -34,7 +34,7 @@ class HomeController extends Controller
                 return Annonce::all()->count();
             });
             $TotalUsersCounts = cache()->remember('AdminTotalUsersCounts', 70, function () {
-                return User::where('user_etat', 1)->count();
+                return User::where('user_etat', 1)->where('role_id', '<>', 1)->count();
             });
             $TotalCassesCounts = cache()->remember('AdminTotalCassesCounts', 80, function () {
                 return Casse::whereHas('demande', function (Builder $query) {

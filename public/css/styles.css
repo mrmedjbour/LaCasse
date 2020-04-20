@@ -896,6 +896,16 @@ div.social-links {
     margin-top: 0;
 }
 
+header.HeaderClass {
+    height: 66px;
+    background-color: #0078c3;
+}
+
+#HeadTopBar {
+    background-color: #005a93;
+    font-size: 0.9rem;
+}
+
 @media (max-width: 329px) {
     #HeadTopBar a i, #md-form button i {
         background-color: red;
@@ -903,11 +913,24 @@ div.social-links {
     }
 }
 
-#HeadTopBar .dropdown-menu {
+#HeadTopBar li a {
+    color: #fff !important;
+}
+
+#HeadTopBar .dropdown-toggle {
+    background-color: #004876;
+    border-radius: 0;
+}
+
+#HeadTopBar a.Authbtn {
+    color: #fff;
+    background-color: #014876;
+    padding: 1px 10px;
+    margin-right: 5px;
 }
 
 #HeadTopBar .dropdown-menu a {
-    border-bottom: 1px solid rgb(221,221,221);
+    border-bottom: 1px solid rgb(221, 221, 221);
 }
 
 #HeadTopBar .dropdown-menu a:active {
