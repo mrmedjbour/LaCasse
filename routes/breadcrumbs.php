@@ -10,56 +10,56 @@ Breadcrumbs::before(function ($trail) {
 });
 
 Breadcrumbs::for('home', function ($trail) {
-    $trail->push('Dashboard', route('home'));
+    $trail->push(__('Dashboard'), route('home'));
 });
 
 Breadcrumbs::for('annonce.index', function ($trail) {
     $trail->parent('home');
-    $trail->push('Ads', route('annonce.index'));
+    $trail->push(__('Ads'), route('annonce.index'));
 });
 
 Breadcrumbs::for('annonce.create', function ($trail) {
     $trail->parent('home');
-    $trail->push('Add Ad', route('annonce.create'));
+    $trail->push(__('Add Ad'), route('annonce.create'));
 });
 
 Breadcrumbs::for('annonce.edit', function ($trail, $id) {
     $trail->parent('annonce.index');
-    $trail->push('Edit Ad', route('annonce.edit', $id));
+    $trail->push(__('Edit Ad'), route('annonce.edit', $id));
 });
 
 Breadcrumbs::for('annonce.show', function ($trail, $id) {
     $trail->parent('annonce.index');
-    $trail->push('Ad : ' . $id);
+    $trail->push(__('Ad') . ' : ' . $id);
 });
 
 Breadcrumbs::for('messages', function ($trail) {
     $trail->parent('home');
-    $trail->push('Mailbox');
+    $trail->push(__('Mailbox'));
 });
 
 Breadcrumbs::for('role.index', function ($trail) {
     $trail->parent('home');
-    $trail->push('Manage Roles');
+    $trail->push(__('Manage Roles'));
 });
 
 Breadcrumbs::for('role.create', function ($trail) {
     $trail->parent('home');
-    $trail->push('Add Role');
+    $trail->push(__('Add Role'));
 });
 
 Breadcrumbs::for('role.edit', function ($trail) {
     $trail->parent('home');
-    $trail->push('Edit User Role');
+    $trail->push(__('Edit User Role'));
 });
 
 Breadcrumbs::for('user.account', function ($trail) {
     $trail->parent('home');
-    $trail->push('Account information');
+    $trail->push(__('Account information'));
 });
 
 Breadcrumbs::for('directory', function ($trail) {
-    $trail->push('Casse Directory', route('directory'));
+    $trail->push(__('Casse Directory'), route('directory'));
 });
 
 Breadcrumbs::for('profile', function ($trail, $id) {
@@ -73,45 +73,45 @@ Breadcrumbs::for('profile', function ($trail, $id) {
 Breadcrumbs::for('pro.index', function ($trail) {
     $trail->parent('home');
     if (Auth::user()->role_id == 1) {
-        $trail->push('Professional Account Requests', route('pro.index'));
+        $trail->push(__('Professional Account Requests'), route('pro.index'));
     } else {
-        $trail->push('Switch to professional account', route('pro.index'));
+        $trail->push(__('Switch to professional account'), route('pro.index'));
     }
 });
 
 Breadcrumbs::for('pro.show', function ($trail) {
     $trail->parent('home');
     if (Auth::user()->role_id == 1) {
-        $trail->push('Professional Account Requests', route('pro.index'));
+        $trail->push(__('Professional Account Requests'), route('pro.index'));
     } else {
-        $trail->push('Switch to professional account', route('pro.index'));
+        $trail->push(__('Switch to professional account'), route('pro.index'));
     }
-    $trail->push('Requests information');
+    $trail->push(__('Demand Information'));
 });
 
 Breadcrumbs::for('users.index', function ($trail) {
     $trail->parent('home');
-    $trail->push('Manage Users', route('users.index'));
+    $trail->push(__('Manage users'), route('users.index'));
 });
 
 Breadcrumbs::for('users.show', function ($trail, $id) {
     $trail->parent('users.index');
-    $trail->push('User information', route('users.show', $id));
+    $trail->push(__('User information'), route('users.show', $id));
 });
 
 Breadcrumbs::for('model.index', function ($trail) {
     $trail->parent('home');
-    $trail->push('Manage vehicle models', route('model.index'));
+    $trail->push(__('Manage vehicle models'), route('model.index'));
 });
 
 Breadcrumbs::for('model.create', function ($trail) {
     $trail->parent('model.index');
-    $trail->push('Add a vehicle model');
+    $trail->push(__('Add vehicle model'));
 });
 
 Breadcrumbs::for('model.edit', function ($trail) {
     $trail->parent('model.index');
-    $trail->push('Edit vehicle model');
+    $trail->push(__('Edit vehicle model'));
 });
 
 Breadcrumbs::for('search.result', function ($trail) {
@@ -119,7 +119,7 @@ Breadcrumbs::for('search.result', function ($trail) {
 });
 
 Breadcrumbs::for('requests', function ($trail) {
-    $trail->push('Parts Requests');
+    $trail->push(__('Parts Requests'));
 });
 
 Breadcrumbs::for('ad.sell', function ($trail) {
@@ -127,33 +127,33 @@ Breadcrumbs::for('ad.sell', function ($trail) {
 });
 
 Breadcrumbs::for('ad.buy', function ($trail) {
-    $trail->push('Ad');
+    $trail->push(__('Ad'));
 });
 
 Breadcrumbs::for('page', function ($trail) {
-    $trail->push('Page');
+    $trail->push(__('Page'));
 });
 
 Breadcrumbs::for('contact.index', function ($trail) {
-    $trail->push('Contact us');
+    $trail->push(__('Contact us'));
 });
 
 Breadcrumbs::for('login', function ($trail) {
-    $trail->push('Login');
+    $trail->push(__('Login'));
 });
 
 Breadcrumbs::for('password.confirm', function ($trail) {
-    $trail->push('Password Confirmation');
+    $trail->push(__('Password Confirmation'));
 });
 
 Breadcrumbs::for('password.request', function ($trail) {
-    $trail->push('Forgot password');
+    $trail->push(__('Forgot password'));
 });
 
 Breadcrumbs::for('password.reset', function ($trail) {
-    $trail->push('Change password');
+    $trail->push(__('Change Password'));
 });
 
 Breadcrumbs::for('register', function ($trail) {
-    $trail->push('Sign up');
+    $trail->push(__('Register'));
 });

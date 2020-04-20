@@ -118,6 +118,7 @@
   "Title": "Title",
   "Date": "Date",
   "Type": "Type",
+  "Ad": "Ad",
   "Status": "Status",
   "Delete": "Delete",
   "View": "View",
@@ -220,5 +221,7 @@
   "optional": "optional",
   "Are you sure you want to (block/unblock) this ad ?": "Are you sure you want to (block/unblock) this ad ?",
   "Yes, sure": "Yes, sure",
-  "Are you sure you want to (block/unblock) this user ?": "Are you sure you want to (block/unblock) this user ?"
+  "Are you sure you want to (block/unblock) this user ?": "Are you sure you want to (block/unblock) this user ?",
+  "Page": "page",
+  "Forgot password": "Forgot password"
 }

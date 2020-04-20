@@ -221,5 +221,8 @@
   "Are you sure you want to (block/unblock) this ad ?": "هل أنت متأكد أنك تريد (حظر / إلغاء حظر) هذا الإعلان؟",
   "Yes, sure": "نعم بالتأكيد",
   "Are you sure you want to (block/unblock) this user ?": "هل أنت متأكد من أنك تريد (حظر / إلغاء حظر) هذا المستخدم؟",
-  "About us": "معلومات عنا"
+  "About us": "معلومات عنا",
+  "Ad": "إعلان",
+  "Page": "الصفحة",
+  "Forgot password": "نسيت كلمة المرور"
 }

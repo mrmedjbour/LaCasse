@@ -231,5 +231,8 @@
   "Are you sure you want to (block/unblock) this ad ?": "Voulez-vous vraiment (bloquer / débloquer) cette annonce?",
   "Yes, sure": "Oui, bien sûr",
   "Are you sure you want to (block/unblock) this user ?": "Voulez-vous vraiment (bloquer / débloquer) cet utilisateur?",
-  "About us": "À propos de nous"
+  "About us": "À propos de nous",
+  "Ad": "Annonce",
+  "Page": "page",
+  "Forgot password": "Mot de passe oublié"
 }
