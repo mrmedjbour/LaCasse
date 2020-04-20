@@ -58,7 +58,7 @@ class AdminUsersController extends Controller
         // block / unblock user
         $user = User::findOrFail($id);
         if ($user->role_id == 1) {
-            return false;
+            return redirect('home');
         }
         $user->user_etat = !$user->user_etat;
         $user->save();
@@ -67,10 +67,12 @@ class AdminUsersController extends Controller
                 $casse_users = User::where('casse_id', $casse_id)->where('user_id', '<>', $user->user_id)->update(['user_etat' => $user->user_etat]);
             }
         }
-        return response()->json([
-            "success" => true,
-            "status" => $user->user_etat
-        ]);
+        if ($user->user_etat == true) {
+            $status = "unblocked";
+        } else {
+            $status = "blocked";
+        }
+        return redirect(route('users.index'))->with('success', "User Successfully $status");
     }
 
     public function destroy($id)

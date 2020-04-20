@@ -1575,6 +1575,19 @@ div.thumbSearchAd {
     font-size: 1.2rem !important;
 }
 
+.modal-header.UsersModal {
+    background-color: #0078c3;
+    color: white;
+}
+
+.modal-header.UsersModal h4 {
+    font-size: medium;
+}
+
+.modal-body.UsersModal i {
+    color: red;
+}
+
 /* end of BreadCrumb style */
 
 /* End Hamid added page */

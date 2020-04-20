@@ -216,5 +216,8 @@
   "Add User Role": "Add User Role",
   "Edit User Role": "Edit User Role",
   "User Role": "User Role",
-  "optional": "optional"
+  "optional": "optional",
+  "Are you sure you want to (block/unblock) this ad ?": "Are you sure you want to (block/unblock) this ad ?",
+  "Yes, sure": "Yes, sure",
+  "Are you sure you want to (block/unblock) this user ?": "Are you sure you want to (block/unblock) this user ?"
 }

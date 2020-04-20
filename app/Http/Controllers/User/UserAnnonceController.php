@@ -153,13 +153,15 @@ class UserAnnonceController extends Controller
     {
         if (Auth::user()->role_id == 1) {
             if ($request->option == "block") {
-                $ad = Annonce::findOrFail($request->ad);
+                $ad = Annonce::findOrFail($request->ad_id);
                 $ad->annonce_etat = !$ad->annonce_etat;
                 $ad->save();
-                return response()->json([
-                    "success" => true,
-                    "status" => $ad->annonce_etat
-                ]);
+                if ($ad->annonce_etat == true) {
+                    $status = "unblocked";
+                } else {
+                    $status = "blocked";
+                }
+                return redirect(route('annonce.index'))->with('success', "Ad has been successfully $status");
             }
             Annonce::findOrFail($request->ad_id)->delete();
             return redirect(route('annonce.index'))->with('success', 'Ad has been successfully deleted');

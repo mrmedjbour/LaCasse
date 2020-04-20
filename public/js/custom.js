@@ -94,42 +94,14 @@ $(document).ready(function() {
 // user state block User state block/unblock
     $("button#StatusUserblock").click(function () {
         var u_id = $(this).attr('u_id');
-        var form = new FormData();
-        form.append('_method', 'PUT');
-        $.ajax({
-            url: '/home/users/' + u_id,
-            type: 'POST',
-            processData: false,
-            data: form,
-            contentType: false,
-            dataType: 'json',
-        });
-        if ($(this).children('i').hasClass('fa-ban')) {
-            $(this).children('i').removeClass('fa-ban text-warning').addClass('fa-check text-success');
-        } else {
-            $(this).children('i').removeClass('fa-check text-success').addClass('fa-ban text-warning')
-        }
+        $("#StatusUserblockModel form#StatUsForm").attr('action', '/home/users/' + u_id);
+        $("#StatusUserblockModel").modal('show');
     });
 // ad state block
     $("button#StatusAdblock").click(function () {
         var a_id = $(this).attr('a_id');
-        var ad = new FormData();
-        ad.append('ad', a_id);
-        ad.append('_method', 'DELETE');
-        ad.append('option', 'block');
-        $.ajax({
-            url: '/home/annonce/delete',
-            type: 'POST',
-            processData: false,
-            data: ad,
-            contentType: false,
-            dataType: 'json',
-        });
-        if ($(this).children('i').hasClass('fa-ban')) {
-            $(this).children('i').removeClass('fa-ban text-warning').addClass('fa-check text-success');
-        } else {
-            $(this).children('i').removeClass('fa-check text-success').addClass('fa-ban text-warning')
-        }
+        $("#StatusAdblockModel #a_id").val(a_id);
+        $("#StatusAdblockModel").modal('show');
     });
 // delete ad model
     $("button#DeleteAdBtn").click(function () {

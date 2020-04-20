@@ -217,5 +217,8 @@
   "Add User Role": "إضافة دور الموضف",
   "Edit User Role": "تعديل دور الموضف",
   "User Role": "دور الموضف",
-  "optional": "اختياري"
+  "optional": "اختياري",
+  "Are you sure you want to (block/unblock) this ad ?": "هل أنت متأكد أنك تريد (حظر / إلغاء حظر) هذا الإعلان؟",
+  "Yes, sure": "نعم بالتأكيد",
+  "Are you sure you want to (block/unblock) this user ?": "هل أنت متأكد من أنك تريد (حظر / إلغاء حظر) هذا المستخدم؟"
 }

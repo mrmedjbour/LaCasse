@@ -227,5 +227,8 @@
   "Add User Role": "Ajouter un rôle d'employé",
   "Edit User Role": "Modifier le rôle de l'employé",
   "User Role": "Rôle d'employé",
-  "optional": "optionnel"
+  "optional": "optionnel",
+  "Are you sure you want to (block/unblock) this ad ?": "Voulez-vous vraiment (bloquer / débloquer) cette annonce?",
+  "Yes, sure": "Oui, bien sûr",
+  "Are you sure you want to (block/unblock) this user ?": "Voulez-vous vraiment (bloquer / débloquer) cet utilisateur?"
 }
