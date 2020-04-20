@@ -823,7 +823,7 @@ div.social-links {
 }
 
 #sectionSearchBox {
-    background: url("../img/index-cover.jpg");
+    background: url("/img/index-cover.svg");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
