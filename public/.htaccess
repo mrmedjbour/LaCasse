@@ -3,7 +3,7 @@
         Options -MultiViews -Indexes
     </IfModule>
 #    php_flag opcache.enable Off
-    Header always set Access-Control-Allow-Origin "*"
+#    Header always set Access-Control-Allow-Origin "*"
 
     RewriteEngine On
 
