@@ -25,7 +25,7 @@ $(document).ready(function() {
 // /* Start API address  */
     // WILAYA SELECT EVENT
     $("div select#Wilaya").change(function () {
-        $apiWilaya = "/api/region/?wilaya=" + $(this).val();
+        $apiWilaya = "https://lacasse.herokuapp.com/api/region/?wilaya=" + $(this).val();
         $.getJSON($apiWilaya, function (data) {
             // Clean select options
             $("div select#Daira,div select#Commune").find('option').remove("option[value]").end().find('option[hidden]').prop('selected', true);
