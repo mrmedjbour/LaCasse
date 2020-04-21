@@ -7,6 +7,7 @@ use App\Discussion;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 
@@ -29,6 +30,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        if (env('APP_ENV') == 'production') {
+            URL::forceScheme('https');
+        }
+
         View::composer('*', function ($view) {
             if (Auth::check()) {
                 // notification of unread message
