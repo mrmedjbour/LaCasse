@@ -1,7 +1,14 @@
 $(function(){
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        crossDomain: true
+    });
+
     $(".messages").animate({scrollTop: 9000000}, "fast");
 
-    $(".expand-button").click(function() {
+    $(".expand-button").click(function () {
         $("#profile").toggleClass("expanded");
         $("#contacts").toggleClass("expanded");
     });
