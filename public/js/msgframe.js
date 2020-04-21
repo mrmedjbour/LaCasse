@@ -14,11 +14,11 @@ $(function(){
         disc_id = $('#contacter_disc').val();
         $.ajax({
             type: "POST",
-            url: "/home/messages/send",
+            url: "https://lacasse.herokuapp.com/home/messages/send",
             data: {disc_id: disc_id, message: message},
             success: function (data) {
                 $('.message-input input').val(null);
-                $(".messages ul").load("/home/messages/fetch", {get: 'messages', disc_id: disc_id}, function () {
+                $(".messages ul").load("https://lacasse.herokuapp.com/home/messages/fetch", {get: 'messages', disc_id: disc_id}, function () {
                     $(".messages").animate({scrollTop: 90000000}, "fast");
                 });
             },
@@ -55,7 +55,7 @@ $(function(){
             return false;
         }
         $('#contacter_disc').val(disc_id);
-        $(".messages ul").load("/home/messages/fetch", {get: 'messages', disc_id: disc_id}, function (data) {
+        $(".messages ul").load("https://lacasse.herokuapp.com/home/messages/fetch", {get: 'messages', disc_id: disc_id}, function (data) {
             if (!$.trim(data)) {
                 return false;
             }
@@ -80,12 +80,12 @@ $(function(){
     function refreshMsg() {
         if ($('#contacter_disc').val()) {
             $disc_id = $('#contacter_disc').val();
-            $(".messages ul").load("/home/messages/fetch", {get: 'messages', disc_id: $disc_id});
+            $(".messages ul").load("https://lacasse.herokuapp.com/home/messages/fetch", {get: 'messages', disc_id: $disc_id});
         }
     }
     setInterval(refreshMsg, 8000);
     function refreshDiscussion() {
-        $("#contacts_list").load("/home/messages/discussion", {get: 'discussion'});
+        $("#contacts_list").load("https://lacasse.herokuapp.com/home/messages/discussion", {get: 'discussion'});
     }
     setInterval(refreshDiscussion, 8000);
 });
