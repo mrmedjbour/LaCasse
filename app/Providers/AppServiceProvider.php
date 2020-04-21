@@ -32,9 +32,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-//        if (App::environment('production')) {
-//            URL::forceScheme('https');
-//        }
+        if (App::environment('production')) {
+            URL::forceScheme('https');
+        }
 
         View::composer('*', function ($view) {
             if (Auth::check()) {
