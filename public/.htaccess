@@ -2,7 +2,8 @@
     <IfModule mod_negotiation.c>
         Options -MultiViews -Indexes
     </IfModule>
-        Header always set Access-Control-Allow-Origin "*"
+    php_flag opcache.enable Off
+    Header always set Access-Control-Allow-Origin "*"
 
     RewriteEngine On
 
@@ -13,7 +14,7 @@
     # Redirect Trailing Slashes If Not A Folder...
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_URI} (.+)/$
-    RewriteRule ^ %1 [L,R=301]
+    RewriteRule ^ %1 [L,R=307]
 
     # Handle Front Controller...
     RewriteCond %{REQUEST_FILENAME} !-d
