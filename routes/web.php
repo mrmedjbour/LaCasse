@@ -10,6 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+if (App::environment('production')) {
+    URL::forceScheme('https');
+}
+
 /*  Auth Route */
 Auth::routes();
 
