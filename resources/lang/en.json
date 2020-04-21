@@ -182,6 +182,7 @@
   "Purchase requests": "Purchase requests",
   "Sorry, No Requests found": "Sorry, No Requests found",
   "Date Desc": "Date Desc",
+  "Date newer": "Date newer",
   "Date Asc": "Date Asc",
   "Sort By": "Sort By",
   "Contact": "Contact",
@@ -223,5 +224,6 @@
   "Yes, sure": "Yes, sure",
   "Are you sure you want to (block/unblock) this user ?": "Are you sure you want to (block/unblock) this user ?",
   "Page": "page",
-  "Forgot password": "Forgot password"
+  "Forgot password": "Forgot password",
+  "Date older": "Date older"
 }

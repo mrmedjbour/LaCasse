@@ -34,8 +34,8 @@
                                     <div class="form-group d-flex justify-content-around align-items-center sortByG">
                                         <label for="sortBy"><i class="fas fa-sort-amount-down fa-lg"></i>{{__('Sort By')}}&nbsp;</label>
                                         <select class="form-control form-control-sm widthAuto" id="sortBy" name="sortBy">
-                                            <option value="desc">{{__('Date Desc')}}</option>
-                                            <option value="asc" @if ($request->sortBy == "asc") selected @endif>{{__('Date Asc')}}</option>
+                                            <option value="desc">{{__('Date newer')}}</option>
+                                            <option value="asc" @if ($request->sortBy == "asc") selected @endif>{{__('Date older')}}</option>
                                         </select>
                                     </div>
                                 </form>
