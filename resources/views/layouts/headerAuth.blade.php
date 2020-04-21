@@ -152,11 +152,14 @@
 </header>
 <div class="d-lg-none collapse navbar-collapse" id="HeadMenu" style="padding: 10px 1.5em;">
     <ul class="list-unstyled">
-        <li><a class="d-block" href="#">About Us</a>
+        <li>
+            <a class="d-block" href="{{ route('page', 'about') }}">{{__('About us')}}</a>
         </li>
-        <li><a class="d-block" href="#">About Us</a>
+        <li>
+            <a class="d-block" href="{{ route('contact.index') }}">{{__('Contact us')}}</a>
         </li>
-        <li><a class="d-block" href="#">About Us</a>
+        <li>
+            <a class="d-block" href="{{ route('page', 'privacy') }}">{{__('Privacy Policy')}}</a>
         </li>
     </ul>
 </div>
