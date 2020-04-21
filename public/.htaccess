@@ -2,7 +2,7 @@
     <IfModule mod_negotiation.c>
         Options -MultiViews -Indexes
     </IfModule>
-    php_flag opcache.enable Off
+    php_flag opcache.enable = 0
 #    Header always set Access-Control-Allow-Origin "*"
 
     RewriteEngine On
