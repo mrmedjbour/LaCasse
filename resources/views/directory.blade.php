@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title'){{__('Casse Directory')}}@endsection
 @section('content')
     <section>
         <div class="container">

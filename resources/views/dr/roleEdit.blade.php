@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title'){{__('Edit User Role')}}@endsection
 @section('content')
     <section>
         <div class="container dashboard">

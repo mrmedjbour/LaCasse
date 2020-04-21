@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title'){{__('Search results')}}@endsection
 @section('content')
     <section id="sectionContent">
         <div class="container">

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title'){{ __('Terms & conditions') }}@endsection
 @section('content')
     <section id="sectionContent">
         <div class="container">

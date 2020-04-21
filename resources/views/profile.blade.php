@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title'){{ Str::title($casse->casse_nom) }}@endsection
 @section('content')
     <section>
         <div class="container profile-content">

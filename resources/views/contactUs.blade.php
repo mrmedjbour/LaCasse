@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title'){{ __('Contact us') }}@endsection
 @section('content')
     <section>
         <div class="container contactUs">

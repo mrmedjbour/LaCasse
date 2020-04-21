@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title'){{ __('Mailbox') }}@endsection
 @section('content')
     <section>
         <div class="container">
@@ -7,7 +7,7 @@
                 <div class="col-lg-4 p-0 HomeSideManU">
                     @include('comp.sidebar')
                 </div>
-                    @include('comp.msgframe')
+                @include('comp.msgframe')
             </div>
         </div>
     </section>

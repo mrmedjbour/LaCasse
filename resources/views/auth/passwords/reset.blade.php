@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title'){{__('Change Password')}}@endsection
 @section('content')
     <section>
         <div class="container">

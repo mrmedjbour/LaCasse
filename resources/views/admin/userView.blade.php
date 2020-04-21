@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title'){{__('User information')}}@endsection
 @section('content')
     <section>
         <div class="container dashboard">

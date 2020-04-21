@@ -1,4 +1,6 @@
-@extends('layouts.app') @section('content')
+@extends('layouts.app')
+@section('title'){{ __('Switch to professional account') }}@endsection
+@section('content')
     <section>
         <div class="container dashboard">
             <div class="row">

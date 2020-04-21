@@ -1,4 +1,6 @@
-@extends('layouts.app') @section('content')
+@extends('layouts.app')
+@section('title'){{__('Professional Account Requests')}}@endsection
+@section('content')
     <section>
         <div class="container dashboard">
             <div class="row">

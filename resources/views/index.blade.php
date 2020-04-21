@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title'){{__('Home')}}@endsection
 @section('content')
     <section class="d-flex justify-content-center align-items-center" id="sectionSearchBox">
         <div class="container" id="containerSearchBox">
