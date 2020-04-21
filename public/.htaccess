@@ -7,8 +7,6 @@
     Header always set Access-Control-Max-Age "1000"
     Header always set Access-Control-Allow-Headers "x-requested-with, Content-Type, origin, authorization, accept, client-security-token"
 
-    opcache.enable_cli=0
-
     RewriteEngine On
 
     # Handle Authorization Header
