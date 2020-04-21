@@ -25,7 +25,7 @@ $(document).ready(function() {
 // /* Start API address  */
     // WILAYA SELECT EVENT
     $("div select#Wilaya").change(function () {
-        $apiWilaya = "/api/region/?wilaya=" + $(this).val();
+        $apiWilaya = "/api/region?wilaya=" + $(this).val();
         $.getJSON($apiWilaya, function (data) {
             // Clean select options
             $("div select#Daira,div select#Commune").find('option').remove("option[value]").end().find('option[hidden]').prop('selected', true);
@@ -57,7 +57,7 @@ $(document).ready(function() {
 // /* Start API make  */
     // Make SELECT EVENT
     $("div select#Make").change(function () {
-        $apiMake = "/api/models/?marque=" + $(this).val();
+        $apiMake = "/api/models?marque=" + $(this).val();
         $.getJSON($apiMake, function (data) {
             // Clean select options
             $("div select#Modele").find('option').remove("option[value]").end().find('option[hidden]').prop('selected', true);
@@ -67,7 +67,7 @@ $(document).ready(function() {
                 $("div select#Modele").append($('<option></option>').attr('value', entry.modele_id).text(entry.modele_nom));
             })
         });
-        $("div select#ModelePart").load("/api/parts/?all");
+        $("div select#ModelePart").load("/api/parts?all");
         //enable Daira disable Commune select
         $("div select#Modele").prop('disabled', false);
         $("div select#ModeleYear,div select#ModelePart").prop('disabled', true);
@@ -417,12 +417,12 @@ $('#addphonebtn').on('click', function() {
         type = $(this).parent().data('type');
         if (type == "make") {
             $("div#TopSearchBarDropContent ul").empty();
-            $("div#TopSearchBarDropContent ul").load("/api/models/?allMarque");
+            $("div#TopSearchBarDropContent ul").load("/api/models?allMarque");
             $("div#TopSearchAddChip").empty();
         } else if (type == "modele") {
             $("div#TopSearchBarDropContent").hide(0, function () {
                 id = $("div[data-type=make]").data('id');
-                $apiMod = "/api/models/?marque=" + id;
+                $apiMod = "/api/models?marque=" + id;
                 $.getJSON($apiMod, function (data) {
                     // Clean Drop Down list
                     $("div#TopSearchBarDropContent ul").empty();
@@ -436,14 +436,14 @@ $('#addphonebtn').on('click', function() {
         } else if (type == "part") {
             $("div#TopSearchBarDropContent").hide(0, function () {
                 $("div#TopSearchBarDropContent ul").empty();
-                $("div#TopSearchBarDropContent ul").load("/api/parts/?allParts");
+                $("div#TopSearchBarDropContent ul").load("/api/parts?allParts");
             });
             $(this).parent().remove();
             $("div[data-type=year], div[data-type=part]").remove();
         } else if (type == "year") {
             $("div#TopSearchBarDropContent").hide(0, function () {
                 $("div#TopSearchBarDropContent ul").empty();
-                $("div#TopSearchBarDropContent ul").load("/api/parts/?Years");
+                $("div#TopSearchBarDropContent ul").load("/api/parts?Years");
             });
             $("div[data-type=year]").remove();
         }
@@ -476,7 +476,7 @@ $('#addphonebtn').on('click', function() {
         $("div#TopSearchAddChip").append(makeTagChip(type, id, title));
         if (type == "make") {
             $("div#TopSearchBarDropContent").hide(0, function () {
-                $apiMod = "/api/models/?marque=" + id;
+                $apiMod = "/api/models?marque=" + id;
                 $.getJSON($apiMod, function (data) {
                     // Clean Drop Down list
                     $("div#TopSearchBarDropContent ul").empty();
@@ -489,12 +489,12 @@ $('#addphonebtn').on('click', function() {
         } else if (type == "modele") {
             $("div#TopSearchBarDropContent").hide(0, function () {
                 $("div#TopSearchBarDropContent ul").empty();
-                $("div#TopSearchBarDropContent ul").load("/api/parts/?allParts");
+                $("div#TopSearchBarDropContent ul").load("/api/parts?allParts");
             });
         } else if (type == "part") {
             $("div#TopSearchBarDropContent").hide(0, function () {
                 $("div#TopSearchBarDropContent ul").empty();
-                $("div#TopSearchBarDropContent ul").load("/api/parts/?Years");
+                $("div#TopSearchBarDropContent ul").load("/api/parts?Years");
             });
         } else if (type == "year") {
             $("div#TopSearchBarDropContent").hide();
